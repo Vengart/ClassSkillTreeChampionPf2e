@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор лабиринтов</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Генератор лабиринтов</h1>
+
+        <div class="controls">
+            <div class="input-group">
+                <label for="width">Ширина лабиринта:</label>
+                <input type="number" id="width" value="21" min="5" max="51" step="2">
+            </div>
+
+            <div class="input-group">
+                <label for="height">Высота лабиринта:</label>
+                <input type="number" id="height" value="21" min="5" max="51" step="2">
+            </div>
+
+            <div class="input-group">
+                <label>Алгоритм генерации:</label>
+                <select id="algorithm">
+                    <option value="binary">Бинарное дерево (Binary Tree)</option>
+                    <option value="backtracker">Рекурсивный Backtracker</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="checkbox" id="braid" name="braid">
+                <label for="braid">Braiding (без тупиков)</label>
+            </div>
+
+            <button id="generateBtn">Сгенерировать лабиринт</button>
+        </div>
+        <div class="game-stats">
+            <div id="stepCounter">Шаги: 0</div>
+            <div id="timer">Время: 0.0 c</div>
+            <button id="resetBtn" class="reset-btn">Вернуться в начало</button>
+            <button id="resetCheckPointBtn" class="reset-btn">Вернуться в контрольную точку</button>
+            <button id="checkPointBtn" class="reset-btn">Сохранить контрольную точку</button>
+        </div>
+        <div class="leaderboard-section">
+                <h2>Таблица лидеров</h2>
+                <div id="leaderboard" class="leaderboard">
+                    <p>Пока нет записей</p>
+                </div>
+                <button id="clearLeaderboard" class="control-btn">Очистить таблицу</button>
+            </div>
+        <div id = "tableWithLeader">
+            <div id="mazeContainer"></div>
+            
+        </div>
+
+
+    </div>
+</body>
+</html>
