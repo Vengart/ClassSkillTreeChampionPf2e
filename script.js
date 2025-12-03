@@ -15,7 +15,8 @@ const AppState = {
     checkPointActive: false,
     optimalPath: [],
     leaderboard: [],
-    attemptNumber: 1
+    attemptNumber: 1,
+    savedMazes: {}
 };
 
 // Направления
@@ -386,16 +387,35 @@ const Timer = {
 // Система лидерборда
 function addToLeaderboard(steps, time) {
     const attempt = {
+        id: Date.now(), // Добавляем уникальный ID
         number: AppState.attemptNumber++,
         steps: steps,
         time: parseFloat(time),
-        timestamp: new Date().toLocaleString()
+        timestamp: new Date().toLocaleString(),
+        mazeData: JSON.parse(JSON.stringify(AppState.currentMaze)), // Сохраняем лабиринт
+        settings: {...AppState.mazeSettings}, // Сохраняем настройки
+        startPos: {...AppState.startPos}, // Сохраняем стартовую позицию
+        endPos: {...AppState.endPos} // Сохраняем конечную позицию
     };
     
     AppState.leaderboard.push(attempt);
     AppState.leaderboard.sort((a, b) => a.time - b.time);
-    if (AppState.leaderboard.length > 10) AppState.leaderboard = AppState.leaderboard.slice(0, 10);
+    
+    // Ограничиваем количество записей (например, 10 лучших)
+    if (AppState.leaderboard.length > 10) {
+        AppState.leaderboard = AppState.leaderboard.slice(0, 10);
+    }
+    
+    // Сохраняем лабиринт в отдельный объект
+    AppState.savedMazes[attempt.id] = {
+        maze: attempt.mazeData,
+        settings: attempt.settings,
+        startPos: attempt.startPos,
+        endPos: attempt.endPos
+    };
+    
     updateLeaderboardDisplay();
+    saveLeaderboard();
 }
 
 function updateLeaderboardDisplay() {
@@ -407,25 +427,162 @@ function updateLeaderboardDisplay() {
         return;
     }
     
-    let html = `<table class="leaderboard-table"><thead><tr><th>Попытка</th><th>Время</th><th>Шаги</th></tr></thead><tbody>`;
+    let html = `
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Попытка</th>
+                    <th>Время</th>
+                    <th>Шаги</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+    
     AppState.leaderboard.forEach(attempt => {
-        html += `<tr><td>#${attempt.number}</td><td>${attempt.time.toFixed(1)}с</td><td>${attempt.steps}</td></tr>`;
+        html += `
+            <tr>
+                <td>#${attempt.number}</td>
+                <td>${attempt.time.toFixed(1)}с</td>
+                <td>${attempt.steps}</td>
+                <td>
+                    <button class="load-maze-btn" onclick="loadLeaderMaze(${attempt.id})">
+                        🔄
+                    </button>
+                </td>
+            </tr>
+        `;
     });
-    leaderboardElement.innerHTML = html + `</tbody></table>`;
+    
+    html += `
+            </tbody>
+        </table>
+    `;
+    
+    leaderboardElement.innerHTML = html;
 }
 
+function loadLeaderMaze(mazeId) {
+    const mazeData = AppState.savedMazes[mazeId];
+    if (!mazeData) {
+        alert('Лабиринт не найден!');
+        return;
+    }
+    
+    // Восстанавливаем состояние
+    AppState.currentMaze = JSON.parse(JSON.stringify(mazeData.maze));
+    AppState.mazeSettings = {...mazeData.settings};
+    AppState.startPos = {...mazeData.startPos};
+    AppState.endPos = {...mazeData.endPos};
+    
+    // Обновляем UI с настройками
+    updateUIFromSettings();
+    
+    // Рендерим лабиринт
+    renderMazeTable(AppState.currentMaze, document.getElementById('mazeContainer'));
+    
+    // Сбрасываем статистику
+    AppState.stepCount = 0;
+    Timer.stop();
+    Timer.setAutoStart();
+    AppState.checkPointActive = false;
+    
+    alert('Лабиринт загружен из таблицы лидеров!');
+}
+
+function updateUIFromSettings() {
+    const settings = AppState.mazeSettings;
+    
+    // Обновляем поля ввода
+    document.getElementById('width').value = settings.width;
+    document.getElementById('height').value = settings.height;
+    document.getElementById('algorithm').value = settings.algorithm;
+    document.getElementById('braid').checked = settings.braid;
+    
+    // Обновляем радиокнопки сложности
+    document.querySelectorAll('input[name="difficulty"]').forEach(radio => {
+        radio.checked = radio.value === settings.difficulty;
+    });
+}
+
+function updateSavedMazesDisplay() {
+    const container = document.getElementById('savedMazesContainer');
+    if (!container) return;
+    
+    const savedMazes = Object.entries(AppState.savedMazes);
+    
+    if (savedMazes.length === 0) {
+        container.innerHTML = '<p class="no-mazes">Нет сохраненных лабиринтов</p>';
+        return;
+    }
+    
+    let html = '<ul class="saved-mazes-ul">';
+    savedMazes.forEach(([id, mazeData]) => {
+        const leaderEntry = AppState.leaderboard.find(entry => entry.id.toString() === id);
+        html += `
+            <li class="saved-maze-li">
+                <div class="maze-info">
+                    <strong>Лабиринт #${leaderEntry ? leaderEntry.number : '?'}</strong>
+                    <small>${leaderEntry ? leaderEntry.time.toFixed(1) + 'с, ' + leaderEntry.steps + ' шагов' : ''}</small>
+                </div>
+                <div class="maze-actions">
+                    <button class="load-maze-btn-small" onclick="loadLeaderMaze(${id})">
+                        Загрузить
+                    </button>
+                    <button class="delete-maze-btn" onclick="deleteSavedMaze(${id})">
+                        ✕
+                    </button>
+                </div>
+            </li>
+        `;
+    });
+    container.innerHTML = html + '</ul>';
+}
+
+function deleteSavedMaze(mazeId) {
+    if (confirm('Удалить этот сохраненный лабиринт?')) {
+        delete AppState.savedMazes[mazeId];
+        saveLeaderboard();
+        updateSavedMazesDisplay();
+    }
+}
+
+
 function saveLeaderboard() {
-    localStorage.setItem('mazeLeaderboard', JSON.stringify(AppState.leaderboard));
-    localStorage.setItem('mazeAttemptNumber', AppState.attemptNumber.toString());
+    const dataToSave = {
+        leaderboard: AppState.leaderboard.map(attempt => ({
+            ...attempt,
+            mazeData: null // Не сохраняем лабиринты в localStorage для экономии места
+        })),
+        attemptNumber: AppState.attemptNumber,
+        savedMazes: AppState.savedMazes // Сохраняем лабиринты отдельно
+    };
+    
+    localStorage.setItem('mazeData', JSON.stringify(dataToSave));
 }
 
 function loadLeaderboard() {
-    const savedLeaderboard = localStorage.getItem('mazeLeaderboard');
-    const savedAttemptNumber = localStorage.getItem('mazeAttemptNumber');
-    if (savedLeaderboard) AppState.leaderboard = JSON.parse(savedLeaderboard);
-    if (savedAttemptNumber) AppState.attemptNumber = parseInt(savedAttemptNumber);
+    const savedData = localStorage.getItem('mazeData');
+    if (savedData) {
+        const data = JSON.parse(savedData);
+        AppState.leaderboard = data.leaderboard || [];
+        AppState.attemptNumber = data.attemptNumber || 1;
+        AppState.savedMazes = data.savedMazes || {};
+        
+        // Восстанавливаем связи между лидербордом и лабиринтами
+        AppState.leaderboard.forEach(attempt => {
+            if (AppState.savedMazes[attempt.id]) {
+                attempt.mazeData = AppState.savedMazes[attempt.id].maze;
+                attempt.settings = AppState.savedMazes[attempt.id].settings;
+                attempt.startPos = AppState.savedMazes[attempt.id].startPos;
+                attempt.endPos = AppState.savedMazes[attempt.id].endPos;
+            }
+        });
+    }
     updateLeaderboardDisplay();
 }
+
 
 // Поиск пути и проверка победы
 function findOptimalPath(maze, start, end) {
@@ -460,8 +617,8 @@ function checkWin() {
         const optimalSteps = getOptimalPathLength(AppState.currentMaze, AppState.startPos, AppState.endPos);
         const optimal = optimalSteps > 0 ? `${optimalSteps} шагов` : "путь не найден";
         
+        // Сохраняем в таблицу лидеров (автоматически сохраняет лабиринт)
         addToLeaderboard(AppState.stepCount, elapsed);
-        saveLeaderboard();
         
         alert(`🎉 Поздравляем! Вы прошли лабиринт!\n\nВаши шаги: ${AppState.stepCount}\nОптимальный путь: ${optimal}\nЗатраченное время: ${elapsed} секунд`);
         
@@ -538,3 +695,5 @@ document.addEventListener('DOMContentLoaded', () => {
     generateAndRenderMaze();
     loadLeaderboard();
 });
+
+
