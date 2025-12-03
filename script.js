@@ -441,7 +441,7 @@ function updateLeaderboardDisplay() {
             </tbody>
         </table>
     `;
-    
+    renderGameState();
     leaderboardElement.innerHTML = html;
 }
 
@@ -661,5 +661,3 @@ document.addEventListener('DOMContentLoaded', () => {
     generateAndRenderMaze();
     loadLeaderboard();
 });
-
-
