@@ -142,7 +142,7 @@ input[type="range"] {
 
 .cell.checkpoint
 {
-    background-color: darkslateblue;
+    background-color: rgb(248, 54, 255);
 }
 .stats {
     background: #f8f9fa;
