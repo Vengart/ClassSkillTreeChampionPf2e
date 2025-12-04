@@ -58,7 +58,62 @@
             <div id="mazeContainer"></div>
             
         </div>
-
+        <!-- Модальное окно победы -->
+<div id="winModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Поздравляем!</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Ваш результат</h3>
+                    <div class="stat-value" id="winSteps">0</div>
+                    <div class="stat-label">Шагов</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Оптимальный путь</h3>
+                    <div class="stat-value" id="winOptimal">0</div>
+                    <div class="stat-label">Шагов</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Время</h3>
+                    <div class="stat-value" id="winTime">0.0</div>
+                    <div class="stat-label">Секунд</div>
+                </div>
+            </div>
+            
+            <div class="efficiency">
+                <h4>Эффективность</h4>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="efficiencyBar"></div>
+                    </div>
+                    <div class="progress-text" id="efficiencyText">0%</div>
+                </div>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="showOptimalPath" class="modal-btn primary">
+                    Показать оптимальный путь
+                </button>
+                <button id="hideOptimalPath" class="modal-btn secondary" style="display: none;">
+                    Скрыть путь
+                </button>
+                <button id="playAgain" class="modal-btn success">
+                    Играть еще
+                </button>
+            </div>
+            
+            <div class="path-info" id="pathInfo">
+                <h4>Детали маршрута</h4>
+                <div id="pathDetails"></div>
+            </div>
+        </div>
+        <!-- Добавьте эту кнопку рядом с другими кнопками управления -->
+    </div>
+</div>
 
     </div>
 </body>
