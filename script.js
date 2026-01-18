@@ -17,7 +17,7 @@ const AppState = {
     attemptNumber: 1,
     savedMazes: {}
 };
-// В самом начале, после объявления AppState
+
 window.debugOptimalPath = function() {
     console.log('Optimal path data:', optimalPath);
     console.log('Coordinates:', optimalPath.coordinates);
@@ -274,10 +274,7 @@ function renderGameState() {
     checkpointBtn.disabled = !AppState.checkPointActive;
     checkpointBtn.textContent = AppState.checkPointActive ? 'Вернуться к чекпоинту' : 'Чекпоинт не установлен';
     
-    // Восстанавливаем отображение оптимального пути после перерисовки,
-    // если он должен быть показан
     if (showingOptimalPath && optimalPath.coordinates && optimalPath.coordinates.length > 0) {
-        // Небольшая задержка, чтобы перерисовка игрока произошла первой
         setTimeout(() => {
             restoreOptimalPathDisplay();
         }, 10);
@@ -285,15 +282,12 @@ function renderGameState() {
 }
 function restoreOptimalPathDisplay() {
     if (!showingOptimalPath || !optimalPath.coordinates || optimalPath.coordinates.length === 0 || !AppState.mazeTable) return;
-    
-    // Помечаем все клетки оптимального пути
     optimalPath.coordinates.forEach((coord, index) => {
         const isStart = index === 0;
         const isEnd = index === optimalPath.coordinates.length - 1;
         markCellAsOptimal(coord.x, coord.y, isStart ? 'start' : isEnd ? 'end' : 'path');
     });
     
-    // Убедимся, что кнопки в правильном состоянии
     document.getElementById('showOptimalPath').style.display = 'none';
     document.getElementById('hideOptimalPath').style.display = 'flex';
 }
@@ -308,7 +302,6 @@ function movePlayerTo(position, incrementSteps = true) {
 }
 
 function resetPlayerPosition() {
-    // Скрываем оптимальный путь при сбросе позиции
     if (showingOptimalPath) {
         clearOptimalPath();
     }
@@ -345,7 +338,6 @@ function movePlayer(key) {
     };
     
     if (moves[key]) {
-        // Если показывается оптимальный путь, скрываем его при движении
         if (showingOptimalPath) {
             clearOptimalPath();
         }
@@ -372,7 +364,6 @@ function renderMazeTable(maze, container) {
     AppState.mazeTable = table;
     AppState.currentMaze = maze;
     
-    // Сбрасываем отображение пути при новой генерации
     showingOptimalPath = false;
     optimalPath = { directions: [], coordinates: [], length: 0 };
 
@@ -623,7 +614,6 @@ function findOptimalPath(maze, start, end) {
     while (queue.length > 0) {
         const { x, y, path, coordinates } = queue.shift();
         
-        // Если достигли конца, возвращаем путь с координатами
         if (x === end.x && y === end.y) {
             return {
                 directions: path,
@@ -664,17 +654,13 @@ function checkWin() {
         Timer.stop();
         const elapsed = ((Date.now() - AppState.startTime) / 1000).toFixed(1);
         
-        // Находим оптимальный путь и сохраняем его
         optimalPath = findOptimalPath(AppState.currentMaze, AppState.startPos, AppState.endPos);
         const optimalSteps = optimalPath.directions.length; // Исправлено: используем directions.length
         
-        // Добавляем в таблицу лидеров
         addToLeaderboard(AppState.stepCount, elapsed);
         
-        // Показываем модальное окно
         showWinModal(AppState.stepCount, optimalSteps, elapsed);
         
-        // Сбрасываем состояние игры
         AppState.stepCount = -1;
         resetPlayerPosition();
         Timer.setAutoStart();
@@ -684,64 +670,47 @@ function showWinModal(steps, optimalSteps, time) {
     const modal = document.getElementById('winModal');
     const efficiency = optimalSteps > 0 ? Math.round((optimalSteps / steps) * 100) : 0;
     
-    // Заполняем данные
     document.getElementById('winSteps').textContent = steps;
     document.getElementById('winOptimal').textContent = optimalSteps;
     document.getElementById('winTime').textContent = time;
     document.getElementById('efficiencyBar').style.width = `${Math.min(efficiency, 100)}%`;
     document.getElementById('efficiencyText').textContent = `${efficiency}%`;
-    
-    // Детали пути
     const pathDetails = document.getElementById('pathDetails');
     if (optimalSteps > 0) {
         pathDetails.innerHTML = `
-            <p>🎯 Длина оптимального пути: <strong>${optimalSteps} шагов</strong></p>
-            <p>📈 Ваша эффективность: <strong>${efficiency}%</strong> от оптимального</p>
+            <p>Длина оптимального пути: <strong>${optimalSteps} шагов</strong></p>
+            <p>Ваша эффективность: <strong>${efficiency}%</strong> от оптимального</p>
             <p>${efficiency >= 90 ? '🏆 Отличный результат!' : 
                  efficiency >= 70 ? '👍 Хорошая игра!' : 
-                 '💪 Можно лучше!'}</p>
+                 'Можно лучше!'}</p>
         `;
     } else {
         pathDetails.innerHTML = '<p>⚠ Оптимальный путь не найден</p>';
     }
-    
-    // Показываем модальное окно
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
 
-
-// Показать оптимальный путь на лабиринте
 function showOptimalPath() {
     if (showingOptimalPath || !optimalPath.coordinates || optimalPath.coordinates.length === 0 || !AppState.mazeTable) return;
     
     showingOptimalPath = true;
-    //clearOptimalPath();
-    
-    // Помечаем все клетки оптимального пути
     optimalPath.coordinates.forEach((coord, index) => {
         const isStart = index === 0;
         const isEnd = index === optimalPath.coordinates.length - 1;
         markCellAsOptimal(coord.x, coord.y, isStart ? 'start' : isEnd ? 'end' : 'path');
     });
-    
-    // Обновляем UI кнопок
     document.getElementById('showOptimalPath').style.display = 'none';
     document.getElementById('hideOptimalPath').style.display = 'flex';
-    
-    // Показываем анимацию "прокладки" пути (опционально)
     animatePathProgression(optimalPath.coordinates);
 }
-
-// Пометить клетку как часть оптимального пути
 function markCellAsOptimal(x, y, type = 'path') {
     if (!AppState.mazeTable) return;
     
     const cell = AppState.mazeTable.rows[y]?.cells[x];
     if (cell && cell.classList.contains('path')) {
         cell.classList.add('optimal-path');
-        
-        // Добавляем дополнительные классы для старта и финиша
+
         if (type === 'start') {
             cell.classList.add('optimal-start');
         } else if (type === 'end') {
@@ -750,7 +719,6 @@ function markCellAsOptimal(x, y, type = 'path') {
     }
 }
 
-// Очистить отображение оптимального пути
 function clearOptimalPath() {
     if (!AppState.mazeTable) return;
     
@@ -759,15 +727,12 @@ function clearOptimalPath() {
         cell.classList.remove('optimal-path');
     }
     
-    // Обновляем UI кнопок
     showingOptimalPath = false;
     document.getElementById('showOptimalPath').style.display = 'flex';
     document.getElementById('hideOptimalPath').style.display = 'none';
     
-    // Перерисовываем игровое состояние, чтобы восстановить игрока и чекпоинт
     renderGameState();
 }
-// Анимация постепенного показа пути
 function animatePathProgression(coordinates, index = 0) {
     if (index >= coordinates.length || !showingOptimalPath) return;
     
@@ -776,10 +741,9 @@ function animatePathProgression(coordinates, index = 0) {
         index === 0 ? 'start' : 
         index === coordinates.length - 1 ? 'end' : 'path');
     
-    // Рекурсивно продолжаем анимацию
     setTimeout(() => {
         animatePathProgression(coordinates, index + 1);
-    }, 100); // 100ms между клетками
+    }, 100);
 }
 
 
@@ -805,36 +769,24 @@ document.addEventListener('DOMContentLoaded', () => {
 closeModal.addEventListener('click', () => {
     winModal.style.display = 'none';
     document.body.style.overflow = 'auto';
-    // НЕ очищаем оптимальный путь при закрытии
 });
 
-// Закрытие по клику вне окна
 winModal.addEventListener('click', (e) => {
     if (e.target === winModal) {
         winModal.style.display = 'none';
         document.body.style.overflow = 'auto';
-        // НЕ очищаем оптимальный путь при закрытии
     }
 });
-
     
-    // Кнопка показа оптимального пути
     showPathBtn.addEventListener('click', showOptimalPath);
     
-    // Кнопка скрытия пути
     hidePathBtn.addEventListener('click', clearOptimalPath);
-    
-    // Кнопка "Играть еще"
     playAgainBtn.addEventListener('click', () => {
         winModal.style.display = 'none';
         document.body.style.overflow = 'auto';
-        // Скрываем оптимальный путь при начале новой игры
         if (showingOptimalPath) {
             clearOptimalPath();
         }
-        // Не сбрасываем позицию игрока автоматически
-        // resetPlayerPosition();
-        // Timer.setAutoStart();
     });
 
     
@@ -888,3 +840,4 @@ winModal.addEventListener('click', (e) => {
     generateAndRenderMaze();
     loadLeaderboard();
 });
+
