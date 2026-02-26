@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>PF2e Skill Tree</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="ui-layer">
+        <!-- Выпадающий список Побуждений -->
+        <div class="dropdown-section">
+            <button class="dropdown-toggle" onclick="toggleDropdown('tenets-dropdown')">
+                ▼ Побуждения
+            </button>
+            <div id="tenets-dropdown" class="dropdown-content">
+                <div class="ui-section">
+                    <h3 style="margin: 0 0 10px 0; font-size: 12px; color: #999;">Нейтральные</h3>
+                    <div class="card" onclick="toggleDeck('справедливость')">Справедливость</div>
+                    <div class="card" onclick="toggleDeck('освобождение')">Освобождение</div>
+                    <div class="card" onclick="toggleDeck('повиновение')">Повиновение</div>
+                </div>
+
+                <div class="ui-section">
+                    <h3 style="margin: 0 0 10px 0; font-size: 12px; color: #999;">Святые</h3>
+                    <div class="card" onclick="toggleDeck('величие')">Величие</div>
+                    <div class="card" onclick="toggleDeck('искупление')">Искупление</div>
+                </div>
+
+                <div class="ui-section">
+                    <h3 style="margin: 0 0 10px 0; font-size: 12px; color: #999;">Нечестивые</h3>
+                    <div class="card" onclick="toggleDeck('осквернение')">Осквернение</div>
+                    <div class="card" onclick="toggleDeck('неравенство')">Неравенство</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Выпадающий список Заклинаний и Редкости -->
+        <div class="dropdown-section">
+            <button class="dropdown-toggle" onclick="toggleDropdown('spells-dropdown')">
+                ▼ Заклинания преданности
+            </button>
+            <div id="spells-dropdown" class="dropdown-content">
+                <div class="ui-section">
+                    <div class="card" onclick="toggleDeck('щиты-духа')">Щиты духа</div>
+                    <div class="card" onclick="toggleDeck('наложение-рук')">Наложение рук</div>
+                    <div class="card" onclick="toggleDeck('касание-пустоты')">Касание пустоты</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Выпадающий список Благословений Преданного -->
+        <div class="dropdown-section">
+            <button class="dropdown-toggle" onclick="toggleDropdown('blessings-dropdown')">
+                ▼ Благословения Преданного
+            </button>
+            <div id="blessings-dropdown" class="dropdown-content">
+                <div class="ui-section">
+                    <div class="card" onclick="toggleDeck('вооружение')">Вооружение</div>
+                    <div class="card" onclick="toggleDeck('щит')">Щит</div>
+                    <div class="card" onclick="toggleDeck('проворность')">Проворность</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Выпадающий список Редкости -->
+        <div class="dropdown-section">
+            <button class="dropdown-toggle" onclick="toggleDropdown('rarity-dropdown')">
+                ▼ Редкость
+            </button>
+            <div id="rarity-dropdown" class="dropdown-content">
+                <div class="ui-section">
+                    <div class="card rarity-card-обычный" onclick="toggleRarity('обычный')">⭐ Обычный</div>
+                    <div class="card rarity-card-необычный" onclick="toggleRarity('необычный')">✨ Необычный</div>
+                    <div class="card rarity-card-редкий" onclick="toggleRarity('редкий')">💎 Редкий</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-section">
+            <button class="card" onclick="savePositions()" style="background: #2e7d32;">💾 Save</button>
+            <button class="card" onclick="resetPositions()" style="background: #c62828;">🔄 Reset</button>
+        </div>
+    </div>
+
+    <div id="level-selector">
+        <label for="playerLevelInput">Уровень:</label>
+        <input type="number" id="playerLevelInput" min="1" max="20" value="1" onchange="setPlayerLevel(this.value)">
+        <span id="levelDisplay">1</span>
+    </div>
+    
+    <div id="error-message" class="error-message-hidden"></div>
+    <div id="zoom-indicator">1x</div>
+    <div id="viewport">
+        <div id="tree-container">
+            <svg id="connections-layer"></svg>
+            <div id="nodes-layer"></div>
+        </div>
+        
+        
+    </div>
+</body>
+</html>
