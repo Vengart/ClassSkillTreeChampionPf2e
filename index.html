@@ -21,6 +21,9 @@
         </div>
     </div>
 
+    <!-- Верхняя панель: выбор освящения, призвания, заклинания и благословения -->
+    <header id="choice-bar" class="frame" aria-label="Выбор при создании персонажа"></header>
+
     <!-- Левая панель: сборка -->
     <aside id="panel" class="frame">
         <header class="panel-head">
@@ -45,10 +48,6 @@
                 </div>
             </section>
 
-            <section class="block">
-                <h2>Выбор</h2>
-                <dl id="choices" class="choices"></dl>
-            </section>
 
             <section class="block">
                 <h2>Черты <span id="feat-count" class="muted"></span></h2>
@@ -75,13 +74,15 @@
             <section class="block legend">
                 <h2>Как пользоваться</h2>
                 <ul class="small">
-                    <li><b>ЛКМ</b> по узлу — взять / снять</li>
+                    <li>Сверху — карточки выбора: освящение, призвание, заклинание, благословение</li>
+                    <li><b>ЛКМ</b> по узлу или карточке — взять / снять</li>
                     <li><b>ПКМ</b> по узлу — подробное описание</li>
                     <li>Перетаскивание — перемещение, колесо — масштаб</li>
                     <li><span class="lg lg-req"></span> обязательное условие</li>
                     <li><span class="lg lg-or"></span> одно из условий</li>
                     <li><span class="badge b-holy"></span>нужно освящение «священный»</li>
                     <li><span class="badge b-unholy"></span>нужно освящение «нечестивый»</li>
+                    <li><span class="req-badge legend-req" style="background-image:url('images/brave.webp')"></span>нужна карточка (призвание, заклинание, благословение)</li>
                     <li>Наведение на узел подсвечивает всю цепочку требований</li>
                 </ul>
             </section>

@@ -22,9 +22,9 @@
 
 export const GEOMETRY = {
     SIZE: { root: 132, group: 90, option: 74, feature: 72, feat: 62 },
-    R_GROUP: 300,
-    R_OPTION: 610,
-    R_FEAT0: 900,
+    R_GROUP: 160,   // группы и варианты на холсте не рисуются (карточки сверху),
+    R_OPTION: 330,  // на этом кольце — классовые особенности (аура, блок щитом)
+    R_FEAT0: 620,
     R_STEP: 205,
     // подписи под узлами: размер шрифта, макс. ширина строки, отступ от узла
     CAPTION: {
@@ -95,27 +95,21 @@ function primaryParent(n, byId) {
     return cands[0];
 }
 
+/**
+ * Группы выбора и их варианты (освящение, призвание, заклинание преданности,
+ * благословение) вынесены карточками в верхнюю панель — на холсте их нет.
+ */
+export const isCardNode = (n) => n.kind === 'group' || n.kind === 'option';
+
 /** Какие связи рисуются (и участвуют в раскладке). */
 export function drawnEdges(nodes, edges) {
     const byId = new Map(nodes.map((n) => [n.id, n]));
     const out = [];
     for (const e of edges) {
-        const to = byId.get(e.to);
-        // требование освящения у черт показывается значком на узле
-        if ((to.kind === 'feat' || to.group === 'group-cause') && e.from.startsWith('sanct-')) continue;
-        // «одно из вариантов группы» рисуем одной связью от самой группы
-        const from = byId.get(e.from);
-        if (e.kind === 'or' && from.group && from.group === to.parentId) continue;
+        const from = byId.get(e.from), to = byId.get(e.to);
+        // связи с карточками не рисуются: требование показывается значком на узле
+        if (isCardNode(from) || isCardNode(to)) continue;
         out.push({ ...e, primary: to.parentId === e.from });
-    }
-    for (const n of nodes) {
-        const p = n.parentId && byId.get(n.parentId);
-        // только если черта действительно требует «один из вариантов» этой группы
-        // (якоря LAYOUT_ANCHOR связей не создают)
-        const needsGroup = (n.requires || []).some((cl) => cl.every((id) => byId.get(id)?.group === p?.id));
-        if (n.kind === 'feat' && p && p.kind === 'group' && needsGroup && !out.some((d) => d.from === p.id && d.to === n.id)) {
-            out.push({ from: p.id, to: n.id, kind: 'or', primary: true, synthetic: true });
-        }
     }
     return out;
 }
@@ -133,7 +127,8 @@ function initialLayout(nodes) {
     const weight = (id) => {
         if (wCache.has(id)) return wCache.get(id);
         const n = byId.get(id);
-        const minW = n.kind === 'option' ? 2.6 : n.kind === 'feature' ? 3 : 1;
+        // карточки на холсте не стоят — сектор определяется только видимыми чертами
+        const minW = isCardNode(n) ? 0 : 1;
         const w = Math.max(minW, children.get(id).reduce((s, c) => s + weight(c), 0));
         wCache.set(id, w);
         return w;
@@ -160,7 +155,7 @@ function initialLayout(nodes) {
         const total = ch.reduce((s, c) => s + weight(c), 0);
         let a = a0;
         for (const c of ch) {
-            const span = (a1 - a0) * weight(c) / total;
+            const span = total ? (a1 - a0) * weight(c) / total : 0;
             assign(c, a, a + span);
             a += span;
         }
@@ -238,7 +233,9 @@ const W = {
     angle: 2500,       // рёбра из узла сливаются
     length: 0.6,       // за пиксель длины ребра
     anchor: 400,       // уход от исходного угла (за рад^2)
-    even: Number(process.env.LAYOUT_EVEN || 1500), // разрыв между соседями одной ветки (за лишний слот^2)
+    even: Number(process.env.LAYOUT_EVEN || 600),  // разрыв между соседями одной ветки (за лишний слот^2)
+    gap: Number(process.env.LAYOUT_GAP || 8000),   // пустота на кольце (за долю идеального шага^2)
+    balance: Number(process.env.LAYOUT_BAL || 1500), // смещение центра тяжести (за 100px^2)
     bend: 9000,        // излом цепочки: за (лишний угол / 90°)^2
     caption: 2500,     // ребро / узел / другая подпись поверх подписи
 };
@@ -248,18 +245,19 @@ const CAP_PAD = 8;        // поля вокруг подписи
 const MIN_EDGE_ANGLE = 0.26; // ~15° между рёбрами из одного узла
 export const SIDES = ['below', 'above', 'right', 'left', 'below-right', 'below-left', 'above-right', 'above-left'];
 const GRID = Number(process.env.LAYOUT_GRID || 40); // число угловых слотов на окружности
+const GAP_MAX = Number(process.env.LAYOUT_GAPMAX || 1.8); // допустимый промежуток на кольце, в идеальных шагах 2π/m
 const BEND_OK = 0.3;         // ~17°: такой излом цепочки ещё считается «прямой»
 
-export function computeLayout(nodes, edges, { seeds = [2, 21, 13], ...opts } = {}) {
+export function computeLayout(nodes, edges, { seeds = [21, 2, 13], ...opts } = {}) {
     let best = null;
     for (const seed of seeds) {
         const res = computeLayoutOnce(nodes, edges, { ...opts, seed, log: !!process.env.LAYOUT_DEBUG });
-        const score = res.stats.overlaps * 1000 + res.stats.through * 100 + res.stats.crossings * 10 + res.stats.captions * 10 + res.stats.bends * 3 + res.stats.unevenness;
+        const score = res.stats.overlaps * 1000 + res.stats.through * 100 + res.stats.crossings * 10 + res.stats.captions * 10 + res.stats.bends * 3 + res.stats.unevenness + Math.max(0, res.stats.maxGap - GAP_MAX) * 20 + res.stats.offset / 10;
         if (!best || score < best.score) best = { score, seed, pos: nodes.map((n) => [n.angle, n.x, n.y, n.captionSide]), res };
         if (score === 0) break; // идеальная раскладка — дальше не ищем
     }
     nodes.forEach((n, i) => { [n.angle, n.x, n.y, n.captionSide] = best.pos[i]; });
-    if (opts.log) console.log(`  раскладка (seed ${best.seed}): пересечений ${best.res.stats.crossings}, рёбер через узлы ${best.res.stats.through}, наложений ${best.res.stats.overlaps}, задетых подписей ${best.res.stats.captions}, изломов > 45° ${best.res.stats.bends} (макс. ${best.res.stats.maxBend}°), разрывов в ветках ${best.res.stats.unevenness}`);
+    if (opts.log) console.log(`  раскладка (seed ${best.seed}): пересечений ${best.res.stats.crossings}, рёбер через узлы ${best.res.stats.through}, наложений ${best.res.stats.overlaps}, задетых подписей ${best.res.stats.captions}, изломов > 45° ${best.res.stats.bends} (макс. ${best.res.stats.maxBend}°), разрывов в ветках ${best.res.stats.unevenness}, макс. пустота ${best.res.stats.maxGap} шага, смещение центра ${best.res.stats.offset}px`);
     return best.res;
 }
 
@@ -268,15 +266,18 @@ function computeLayoutOnce(nodes, edges, { iterations = 600000, seed = 7, log = 
     const E = drawnEdges(nodes, edges);
     const N = nodes.length;
     const idx = new Map(nodes.map((n, i) => [n.id, i]));
+    const hidden = nodes.map(isCardNode);
+    const active = []; // узлы, которые есть на холсте
+    nodes.forEach((n, i) => { if (!hidden[i]) active.push(i); });
     const size = nodes.map((n) => G.SIZE[n.kind] || 54);
     const r = nodes.map((n) => n.r);
     const ang = nodes.map((n) => n.angle);
     const ang0 = ang.slice();
-    const fixed = nodes.map((n) => n.kind === 'root');
+    const fixed = nodes.map((n, i) => n.kind === 'root' || hidden[i]);
     const x = new Float64Array(N), y = new Float64Array(N);
     // сторона подписи — индекс в SIDES (снизу, сверху, справа, слева и четыре диагонали)
     const side = new Uint8Array(N);
-    const cap = nodes.map(captionBox);
+    const cap = nodes.map((n, i) => (hidden[i] ? { w: 0, h: 0 } : captionBox(n)));
     const cr = new Float64Array(N * 4); // прямоугольники подписей (с полями)
     const updCap = (i) => {
         const w = cap[i].w, h = cap[i].h, s2 = size[i] / 2 + G.CAPTION_GAP, o = i * 4;
@@ -317,7 +318,7 @@ function computeLayoutOnce(nodes, edges, { iterations = 600000, seed = 7, log = 
         // подпись узла i против всех узлов, подписей и рёбер (+ подписи других против узла i)
         let c = 0;
         const [x0, y0, x1, y1] = capRect(i);
-        for (let j = 0; j < N; j++) {
+        for (const j of active) {
             if (j === i) continue;
             if (Math.abs(r[j] - r[i]) > 700) continue;
             if (rectCircle(x0, y0, x1, y1, x[j], y[j], size[j] / 2)) c += W.caption;
@@ -336,7 +337,7 @@ function computeLayoutOnce(nodes, edges, { iterations = 600000, seed = 7, log = 
     function nodeTerms(i) {
         let c = 0;
         // наложение узлов
-        for (let j = 0; j < N; j++) {
+        for (const j of active) {
             if (j === i) continue;
             if (Math.abs(r[j] - r[i]) > 300) continue;
             const need = (size[i] + size[j]) / 2 + NODE_GAP;
@@ -370,7 +371,7 @@ function computeLayoutOnce(nodes, edges, { iterations = 600000, seed = 7, log = 
             if (segIntersect(ax, ay, bx, by, x[c1], y[c1], x[d1], y[d1])) c += Math.max(ew[k], ew[m]);
         }
         // ребро поверх чужих узлов
-        for (let j = 0; j < N; j++) {
+        for (const j of active) {
             if (j === a || j === b) continue;
             const need = size[j] / 2 + EDGE_CLEAR;
             const d = pointSegDist(x[j], y[j], ax, ay, bx, by);
@@ -378,7 +379,7 @@ function computeLayoutOnce(nodes, edges, { iterations = 600000, seed = 7, log = 
         }
         // ребро поверх подписей
         const sgm = edgeSeg(k);
-        for (let j = 0; j < N; j++) {
+        for (const j of active) {
             const [x0, y0, x1, y1] = capRect(j);
             if (segRect(sgm[0], sgm[1], sgm[2], sgm[3], x0, y0, x1, y1)) c += W.caption;
         }
@@ -464,13 +465,28 @@ function computeLayoutOnce(nodes, edges, { iterations = 600000, seed = 7, log = 
         if (!list || list.length < 2) return 0;
         const minGap = ringMinSlots.get(key);
         let c = 0;
+        // кольцо должно быть заполнено равномерно: промежуток больше
+        // GAP_MAX × (2π/m) — пустота, штраф растёт квадратично
+        const ideal = (2 * Math.PI) / list.length;
+        let g2 = 0;
         for (const p of ringPairs(key)) {
+            if (p.g > GAP_MAX * ideal) g2 += ((p.g - GAP_MAX * ideal) / ideal) ** 2;
             if (!p.same) continue;
             const gs = Math.round(p.g / SLOT);
             if (gs > minGap) c += (gs - minGap) ** 2;
         }
-        return W.even * c;
+        return W.even * c + W.gap * g2;
     }
+
+    // общий баланс: «центр тяжести» узлов холста — в центре дерева
+    let sumX = 0, sumY = 0;
+    const balanceTerm = () => {
+        let bx = 0, by = 0;
+        for (const i of active) { bx += x[i]; by += y[i]; }
+        sumX = bx; sumY = by;
+        const d = Math.hypot(bx, by) / active.length;
+        return W.balance * (d / 100) ** 2;
+    };
 
     /** Все слагаемые, затрагиваемые перемещением набора узлов. */
     function localCost(set) {
@@ -490,6 +506,7 @@ function computeLayoutOnce(nodes, edges, { iterations = 600000, seed = 7, log = 
         const ringsTouched = new Set();
         for (const i of set) if (!fixed[i]) ringsTouched.add(ringOf[i]);
         for (const key of ringsTouched) c += evenRing(key);
+        c += balanceTerm();
         return c;
     }
 
@@ -501,26 +518,27 @@ function computeLayoutOnce(nodes, edges, { iterations = 600000, seed = 7, log = 
                 if (c1 === a || c1 === b || d1 === a || d1 === b) continue;
                 if (segIntersect(x[a], y[a], x[b], y[b], x[c1], y[c1], x[d1], y[d1])) crossings++;
             }
-            for (let j = 0; j < N; j++) {
+            for (const j of active) {
                 if (j === ea[k] || j === eb[k]) continue;
                 if (pointSegDist(x[j], y[j], x[ea[k]], y[ea[k]], x[eb[k]], y[eb[k]]) < size[j] / 2 + 4) through++;
             }
         }
-        for (let i = 0; i < N; i++) {
-            for (let j = i + 1; j < N; j++) {
+        for (const i of active) {
+            for (const j of active) {
+                if (j <= i) continue;
                 if (Math.hypot(x[i] - x[j], y[i] - y[j]) < (size[i] + size[j]) / 2 + 6) overlaps++;
             }
         }
         // подписи, которые задевает ребро, узел или другая подпись (без полей)
         let captions = 0;
         const tight = (i) => { const o = i * 4; return [cr[o] + CAP_PAD, cr[o + 1] + CAP_PAD, cr[o + 2] - CAP_PAD, cr[o + 3] - CAP_PAD]; };
-        for (let i = 0; i < N; i++) {
+        for (const i of active) {
             if (!cap[i].w) continue;
             const [x0, y0, x1, y1] = tight(i);
             let hit = false;
             for (let k = 0; k < E.length && !hit; k++) { const g = edgeSeg(k); hit = segRect(g[0], g[1], g[2], g[3], x0, y0, x1, y1); }
             for (let j = 0; j < N && !hit; j++) {
-                if (j === i) continue;
+                if (j === i || hidden[j]) continue;
                 const [u0, v0, u1, v1] = tight(j);
                 hit = rectCircle(x0, y0, x1, y1, x[j], y[j], size[j] / 2) || (x0 < u1 && u0 < x1 && y0 < v1 && v0 < y1);
             }
@@ -542,7 +560,17 @@ function computeLayoutOnce(nodes, edges, { iterations = 600000, seed = 7, log = 
             if (ringList.get(key).length < 2) continue;
             for (const p of ringPairs(key)) if (p.same && Math.round(p.g / SLOT) > ringMinSlots.get(key)) unevenness++;
         }
-        return { crossings, through, overlaps, captions, bends, maxBend: Math.round(maxBend * 180 / Math.PI), unevenness };
+        // пустоты: худшее отношение промежутка на кольце к идеальному шагу 2π/m
+        let maxGap = 0;
+        for (const key of ringList.keys()) {
+            const m = ringList.get(key).length;
+            if (m < 2) continue;
+            for (const p of ringPairs(key)) maxGap = Math.max(maxGap, p.g / ((2 * Math.PI) / m));
+        }
+        balanceTerm();
+        const offset = Math.round(Math.hypot(sumX, sumY) / active.length);
+        return { crossings, through, overlaps, captions, bends, maxBend: Math.round(maxBend * 180 / Math.PI), unevenness,
+            maxGap: +maxGap.toFixed(2), offset };
     }
 
     const rand = rng(seed);

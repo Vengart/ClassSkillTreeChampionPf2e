@@ -13,9 +13,9 @@ window.CHAMPION_DATA = {
     "feature": 72,
     "feat": 62
    },
-   "R_GROUP": 300,
-   "R_OPTION": 610,
-   "R_FEAT0": 900,
+   "R_GROUP": 160,
+   "R_OPTION": 330,
+   "R_FEAT0": 620,
    "R_STEP": 205,
    "CAPTION": {
     "root": {
@@ -66,9 +66,11 @@ window.CHAMPION_DATA = {
    "through": 0,
    "overlaps": 0,
    "captions": 0,
-   "bends": 1,
-   "maxBend": 47,
-   "unevenness": 12
+   "bends": 2,
+   "maxBend": 61,
+   "unevenness": 1,
+   "maxGap": 2.25,
+   "offset": 4
   }
  },
  "nodes": [
@@ -86,7 +88,7 @@ window.CHAMPION_DATA = {
    "r": 0,
    "x": 0,
    "y": 0,
-   "captionSide": "above",
+   "captionSide": "below",
    "captionW": 0
   },
   {
@@ -99,12 +101,12 @@ window.CHAMPION_DATA = {
    "html": "В зависимости от вашего божества, ниспосланное им освящение может сделать вас священным или нечестивым. Таким образом, вы становитесь привязаны к одной из сторон вечной борьбы\nза души. Выбранный дескриптор (как и его отсутствие) ограничивает вас в выборе призваний, заклинаний преданности и черт.<br>\nЕсли божество позволяет выбрать быть <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/517\" href=\"https://pf2.ru/traits/holy\">священным</a> или <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/521\" href=\"https://pf2.ru/traits/unholy\">нечестивым</a>, то вы вправе сделать этот выбор самостоятельно, а если же оно обязывает взять дескриптор, вы получаете его автоматически. Если вы каким-либо образом получите противоположный дескриптор, то теряете первый, пока не завершите ритуал покаяния. В случае, если божество не предполагает взятия дескриптора, вы можете выбирать только те черты и способности, которые не требуют быть священным или нечестивым.<br>\nПрисутствие поборника с дескриптором «нечестивый» крайне плохо вписывается в обычную игру — доступ к нему стоит давать только в подходящих для этого приключениях или кампаниях, где все игроки согласятся принять нечестивого поборника. Нечестивое освящение и нечестивое призвание считаются необычными вариантами развития персонажа.  <br>",
    "hint": "Необязательный выбор: священный, нечестивый или без освящения.",
    "parentId": "root",
-   "angle": 4.31969,
-   "r": 300,
-   "x": -114.8,
-   "y": -277.2,
-   "captionSide": "right",
-   "captionW": 120
+   "angle": -1.254,
+   "r": 160,
+   "x": 49.8,
+   "y": -152,
+   "captionSide": "below-left",
+   "captionW": 0
   },
   {
    "image": "Holy.webp",
@@ -119,12 +121,12 @@ window.CHAMPION_DATA = {
    "html": "вы получаете дескриптор «священный»; этот же дескриптор получают все ваши Удары. Вы получаете наказ «Вы не должны сознательно причинять вред невинным или своим бездействием допускать, чтобы им был причинён вред, если вы знаете, что в ваших силах его предотвратить» и табу «Убивать невинных». Если в вашей игре допустимо содержание, которое считается неприемлемым по умолчанию («Основная книга игрока», стр. 403), подобные действия считаются табу лично  для вас.",
    "requires": [],
    "parentId": "group-sanct",
-   "angle": -1.1781,
-   "r": 610,
-   "x": 233.4,
-   "y": -563.6,
-   "captionSide": "above-right",
-   "captionW": 108
+   "angle": -1.09992,
+   "r": 330,
+   "x": 149.7,
+   "y": -294.1,
+   "captionSide": "below",
+   "captionW": 0
   },
   {
    "image": "Unholy.webp",
@@ -139,12 +141,12 @@ window.CHAMPION_DATA = {
    "html": "вы получаете дескриптор «нечестивый»; этот же дескриптор получают все ваши Удары. Вы получаете наказ «Не ставь чужие нужды превыше своих и превыше нужд своего божества» и табу «Совершать самоотверженные поступки, вроде раздачи благотворительности» и «Ставить чьи-либо нужды превыше нужд вашего божества». Эти табу и наказы не запрещают вам действовать подобным образом для того, чтобы другие сочли, что вы оказываете им помощь, — важно, чтобы вы при этом преследовали свои цели или цели вашего божества.",
    "requires": [],
    "parentId": "group-sanct",
-   "angle": -1.49226,
-   "r": 610,
-   "x": 47.9,
-   "y": -608.1,
-   "captionSide": "above",
-   "captionW": 119
+   "angle": -1.30536,
+   "r": 330,
+   "x": 86.6,
+   "y": -318.4,
+   "captionSide": "left",
+   "captionW": 0
   },
   {
    "image": "brave.webp",
@@ -156,12 +158,12 @@ window.CHAMPION_DATA = {
    "html": "Вы посвящаете свою жизнь особому призванию. Некоторые призвания вы можете выбрать лишь в том случае, если выбрали определённое освящение. Каждое призвание имеет определённые наказы и табу, а также даёт вам особое ответное действие поборника, которое позволяет вам защищать либо других, либо самого себя.",
    "hint": "Выберите одно призвание. Оно даёт ответное действие поборника.",
    "parentId": "root",
-   "angle": 0.07854,
-   "r": 300,
-   "x": 299.1,
-   "y": 23.5,
-   "captionSide": "above-left",
-   "captionW": 120
+   "angle": -0.17544,
+   "r": 160,
+   "x": 157.5,
+   "y": -27.9,
+   "captionSide": "below-right",
+   "captionW": 0
   },
   {
    "image": "SubClassLiberation.webp",
@@ -178,12 +180,12 @@ window.CHAMPION_DATA = {
    "requires": [],
    "prereqText": "",
    "parentId": "group-cause",
-   "angle": 1.1781,
-   "r": 610,
-   "x": 233.4,
-   "y": 563.6,
-   "captionSide": "above-left",
-   "captionW": 143
+   "angle": -0.02136,
+   "r": 330,
+   "x": 329.9,
+   "y": -7,
+   "captionSide": "left",
+   "captionW": 0
   },
   {
    "image": "SubClassRedemption.webp",
@@ -204,12 +206,12 @@ window.CHAMPION_DATA = {
    ],
    "prereqText": "освящение «священный»",
    "parentId": "group-cause",
-   "angle": -0.54978,
-   "r": 610,
-   "x": 520.1,
-   "y": -318.7,
-   "captionSide": "below-right",
-   "captionW": 119
+   "angle": -0.32952,
+   "r": 330,
+   "x": 312.2,
+   "y": -106.8,
+   "captionSide": "below-left",
+   "captionW": 0
   },
   {
    "image": "SubClassObedience.webp",
@@ -226,12 +228,12 @@ window.CHAMPION_DATA = {
    "requires": [],
    "prereqText": "",
    "parentId": "group-cause",
-   "angle": 0.54978,
-   "r": 610,
-   "x": 520.1,
-   "y": 318.7,
-   "captionSide": "right",
-   "captionW": 131
+   "angle": 0.08136,
+   "r": 330,
+   "x": 328.9,
+   "y": 26.8,
+   "captionSide": "left",
+   "captionW": 0
   },
   {
    "image": "SubClassInequality.webp",
@@ -252,12 +254,12 @@ window.CHAMPION_DATA = {
    ],
    "prereqText": "освящение «нечестивый»",
    "parentId": "group-cause",
-   "angle": 0.23562,
-   "r": 610,
-   "x": 593.1,
-   "y": 142.4,
-   "captionSide": "above",
-   "captionW": 119
+   "angle": -0.2268,
+   "r": 330,
+   "x": 321.5,
+   "y": -74.2,
+   "captionSide": "left",
+   "captionW": 0
   },
   {
    "image": "SubClassVelichie.webp",
@@ -278,12 +280,12 @@ window.CHAMPION_DATA = {
    ],
    "prereqText": "освящение «священный»",
    "parentId": "group-cause",
-   "angle": 0.86394,
-   "r": 610,
-   "x": 396.2,
-   "y": 463.8,
-   "captionSide": "left",
-   "captionW": 84
+   "angle": -0.12408,
+   "r": 330,
+   "x": 327.5,
+   "y": -40.8,
+   "captionSide": "right",
+   "captionW": 0
   },
   {
    "image": "SubClassDesecration.webp",
@@ -304,12 +306,12 @@ window.CHAMPION_DATA = {
    ],
    "prereqText": "освящение «нечестивый»",
    "parentId": "group-cause",
-   "angle": -0.23562,
-   "r": 610,
-   "x": 593.1,
-   "y": -142.4,
-   "captionSide": "right",
-   "captionW": 131
+   "angle": -0.43224,
+   "r": 330,
+   "x": 299.6,
+   "y": -138.2,
+   "captionSide": "left",
+   "captionW": 0
   },
   {
    "image": "SubClassJustice.webp",
@@ -326,12 +328,12 @@ window.CHAMPION_DATA = {
    "requires": [],
    "prereqText": "",
    "parentId": "group-cause",
-   "angle": -0.86394,
-   "r": 610,
-   "x": 396.2,
-   "y": -463.8,
-   "captionSide": "above-left",
-   "captionW": 119
+   "angle": -0.53496,
+   "r": 330,
+   "x": 283.9,
+   "y": -168.2,
+   "captionSide": "above",
+   "captionW": 0
   },
   {
    "image": "prayer.webp",
@@ -343,12 +345,12 @@ window.CHAMPION_DATA = {
    "html": "Избранное вами божество наделяет вас особыми <a class=\"item-link quicklink link--popup item-link--rules\" data-key=\"rules/2228\" href=\"https://pf2.ru/rules/focus spells?rule=2228\">фокальными заклинаниями</a>, которые зовутся заклинаниями преданности. Выберите одно из заклинаний: либо духовные щиты, либо заклинание, зависящее от божественного источника вашего божества (возложение рук, если ваше божество допускает излечение, или касание пустоты, если ваше божество допускает повреждение).\nДля сотворения фокального заклинания требуется потратить.<br>\n1 ФП. Вначале ваш запас ФП равен 1. Вы восстанавливаете все ФП во время ежедневной подготовки, а также можете восстановить 1 ФП, если потратите 10 минут на занятие Фокусировка, чтобы помолиться своему божеству или совершить бого угодное деяние.<br>\nВаши заклинания преданности относятся к сакральной традиции. Ваша заклинательная характеристика — Харизма.\nФокальные заклинания автоматически повышаются до значения круга, равного половине вашего уровня (с округлением вверх). Фокальные заклинания не требуют использования ячеек заклинаний, сотворить их с помощью ячеек нельзя. Ваш максимум ФП равен числу известных вам фокальных заклинаний, но единовременно более 3 ФП у вас быть не может.",
    "hint": "Выберите одно заклинание преданности.",
    "parentId": "root",
-   "angle": 1.64934,
-   "r": 300,
-   "x": -23.5,
-   "y": 299.1,
+   "angle": 1.51944,
+   "r": 160,
+   "x": 8.2,
+   "y": 159.8,
    "captionSide": "below-right",
-   "captionW": 170
+   "captionW": 0
   },
   {
    "image": "SpellLayOfHands.webp",
@@ -391,12 +393,12 @@ window.CHAMPION_DATA = {
    "html": "Ваши руки наполняются энергией жизни, позволяя простым касанием исцелять раны живых и наносить урон <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/722\" href=\"https://pf2.ru/traits/undead\">нежити</a>.\n<br>\n<b>Живое согласное существо:</b> цель восстанавливает 6 ПЗ; если цель — не вы сами, она дополнительно получает бонус состояния +2 к КБ на 1 раунд.\n<br>\n<b>Существо-нежить:</b> цель получает 1d6 урона жизнью (обычное испытание Стойкости); при провале она также получает штраф состояния –2 к КБ на 1 раунд.\n<hr>\n<b>Повышенное (+1):</b> исцеление увеличивается на 6, урон нежити увеличивается на 1d6.",
    "requires": [],
    "parentId": "group-devotion",
-   "angle": 1.9635,
-   "r": 610,
-   "x": -233.4,
-   "y": 563.6,
-   "captionSide": "right",
-   "captionW": 167
+   "angle": 1.46808,
+   "r": 330,
+   "x": 33.8,
+   "y": 328.3,
+   "captionSide": "above-right",
+   "captionW": 0
   },
   {
    "image": "SpellShieldsOfTheSpirit.webp",
@@ -439,12 +441,12 @@ window.CHAMPION_DATA = {
    "html": "Вы <a class=\"item-link quicklink link--popup item-link--action\" data-key=\"action/2316\" href=\"https://pf2.ru/actions/raise a shield\">Поднимаете</a> щит, и в вашей ауре поборника начинают кружиться эфемерные призрачные щиты; этот эффект сохраняется до начала вашего следующего хода или пока ваш щит не перестанет быть поднят (смотря что случится раньше). Щиты дают бонус состояния +1 к КБ всем вашим союзникам в пределах вашей ауры поборника; всякий раз, когда враг атакует такого союзника, этот враг получает 1d4 урона духом (даже при промахе). <br>\nСоюзники получают преимущества, только пока остаются в пределах вашей ауры; эффект прекращает действовать на союзника, покинувшего ауру, и применяется к союзнику, который в неё входит. Вы сами не считаетесь своим союзником и не получаете описанных преимуществ.\n<hr>\n<b>Повышенное (+2):</b> урон увеличивается на 1d4.",
    "requires": [],
    "parentId": "group-devotion",
-   "angle": 2.27765,
-   "r": 610,
-   "x": -396.2,
-   "y": 463.8,
-   "captionSide": "above",
-   "captionW": 143
+   "angle": 2.03304,
+   "r": 330,
+   "x": -147.2,
+   "y": 295.4,
+   "captionSide": "below",
+   "captionW": 0
   },
   {
    "image": "SpellTouchOfCorruption.webp",
@@ -483,12 +485,12 @@ window.CHAMPION_DATA = {
    "html": "Вы пропитываете цель энергией пустоты, чтобы исцелить <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/722\" href=\"https://pf2.ru/traits/undead\">нежить</a> или нанести урон живому существу.\n<ul>\n<li><b>Согласное существо-нежить:</b> цель восстанавливает 6 ПЗ; если цель — вы, вы также получаете бонус состояния +2 к броскам урона на 1 раунд. </li>\n<li><b>Живое существо:</b> цель получает 1d6 урона пустотой (обычное испытание Стойкости); при провале она также получает штраф состояния –2 к КБ на 1 раунд. </li>\n</ul>\n<hr>\n<b>Повышенное (+1):</b> исцеление увеличивается на 6, урон живым существам увеличивается на 1d6.",
    "requires": [],
    "parentId": "group-devotion",
-   "angle": 1.49226,
-   "r": 610,
-   "x": 47.9,
-   "y": 608.1,
-   "captionSide": "below-left",
-   "captionW": 170
+   "angle": 0.90312,
+   "r": 330,
+   "x": 204.3,
+   "y": 259.1,
+   "captionSide": "below",
+   "captionW": 0
   },
   {
    "image": "oath-of-defender.webp",
@@ -500,12 +502,12 @@ window.CHAMPION_DATA = {
    "html": "Желая отметить вашу верную службу, божество преподносит вам свой дар. Этот дар может принимать самые различные формы: это может быть дух, который вселяется в ваши предметы или в вас самих, покрывающая ваше тело загадочная татуировка или что-то подобное. Выберите одно из перечисленных ниже благословений (или любое другое, к которому у вас есть доступ).\n<br>",
    "hint": "Доступно с 3 уровня. Черта «Второе благословление» позволяет взять ещё одно.",
    "parentId": "root",
-   "angle": 3.37721,
-   "r": 300,
-   "x": -291.7,
-   "y": -70,
-   "captionSide": "above-right",
-   "captionW": 170
+   "angle": 4.03607,
+   "r": 160,
+   "x": -100.1,
+   "y": -124.8,
+   "captionSide": "below-left",
+   "captionW": 0
   },
   {
    "image": "DevWeapon.webp",
@@ -518,12 +520,12 @@ window.CHAMPION_DATA = {
    "html": "выберите одно оружие (или <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/3086\" href=\"https://pf2.ru/equipment/handwraps of mighty blows\">повязки могучих ударов</a>). Вы получаете доступ к критическому эффекту этого оружия, а оружие получает эффекты атрибутивной руны из следующего перечня (на ваш выбор): <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2837\" href=\"https://pf2.ru/equipment/fearsome\">устрашающая</a>, <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2840\" href=\"https://pf2.ru/equipment/ghost touch\">призрачного касания</a>, <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2845\" href=\"https://pf2.ru/equipment/returning\">возвращающаяся</a>, <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2846\" href=\"https://pf2.ru/equipment/shifting\">изменчивая</a> или <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2852\" href=\"https://pf2.ru/equipment/vitalizing\">животворящая</a>. Во время ежедневной подготовки вы можете выбрать другое оружие, придать ему эффекты другой руны или и то и другое. Эта атрибутивная руна не идёт в счёт максимального количества атрибутивных рун, которые вы можете наложить на оружие.",
    "requires": [],
    "parentId": "group-blessing",
-   "angle": 4.16261,
-   "r": 610,
-   "x": -318.7,
-   "y": -520.1,
-   "captionSide": "left",
-   "captionW": 170
+   "angle": 4.13879,
+   "r": 330,
+   "x": -179.1,
+   "y": -277.2,
+   "captionSide": "below-right",
+   "captionW": 0
   },
   {
    "image": "DevShield.webp",
@@ -536,12 +538,12 @@ window.CHAMPION_DATA = {
    "html": "пока вы держите в руках щит, он получает эффект низшей <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2811\" href=\"https://pf2.ru/equipment/reinforcing rune\">армированной руны</a>. По мере повышения вашего уровня армированная руна становится всё сильнее (малая на 7 уровне, средняя на 10 уровне, улучшенная на 13 уровне, высшая на 16 уровне и превосходная на 19 уровне). Если у вашего щита уже есть соответствующая вашему уровню армированная руна или если это <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2828\" href=\"https://pf2.ru/equipment/sturdy shield\">прочный щит</a> того же уровня, что и соответствующая армированная руна, вместо этого твёрдость щита увеличивается на 1.",
    "requires": [],
    "parentId": "group-blessing",
-   "angle": 3.37721,
-   "r": 610,
-   "x": -593.1,
-   "y": -142.4,
-   "captionSide": "below",
-   "captionW": 170
+   "angle": 3.77927,
+   "r": 330,
+   "x": -265.1,
+   "y": -196.5,
+   "captionSide": "right",
+   "captionW": 0
   },
   {
    "image": "DevProvornost.webp",
@@ -554,12 +556,12 @@ window.CHAMPION_DATA = {
    "html": "вы получаете бонус состояния +5 футов к вашей скорости. Когда вы едете верхом, ваш скакун получает этот бонус вместо вас. Кроме того, когда в пределах вашей ауры поборника перемещение вашего союзника провоцирует ответное действие противника, этот союзник получает бонус состояния +2 ко всем защитам против этого ответного действия.",
    "requires": [],
    "parentId": "group-blessing",
-   "angle": 3.69137,
-   "r": 610,
-   "x": -520.1,
-   "y": -318.7,
-   "captionSide": "above-right",
-   "captionW": 170
+   "angle": 3.93335,
+   "r": 330,
+   "x": -231.9,
+   "y": -234.8,
+   "captionSide": "below",
+   "captionW": 0
   },
   {
    "image": "300px-Hunger_of_Hadar.webp",
@@ -571,10 +573,10 @@ window.CHAMPION_DATA = {
    "html": "Вас окутывает аура божественной энергии (15-футовая эманация), которая обладает дескрипторами <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/542\" href=\"https://pf2.ru/traits/aura\">«аура»</a> и <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/579\" href=\"https://pf2.ru/traits/divine\">«сакральный»</a>. Все оказавшиеся в пределах ауры последователи вашего божества немедленно понимают, что вы — поборник этого божества. Ответное действие поборника, как и многие другие эффекты, использует область действия ауры в качестве дистанции. Вы можете подавить или возобновить действие ауры при помощи одиночного действия с дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/561\" href=\"https://pf2.ru/traits/concentrate\">«концентрация»</a>. Если вы теряете сознание, аура исчезает.",
    "requires": [],
    "parentId": "root",
-   "angle": 2.74889,
-   "r": 610,
-   "x": -563.6,
-   "y": 233.4,
+   "angle": 2.90597,
+   "r": 330,
+   "x": -320.9,
+   "y": 77,
    "captionSide": "below-right",
    "captionW": 167
   },
@@ -594,11 +596,11 @@ window.CHAMPION_DATA = {
    "html": "Вы отражаете щитом удар. Ваш щит предотвращает урон в количестве вплоть до своей твёрдости. И вы, и щит получаете весь оставшийся урон, который может сломать или уничтожить щит.",
    "requires": [],
    "parentId": "root",
-   "angle": 3.06305,
-   "r": 610,
-   "x": -608.1,
-   "y": 47.9,
-   "captionSide": "below-right",
+   "angle": 4.00553,
+   "r": 330,
+   "x": -214.3,
+   "y": -250.9,
+   "captionSide": "below-left",
    "captionW": 119
   },
   {
@@ -628,11 +630,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "spell-2047",
-   "angle": 1.80642,
-   "r": 900,
-   "x": -210.1,
-   "y": 875.1,
-   "captionSide": "above-right",
+   "angle": 0.86394,
+   "r": 620,
+   "x": 402.7,
+   "y": 471.5,
+   "captionSide": "above-left",
    "captionW": 137
   },
   {
@@ -667,11 +669,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "cause-12",
-   "angle": 1.1781,
-   "r": 900,
-   "x": 344.4,
-   "y": 831.5,
-   "captionSide": "below-left",
+   "angle": -0.07854,
+   "r": 620,
+   "x": 618.1,
+   "y": -48.6,
+   "captionSide": "left",
    "captionW": 116
   },
   {
@@ -706,11 +708,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "cause-14",
-   "angle": -0.70686,
-   "r": 900,
-   "x": 684.4,
-   "y": -584.5,
-   "captionSide": "left",
+   "angle": -1.02102,
+   "r": 620,
+   "x": 323.9,
+   "y": -528.6,
+   "captionSide": "below-right",
    "captionW": 95
   },
   {
@@ -740,11 +742,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "root",
-   "angle": 1.49226,
-   "r": 900,
-   "x": 70.6,
-   "y": 897.2,
-   "captionSide": "left",
+   "angle": 1.64934,
+   "r": 620,
+   "x": -48.6,
+   "y": 618.1,
+   "captionSide": "above",
    "captionW": 147
   },
   {
@@ -779,11 +781,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "cause-13",
-   "angle": 0.54978,
-   "r": 900,
-   "x": 767.4,
-   "y": 470.2,
-   "captionSide": "right",
+   "angle": 0.23562,
+   "r": 620,
+   "x": 602.9,
+   "y": 144.7,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -818,11 +820,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "cause-10",
-   "angle": 0.3927,
-   "r": 900,
-   "x": 831.5,
-   "y": 344.4,
-   "captionSide": "below-right",
+   "angle": -0.70686,
+   "r": 620,
+   "x": 471.5,
+   "y": -402.7,
+   "captionSide": "right",
    "captionW": 147
   },
   {
@@ -860,11 +862,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "shield-block",
-   "angle": 4.00553,
-   "r": 900,
-   "x": -584.5,
-   "y": -684.4,
-   "captionSide": "above-right",
+   "angle": 3.69137,
+   "r": 620,
+   "x": -528.6,
+   "y": -323.9,
+   "captionSide": "right",
    "captionW": 150
   },
   {
@@ -899,11 +901,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "cause-9",
-   "angle": 1.02102,
-   "r": 900,
-   "x": 470.2,
-   "y": 767.4,
-   "captionSide": "below",
+   "angle": -0.3927,
+   "r": 620,
+   "x": 572.8,
+   "y": -237.3,
+   "captionSide": "above",
    "captionW": 150
   },
   {
@@ -935,10 +937,10 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "root",
-   "angle": 0.70686,
-   "r": 900,
-   "x": 684.4,
-   "y": 584.5,
+   "angle": 2.59181,
+   "r": 620,
+   "x": -528.6,
+   "y": 323.9,
    "captionSide": "above",
    "captionW": 150
   },
@@ -974,11 +976,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "cause-8",
-   "angle": -0.3927,
-   "r": 900,
-   "x": 831.5,
-   "y": -344.4,
-   "captionSide": "above-right",
+   "angle": -1.33518,
+   "r": 620,
+   "x": 144.7,
+   "y": -602.9,
+   "captionSide": "right",
    "captionW": 150
   },
   {
@@ -1013,11 +1015,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "cause-11",
-   "angle": -0.86394,
-   "r": 900,
-   "x": 584.5,
-   "y": -684.4,
-   "captionSide": "left",
+   "angle": 4.63385,
+   "r": 620,
+   "x": -48.6,
+   "y": -618.1,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1051,11 +1053,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "feat-5883",
-   "angle": 0.23562,
-   "r": 900,
-   "x": 875.1,
-   "y": 210.1,
-   "captionSide": "above",
+   "angle": 0.54978,
+   "r": 620,
+   "x": 528.6,
+   "y": 323.9,
+   "captionSide": "above-left",
    "captionW": 150
   },
   {
@@ -1086,11 +1088,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "root",
-   "angle": 1.64934,
-   "r": 1105,
-   "x": -86.7,
-   "y": 1101.6,
-   "captionSide": "right",
+   "angle": 1.33518,
+   "r": 825,
+   "x": 192.6,
+   "y": 802.2,
+   "captionSide": "above",
    "captionW": 150
   },
   {
@@ -1120,11 +1122,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "root",
-   "angle": 3.22013,
-   "r": 1105,
-   "x": -1101.6,
-   "y": -86.7,
-   "captionSide": "above-left",
+   "angle": 2.43473,
+   "r": 825,
+   "x": -627.3,
+   "y": 535.8,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1158,10 +1160,10 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "root",
-   "angle": -1.49226,
-   "r": 1105,
-   "x": 86.7,
-   "y": -1101.6,
+   "angle": 4.31969,
+   "r": 825,
+   "x": -315.7,
+   "y": -762.2,
    "captionSide": "below-right",
    "captionW": 150
   },
@@ -1196,11 +1198,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "root",
-   "angle": -1.1781,
-   "r": 1105,
-   "x": 422.9,
-   "y": -1020.9,
-   "captionSide": "below-left",
+   "angle": -1.49226,
+   "r": 825,
+   "x": 64.7,
+   "y": -822.5,
+   "captionSide": "below-right",
    "captionW": 150
   },
   {
@@ -1234,11 +1236,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "root",
-   "angle": -0.86394,
-   "r": 1105,
-   "x": 717.6,
-   "y": -840.2,
-   "captionSide": "below-left",
+   "angle": -1.02102,
+   "r": 825,
+   "x": 431.1,
+   "y": -703.4,
+   "captionSide": "below",
    "captionW": 137
   },
   {
@@ -1276,11 +1278,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feature-aura",
-   "angle": 2.59181,
-   "r": 1310,
-   "x": -1117,
-   "y": 684.5,
-   "captionSide": "right",
+   "angle": 2.12058,
+   "r": 1030,
+   "x": -538.2,
+   "y": 878.2,
+   "captionSide": "above-right",
    "captionW": 116
   },
   {
@@ -1318,11 +1320,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feature-aura",
-   "angle": 2.74889,
-   "r": 1310,
-   "x": -1210.3,
-   "y": 501.3,
-   "captionSide": "below-right",
+   "angle": 3.69137,
+   "r": 1030,
+   "x": -878.2,
+   "y": -538.2,
+   "captionSide": "above",
    "captionW": 137
   },
   {
@@ -1358,10 +1360,10 @@ window.CHAMPION_DATA = {
    "forbids": [],
    "parentId": "spell-2049",
    "angle": 2.43473,
-   "r": 1310,
-   "x": -996.1,
-   "y": 850.8,
-   "captionSide": "below-left",
+   "r": 1030,
+   "x": -783.2,
+   "y": 668.9,
+   "captionSide": "above-left",
    "captionW": 126
   },
   {
@@ -1396,11 +1398,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "spell-2048",
-   "angle": 1.33518,
-   "r": 1310,
-   "x": 305.8,
-   "y": 1273.8,
-   "captionSide": "right",
+   "angle": -0.23562,
+   "r": 1030,
+   "x": 1001.5,
+   "y": -240.4,
+   "captionSide": "below-left",
    "captionW": 137
   },
   {
@@ -1436,11 +1438,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "spell-2047",
-   "angle": 2.12058,
-   "r": 1310,
-   "x": -684.5,
-   "y": 1117,
-   "captionSide": "right",
+   "angle": 2.27765,
+   "r": 1030,
+   "x": -668.9,
+   "y": 783.2,
+   "captionSide": "above-left",
    "captionW": 105
   },
   {
@@ -1475,11 +1477,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 1.64934,
-   "r": 1310,
-   "x": -102.8,
-   "y": 1306,
-   "captionSide": "right",
+   "angle": 0.07854,
+   "r": 1030,
+   "x": 1026.8,
+   "y": 80.8,
+   "captionSide": "below-right",
    "captionW": 150
   },
   {
@@ -1514,11 +1516,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 1.80642,
-   "r": 1515,
-   "x": -353.7,
-   "y": 1473.1,
-   "captionSide": "below-left",
+   "angle": 1.1781,
+   "r": 1235,
+   "x": 472.6,
+   "y": 1141,
+   "captionSide": "right",
    "captionW": 150
   },
   {
@@ -1574,11 +1576,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "group-cause",
-   "angle": 0.3927,
-   "r": 1515,
-   "x": 1399.7,
-   "y": 579.8,
-   "captionSide": "above-left",
+   "angle": -0.07854,
+   "r": 1235,
+   "x": 1231.2,
+   "y": -96.9,
+   "captionSide": "above",
    "captionW": 150
   },
   {
@@ -1617,11 +1619,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feature-aura",
-   "angle": 2.90597,
-   "r": 1515,
-   "x": -1473.1,
-   "y": 353.7,
-   "captionSide": "below",
+   "angle": 3.22013,
+   "r": 1235,
+   "x": -1231.2,
+   "y": -96.9,
+   "captionSide": "above",
    "captionW": 150
   },
   {
@@ -1655,11 +1657,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "group-cause",
-   "angle": 0.23562,
-   "r": 1515,
-   "x": 1473.1,
-   "y": 353.7,
-   "captionSide": "below-left",
+   "angle": -0.23562,
+   "r": 1235,
+   "x": 1200.9,
+   "y": -288.3,
+   "captionSide": "above",
    "captionW": 105
   },
   {
@@ -1706,11 +1708,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "shield-block",
-   "angle": 3.53429,
-   "r": 1515,
-   "x": -1399.7,
-   "y": -579.8,
-   "captionSide": "above-right",
+   "angle": 4.00553,
+   "r": 1235,
+   "x": -802.1,
+   "y": -939.1,
+   "captionSide": "right",
    "captionW": 95
   },
   {
@@ -1750,11 +1752,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "shield-block",
-   "angle": 3.37721,
-   "r": 1720,
-   "x": -1672.5,
-   "y": -401.5,
-   "captionSide": "above-right",
+   "angle": 4.31969,
+   "r": 1440,
+   "x": -551.1,
+   "y": -1330.4,
+   "captionSide": "above-left",
    "captionW": 150
   },
   {
@@ -1789,11 +1791,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "group-blessing",
-   "angle": 4.63385,
-   "r": 1720,
-   "x": -134.9,
-   "y": -1714.7,
-   "captionSide": "above",
+   "angle": 3.53429,
+   "r": 1440,
+   "x": -1330.4,
+   "y": -551.1,
+   "captionSide": "right",
    "captionW": 150
   },
   {
@@ -1831,11 +1833,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 1.9635,
-   "r": 1720,
-   "x": -658.2,
-   "y": 1589.1,
-   "captionSide": "below-left",
+   "angle": 0.86394,
+   "r": 1440,
+   "x": 935.2,
+   "y": 1095,
+   "captionSide": "right",
    "captionW": 150
   },
   {
@@ -1871,10 +1873,10 @@ window.CHAMPION_DATA = {
    "forbids": [],
    "parentId": "feat-5883",
    "angle": 1.33518,
-   "r": 1720,
-   "x": 401.5,
-   "y": 1672.5,
-   "captionSide": "below-left",
+   "r": 1440,
+   "x": 336.2,
+   "y": 1400.2,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1909,11 +1911,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5898",
-   "angle": 2.59181,
-   "r": 1720,
-   "x": -1466.5,
-   "y": 898.7,
-   "captionSide": "below",
+   "angle": 2.43473,
+   "r": 1440,
+   "x": -1095,
+   "y": 935.2,
+   "captionSide": "below-left",
    "captionW": 150
   },
   {
@@ -1948,11 +1950,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5896",
-   "angle": 1.1781,
-   "r": 1720,
-   "x": 658.2,
-   "y": 1589.1,
-   "captionSide": "right",
+   "angle": -0.3927,
+   "r": 1440,
+   "x": 1330.4,
+   "y": -551.1,
+   "captionSide": "below-right",
    "captionW": 150
   },
   {
@@ -1989,10 +1991,10 @@ window.CHAMPION_DATA = {
    "forbids": [],
    "parentId": "feat-5897",
    "angle": 2.27765,
-   "r": 1720,
-   "x": -1117.1,
-   "y": 1307.9,
-   "captionSide": "below",
+   "r": 1440,
+   "x": -935.2,
+   "y": 1095,
+   "captionSide": "above-left",
    "captionW": 150
   },
   {
@@ -2023,11 +2025,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "sanct-unholy",
-   "angle": 4.47677,
-   "r": 1720,
-   "x": -401.5,
-   "y": -1672.5,
-   "captionSide": "below",
+   "angle": -1.33518,
+   "r": 1440,
+   "x": 336.2,
+   "y": -1400.2,
+   "captionSide": "below-right",
    "captionW": 150
   },
   {
@@ -2057,11 +2059,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "sanct-holy",
-   "angle": -1.02102,
-   "r": 1720,
-   "x": 898.7,
-   "y": -1466.5,
-   "captionSide": "below",
+   "angle": -0.23562,
+   "r": 1440,
+   "x": 1400.2,
+   "y": -336.2,
+   "captionSide": "above-left",
    "captionW": 150
   },
   {
@@ -2101,10 +2103,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 1.64934,
-   "r": 1720,
-   "x": -134.9,
-   "y": 1714.7,
+   "angle": 1.02102,
+   "r": 1440,
+   "x": 752.4,
+   "y": 1227.8,
    "captionSide": "above-right",
    "captionW": 84
   },
@@ -2140,11 +2142,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5900",
-   "angle": 1.80642,
-   "r": 1925,
-   "x": -449.4,
-   "y": 1871.8,
-   "captionSide": "below-left",
+   "angle": 1.1781,
+   "r": 1645,
+   "x": 629.5,
+   "y": 1519.8,
+   "captionSide": "above-right",
    "captionW": 150
   },
   {
@@ -2191,11 +2193,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "blessing-swiftness",
-   "angle": 4.16261,
-   "r": 1925,
-   "x": -1005.8,
-   "y": -1641.3,
-   "captionSide": "above",
+   "angle": 3.84845,
+   "r": 1645,
+   "x": -1250.9,
+   "y": -1068.3,
+   "captionSide": "below-left",
    "captionW": 150
   },
   {
@@ -2230,11 +2232,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "blessing-armament",
-   "angle": 4.31969,
-   "r": 1925,
-   "x": -736.7,
-   "y": -1778.5,
-   "captionSide": "below-left",
+   "angle": 4.63385,
+   "r": 1645,
+   "x": -129.1,
+   "y": -1639.9,
+   "captionSide": "above-left",
    "captionW": 147
   },
   {
@@ -2274,10 +2276,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-4807",
-   "angle": 3.69137,
-   "r": 1925,
-   "x": -1641.3,
-   "y": -1005.8,
+   "angle": 4.00553,
+   "r": 1645,
+   "x": -1068.3,
+   "y": -1250.9,
    "captionSide": "right",
    "captionW": 126
   },
@@ -2314,11 +2316,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "group-sanct",
-   "angle": -1.49226,
-   "r": 2130,
-   "x": 167.1,
-   "y": -2123.4,
-   "captionSide": "above",
+   "angle": 4.47677,
+   "r": 1850,
+   "x": -431.9,
+   "y": -1798.9,
+   "captionSide": "right",
    "captionW": 95
   },
   {
@@ -2361,11 +2363,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "group-cause",
-   "angle": -0.07854,
-   "r": 2130,
-   "x": 2123.4,
-   "y": -167.1,
-   "captionSide": "above",
+   "angle": 0.3927,
+   "r": 1850,
+   "x": 1709.2,
+   "y": 708,
+   "captionSide": "left",
    "captionW": 150
   },
   {
@@ -2400,11 +2402,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 1.64934,
-   "r": 2130,
-   "x": -167.1,
-   "y": 2123.4,
-   "captionSide": "above-left",
+   "angle": 0.23562,
+   "r": 1850,
+   "x": 1798.9,
+   "y": 431.9,
+   "captionSide": "right",
    "captionW": 147
   },
   {
@@ -2435,11 +2437,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "shield-block",
-   "angle": 2.27765,
-   "r": 2130,
-   "x": -1383.3,
-   "y": 1619.7,
-   "captionSide": "below-left",
+   "angle": 3.37721,
+   "r": 1850,
+   "x": -1798.9,
+   "y": -431.9,
+   "captionSide": "below-right",
    "captionW": 150
   },
   {
@@ -2476,10 +2478,10 @@ window.CHAMPION_DATA = {
    "forbids": [],
    "parentId": "feat-5897",
    "angle": 2.12058,
-   "r": 2130,
-   "x": -1112.9,
-   "y": 1816.1,
-   "captionSide": "above-left",
+   "r": 1850,
+   "x": -966.6,
+   "y": 1577.4,
+   "captionSide": "below-right",
    "captionW": 150
   },
   {
@@ -2519,11 +2521,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 1.9635,
-   "r": 2130,
-   "x": -815.1,
-   "y": 1967.9,
-   "captionSide": "above-left",
+   "angle": 0.54978,
+   "r": 1850,
+   "x": 1577.4,
+   "y": 966.6,
+   "captionSide": "above-right",
    "captionW": 150
   },
   {
@@ -2562,11 +2564,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-7518",
-   "angle": -1.1781,
-   "r": 2130,
-   "x": 815.1,
-   "y": -1967.9,
-   "captionSide": "left",
+   "angle": -1.49226,
+   "r": 1850,
+   "x": 145.1,
+   "y": -1844.3,
+   "captionSide": "above",
    "captionW": 150
   },
   {
@@ -2599,11 +2601,11 @@ window.CHAMPION_DATA = {
     "sanct-unholy"
    ],
    "parentId": "group-cause",
-   "angle": -1.33518,
-   "r": 2130,
-   "x": 497.2,
-   "y": -2071.1,
-   "captionSide": "left",
+   "angle": -0.70686,
+   "r": 1850,
+   "x": 1406.8,
+   "y": -1201.5,
+   "captionSide": "above-right",
    "captionW": 150
   },
   {
@@ -2638,10 +2640,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "group-devotion",
-   "angle": 2.43473,
-   "r": 2130,
-   "x": -1619.7,
-   "y": 1383.3,
+   "angle": 2.27765,
+   "r": 1850,
+   "x": -1201.5,
+   "y": 1406.8,
    "captionSide": "above-left",
    "captionW": 150
   },
@@ -2680,11 +2682,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "group-cause",
-   "angle": 0.07854,
-   "r": 2130,
-   "x": 2123.4,
-   "y": 167.1,
-   "captionSide": "above",
+   "angle": 1.02102,
+   "r": 1850,
+   "x": 966.6,
+   "y": 1577.4,
+   "captionSide": "left",
    "captionW": 150
   },
   {
@@ -2720,11 +2722,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feature-aura",
-   "angle": 3.22013,
-   "r": 2335,
-   "x": -2327.8,
-   "y": -183.2,
-   "captionSide": "below-left",
+   "angle": 2.90597,
+   "r": 2055,
+   "x": -1998.2,
+   "y": 479.7,
+   "captionSide": "below",
    "captionW": 105
   },
   {
@@ -2762,10 +2764,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feature-aura",
-   "angle": 3.06305,
-   "r": 2335,
-   "x": -2327.8,
-   "y": 183.2,
+   "angle": 2.74889,
+   "r": 2055,
+   "x": -1898.6,
+   "y": 786.4,
    "captionSide": "below-right",
    "captionW": 150
   },
@@ -2802,11 +2804,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feature-aura",
-   "angle": 3.37721,
-   "r": 2335,
-   "x": -2270.5,
-   "y": -545.1,
-   "captionSide": "above",
+   "angle": 3.06305,
+   "r": 2055,
+   "x": -2048.7,
+   "y": 161.2,
+   "captionSide": "above-left",
    "captionW": 147
   },
   {
@@ -2836,11 +2838,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "root",
-   "angle": 2.90597,
-   "r": 2335,
-   "x": -2270.5,
-   "y": 545.1,
-   "captionSide": "right",
+   "angle": 1.02102,
+   "r": 2055,
+   "x": 1073.7,
+   "y": 1752.2,
+   "captionSide": "above-left",
    "captionW": 150
   },
   {
@@ -2870,11 +2872,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "root",
-   "angle": 3.69137,
-   "r": 2335,
-   "x": -1990.9,
-   "y": -1220,
-   "captionSide": "below-left",
+   "angle": -1.33518,
+   "r": 2055,
+   "x": 479.7,
+   "y": -1998.2,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2909,11 +2911,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5914",
-   "angle": -0.07854,
-   "r": 2540,
-   "x": 2532.2,
-   "y": -199.3,
-   "captionSide": "above",
+   "angle": 0.23562,
+   "r": 2260,
+   "x": 2197.6,
+   "y": 527.6,
+   "captionSide": "below",
    "captionW": 116
   },
   {
@@ -2950,11 +2952,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "group-cause",
-   "angle": -0.23562,
-   "r": 2540,
-   "x": 2469.8,
-   "y": -593,
-   "captionSide": "below",
+   "angle": 0.07854,
+   "r": 2260,
+   "x": 2253,
+   "y": 177.3,
+   "captionSide": "below-left",
    "captionW": 150
   },
   {
@@ -2989,11 +2991,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5908",
-   "angle": 1.80642,
-   "r": 2540,
-   "x": -593,
-   "y": 2469.8,
-   "captionSide": "below-left",
+   "angle": 1.1781,
+   "r": 2260,
+   "x": 864.9,
+   "y": 2088,
+   "captionSide": "above-right",
    "captionW": 150
   },
   {
@@ -3028,11 +3030,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-4807",
-   "angle": 3.53429,
-   "r": 2540,
-   "x": -2346.7,
-   "y": -972,
-   "captionSide": "above-left",
+   "angle": 3.84845,
+   "r": 2260,
+   "x": -1718.5,
+   "y": -1467.8,
+   "captionSide": "right",
    "captionW": 147
   },
   {
@@ -3068,11 +3070,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "spell-2047",
-   "angle": 2.43473,
-   "r": 2745,
-   "x": -2087.3,
-   "y": 1782.7,
-   "captionSide": "left",
+   "angle": 0.23562,
+   "r": 2465,
+   "x": 2396.9,
+   "y": 575.4,
+   "captionSide": "below-left",
    "captionW": 150
   },
   {
@@ -3107,10 +3109,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "group-cause",
-   "angle": 1.02102,
-   "r": 2745,
-   "x": 1434.3,
-   "y": 2340.5,
+   "angle": 0.3927,
+   "r": 2465,
+   "x": 2277.4,
+   "y": 943.3,
    "captionSide": "left",
    "captionW": 150
   },
@@ -3147,11 +3149,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5897",
-   "angle": 2.27765,
-   "r": 2745,
-   "x": -1782.7,
-   "y": 2087.3,
-   "captionSide": "above-left",
+   "angle": 1.80642,
+   "r": 2465,
+   "x": -575.4,
+   "y": 2396.9,
+   "captionSide": "below-right",
    "captionW": 150
   },
   {
@@ -3188,11 +3190,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5884",
-   "angle": 0.86394,
-   "r": 2745,
-   "x": 1782.7,
-   "y": 2087.3,
-   "captionSide": "right",
+   "angle": 2.59181,
+   "r": 2465,
+   "x": -2101.8,
+   "y": 1288,
+   "captionSide": "below-left",
    "captionW": 150
   },
   {
@@ -3222,11 +3224,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "sanct-unholy",
-   "angle": -1.33518,
-   "r": 2745,
-   "x": 640.8,
-   "y": -2669.2,
-   "captionSide": "below-right",
+   "angle": 4.47677,
+   "r": 2465,
+   "x": -575.4,
+   "y": -2396.9,
+   "captionSide": "above-right",
    "captionW": 126
   },
   {
@@ -3256,11 +3258,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "sanct-holy",
-   "angle": -1.1781,
-   "r": 2745,
-   "x": 1050.5,
-   "y": -2536,
-   "captionSide": "below-right",
+   "angle": 4.63385,
+   "r": 2465,
+   "x": -193.4,
+   "y": -2457.4,
+   "captionSide": "above-right",
    "captionW": 150
   },
   {
@@ -3290,11 +3292,11 @@ window.CHAMPION_DATA = {
    "requires": [],
    "forbids": [],
    "parentId": "root",
-   "angle": -1.02102,
-   "r": 2950,
-   "x": 1541.4,
-   "y": -2515.3,
-   "captionSide": "right",
+   "angle": 0.23562,
+   "r": 2670,
+   "x": 2596.2,
+   "y": 623.3,
+   "captionSide": "below-left",
    "captionW": 150
   },
   {
@@ -3329,11 +3331,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "blessing-armament",
-   "angle": 4.47677,
-   "r": 2950,
-   "x": -688.7,
-   "y": -2868.5,
-   "captionSide": "below-left",
+   "angle": 3.69137,
+   "r": 2670,
+   "x": -2276.5,
+   "y": -1395.1,
+   "captionSide": "right",
    "captionW": 137
   },
   {
@@ -3368,11 +3370,11 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "blessing-swiftness",
-   "angle": 4.16261,
-   "r": 2950,
-   "x": -1541.4,
-   "y": -2515.3,
-   "captionSide": "right",
+   "angle": 3.53429,
+   "r": 2670,
+   "x": -2466.8,
+   "y": -1021.8,
+   "captionSide": "below-left",
    "captionW": 150
   },
   {
@@ -3407,39 +3409,15 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "blessing-shield",
-   "angle": 4.00553,
-   "r": 2950,
-   "x": -1915.9,
-   "y": -2243.2,
-   "captionSide": "below-left",
+   "angle": 3.37721,
+   "r": 2670,
+   "x": -2596.2,
+   "y": -623.3,
+   "captionSide": "right",
    "captionW": 116
   }
  ],
  "edges": [
-  {
-   "from": "root",
-   "to": "group-sanct",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "root",
-   "to": "group-cause",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "root",
-   "to": "group-devotion",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "root",
-   "to": "group-blessing",
-   "kind": "struct",
-   "primary": true
-  },
   {
    "from": "root",
    "to": "feature-aura",
@@ -3453,138 +3431,6 @@ window.CHAMPION_DATA = {
    "primary": true
   },
   {
-   "from": "group-sanct",
-   "to": "sanct-holy",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-sanct",
-   "to": "sanct-unholy",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-cause",
-   "to": "cause-12",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-cause",
-   "to": "cause-14",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-cause",
-   "to": "cause-13",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-cause",
-   "to": "cause-10",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-cause",
-   "to": "cause-9",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-cause",
-   "to": "cause-8",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-cause",
-   "to": "cause-11",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-devotion",
-   "to": "spell-2047",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-devotion",
-   "to": "spell-2049",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-devotion",
-   "to": "spell-2048",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-blessing",
-   "to": "blessing-armament",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-blessing",
-   "to": "blessing-shield",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "group-blessing",
-   "to": "blessing-swiftness",
-   "kind": "struct",
-   "primary": true
-  },
-  {
-   "from": "cause-12",
-   "to": "feat-5889",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "cause-14",
-   "to": "feat-5891",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "cause-13",
-   "to": "feat-5886",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "cause-10",
-   "to": "feat-5890",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "cause-9",
-   "to": "feat-5881",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "cause-8",
-   "to": "feat-5888",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "cause-11",
-   "to": "feat-5887",
-   "kind": "req",
-   "primary": true
-  },
-  {
    "from": "feature-aura",
    "to": "feat-5894",
    "kind": "req",
@@ -3593,24 +3439,6 @@ window.CHAMPION_DATA = {
   {
    "from": "feature-aura",
    "to": "feat-5895",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "spell-2049",
-   "to": "feat-5898",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "spell-2048",
-   "to": "feat-5896",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "spell-2047",
-   "to": "feat-5897",
    "kind": "req",
    "primary": true
   },
@@ -3639,20 +3467,8 @@ window.CHAMPION_DATA = {
    "primary": true
   },
   {
-   "from": "blessing-shield",
-   "to": "feat-4807",
-   "kind": "req",
-   "primary": false
-  },
-  {
    "from": "shield-block",
    "to": "feat-4816",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "group-blessing",
-   "to": "feat-5907",
    "kind": "req",
    "primary": true
   },
@@ -3661,12 +3477,6 @@ window.CHAMPION_DATA = {
    "to": "feat-5906",
    "kind": "req",
    "primary": true
-  },
-  {
-   "from": "spell-2047",
-   "to": "feat-5906",
-   "kind": "req",
-   "primary": false
   },
   {
    "from": "feat-5883",
@@ -3705,28 +3515,10 @@ window.CHAMPION_DATA = {
    "primary": true
   },
   {
-   "from": "blessing-swiftness",
-   "to": "feat-5911",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "blessing-armament",
-   "to": "feat-5909",
-   "kind": "req",
-   "primary": true
-  },
-  {
    "from": "feat-4807",
    "to": "feat-5910",
    "kind": "req",
    "primary": true
-  },
-  {
-   "from": "blessing-shield",
-   "to": "feat-5910",
-   "kind": "req",
-   "primary": false
   },
   {
    "from": "feat-5885",
@@ -3765,12 +3557,6 @@ window.CHAMPION_DATA = {
    "primary": false
   },
   {
-   "from": "group-devotion",
-   "to": "feat-5916",
-   "kind": "req",
-   "primary": true
-  },
-  {
    "from": "feature-aura",
    "to": "feat-5920",
    "kind": "req",
@@ -3807,18 +3593,6 @@ window.CHAMPION_DATA = {
    "primary": true
   },
   {
-   "from": "spell-2047",
-   "to": "feat-5927",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "group-cause",
-   "to": "feat-5928",
-   "kind": "req",
-   "primary": true
-  },
-  {
    "from": "feat-5897",
    "to": "feat-5929",
    "kind": "req",
@@ -3829,52 +3603,6 @@ window.CHAMPION_DATA = {
    "to": "feat-7527",
    "kind": "req",
    "primary": true
-  },
-  {
-   "from": "blessing-armament",
-   "to": "feat-5930",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "blessing-swiftness",
-   "to": "feat-5933",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "blessing-shield",
-   "to": "feat-5932",
-   "kind": "req",
-   "primary": true
-  },
-  {
-   "from": "group-sanct",
-   "to": "feat-5913",
-   "kind": "or",
-   "primary": true,
-   "synthetic": true
-  },
-  {
-   "from": "group-cause",
-   "to": "feat-5914",
-   "kind": "or",
-   "primary": true,
-   "synthetic": true
-  },
-  {
-   "from": "group-cause",
-   "to": "feat-5918",
-   "kind": "or",
-   "primary": true,
-   "synthetic": true
-  },
-  {
-   "from": "group-cause",
-   "to": "feat-5924",
-   "kind": "or",
-   "primary": true,
-   "synthetic": true
   }
  ],
  "warnings": []

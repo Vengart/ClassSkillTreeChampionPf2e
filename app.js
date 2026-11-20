@@ -272,6 +272,8 @@ const tooltip = $('#tooltip');
 const SVGNS = 'http://www.w3.org/2000/svg';
 
 const nodeEls = new Map();
+const reqBadges = [];
+const isCard = (n) => n.kind === 'group' || n.kind === 'option';
 const edgeEls = [];
 
 function svg(tag, attrs, parent) {
@@ -288,7 +290,6 @@ function buildScene() {
     svg('stop', { offset: '0%', 'stop-color': '#f3c66b', 'stop-opacity': '0.28' }, grad);
     svg('stop', { offset: '100%', 'stop-color': '#f3c66b', 'stop-opacity': '0' }, grad);
     svg('circle', { cx: 0, cy: 0, r: R_OPTION * 1.35, fill: 'url(#core-glow)' }, ringsLayer);
-    svg('circle', { cx: 0, cy: 0, r: R_GROUP, class: 'ring ring-inner' }, ringsLayer);
     svg('circle', { cx: 0, cy: 0, r: R_OPTION, class: 'ring ring-inner' }, ringsLayer);
     svg('circle', { cx: 0, cy: 0, r: R_OPTION + 110, class: 'ring ring-ornament' }, ringsLayer);
     for (const l of FEAT_LEVELS) {
@@ -327,8 +328,9 @@ function buildScene() {
         edgeEls.push({ e, g });
     }
 
-    // узлы
+    // узлы (группы выбора и их варианты — карточки в верхней панели, не на холсте)
     for (const n of DATA.nodes) {
+        if (isCard(n)) continue;
         const el = document.createElement('button');
         el.type = 'button';
         el.className = `node kind-${n.kind} rarity-${n.rarity || 'common'}`;
@@ -360,9 +362,83 @@ function buildScene() {
             badge.title = holy && unholy ? 'Нужно освящение' : holy ? 'Нужно освящение «священный»' : unholy ? 'Нужно освящение «нечестивый»' : 'Недоступно нечестивым';
             el.appendChild(badge);
         }
+        // требования-карточки (призвание, заклинание, благословение) — медальоны слева сверху
+        const cardReqs = (n.requires || []).filter((cl) => cl.every((id) => isCard(NODES.get(id)) && !id.startsWith('sanct-')));
+        cardReqs.slice(0, 2).forEach((clause, k) => {
+            const first = NODES.get(clause[0]);
+            const icon = clause.length === 1 ? first : NODES.get(first.kind === 'group' ? first.id : first.group);
+            const b = document.createElement('span');
+            b.className = `req-badge req-${k}`;
+            if (icon.image) b.style.backgroundImage = `url("images/${icon.image}")`;
+            b.title = 'Нужно: ' + clause.map((id) => NODES.get(id).name).join(' или ');
+            el.appendChild(b);
+            reqBadges.push({ el: b, clause });
+        });
         nodesLayer.appendChild(el);
         nodeEls.set(n.id, el);
     }
+    buildChoiceBar();
+}
+
+// ---------- верхняя панель выбора (карточки) ----------
+
+const CARD_GROUPS = ['group-sanct', 'group-cause', 'group-devotion', 'group-blessing'];
+const cardEls = new Map();
+
+function buildChoiceBar() {
+    const bar = $('#choice-bar');
+    for (const gid of CARD_GROUPS) {
+        const g = NODES.get(gid);
+        const sec = document.createElement('section');
+        sec.className = 'choice-group';
+        const head = document.createElement('button');
+        head.type = 'button';
+        head.className = 'choice-head';
+        head.dataset.id = gid;
+        head.innerHTML = `<span>${esc(g.name)}</span><small class="choice-hint"></small>`;
+        sec.appendChild(head);
+        cardEls.set(gid, head);
+        const row = document.createElement('div');
+        row.className = 'choice-row';
+        for (const o of DATA.nodes.filter((x) => x.group === gid)) {
+            const c = document.createElement('button');
+            c.type = 'button';
+            c.className = `choice-card rarity-${o.rarity || 'common'}`;
+            c.dataset.id = o.id;
+            c.setAttribute('aria-label', o.name);
+            c.innerHTML = `<span class="choice-art"${o.image ? ` style="background-image:url('images/${o.image}')"` : ''}></span>` +
+                `<span class="choice-name">${esc(o.name)}</span>` +
+                (o.sanct ? `<span class="badge b-${o.sanct}" title="Нужно освящение «${o.sanct === 'holy' ? 'священный' : 'нечестивый'}»"></span>` : '');
+            row.appendChild(c);
+            cardEls.set(o.id, c);
+        }
+        sec.appendChild(row);
+        bar.appendChild(sec);
+    }
+    bar.addEventListener('click', (ev) => {
+        const c = ev.target.closest('[data-id]');
+        if (c) toggle(NODES.get(c.dataset.id));
+    });
+    bar.addEventListener('contextmenu', (ev) => {
+        const c = ev.target.closest('[data-id]');
+        if (!c) return;
+        ev.preventDefault();
+        openDetails(NODES.get(c.dataset.id));
+    });
+    bar.addEventListener('pointerover', (ev) => {
+        const c = ev.target.closest('[data-id]');
+        if (!c) return;
+        hoverId = c.dataset.id;
+        showTooltip(NODES.get(hoverId), c, 'below');
+        render();
+    });
+    bar.addEventListener('pointerout', (ev) => {
+        const c = ev.target.closest('[data-id]');
+        if (!c || c.contains(ev.relatedTarget)) return;
+        hoverId = null;
+        hideTooltip();
+        render();
+    });
 }
 
 let hoverId = null;
@@ -372,7 +448,8 @@ function render() {
     const pathIds = hoverId ? requirementPath(hoverId) : null;
 
     for (const n of DATA.nodes) {
-        const el = nodeEls.get(n.id);
+        const el = nodeEls.get(n.id) || cardEls.get(n.id);
+        if (!el) continue;
         const on = isGranted(n) ? state.level >= n.level : n.kind === 'group' ? satisfied(n.id) : state.chosen.has(n.id);
         const avail = !on && isChoice(n) && blockers(n).length === 0;
         const hiddenByFilter = (!state.showUncommon && n.rarity === 'uncommon' && !on)
@@ -399,6 +476,18 @@ function render() {
         g.classList.toggle('filtered', nodeEls.get(e.from).classList.contains('filtered') || toEl.classList.contains('filtered'));
         g.classList.toggle('dim', !!searchQ && !(nodeEls.get(e.to).classList.contains('match')));
         void a; void b;
+    }
+    for (const { el, clause } of reqBadges) {
+        el.classList.toggle('met', clause.some((id) => satisfied(id)));
+    }
+    // подсказки в заголовках групп
+    for (const gid of CARD_GROUPS) {
+        const picked = [...state.chosen].filter((id) => NODES.get(id).group === gid).length;
+        let hint = '';
+        if (gid === 'group-sanct') hint = picked ? '' : 'не обязательно';
+        else if (gid === 'group-blessing') hint = state.level < 3 ? 'с 3 уровня' : `${picked} / ${blessingLimit()}`;
+        else hint = picked ? '' : 'выберите одно';
+        cardEls.get(gid).querySelector('.choice-hint').textContent = hint;
     }
     for (const t of ringsLayer.querySelectorAll('[data-level]')) {
         t.classList.toggle('reached', Number(t.dataset.level) <= state.level);
@@ -435,15 +524,6 @@ function renderPanel() {
     $('#points-total').textContent = total;
     $('#points-fill').style.width = `${Math.min(100, used / total * 100)}%`;
 
-    const groups = ['group-sanct', 'group-cause', 'group-devotion', 'group-blessing'];
-    $('#choices').innerHTML = groups.map((g) => {
-        const picked = [...state.chosen].filter((id) => NODES.get(id).group === g).map((id) => NODES.get(id));
-        const val = picked.length
-            ? picked.map((p) => `<button class="chip" data-focus="${p.id}">${esc(p.name)}</button>`).join(' ')
-            : `<button class="chip chip-empty" data-focus="${g}">${g === 'group-sanct' ? 'без освящения' : 'не выбрано'}</button>`;
-        return `<dt>${esc(NODES.get(g).name)}</dt><dd>${val}</dd>`;
-    }).join('');
-
     const feats = chosenFeats().map((id) => NODES.get(id)).sort((a, b) => a.level - b.level || a.name.localeCompare(b.name, 'ru'));
     $('#feat-list').innerHTML = feats.map((f) =>
         `<li><button class="feat-item" data-focus="${f.id}"><span class="lvl">${f.level}</span>${esc(f.name)}</button></li>`).join('');
@@ -453,13 +533,14 @@ function renderPanel() {
 
 // ---------- подсказка и подробности ----------
 
-function showTooltip(n, el) {
+function showTooltip(n, el, place = 'side') {
     tooltip.innerHTML = cardHtml(n, false);
     tooltip.className = `tooltip card rarity-${n.rarity || 'common'}`;
     const r = el.getBoundingClientRect();
     const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
     let x = r.right + 14, y = r.top + r.height / 2 - th / 2;
-    if (x + tw > innerWidth - 10) x = r.left - tw - 14;
+    if (place === 'below') { x = Math.min(innerWidth - tw - 10, Math.max(10, r.left + r.width / 2 - tw / 2)); y = r.bottom + 12; }
+    else if (x + tw > innerWidth - 10) x = r.left - tw - 14;
     y = Math.max(10, Math.min(innerHeight - th - 10, y));
     tooltip.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px)`;
 }
@@ -487,7 +568,7 @@ function toast(msg, warn = false) {
     toastTimer = setTimeout(() => t.classList.add('hidden'), 3200);
 }
 function shake(n) {
-    const el = nodeEls.get(n.id);
+    const el = nodeEls.get(n.id) || cardEls.get(n.id);
     el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
 }
 
@@ -515,8 +596,9 @@ function centerOn(x, y, k = cam.k, animate = true) {
     const vw = viewport.clientWidth, vh = viewport.clientHeight;
     const panelW = document.body.classList.contains('panel-collapsed') ? 0 : $('#panel').offsetWidth;
     cam.k = k;
+    const barH = $('#choice-bar').offsetHeight + 12;
     cam.x = panelW / 2 + vw / 2 - x * k;
-    cam.y = vh / 2 - y * k;
+    cam.y = barH / 2 + vh / 2 - y * k;
     world.classList.toggle('animate', animate);
     applyCam();
     if (animate) setTimeout(() => world.classList.remove('animate'), 450);
@@ -524,7 +606,8 @@ function centerOn(x, y, k = cam.k, animate = true) {
 function fitAll() {
     const R = featRadius(20) + 160;
     const panelW = document.body.classList.contains('panel-collapsed') ? 0 : $('#panel').offsetWidth;
-    const k = Math.min((viewport.clientWidth - panelW) / (2 * R), viewport.clientHeight / (2 * R));
+    const barH = $('#choice-bar').offsetHeight + 12;
+    const k = Math.min((viewport.clientWidth - panelW) / (2 * R), (viewport.clientHeight - barH) / (2 * R));
     centerOn(0, 0, Math.max(MIN_K, k));
 }
 function focusNode(id) {
@@ -673,13 +756,18 @@ document.addEventListener('keydown', (ev) => {
 for (const b of document.querySelectorAll('[data-zoom]')) {
     b.addEventListener('click', () => zoomAt(Number(b.dataset.zoom), innerWidth / 2, innerHeight / 2));
 }
-addEventListener('resize', () => applyCam());
+/** Высота верхней панели — для отступов боковых панелей (CSS-переменная --bar-h). */
+function syncBarHeight() {
+    document.documentElement.style.setProperty('--bar-h', `${$('#choice-bar').offsetHeight}px`);
+}
+addEventListener('resize', () => { syncBarHeight(); applyCam(); });
 
 // ---------- старт ----------
 
 const isNarrow = () => matchMedia('(max-width: 720px)').matches;
 if (isNarrow()) setPanelCollapsed(true);
 buildScene();
+syncBarHeight();
 load();
 const dt = new Date(DATA.meta.fetchedAt);
 $('#data-source').innerHTML = `Данные: <a href="${esc(DATA.meta.source)}" target="_blank" rel="noopener noreferrer">pf2.ru</a>, ` +
