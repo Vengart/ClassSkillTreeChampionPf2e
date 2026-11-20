@@ -33,7 +33,7 @@ const skillsData = [
     { id: 'devoted-guard', level: 2, name: 'Преданный страж', parent: 'root', deck: null, image: 'shieldfeatsprotection.webp', rarity: 'необычный' },
     { id: 'oath-of-assassin', level: 2, name: 'Клятва убийцы', parent: 'root', deck: null, image: 'oath-of-assassin.webp', rarity: 'обычный' },
     { id: 'oath-of-defender', level: 2, name: 'Клятва защитника', parent: 'root', deck: null, image: 'oath-of-defender.webp', rarity: 'обычный' },
-    { id: 'oath-of-avenger', level: 2, name: 'Клятва мстителя', parent: 'root', deck: null, image: 'oath-of-avenger.webp', rarity: 'обычный' },
+    { id: 'oath-of-avenger', level: 2, name: 'Клятва мстителя', parent: 'root', deck: 'наложение-рук', image: 'oath-of-avenger.webp', rarity: 'обычный' },
     { id: 'divine-mercy', level: 2, name: 'Божественная милость', parent: 'root', deck: null, image: 'prayer.webp', rarity: 'обычный' },
     { id: 'divine-health', level: 2, name: 'Божественное здоровье', parent: 'root', deck: null, image: 'health.webp', rarity: 'обычный' },
     { id: 'reliable-squire', level: 2, name: 'Надёжный оруженосец', parent: 'root', deck: null, image: 'brave.webp', rarity: 'необычный' },
@@ -56,7 +56,7 @@ const skillsData = [
     { id: 'adapted-steed', level: 4, name: 'Приспособившийся скакун', parent: 'mount', deck: null, image: 'horse.webp', rarity: 'обычный' },
     
     // Уровень 6
-    { id: 'loyal-war-horse', level: 6, name: 'Верный боевой конь', parent: 'adapted-steed', deck: null, image: 'horse.webp', rarity: 'обычный' },
+    { id: 'loyal-war-horse', level: 6, name: 'Верный боевой конь', parent: 'mount', deck: null, image: 'horse.webp', rarity: 'обычный' },
     { id: 'aura-expansion', level: 6, name: 'Расширение ауры', parent: 'root', deck: null, image: '300px-Hunger_of_Hadar.webp', rarity: 'обычный' },
     { id: 'reactive-strike', level: 6, name: 'Реагирующий удар', parent: 'root', deck: null, image: 'fight.webp', rarity: 'обычный' },
     { id: 'shattering', level: 6, name: 'Сокрушение', parent: 'root', deck: null, image: 'smite.webp', rarity: 'обычный' },
@@ -64,8 +64,8 @@ const skillsData = [
     { id: 'shield-warden', level: 6, name: 'Щит стража', parent: 'root', deck: null, image: 'shieldfeatsprotection.webp', rarity: 'обычный' },
     
     // Уровень 8
-    { id: 'quick-shield-block', level: 8, name: 'Быстрый блок щитом', parent: 'root', deck: null, image: 'SpellShieldsOfTheSpirit.webp', rarity: 'обычный' },
-    { id: 'great-mercilessness', level: 8, name: 'Великая безжалостность', parent: 'mercilessness', deck: null, image: 'brave.webp', rarity: 'обычный' },
+    { id: 'quick-shield-block', level: 8, name: 'Быстрый блок щитом', parent: 'root', deck: null, image: 'shieldfeatsprotection.webp', rarity: 'обычный' },
+    { id: 'great-mercilessness', level: 8, name: 'Великая безжалостность', parent: 'mercilessness', deck: null, image: 'SpellTouchOfCorruption.webp', rarity: 'обычный' },
     { id: 'great-warding', level: 8, name: 'Великая охрана', parent: 'warding-shield', deck: null, image: 'SpellShieldsOfTheSpirit.webp', rarity: 'обычный' },
     { id: 'great-mercy', level: 8, name: 'Великое милосердие', parent: 'mercy-hand', deck: null, image: 'SpellLayOfHands.webp', rarity: 'обычный' },
     { id: 'domain-expertise', level: 8, name: 'Совершенствование в домене', parent: 'deity-domain', deck: null, image: 'prayer.webp', rarity: 'обычный' },
@@ -75,6 +75,7 @@ const skillsData = [
     { id: 'sacrifice-armor', level: 8, name: 'Пожертвовать доспехом', parent: 'root', deck: null, image: '300px-Calm_Emotions.webp', rarity: 'обычный' },
     { id: 'devoted-stride', level: 8, name: 'Преданная поступь', parent: 'mount', deck: null, image: 'Horse.webp', rarity: 'обычный' },
     { id: 'wall-stance', level: 8, name: 'Стойка непроходимой стены', parent: 'reactive-strike', deck: null, image: 'shieldfeatsprotection.webp', rarity: 'обычный' },
+    { id: 'second-blessing', level: 8, name: 'Второе благословение', parent: null, deck: null, image: 'oath-of-defender.webp', rarity: 'обычный' },
     
     // Уровень 10
     { id: 'impressive-destrier', level: 10, name: 'Впечатляющий дестриэ', parent: 'loyal-war-horse', deck: null, image: 'horse.webp', rarity: 'обычный' },
@@ -91,14 +92,15 @@ const skillsData = [
     { id: 'divine-wall', level: 12, name: 'Божественная стена', parent: 'root', deck: null, image: 'shieldfeatsprotection.webp', rarity: 'необычный' },
     { id: 'champions-sacrifice', level: 12, name: 'Жертва Чемпиона', parent: 'root', deck: 'жертва-чемпиона', image: 'smite.webp', rarity: 'обычный' },
     { id: 'fulfill-oath', level: 12, name: 'Исполнить клятву', parent: 'root', deck: null, image: 'prayer.webp', rarity: 'обычный' },
-    { id: 'pale-steed', level: 12, name: 'Бледный конь', parent: 'root', deck: 'нечестивый-чемпион', image: 'unholy.webp', rarity: 'обычный' },
-    { id: 'mercy-from-ailment', level: 12, name: 'Милосердие от недуга', parent: 'divine-mercy', deck: null, image: 'SpellLayOfHands.webp', rarity: 'обычный' },
+    { id: 'pale-steed', level: 12, name: 'Бледный конь', parent: 'mount', deck: 'нечестивый-чемпион', image: 'unholy.webp', rarity: 'обычный' },
+    { id: 'mercy-from-ailment', level: 12, name: 'Милосердие от недуга', parent: 'mercy-hand', deck: 'наложение-рук', image: 'SpellLayOfHands.webp', rarity: 'обычный' },
     { id: 'strengthening-touch', level: 12, name: 'Усиливающее касание', parent: 'root', deck: 'наложение-рук', image: 'SpellLayOfHands.webp', rarity: 'обычный' },
     { id: 'liberating-motion', level: 12, name: 'Освобождающее перемещение', parent: 'root', deck: 'освобождение', image: 'SubClassLiberation.webp', rarity: 'обычный' },
     { id: 'lingering-doubt', level: 12, name: 'Продолжительное сомнение', parent: 'root', deck: 'искупление', image: 'SubClassRedemption.webp', rarity: 'обычный' },
     { id: 'dread-strike', level: 12, name: 'Ужасный удар', parent: 'root', deck: 'эгоистичная-реакция', image: 'unholy.webp', rarity: 'обычный' },
     { id: 'necromancy-reflection', level: 12, name: 'Отражение некромантии', parent: 'root', deck: null, image: 'unholy.webp', rarity: 'необычный' },
     { id: 'miraculous-intervention', level: 12, name: 'Чудесное вмешательство', parent: 'root', deck: null, image: 'brave.webp', rarity: 'необычный' },
+    { id: 'steed-topplong-strike', level: 12, name: 'Сокрушительный удар скакуна', parent: 'mount', deck: null, image: 'horse.webp', rarity: 'обычный' },
 
     // Уровень 14
     { id: 'aura-of-life', level: 14, name: 'Аура жизни', parent: 'root', deck: null, image: '300px-Cure_Wounds.webp', rarity: 'обычный' },
@@ -112,7 +114,7 @@ const skillsData = [
 
     // Уровень 16
     { id: 'blessed-steed', level: 16, name: 'Благостный скакун', parent: 'impressive-destrier', deck: null, image: 'horse.webp', rarity: 'обычный' },
-    { id: 'instrument-of-zeal', level: 16, name: 'Инструмент рвения', parent: 'blessed-riposte', deck: 'инструмент-рвения', image: 'fight.webp', rarity: 'обычный' },
+    { id: 'instrument-of-zeal', level: 16, name: 'Инструмент рвения', parent: 'blessed-riposte', deck: null, image: 'fight.webp', rarity: 'обычный' },
     { id: 'instrument-of-slaughter', level: 16, name: 'Инструмент резни', parent: 'root', deck: 'нечестивый-чемпион', image: 'unholy.webp', rarity: 'обычный' },
     { id: 'shield-of-grace', level: 16, name: 'Щит благодати', parent: 'shield-warden', deck: null, image: 'shieldfeatsprotection.webp', rarity: 'обычный' },
 
@@ -121,7 +123,7 @@ const skillsData = [
     { id: 'rejuvenating-touch', level: 18, name: 'Омолаживающее касание', parent: 'root', deck: 'наложение-рук', image: 'SpellLayOfHands.webp', rarity: 'обычный' },
     { id: 'celestial-form', level: 18, name: 'Форма небожителя', parent: 'root', deck: 'святой-чемпион', image: 'Holy.webp', rarity: 'обычный' },
     { id: 'fiend-form', level: 18, name: 'Форма беса', parent: 'root', deck: 'нечестивый-чемпион', image: '300px-Planar_Binding.webp', rarity: 'обычный' },
-    { id: 'swift-retribution', level: 18, name: 'Стремительное возмездие', parent: 'desperate-prayer', deck: null, image: 'fight.webp', rarity: 'обычный' },
+    { id: 'swift-retribution', level: 18, name: 'Стремительное возмездие', parent: null, deck: null, image: 'fight.webp', rarity: 'обычный' },
     
     // Уровень 20
     { id: 'eternal_protection', level: 20, name: 'Вечноудаленная защита', parent: null, deck: null, image: '300px-Hunger_of_Hadar.webp', rarity: 'необычный' },
@@ -344,7 +346,7 @@ function createNode(skill) {
 
     // Добавляем картинку как background-image (не добавляем DOM элемент!)
     if (skill.image) {
-        el.style.backgroundImage = `url('images/${skill.image}')`;
+        el.style.backgroundImage = `url('../images/${skill.image}')`;
         el.style.backgroundSize = 'contain';
         el.style.backgroundRepeat = 'no-repeat';
         el.style.backgroundPosition = 'center';
@@ -376,7 +378,7 @@ function createNode(skill) {
     if (!visibleRarities.has(skill.rarity)) {
         el.classList.add('hidden');
     }
-
+    
     // MOUSEDOWN: начинаем отслеживание драга
     el.onmousedown = (e) => {
         if (e.button !== 0) return;

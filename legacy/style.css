@@ -1,0 +1,497 @@
+body {
+    margin: 0;
+    background-color: #0b0d12; /* Темный фон PoE */
+    color: #fff;
+    font-family: sans-serif;
+    overflow: hidden; /* Чтобы скролл не дергался */
+}
+
+#viewport {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
+#tree-container {
+    position: relative;
+    width: 0;
+    height: 0;
+    /* Центрируем всё относительно центра экрана */
+    transform-origin: center;
+    transition: transform 0.1s ease-out;
+}
+
+/* Слой линий SVG */
+#connections-layer {
+    position: absolute;
+    top: -5000px;
+    left: -5000px;
+    width: 10000px;
+    height: 10000px;
+    pointer-events: none; /* Чтобы клики проходили сквозь линии */
+    z-index: 0;
+}
+
+line {
+    stroke: #333;
+    stroke-width: 2;
+    transition: stroke 0.3s;
+}
+
+line.active {
+    stroke: #d4af37; /* Золотой цвет активной связи */
+    stroke-width: 3;
+    filter: drop-shadow(0 0 3px #d4af37);
+}
+
+line.hidden {
+    display: none;
+}
+
+/* Кривые Безье для рёбер */
+path.connection-line {
+    stroke: #333;
+    stroke-width: 2;
+    transition: stroke 0.3s;
+}
+
+path.connection-line.active {
+    stroke: #d4af37; /* Золотой цвет активной связи */
+    stroke-width: 3;
+    filter: drop-shadow(0 0 3px #d4af37);
+}
+
+path.connection-line.hidden {
+    display: none;
+}
+
+/* Визуальные кольца */
+circle.ring {
+    fill: none;
+    stroke: #333;
+    stroke-width: 1;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+circle.ring:hover {
+    opacity: 0.6;
+    stroke: #555;
+}
+
+/* Текст метки уровня */
+text.ring-label {
+    fill: #666;
+    font-size: 12px;
+    font-weight: bold;
+    text-anchor: middle;
+    pointer-events: none;
+    transition: fill 0.3s;
+}
+
+/* Слой нод */
+.node {
+    position: absolute;
+    width: var(--node-size, 70px);
+    height: var(--node-size, 70px);
+    background-color: #1a1a1a;
+    border: 2px solid #555;
+    border-radius: 50%;
+    transform: translate(-50%, -50%); /* Центрирование точки */
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: all 0.3s;
+    /* ... старые стили ... */
+    cursor: grab;
+    user-select: none; /* Чтобы текст не выделялся при перетаскивании */
+
+    user-select: none; /* Запрещает выделение текста */
+    -webkit-user-select: none;
+}
+
+.node:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    border-color: #fff;
+    /* При наведении показываем текст */
+    color: #fff;
+    font-size: 10px;
+    background-color: rgba(26, 26, 26, 0.9);
+}
+
+.node:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    border-color: #fff;
+}
+
+.node.purchased {
+    background-color: #7377835e;
+    border-color: #777777;
+    box-shadow: 0 0 10px #d4af37;
+    color: #000;
+    font-weight: bold;
+    background-blend-mode: multiply;
+}
+
+.node.purchased:hover {
+    color: #000;
+    font-size: 10px;
+}
+
+/* Редкость: Обычный (белый) */
+.node.rarity-обычный:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.node.rarity-обычный.purchased {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 10px #d4af37;
+}
+
+/* Редкость: Необычный (жёлтый) */
+.node.rarity-необычный:hover {
+    border-color: #ffeb3b;
+    color: #ffeb3b;
+    box-shadow: 0 0 15px rgba(255, 235, 59, 0.6), inset 0 0 10px rgba(255, 235, 59, 0.2);
+}
+
+.node.rarity-необычный.purchased {
+    box-shadow: 0 0 15px rgba(255, 235, 59, 0.6), 0 0 10px #d4af37;
+}
+
+/* Редкость: Редкий (фиолетовый) */
+.node.rarity-редкий:hover {
+    border-color: #bb86fc;
+    color: #bb86fc;
+    box-shadow: 0 0 20px rgba(187, 134, 252, 0.6), inset 0 0 10px rgba(187, 134, 252, 0.2);
+}
+
+.node.rarity-редкий.purchased {
+    box-shadow: 0 0 20px rgba(187, 134, 252, 0.6), 0 0 10px #d4af37;
+}
+
+/* Скрытые ноды */
+.node.hidden {
+    display: none;
+}
+
+/* Скрытие по уровню игрока */
+.node.level-hidden {
+    display: none;
+}
+
+line.level-hidden,
+.connection-line.level-hidden {
+    display: none;
+}
+
+@keyframes level-pop {
+    0% { transform: translate(-50%, -50%) scale(0.2); }
+    60% { transform: translate(-50%, -50%) scale(1.15); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.node.level-appear {
+    animation: level-pop 0.45s ease-out;
+}
+
+
+/* UI сверху */
+#ui-layer {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ui-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Выпадающие списки */
+.dropdown-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.dropdown-toggle {
+    background: #1a1a1a;
+    padding: 10px 20px;
+    border: 1px solid #444;
+    color: #ccc;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: left;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.dropdown-toggle:hover {
+    background: #222;
+    border-color: #666;
+}
+
+.dropdown-toggle.active {
+    background: #2a2a2a;
+    border-color: #666;
+    color: #fff;
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    border: 1px solid #444;
+    border-top: none;
+    background: #1a1a1a;
+}
+
+.dropdown-content.open {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 10px 0;
+}
+
+.dropdown-content .ui-section {
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.card {
+    background: #222;
+    padding: 10px 20px;
+    border: 1px solid #444;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.card:hover {
+    background: #333;
+    border-color: #666;
+}
+
+.card.active {
+    background: #d4af37;
+    color: #000;
+    border-color: #ffd700;
+    box-shadow: 0 0 10px #d4af37;
+    font-weight: bold;
+}
+
+/* Карточки редкости - специальные стили */
+.card.rarity-card-обычный.active {
+    background: #ffffff;
+    color: #000;
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.card.rarity-card-необычный.active {
+    background: #ffeb3b;
+    color: #000;
+    border-color: #ffeb3b;
+    box-shadow: 0 0 10px rgba(255, 235, 59, 0.6);
+}
+
+.card.rarity-card-редкий.active {
+    background: #bb86fc;
+    color: #000;
+    border-color: #bb86fc;
+    box-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
+}
+
+.ui-section h3 {
+    color: #888;
+}
+
+/* Нода, которую можно купить (родитель куплен) */
+.node.available {
+    border-color: #aaa;
+    box-shadow: 0 0 5px rgba(255,255,255,0.2);
+}
+
+/* Заблокированная нода (неправильная карточка) */
+.node.locked {
+    background-color: #2a1a1a;
+    border-color: #555;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.node.locked:hover {
+    transform: translate(-50%, -50%) scale(1);
+    border-color: #555;
+}
+
+.node:active {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Эффект тряски при ошибке */
+@keyframes shake {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-55%, -50%) rotate(-5deg); }
+    75% { transform: translate(-45%, -50%) rotate(5deg); }
+}
+.error-shake {
+    animation: shake 0.2s ease-in-out 2;
+    border-color: red !important;
+}
+
+/* Tooltip при наведении на ноду */
+.node-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26, 26, 26, 0.95);
+    color: #d4af37;
+    padding: 6px 12px;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: none;
+    margin-bottom: 8px;
+    z-index: 1001;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.node:hover .node-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Tooltip по редкости */
+.node.rarity-обычный .node-tooltip {
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.node.rarity-необычный .node-tooltip {
+    color: #ffeb3b;
+    border-color: #ffeb3b;
+    box-shadow: 0 0 8px rgba(255, 235, 59, 0.3);
+}
+
+.node.rarity-редкий .node-tooltip {
+    color: #bb86fc;
+    border-color: #bb86fc;
+    box-shadow: 0 0 8px rgba(187, 134, 252, 0.3);
+}
+
+/* Индикатор зума */
+#zoom-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(34, 34, 34, 0.8);
+    color: #d4af37;
+    padding: 8px 12px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 10;
+    font-weight: bold;
+    backdrop-filter: blur(4px);
+}
+
+/* Выбор уровня */
+#level-selector {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(34, 34, 34, 0.8);
+    color: #d4af37;
+    padding: 12px 16px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 10;
+    font-weight: bold;
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#level-selector label {
+    white-space: nowrap;
+}
+
+#level-selector input[type="number"] {
+    width: 50px;
+    padding: 4px 8px;
+    background: #1a1a1a;
+    color: #d4af37;
+    border: 1px solid #555;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#level-selector input[type="number"]:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+}
+
+#levelDisplay {
+    color: #ffeb3b;
+    font-weight: bold;
+    min-width: 30px;
+}
+
+/* Сообщение об ошибке при выборе ноды */
+#error-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(26, 26, 26, 0.95);
+    color: #ff6b6b;
+    padding: 20px 30px;
+    border: 2px solid #ff6b6b;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2000;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    max-width: 400px;
+    word-wrap: break-word;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+}
+
+#error-message.error-message-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#error-message.error-message-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
