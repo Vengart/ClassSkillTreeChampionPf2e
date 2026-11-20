@@ -123,7 +123,7 @@ code { font-size: 0.92em; color: var(--text-dim); }
 
 /* ---------- связи ---------- */
 
-.edge line { stroke-linecap: round; fill: none; transition: stroke 0.25s, opacity 0.25s; }
+.edge polyline { stroke-linecap: round; stroke-linejoin: round; fill: none; transition: stroke 0.25s, opacity 0.25s; }
 .edge-base { stroke: #0a0908; stroke-width: 8; }
 .edge-core { stroke: #3b342a; stroke-width: 3.5; }
 /* структура класса (центр → группы → варианты) — самые толстые */
@@ -237,10 +237,10 @@ code { font-size: 0.92em; color: var(--text-dim); }
 .node.kind-root .art { inset: 8px; }
 
 /* группа выбора — «ромб» с круглым медальоном внутри */
-.node.kind-group,
-.node.kind-group.on,
-.node.kind-group.rarity-common { background: none; box-shadow: none; }
-.node.kind-group::before {
+.node.kind-hub,
+.node.kind-hub.on,
+.node.kind-hub.rarity-common { background: none; box-shadow: none; }
+.node.kind-hub::before {
     content: '';
     position: absolute;
     inset: 6px;
@@ -249,13 +249,13 @@ code { font-size: 0.92em; color: var(--text-dim); }
     background: radial-gradient(circle at 50% 35%, var(--frame-hi), var(--frame) 60%, #15120e 100%);
     box-shadow: 0 0 0 2px #0b0a08, 0 0 0 4px #5a4728, 0 0 0 5px #0b0a08, 0 6px 18px rgba(0, 0, 0, 0.85);
 }
-.node.kind-group .art { inset: 14px; background-color: #0d0b08; font-size: 26px; color: #c9a865; }
-.node.kind-group.on::before {
+.node.kind-hub .art { inset: 14px; background-color: #0d0b08; font-size: 26px; color: #c9a865; }
+.node.kind-hub.on::before {
     --frame: #8b6526;
     --frame-hi: #ffe0a0;
     box-shadow: 0 0 0 2px #2a1b06, 0 0 0 4px #e6b45c, 0 0 0 5px #3a2508, 0 0 26px rgba(255, 170, 60, 0.7);
 }
-.node.kind-group .caption { color: #d4b06a; font-weight: 700; letter-spacing: 0.06em; }
+.node.kind-hub .caption { color: #d4b06a; font-weight: 700; letter-spacing: 0.06em; }
 
 .node.kind-option, .node.kind-feature {
     --frame: #4d3c22;
@@ -266,6 +266,29 @@ code { font-size: 0.92em; color: var(--text-dim); }
         0 0 0 5px #0b0a08,
         0 4px 16px rgba(0, 0, 0, 0.8);
 }
+
+/* номер уровня черты — снизу слева на рамке */
+.lvl-badge {
+    position: absolute;
+    left: -6px;
+    bottom: -4px;
+    min-width: 20px;
+    height: 18px;
+    padding: 0 4px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    color: #1a1209;
+    background: linear-gradient(#cfa65a, #8a6630);
+    box-shadow: 0 0 0 2px #0b0a08;
+    z-index: 2;
+}
+.node.locked .lvl-badge { background: linear-gradient(#6d604a, #463c2d); color: #120e09; }
+.node.on .lvl-badge { background: linear-gradient(#ffe3a6, #d49a3e); }
 
 /* значок требования освящения */
 .badge {
@@ -347,7 +370,7 @@ code { font-size: 0.92em; color: var(--text-dim); }
 
 /* на дальнем плане подписи прячем */
 /* подписи по мере приближения: группы всегда, варианты — со среднего масштаба, черты — вблизи */
-#viewport.z-far .node:not(.kind-group) .caption,
+#viewport.z-far .node:not(.kind-hub) .caption,
 #viewport.z-mid .node.kind-feat:not(.on):not(:hover) .caption { opacity: 0; }
 
 /* ---------- рамки панелей ---------- */

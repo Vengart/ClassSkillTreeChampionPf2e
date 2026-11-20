@@ -16,7 +16,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { computeLayout, GEOMETRY } from './layout.mjs';
+import { computeTreeLayout, GEOMETRY } from './tree-layout.mjs';
 
 // ---------- ручные данные ----------
 
@@ -50,8 +50,6 @@ const IMAGES = {
     'spell-2047': 'SpellLayOfHands.webp',
     'spell-2049': 'SpellShieldsOfTheSpirit.webp',
     'spell-2048': 'SpellTouchOfCorruption.webp',
-    'feature-aura': '300px-Hunger_of_Hadar.webp',
-    'shield-block': 'shieldfeatsprotection.webp',
 };
 
 /** Картинки черт по английскому названию. */
@@ -91,7 +89,7 @@ const FEAT_IMAGES = {
 /** Ручные переопределения требований (по английскому названию черты). */
 const OVERRIDES = {
     // в критериях смешаны условия для Воина и старой редакции
-    'Shield Warden': { requires: [['shield-block'], ['blessing-shield']] },
+    'Shield Warden': { requires: [['blessing-shield']] },
     // на сайте «священный и нечестивый» — по смыслу «или»
     'Aura of Faith': { requires: [['sanct-holy', 'sanct-unholy']] },
     "Champion's Sacrifice": { requires: [], forbids: ['sanct-unholy'] },
@@ -105,6 +103,51 @@ const OVERRIDES = {
     // «Требования», а не критерии — к постройке не относится
     'Divine Wall': { requires: [] },
 };
+
+// ---------- темы дерева ----------
+
+/** Узлы-темы: стволы, от которых растут черты без черт-предшественников. */
+const THEMES = [
+    { id: 'theme-cause', name: 'Призвание', image: 'brave.webp',
+        html: 'Черты призвания и ответного действия поборника. Нужное призвание выбирается карточкой сверху.' },
+    { id: 'theme-devotion', name: 'Преданность', image: 'SpellLayOfHands.webp',
+        html: 'Черты заклинаний преданности: возложение рук, духовный щит, касание пустоты.' },
+    { id: 'theme-blessing', name: 'Благословение', image: 'oath-of-defender.webp',
+        html: 'Черты благословения верного: оружие, щит, скорость.' },
+    { id: 'theme-aura', name: 'Ауры', image: '300px-Hunger_of_Hadar.webp',
+        html: 'Черты, усиливающие ауру поборника (она есть у каждого поборника с 1 уровня).' },
+    { id: 'theme-shield', name: 'Щит', image: 'shieldfeatsprotection.webp',
+        html: 'Черты для боя со щитом. Блок щитом есть у каждого поборника с 1 уровня.' },
+    { id: 'theme-steed', name: 'Скакун', image: 'Horse.webp', html: 'Верный скакун и его развитие.' },
+    { id: 'theme-faith', name: 'Вера и клятвы', image: 'prayer.webp', html: 'Домен божества, молитвы, клятвы.' },
+    { id: 'theme-sanct', name: 'Освящение', image: 'Holy.webp', html: 'Черты священных и нечестивых поборников.' },
+    { id: 'theme-combat', name: 'Бой', image: 'fight.webp', html: 'Боевые приёмы поборника.' },
+];
+
+/** Тема черты без черт-предшественников: сначала ручной список, потом по критериям. */
+const THEME_BY_NAME = {
+    'Expand Aura': 'theme-aura', 'Aura of Life': 'theme-aura', 'Aura of Determination': 'theme-aura',
+    'Aura of Courage': 'theme-aura', 'Aura of Despair': 'theme-aura', 'Aura of Righteousness': 'theme-aura',
+    'Aura of Faith': 'theme-aura',
+    'Quick Shield Block': 'theme-shield', 'Defensive Advance': 'theme-shield', 'Divine Wall': 'theme-shield',
+    'Faithful Steed': 'theme-steed',
+    "Deity's Domain": 'theme-faith', 'Desperate Prayer': 'theme-faith', 'Splinter Faith': 'theme-faith',
+    'Divine Grace': 'theme-faith', 'Divine Health': 'theme-faith',
+    'Oath of The Defender': 'theme-faith', 'Oath of The Avenger': 'theme-faith', 'Oath of The Slayer': 'theme-faith',
+    'Sense Holiness': 'theme-sanct', 'Sense Unholiness': 'theme-sanct', 'Celestial Form': 'theme-sanct',
+    'Fiendish Form': 'theme-sanct', 'Sacred Defender': 'theme-sanct',
+    'Reactive Strike': 'theme-combat', 'Smite': 'theme-combat', 'Divine Reflexes': 'theme-combat',
+    'Exalted Greatness': 'theme-combat', "Champion's Sacrifice": 'theme-combat',
+};
+function themeOf(n) {
+    if (THEME_BY_NAME[n.nameEn]) return THEME_BY_NAME[n.nameEn];
+    const ids = (n.requires || []).flat();
+    if (ids.some((id) => id.startsWith('cause-') || id === 'group-cause')) return 'theme-cause';
+    if (ids.some((id) => id.startsWith('spell-') || id === 'group-devotion')) return 'theme-devotion';
+    if (ids.some((id) => id.startsWith('blessing-') || id === 'group-blessing')) return 'theme-blessing';
+    if (ids.some((id) => id.startsWith('sanct-'))) return 'theme-sanct';
+    return null;
+}
 
 // ---------- сборка ----------
 
@@ -171,12 +214,14 @@ export function buildGraph(raw) {
             image: b.image, html: raw.features.blessingOptions[b.key] || '', requires: [] });
     }
 
-    // --- Классовые особенности 1 уровня (есть у всех) ---
-    add({ id: 'feature-aura', kind: 'feature', name: 'Аура поборника', level: 1, branch: 'aura',
-        html: raw.features.aura, requires: [] });
-    add({ id: 'shield-block', kind: 'feature', name: 'Блок щитом', nameEn: 'Shield Block', level: 1, branch: 'shield',
-        url: raw.features.shieldBlock.url, fields: raw.features.shieldBlock.fields, html: raw.features.shieldBlock.html,
-        requires: [] });
+    // Аура поборника и Блок щитом — гарантированные особенности 1 уровня:
+    // они есть у каждого поборника, поэтому узлами не рисуются, а условия
+    // «аура поборника» / «Блок щитом» в критериях черт считаются выполненными.
+
+    // --- Темы: промежуточные узлы между корнем и чертами ---
+    for (const th of THEMES) {
+        add({ id: th.id, kind: 'hub', name: th.name, level: 0, image: th.image, html: th.html, requires: [] });
+    }
 
     // --- Черты ---
     const featIds = new Set(raw.feats.map((f) => f.id));
@@ -186,7 +231,7 @@ export function buildGraph(raw) {
         let forbids = [];
         for (const l of f.prereqLinks) {
             if (l.type === 'feat') {
-                if (l.id === 5212) requires.push(['shield-block']);
+                if (l.id === 5212) { /* Блок щитом есть у всех */ }
                 else if (featIds.has(l.id)) requires.push([`feat-${l.id}`]);
                 else warnings.push(`${f.name}: неизвестная черта ${l.id}`);
             } else if (l.type === 'spell') {
@@ -199,7 +244,6 @@ export function buildGraph(raw) {
             }
         }
         const t = f.prerequisitesText.toLowerCase();
-        if (t.includes('аура поборника')) requires.push(['feature-aura']);
         if (t.includes('благословенное оружие')) requires.push(['blessing-armament']);
         if (t.includes('благословенный щит')) requires.push(['blessing-shield']);
         if (t.includes('благословенная скорость')) requires.push(['blessing-swiftness']);
@@ -217,7 +261,8 @@ export function buildGraph(raw) {
         const seen = new Set();
         requires = requires.filter((c) => { const k = c.join('|'); if (seen.has(k)) return false; seen.add(k); return true; });
 
-        if (f.prerequisitesText && requires.length === 0 && !ov) {
+        const guaranteed = /аура поборника|блок щитом/.test(t);
+        if (f.prerequisitesText && requires.length === 0 && !ov && !guaranteed) {
             warnings.push(`${f.name}: критерии не распознаны → «${f.prerequisitesText}»`);
         }
 
@@ -238,24 +283,46 @@ export function buildGraph(raw) {
         if (!ids.has(from) || !ids.has(to)) { warnings.push(`связь ${from} → ${to}: узел не найден`); return; }
         if (!edges.some((e) => e.from === from && e.to === to)) edges.push({ from, to, kind });
     };
-    for (const g of ['group-sanct', 'group-cause', 'group-devotion', 'group-blessing', 'feature-aura', 'shield-block']) {
-        pushEdge('root', g, 'struct');
-    }
-    for (const n of nodes) {
-        if (n.kind === 'option') pushEdge(n.group, n.id, 'struct');
-        for (const clause of n.requires || []) {
-            for (const from of clause) pushEdge(from, n.id, clause.length > 1 ? 'or' : 'req');
+    // Дерево: у каждой черты один родитель. Если среди критериев есть черты —
+    // родитель самая высокоуровневая из них, иначе — узел темы.
+    const byId = new Map(nodes.map((n) => [n.id, n]));
+    const feats = nodes.filter((n) => n.kind === 'feat');
+    for (const n of feats) {
+        const featReqs = (n.requires || []).map((cl) => cl.filter((id) => byId.get(id)?.kind === 'feat')).filter((cl) => cl.length);
+        if (featReqs.length) {
+            const cands = featReqs.map((cl) => cl[0]).sort((a, b) => byId.get(b).level - byId.get(a).level);
+            n.parentId = cands[0];
+        } else {
+            n.parentId = themeOf(n);
+            if (!n.parentId) warnings.push(`${n.name}: тема не определена`);
         }
     }
+    // тема у цепочек — от корня цепочки
+    for (const n of feats) {
+        let cur = n;
+        while (byId.get(cur.parentId)?.kind === 'feat') cur = byId.get(cur.parentId);
+        n.theme = cur.parentId;
+    }
+    for (const th of THEMES) pushEdge('root', th.id, 'struct');
+    for (const n of feats) {
+        if (byId.get(n.parentId)?.kind === 'hub') pushEdge(n.parentId, n.id, 'theme');
+        // связи только между чертами: карточки (призвание, заклинание, благословение,
+        // освящение) показываются значками на узле
+        for (const clause of n.requires || []) {
+            for (const from of clause) {
+                if (byId.get(from)?.kind === 'feat') pushEdge(from, n.id, clause.length > 1 ? 'or' : 'req');
+            }
+        }
+    }
+    for (const e of edges) e.primary = byId.get(e.to).parentId === e.from || e.kind === 'struct';
 
-    // раскладка: координаты узлов и набор рисуемых связей
-    const layout = computeLayout(nodes, edges, { log: true });
-    if (layout.stats.overlaps) warnings.push(`раскладка: наложений узлов — ${layout.stats.overlaps}`);
+    // раскладка: стволы тем
+    const layout = computeTreeLayout(nodes, edges, { log: true });
 
     return {
-        meta: { source: raw.source, fetchedAt: raw.fetchedAt, className: 'Поборник', geometry: GEOMETRY, layout: layout.stats },
+        meta: { source: raw.source, fetchedAt: raw.fetchedAt, className: 'Поборник', geometry: GEOMETRY, layout: layout.stats, bounds: layout.bounds },
         nodes,
-        edges: layout.edges,
+        edges,
         warnings,
     };
 }

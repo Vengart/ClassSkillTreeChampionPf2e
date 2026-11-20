@@ -7,21 +7,27 @@ window.CHAMPION_DATA = {
   "className": "Поборник",
   "geometry": {
    "SIZE": {
-    "root": 132,
-    "group": 90,
-    "option": 74,
-    "feature": 72,
-    "feat": 62
+    "root": 120,
+    "hub": 84,
+    "feat": 62,
+    "group": 78,
+    "option": 64
    },
-   "R_GROUP": 160,
-   "R_OPTION": 330,
-   "R_FEAT0": 620,
-   "R_STEP": 205,
    "CAPTION": {
     "root": {
      "fs": 28,
      "maxW": 260,
      "lines": 1
+    },
+    "hub": {
+     "fs": 19,
+     "maxW": 170,
+     "lines": 2
+    },
+    "feat": {
+     "fs": 15,
+     "maxW": 150,
+     "lines": 2
     },
     "group": {
      "fs": 19,
@@ -32,45 +38,26 @@ window.CHAMPION_DATA = {
      "fs": 17,
      "maxW": 170,
      "lines": 2
-    },
-    "feature": {
-     "fs": 17,
-     "maxW": 170,
-     "lines": 2
-    },
-    "feat": {
-     "fs": 15,
-     "maxW": 150,
-     "lines": 2
     }
    },
    "CAPTION_GAP": 8,
    "CHAR_W": 0.7,
-   "FEAT_LEVELS": [
-    1,
-    2,
-    4,
-    6,
-    8,
-    10,
-    12,
-    14,
-    16,
-    18,
-    20
-   ],
-   "LABEL_GAP": 0.12
+   "STEP": 250,
+   "ROW": 120,
+   "HUB_Y": 300,
+   "BUS_GAP": 110,
+   "COL_GAP": 90
   },
   "layout": {
-   "crossings": 0,
-   "through": 0,
    "overlaps": 0,
    "captions": 0,
-   "bends": 2,
-   "maxBend": 61,
-   "unevenness": 1,
-   "maxGap": 2.25,
-   "offset": 4
+   "crossings": 0
+  },
+  "bounds": {
+   "minX": -1720,
+   "maxX": 1720,
+   "minY": -1110,
+   "maxY": 1130
   }
  },
  "nodes": [
@@ -83,13 +70,8 @@ window.CHAMPION_DATA = {
    "level": 0,
    "url": "https://pf2.ru/classes/champion?tab=details",
    "html": "Посланник божества и его преданный служитель. Кликайте по узлам, чтобы собрать персонажа: сначала выберите освящение, призвание и заклинание преданности, затем черты.",
-   "parentId": null,
-   "angle": 1.5708,
-   "r": 0,
    "x": 0,
-   "y": 0,
-   "captionSide": "below",
-   "captionW": 0
+   "y": 0
   },
   {
    "image": "Holy.webp",
@@ -99,14 +81,7 @@ window.CHAMPION_DATA = {
    "level": 0,
    "branch": "sanct",
    "html": "В зависимости от вашего божества, ниспосланное им освящение может сделать вас священным или нечестивым. Таким образом, вы становитесь привязаны к одной из сторон вечной борьбы\nза души. Выбранный дескриптор (как и его отсутствие) ограничивает вас в выборе призваний, заклинаний преданности и черт.<br>\nЕсли божество позволяет выбрать быть <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/517\" href=\"https://pf2.ru/traits/holy\">священным</a> или <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/521\" href=\"https://pf2.ru/traits/unholy\">нечестивым</a>, то вы вправе сделать этот выбор самостоятельно, а если же оно обязывает взять дескриптор, вы получаете его автоматически. Если вы каким-либо образом получите противоположный дескриптор, то теряете первый, пока не завершите ритуал покаяния. В случае, если божество не предполагает взятия дескриптора, вы можете выбирать только те черты и способности, которые не требуют быть священным или нечестивым.<br>\nПрисутствие поборника с дескриптором «нечестивый» крайне плохо вписывается в обычную игру — доступ к нему стоит давать только в подходящих для этого приключениях или кампаниях, где все игроки согласятся принять нечестивого поборника. Нечестивое освящение и нечестивое призвание считаются необычными вариантами развития персонажа.  <br>",
-   "hint": "Необязательный выбор: священный, нечестивый или без освящения.",
-   "parentId": "root",
-   "angle": -1.254,
-   "r": 160,
-   "x": 49.8,
-   "y": -152,
-   "captionSide": "below-left",
-   "captionW": 0
+   "hint": "Необязательный выбор: священный, нечестивый или без освящения."
   },
   {
    "image": "Holy.webp",
@@ -119,14 +94,7 @@ window.CHAMPION_DATA = {
    "branch": "sanct",
    "rarity": "common",
    "html": "вы получаете дескриптор «священный»; этот же дескриптор получают все ваши Удары. Вы получаете наказ «Вы не должны сознательно причинять вред невинным или своим бездействием допускать, чтобы им был причинён вред, если вы знаете, что в ваших силах его предотвратить» и табу «Убивать невинных». Если в вашей игре допустимо содержание, которое считается неприемлемым по умолчанию («Основная книга игрока», стр. 403), подобные действия считаются табу лично  для вас.",
-   "requires": [],
-   "parentId": "group-sanct",
-   "angle": -1.09992,
-   "r": 330,
-   "x": 149.7,
-   "y": -294.1,
-   "captionSide": "below",
-   "captionW": 0
+   "requires": []
   },
   {
    "image": "Unholy.webp",
@@ -139,14 +107,7 @@ window.CHAMPION_DATA = {
    "branch": "sanct",
    "rarity": "uncommon",
    "html": "вы получаете дескриптор «нечестивый»; этот же дескриптор получают все ваши Удары. Вы получаете наказ «Не ставь чужие нужды превыше своих и превыше нужд своего божества» и табу «Совершать самоотверженные поступки, вроде раздачи благотворительности» и «Ставить чьи-либо нужды превыше нужд вашего божества». Эти табу и наказы не запрещают вам действовать подобным образом для того, чтобы другие сочли, что вы оказываете им помощь, — важно, чтобы вы при этом преследовали свои цели или цели вашего божества.",
-   "requires": [],
-   "parentId": "group-sanct",
-   "angle": -1.30536,
-   "r": 330,
-   "x": 86.6,
-   "y": -318.4,
-   "captionSide": "left",
-   "captionW": 0
+   "requires": []
   },
   {
    "image": "brave.webp",
@@ -156,14 +117,7 @@ window.CHAMPION_DATA = {
    "level": 0,
    "branch": "cause",
    "html": "Вы посвящаете свою жизнь особому призванию. Некоторые призвания вы можете выбрать лишь в том случае, если выбрали определённое освящение. Каждое призвание имеет определённые наказы и табу, а также даёт вам особое ответное действие поборника, которое позволяет вам защищать либо других, либо самого себя.",
-   "hint": "Выберите одно призвание. Оно даёт ответное действие поборника.",
-   "parentId": "root",
-   "angle": -0.17544,
-   "r": 160,
-   "x": 157.5,
-   "y": -27.9,
-   "captionSide": "below-right",
-   "captionW": 0
+   "hint": "Выберите одно призвание. Оно даёт ответное действие поборника."
   },
   {
    "image": "SubClassLiberation.webp",
@@ -178,14 +132,7 @@ window.CHAMPION_DATA = {
    "rarity": "common",
    "sanct": null,
    "requires": [],
-   "prereqText": "",
-   "parentId": "group-cause",
-   "angle": -0.02136,
-   "r": 330,
-   "x": 329.9,
-   "y": -7,
-   "captionSide": "left",
-   "captionW": 0
+   "prereqText": ""
   },
   {
    "image": "SubClassRedemption.webp",
@@ -204,14 +151,7 @@ window.CHAMPION_DATA = {
      "sanct-holy"
     ]
    ],
-   "prereqText": "освящение «священный»",
-   "parentId": "group-cause",
-   "angle": -0.32952,
-   "r": 330,
-   "x": 312.2,
-   "y": -106.8,
-   "captionSide": "below-left",
-   "captionW": 0
+   "prereqText": "освящение «священный»"
   },
   {
    "image": "SubClassObedience.webp",
@@ -226,14 +166,7 @@ window.CHAMPION_DATA = {
    "rarity": "common",
    "sanct": null,
    "requires": [],
-   "prereqText": "",
-   "parentId": "group-cause",
-   "angle": 0.08136,
-   "r": 330,
-   "x": 328.9,
-   "y": 26.8,
-   "captionSide": "left",
-   "captionW": 0
+   "prereqText": ""
   },
   {
    "image": "SubClassInequality.webp",
@@ -252,14 +185,7 @@ window.CHAMPION_DATA = {
      "sanct-unholy"
     ]
    ],
-   "prereqText": "освящение «нечестивый»",
-   "parentId": "group-cause",
-   "angle": -0.2268,
-   "r": 330,
-   "x": 321.5,
-   "y": -74.2,
-   "captionSide": "left",
-   "captionW": 0
+   "prereqText": "освящение «нечестивый»"
   },
   {
    "image": "SubClassVelichie.webp",
@@ -278,14 +204,7 @@ window.CHAMPION_DATA = {
      "sanct-holy"
     ]
    ],
-   "prereqText": "освящение «священный»",
-   "parentId": "group-cause",
-   "angle": -0.12408,
-   "r": 330,
-   "x": 327.5,
-   "y": -40.8,
-   "captionSide": "right",
-   "captionW": 0
+   "prereqText": "освящение «священный»"
   },
   {
    "image": "SubClassDesecration.webp",
@@ -304,14 +223,7 @@ window.CHAMPION_DATA = {
      "sanct-unholy"
     ]
    ],
-   "prereqText": "освящение «нечестивый»",
-   "parentId": "group-cause",
-   "angle": -0.43224,
-   "r": 330,
-   "x": 299.6,
-   "y": -138.2,
-   "captionSide": "left",
-   "captionW": 0
+   "prereqText": "освящение «нечестивый»"
   },
   {
    "image": "SubClassJustice.webp",
@@ -326,14 +238,7 @@ window.CHAMPION_DATA = {
    "rarity": "common",
    "sanct": null,
    "requires": [],
-   "prereqText": "",
-   "parentId": "group-cause",
-   "angle": -0.53496,
-   "r": 330,
-   "x": 283.9,
-   "y": -168.2,
-   "captionSide": "above",
-   "captionW": 0
+   "prereqText": ""
   },
   {
    "image": "prayer.webp",
@@ -343,14 +248,7 @@ window.CHAMPION_DATA = {
    "level": 0,
    "branch": "devotion",
    "html": "Избранное вами божество наделяет вас особыми <a class=\"item-link quicklink link--popup item-link--rules\" data-key=\"rules/2228\" href=\"https://pf2.ru/rules/focus spells?rule=2228\">фокальными заклинаниями</a>, которые зовутся заклинаниями преданности. Выберите одно из заклинаний: либо духовные щиты, либо заклинание, зависящее от божественного источника вашего божества (возложение рук, если ваше божество допускает излечение, или касание пустоты, если ваше божество допускает повреждение).\nДля сотворения фокального заклинания требуется потратить.<br>\n1 ФП. Вначале ваш запас ФП равен 1. Вы восстанавливаете все ФП во время ежедневной подготовки, а также можете восстановить 1 ФП, если потратите 10 минут на занятие Фокусировка, чтобы помолиться своему божеству или совершить бого угодное деяние.<br>\nВаши заклинания преданности относятся к сакральной традиции. Ваша заклинательная характеристика — Харизма.\nФокальные заклинания автоматически повышаются до значения круга, равного половине вашего уровня (с округлением вверх). Фокальные заклинания не требуют использования ячеек заклинаний, сотворить их с помощью ячеек нельзя. Ваш максимум ФП равен числу известных вам фокальных заклинаний, но единовременно более 3 ФП у вас быть не может.",
-   "hint": "Выберите одно заклинание преданности.",
-   "parentId": "root",
-   "angle": 1.51944,
-   "r": 160,
-   "x": 8.2,
-   "y": 159.8,
-   "captionSide": "below-right",
-   "captionW": 0
+   "hint": "Выберите одно заклинание преданности."
   },
   {
    "image": "SpellLayOfHands.webp",
@@ -391,14 +289,7 @@ window.CHAMPION_DATA = {
     "Дистанция": "касание. <b>Цели:</b> 1 согласное живое существо или 1 существо-нежить"
    },
    "html": "Ваши руки наполняются энергией жизни, позволяя простым касанием исцелять раны живых и наносить урон <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/722\" href=\"https://pf2.ru/traits/undead\">нежити</a>.\n<br>\n<b>Живое согласное существо:</b> цель восстанавливает 6 ПЗ; если цель — не вы сами, она дополнительно получает бонус состояния +2 к КБ на 1 раунд.\n<br>\n<b>Существо-нежить:</b> цель получает 1d6 урона жизнью (обычное испытание Стойкости); при провале она также получает штраф состояния –2 к КБ на 1 раунд.\n<hr>\n<b>Повышенное (+1):</b> исцеление увеличивается на 6, урон нежити увеличивается на 1d6.",
-   "requires": [],
-   "parentId": "group-devotion",
-   "angle": 1.46808,
-   "r": 330,
-   "x": 33.8,
-   "y": 328.3,
-   "captionSide": "above-right",
-   "captionW": 0
+   "requires": []
   },
   {
    "image": "SpellShieldsOfTheSpirit.webp",
@@ -439,14 +330,7 @@ window.CHAMPION_DATA = {
     "Требования": "вы используете щит"
    },
    "html": "Вы <a class=\"item-link quicklink link--popup item-link--action\" data-key=\"action/2316\" href=\"https://pf2.ru/actions/raise a shield\">Поднимаете</a> щит, и в вашей ауре поборника начинают кружиться эфемерные призрачные щиты; этот эффект сохраняется до начала вашего следующего хода или пока ваш щит не перестанет быть поднят (смотря что случится раньше). Щиты дают бонус состояния +1 к КБ всем вашим союзникам в пределах вашей ауры поборника; всякий раз, когда враг атакует такого союзника, этот враг получает 1d4 урона духом (даже при промахе). <br>\nСоюзники получают преимущества, только пока остаются в пределах вашей ауры; эффект прекращает действовать на союзника, покинувшего ауру, и применяется к союзнику, который в неё входит. Вы сами не считаетесь своим союзником и не получаете описанных преимуществ.\n<hr>\n<b>Повышенное (+2):</b> урон увеличивается на 1d4.",
-   "requires": [],
-   "parentId": "group-devotion",
-   "angle": 2.03304,
-   "r": 330,
-   "x": -147.2,
-   "y": 295.4,
-   "captionSide": "below",
-   "captionW": 0
+   "requires": []
   },
   {
    "image": "SpellTouchOfCorruption.webp",
@@ -483,14 +367,7 @@ window.CHAMPION_DATA = {
     "Дистанция": "касание. <b>Цели:</b> 1 согласное существо-нежить или 1 живое существо"
    },
    "html": "Вы пропитываете цель энергией пустоты, чтобы исцелить <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/722\" href=\"https://pf2.ru/traits/undead\">нежить</a> или нанести урон живому существу.\n<ul>\n<li><b>Согласное существо-нежить:</b> цель восстанавливает 6 ПЗ; если цель — вы, вы также получаете бонус состояния +2 к броскам урона на 1 раунд. </li>\n<li><b>Живое существо:</b> цель получает 1d6 урона пустотой (обычное испытание Стойкости); при провале она также получает штраф состояния –2 к КБ на 1 раунд. </li>\n</ul>\n<hr>\n<b>Повышенное (+1):</b> исцеление увеличивается на 6, урон живым существам увеличивается на 1d6.",
-   "requires": [],
-   "parentId": "group-devotion",
-   "angle": 0.90312,
-   "r": 330,
-   "x": 204.3,
-   "y": 259.1,
-   "captionSide": "below",
-   "captionW": 0
+   "requires": []
   },
   {
    "image": "oath-of-defender.webp",
@@ -500,14 +377,7 @@ window.CHAMPION_DATA = {
    "level": 0,
    "branch": "blessing",
    "html": "Желая отметить вашу верную службу, божество преподносит вам свой дар. Этот дар может принимать самые различные формы: это может быть дух, который вселяется в ваши предметы или в вас самих, покрывающая ваше тело загадочная татуировка или что-то подобное. Выберите одно из перечисленных ниже благословений (или любое другое, к которому у вас есть доступ).\n<br>",
-   "hint": "Доступно с 3 уровня. Черта «Второе благословление» позволяет взять ещё одно.",
-   "parentId": "root",
-   "angle": 4.03607,
-   "r": 160,
-   "x": -100.1,
-   "y": -124.8,
-   "captionSide": "below-left",
-   "captionW": 0
+   "hint": "Доступно с 3 уровня. Черта «Второе благословление» позволяет взять ещё одно."
   },
   {
    "image": "DevWeapon.webp",
@@ -518,14 +388,7 @@ window.CHAMPION_DATA = {
    "level": 3,
    "branch": "blessing",
    "html": "выберите одно оружие (или <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/3086\" href=\"https://pf2.ru/equipment/handwraps of mighty blows\">повязки могучих ударов</a>). Вы получаете доступ к критическому эффекту этого оружия, а оружие получает эффекты атрибутивной руны из следующего перечня (на ваш выбор): <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2837\" href=\"https://pf2.ru/equipment/fearsome\">устрашающая</a>, <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2840\" href=\"https://pf2.ru/equipment/ghost touch\">призрачного касания</a>, <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2845\" href=\"https://pf2.ru/equipment/returning\">возвращающаяся</a>, <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2846\" href=\"https://pf2.ru/equipment/shifting\">изменчивая</a> или <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2852\" href=\"https://pf2.ru/equipment/vitalizing\">животворящая</a>. Во время ежедневной подготовки вы можете выбрать другое оружие, придать ему эффекты другой руны или и то и другое. Эта атрибутивная руна не идёт в счёт максимального количества атрибутивных рун, которые вы можете наложить на оружие.",
-   "requires": [],
-   "parentId": "group-blessing",
-   "angle": 4.13879,
-   "r": 330,
-   "x": -179.1,
-   "y": -277.2,
-   "captionSide": "below-right",
-   "captionW": 0
+   "requires": []
   },
   {
    "image": "DevShield.webp",
@@ -536,14 +399,7 @@ window.CHAMPION_DATA = {
    "level": 3,
    "branch": "blessing",
    "html": "пока вы держите в руках щит, он получает эффект низшей <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2811\" href=\"https://pf2.ru/equipment/reinforcing rune\">армированной руны</a>. По мере повышения вашего уровня армированная руна становится всё сильнее (малая на 7 уровне, средняя на 10 уровне, улучшенная на 13 уровне, высшая на 16 уровне и превосходная на 19 уровне). Если у вашего щита уже есть соответствующая вашему уровню армированная руна или если это <a class=\"item-link quicklink link--popup item-link--equipment\" data-key=\"equipment/2828\" href=\"https://pf2.ru/equipment/sturdy shield\">прочный щит</a> того же уровня, что и соответствующая армированная руна, вместо этого твёрдость щита увеличивается на 1.",
-   "requires": [],
-   "parentId": "group-blessing",
-   "angle": 3.77927,
-   "r": 330,
-   "x": -265.1,
-   "y": -196.5,
-   "captionSide": "right",
-   "captionW": 0
+   "requires": []
   },
   {
    "image": "DevProvornost.webp",
@@ -554,54 +410,124 @@ window.CHAMPION_DATA = {
    "level": 3,
    "branch": "blessing",
    "html": "вы получаете бонус состояния +5 футов к вашей скорости. Когда вы едете верхом, ваш скакун получает этот бонус вместо вас. Кроме того, когда в пределах вашей ауры поборника перемещение вашего союзника провоцирует ответное действие противника, этот союзник получает бонус состояния +2 ко всем защитам против этого ответного действия.",
+   "requires": []
+  },
+  {
+   "image": "brave.webp",
+   "id": "theme-cause",
+   "kind": "hub",
+   "name": "Призвание",
+   "level": 0,
+   "html": "Черты призвания и ответного действия поборника. Нужное призвание выбирается карточкой сверху.",
    "requires": [],
-   "parentId": "group-blessing",
-   "angle": 3.93335,
-   "r": 330,
-   "x": -231.9,
-   "y": -234.8,
-   "captionSide": "below",
-   "captionW": 0
+   "x": -1225,
+   "y": -300,
+   "captionSide": "right",
+   "captionW": 120
+  },
+  {
+   "image": "SpellLayOfHands.webp",
+   "id": "theme-devotion",
+   "kind": "hub",
+   "name": "Преданность",
+   "level": 0,
+   "html": "Черты заклинаний преданности: возложение рук, духовный щит, касание пустоты.",
+   "requires": [],
+   "x": -1052,
+   "y": 300,
+   "captionSide": "right",
+   "captionW": 147
+  },
+  {
+   "image": "oath-of-defender.webp",
+   "id": "theme-blessing",
+   "kind": "hub",
+   "name": "Благословение",
+   "level": 0,
+   "html": "Черты благословения верного: оружие, щит, скорость.",
+   "requires": [],
+   "x": 1225,
+   "y": -300,
+   "captionSide": "right",
+   "captionW": 170
   },
   {
    "image": "300px-Hunger_of_Hadar.webp",
-   "id": "feature-aura",
-   "kind": "feature",
-   "name": "Аура поборника",
-   "level": 1,
-   "branch": "aura",
-   "html": "Вас окутывает аура божественной энергии (15-футовая эманация), которая обладает дескрипторами <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/542\" href=\"https://pf2.ru/traits/aura\">«аура»</a> и <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/579\" href=\"https://pf2.ru/traits/divine\">«сакральный»</a>. Все оказавшиеся в пределах ауры последователи вашего божества немедленно понимают, что вы — поборник этого божества. Ответное действие поборника, как и многие другие эффекты, использует область действия ауры в качестве дистанции. Вы можете подавить или возобновить действие ауры при помощи одиночного действия с дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/561\" href=\"https://pf2.ru/traits/concentrate\">«концентрация»</a>. Если вы теряете сознание, аура исчезает.",
+   "id": "theme-aura",
+   "kind": "hub",
+   "name": "Ауры",
+   "level": 0,
+   "html": "Черты, усиливающие ауру поборника (она есть у каждого поборника с 1 уровня).",
    "requires": [],
-   "parentId": "root",
-   "angle": 2.90597,
-   "r": 330,
-   "x": -320.9,
-   "y": 77,
-   "captionSide": "below-right",
-   "captionW": 167
+   "x": -245,
+   "y": -300,
+   "captionSide": "right",
+   "captionW": 54
   },
   {
    "image": "shieldfeatsprotection.webp",
-   "id": "shield-block",
-   "kind": "feature",
-   "name": "Блок щитом",
-   "nameEn": "Shield Block",
-   "level": 1,
-   "branch": "shield",
-   "url": "https://pf2.ru/feats/shield%20block",
-   "fields": {
-    "Источник": "<a class=\"item-link quicklink item-link--source\" data-key=\"source/216\" href=\"https://pf2.ru/sources/player core\">Основная книга игрока</a>",
-    "Условие": "ваш щит поднят и вы должны получить физический урон (дробящий, колющий или режущий) от атаки"
-   },
-   "html": "Вы отражаете щитом удар. Ваш щит предотвращает урон в количестве вплоть до своей твёрдости. И вы, и щит получаете весь оставшийся урон, который может сломать или уничтожить щит.",
+   "id": "theme-shield",
+   "kind": "hub",
+   "name": "Щит",
+   "level": 0,
+   "html": "Черты для боя со щитом. Блок щитом есть у каждого поборника с 1 уровня.",
    "requires": [],
-   "parentId": "root",
-   "angle": 4.00553,
-   "r": 330,
-   "x": -214.3,
-   "y": -250.9,
-   "captionSide": "below-left",
-   "captionW": 119
+   "x": 735,
+   "y": -300,
+   "captionSide": "right",
+   "captionW": 40
+  },
+  {
+   "image": "Horse.webp",
+   "id": "theme-steed",
+   "kind": "hub",
+   "name": "Скакун",
+   "level": 0,
+   "html": "Верный скакун и его развитие.",
+   "requires": [],
+   "x": 553,
+   "y": 300,
+   "captionSide": "right",
+   "captionW": 80
+  },
+  {
+   "image": "prayer.webp",
+   "id": "theme-faith",
+   "kind": "hub",
+   "name": "Вера и клятвы",
+   "level": 0,
+   "html": "Домен божества, молитвы, клятвы.",
+   "requires": [],
+   "x": -62,
+   "y": 300,
+   "captionSide": "right",
+   "captionW": 170
+  },
+  {
+   "image": "Holy.webp",
+   "id": "theme-sanct",
+   "kind": "hub",
+   "name": "Освящение",
+   "level": 0,
+   "html": "Черты священных и нечестивых поборников.",
+   "requires": [],
+   "x": -735,
+   "y": -300,
+   "captionSide": "right",
+   "captionW": 120
+  },
+  {
+   "image": "fight.webp",
+   "id": "theme-combat",
+   "kind": "hub",
+   "name": "Бой",
+   "level": 0,
+   "html": "Боевые приёмы поборника.",
+   "requires": [],
+   "x": 245,
+   "y": -300,
+   "captionSide": "right",
+   "captionW": 40
   },
   {
    "image": "Horse.webp",
@@ -629,12 +555,11 @@ window.CHAMPION_DATA = {
    "html": "Вы получаете молодого <a class=\"item-link quicklink link--popup item-link--rules\" data-key=\"rules/2113\" href=\"https://pf2.ru/rules/animal companions?rule=2113\">верного зверя</a>, который служит вам скакуном. Если вы обладаете дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/517\" href=\"https://pf2.ru/traits/holy\">«священный»</a> и <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/521\" href=\"https://pf2.ru/traits/unholy\">«нечестивый»</a>, ваш скакун и все его Удары также получают этот дескриптор. Как правило, скакун — это верный зверь с особой способностью «скакун», например <a class=\"item-link quicklink item-link--animalcompanion\" data-key=\"animalcompanion/76\" href=\"https://pf2.ru/animalcompanions/horse\">лошадь</a>. С разрешения ведущего вы можете выбрать и другого верного зверя либо изменить его внешность таким образом, чтобы она лучше соответствовала вашему божеству.",
    "requires": [],
    "forbids": [],
-   "parentId": "spell-2047",
-   "angle": 0.86394,
-   "r": 620,
-   "x": 402.7,
-   "y": 471.5,
-   "captionSide": "above-left",
+   "parentId": "theme-steed",
+   "theme": "theme-steed",
+   "x": 678,
+   "y": 420,
+   "captionSide": "below",
    "captionW": 137
   },
   {
@@ -668,12 +593,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "cause-12",
-   "angle": -0.07854,
-   "r": 620,
-   "x": 618.1,
-   "y": -48.6,
-   "captionSide": "left",
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1100,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 116
   },
   {
@@ -707,12 +631,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "cause-14",
-   "angle": -1.02102,
-   "r": 620,
-   "x": 323.9,
-   "y": -528.6,
-   "captionSide": "below-right",
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1350,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 95
   },
   {
@@ -741,12 +664,11 @@ window.CHAMPION_DATA = {
    "html": "Вы воплощаете одну из сторон вашего божества. Выберите один\nиз доменов вашего божества. Вы получаете начальное заклинание выбранного домена в качестве заклинания преданности.",
    "requires": [],
    "forbids": [],
-   "parentId": "root",
-   "angle": 1.64934,
-   "r": 620,
-   "x": -48.6,
-   "y": 618.1,
-   "captionSide": "above",
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": 63,
+   "y": 420,
+   "captionSide": "below",
    "captionW": 147
   },
   {
@@ -780,11 +702,10 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "cause-13",
-   "angle": 0.23562,
-   "r": 620,
-   "x": 602.9,
-   "y": 144.7,
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1100,
+   "y": -540,
    "captionSide": "below",
    "captionW": 150
   },
@@ -819,12 +740,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "cause-10",
-   "angle": -0.70686,
-   "r": 620,
-   "x": 471.5,
-   "y": -402.7,
-   "captionSide": "right",
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1350,
+   "y": -540,
+   "captionSide": "below",
    "captionW": 147
   },
   {
@@ -861,12 +781,11 @@ window.CHAMPION_DATA = {
    "html": "Прикрывшись щитом, вы бросаетесь в самую гущу битвы. Вы <a class=\"item-link quicklink link--popup item-link--action\" data-key=\"action/2316\" href=\"https://pf2.ru/actions/raise a shield\">Поднимаете щит</a>, после чего совершаете Перемещение. Если вы завершаете перемещение таким образом, что в вашей зоне досягаемости ближнего боя оказывается хотя бы один враг, вы можете совершить по нему Удар в ближнем бою. Вы можете использовать эту черту при <a class=\"item-link quicklink link--popup item-link--action\" data-key=\"action/2374\" href=\"https://pf2.ru/actions/climb\">Лазании</a>, <a class=\"item-link quicklink link--popup item-link--action\" data-key=\"action/2381\" href=\"https://pf2.ru/actions/swim\">Плавании</a>, <a class=\"item-link quicklink link--popup item-link--action\" data-key=\"action/2312\" href=\"https://pf2.ru/actions/fly\">Полёте</a> или <a class=\"item-link quicklink link--popup item-link--action\" data-key=\"action/2310\" href=\"https://pf2.ru/actions/burrow\">Рытье</a> вместо Перемещения, если у вас есть соответствующий тип перемещения.",
    "requires": [],
    "forbids": [],
-   "parentId": "shield-block",
-   "angle": 3.69137,
-   "r": 620,
-   "x": -528.6,
-   "y": -323.9,
-   "captionSide": "right",
+   "parentId": "theme-shield",
+   "theme": "theme-shield",
+   "x": 860,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -900,12 +819,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "cause-9",
-   "angle": -0.3927,
-   "r": 620,
-   "x": 572.8,
-   "y": -237.3,
-   "captionSide": "above",
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1100,
+   "y": -660,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -936,12 +854,11 @@ window.CHAMPION_DATA = {
    "html": "В надежде на спасение вы взываете к своему божеству. Вы немедленно восстанавливаете 1 ФП, который можете потратить только на заклинание преданности. Если вы не потратите этот ФП до конца хода, он пропадает.",
    "requires": [],
    "forbids": [],
-   "parentId": "root",
-   "angle": 2.59181,
-   "r": 620,
-   "x": -528.6,
-   "y": 323.9,
-   "captionSide": "above",
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": -187,
+   "y": 420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -975,12 +892,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "cause-8",
-   "angle": -1.33518,
-   "r": 620,
-   "x": 144.7,
-   "y": -602.9,
-   "captionSide": "right",
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1350,
+   "y": -660,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1014,11 +930,10 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "cause-11",
-   "angle": 4.63385,
-   "r": 620,
-   "x": -48.6,
-   "y": -618.1,
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1100,
+   "y": -780,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1052,12 +967,11 @@ window.CHAMPION_DATA = {
    "html": "Ваша вера в ваше божество выражена крайне необычным образом, который некоторые могли бы назвать еретическим. При выборе этой черты вам следует определить основные принципы вашего отколовшегося вероучения, хотя оно не должно затрагивать наказы или анафемы божества. Выберите четыре домена. Эти домены должны быть выбраны из числа доменов вашего божества, альтернативных доменов вашего божества, а также не более одного домена, который не входит ни в один из этих списков и не является анафемой для вашего божества. Любое заклинание домена, которое вы сотворяете из домена, отсутствующего в списках вашего божества, всегда поднимается на 1 ранг ниже обычного для заклинания фокуса. Для целей способностей, зависящих от доменов вашего божества, четыре выбранных вами домена считаются доменами вашего божества, а любые домены вашего божества, которые вы не выбрали, теперь относятся к его альтернативным доменам.<br>\n<b>Примечание:</b> если вы не брали это умение на 1 уровне, изменение способа связи с вашим божеством требует переобучения, как написано в разделе <a class=\"item-link quicklink link--popup item-link--rules\" data-key=\"rules/3350\" href=\"https://pf2.ru/rules/changing faith?rule=3350\">смена верований</a>. Если вы берёте эту черту и ранее получали преимущество от любого эффекта, требующего домена, например <a class=\"item-link quicklink link--popup item-link--feat\" data-key=\"feat/4644\" href=\"https://pf2.ru/feats/domain initiate\">Начальное заклинание домена</a>, вы теряете этот эффект.<br>\nНа усмотрение Ведущего, вы можете взять это умение с другими классами или архетипами, которые получают доступ к доменам через божество.",
    "requires": [],
    "forbids": [],
-   "parentId": "feat-5883",
-   "angle": 0.54978,
-   "r": 620,
-   "x": 528.6,
-   "y": 323.9,
-   "captionSide": "above-left",
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": 63,
+   "y": 540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1087,12 +1001,11 @@ window.CHAMPION_DATA = {
    "html": "Вы взываете к божественной милости и получаете ситуативный бонус +2 к испытанию.",
    "requires": [],
    "forbids": [],
-   "parentId": "root",
-   "angle": 1.33518,
-   "r": 825,
-   "x": 192.6,
-   "y": 802.2,
-   "captionSide": "above",
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": -187,
+   "y": 540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1121,11 +1034,10 @@ window.CHAMPION_DATA = {
    "html": "Благодаря вере вы устойчивы к болезням, она защищает вас, когда вы ухаживаете за больными. Вы получаете бонус состояния +2 к испытаниям против <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/578\" href=\"https://pf2.ru/traits/disease\">болезней</a> и <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/669\" href=\"https://pf2.ru/traits/poison\">ядов</a>, а также к чистым проверкам на восстановление от <a class=\"item-link quicklink link--popup item-link--condition\" data-key=\"condition/86\" href=\"https://pf2.ru/conditions/persistent damage\">продолжительного урона</a> ядом. Союзники в вашей ауре поборника получают аналогичное преимущество, но бонус уменьшается до +1.<br>\nКроме того, если вы получаете успех в испытании против болезни или яда, он считается для вас критическим успехом (союзники это преимущество не получают). Если у вас есть классовая особенность благословенное тело, то когда вы получаете критический провал в испытании против болезни или яда, он считается для вас обычным провалом.",
    "requires": [],
    "forbids": [],
-   "parentId": "root",
-   "angle": 2.43473,
-   "r": 825,
-   "x": -627.3,
-   "y": 535.8,
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": 63,
+   "y": 660,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1159,12 +1071,11 @@ window.CHAMPION_DATA = {
    "html": "Во время вашей ежедневной подготовки, вы можете дать клятву защиты от определённого вида врагов во время ваших подвигов в этот день. Выберите <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/523\" href=\"https://pf2.ru/traits/aberration\">аберрация</a>, <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/551\" href=\"https://pf2.ru/traits/celestial\">небожитель</a>, <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/581\" href=\"https://pf2.ru/traits/dragon\">дракон</a>, <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/600\" href=\"https://pf2.ru/traits/fiend\">бестия</a>, или <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/722\" href=\"https://pf2.ru/traits/undead\">нежить</a>. Вы не можете выбрать <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/551\" href=\"https://pf2.ru/traits/celestial\">небожителя</a> если вы <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/517\" href=\"https://pf2.ru/traits/holy\">священный</a>, как и не можете выбрать <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/600\" href=\"https://pf2.ru/traits/fiend\">бестию</a> если вы <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/521\" href=\"https://pf2.ru/traits/unholy\">нечестивый</a>. Вы получаете наказ защиты против выбранного типа существ.<br>\nСоюзники в вашей ауре поборника, не включая вас, получают <a class=\"item-link quicklink link--popup item-link--rules\" data-key=\"rules/2312\" href=\"https://pf2.ru/rules/immunity, weakness, and resistance?rule=2312\">устойчивость</a> 2 на урон наносимый существом с выбранным дескриптором. Если такое существо наносит более одного типа урона одновременно, применяйте это сопротивление только к наибольшему количеству урона. Значение устойчивости повышается до 3 на 7 уровне, 4 на 12 уровне, и 5 на 17 уровне. Если существо с выбранным дескриптором вызывает реакцию вашего поборника, а реакция вашего поборника обеспечивает <a class=\"item-link quicklink link--popup item-link--rules\" data-key=\"rules/2312\" href=\"https://pf2.ru/rules/immunity, weakness, and resistance?rule=2312\">устойчивость</a> к спровоцировавшему урону, сопротивление увеличивается на 5.",
    "requires": [],
    "forbids": [],
-   "parentId": "root",
-   "angle": 4.31969,
-   "r": 825,
-   "x": -315.7,
-   "y": -762.2,
-   "captionSide": "below-right",
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": -187,
+   "y": 660,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1197,12 +1108,11 @@ window.CHAMPION_DATA = {
    "html": "Вы поклялись покарать любую увиденную вами мерзость. Вы получаете наказ: «Выслеживать тех, кто причинил вред невинным или совершил отвратительные злодеяния». Когда вы видите, как существо причиняет вред союзнику, невинному или не участвующему в бою, вы можете призвать свою клятву против этого существа. Как и речь, это не требует действия. Большинство поборников предпочитают призывать такие клятвы вслух, если это возможно. Призыв действует неопределённо долго, хотя вы можете прекратить его, если будете удовлетворены тем, что цель исправилась, искупила вину или была прощена.<br>\nВы можете использовать <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2047\" href=\"https://pf2.ru/spells/lay on hands\">возложение рук</a> чтобы нанести урон существу, против которого вы призвали свою клятву, как если бы оно было <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/722\" href=\"https://pf2.ru/traits/undead\">нежитью</a>; в этом случае возложение рук наносит урон <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/737\" href=\"https://pf2.ru/traits/spirit\">духом</a> вместо урона <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/509\" href=\"https://pf2.ru/traits/vitality\">жизнненой</a> энергии, получает дескриптор дух, и теряет дескриптор жизнь. Это не мешает вам исцелить такое существо с помощью <i>Возложения рук</i>, если вы того пожелаете.",
    "requires": [],
    "forbids": [],
-   "parentId": "root",
-   "angle": -1.49226,
-   "r": 825,
-   "x": 64.7,
-   "y": -822.5,
-   "captionSide": "below-right",
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": 63,
+   "y": 780,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1235,11 +1145,10 @@ window.CHAMPION_DATA = {
    "html": "Во время ежедневной подготовки, вы клянётесь победить, свергнуть или уничтожить определённый род врагов во время ваших подвигов в этот день. Выберите <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/523\" href=\"https://pf2.ru/traits/aberration\">аберрация</a>, <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/551\" href=\"https://pf2.ru/traits/celestial\">небожитель</a>, <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/581\" href=\"https://pf2.ru/traits/dragon\">дракон</a>, <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/600\" href=\"https://pf2.ru/traits/fiend\">бестия</a>, или <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/722\" href=\"https://pf2.ru/traits/undead\">нежить</a>. Вы не можете выбрать небожителей еслы вы <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/517\" href=\"https://pf2.ru/traits/holy\">священный</a>, как и не можете выбрать бестий если вы <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/521\" href=\"https://pf2.ru/traits/unholy\">нечестивый</a>. Вы получаете наказ об изгнании или убийстве существ такого рода.<br>\nВаш <a class=\"item-link quicklink link--popup item-link--action\" data-key=\"action/2306\" href=\"https://pf2.ru/actions/strike\">Удар</a> и заклинания преданности которые наносят урон, наносят дополнительный 1 урон <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/737\" href=\"https://pf2.ru/traits/spirit\">духом</a> против существ с выбранным дескриптором. Это урон увеличивается до 2 на 7 уровне и 3 на 14 уровне. Если существо с выбранным дескриптором провоцирует вашу реакцию поборника, этот урон удваивается до конца вашего следующего хода.",
    "requires": [],
    "forbids": [],
-   "parentId": "root",
-   "angle": -1.02102,
-   "r": 825,
-   "x": 431.1,
-   "y": -703.4,
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": -187,
+   "y": 780,
    "captionSide": "below",
    "captionW": 137
   },
@@ -1271,18 +1180,14 @@ window.CHAMPION_DATA = {
    "requires": [
     [
      "sanct-holy"
-    ],
-    [
-     "feature-aura"
     ]
    ],
    "forbids": [],
-   "parentId": "feature-aura",
-   "angle": 2.12058,
-   "r": 1030,
-   "x": -538.2,
-   "y": 878.2,
-   "captionSide": "above-right",
+   "parentId": "theme-aura",
+   "theme": "theme-aura",
+   "x": -120,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 116
   },
   {
@@ -1313,18 +1218,14 @@ window.CHAMPION_DATA = {
    "requires": [
     [
      "sanct-unholy"
-    ],
-    [
-     "feature-aura"
     ]
    ],
    "forbids": [],
-   "parentId": "feature-aura",
-   "angle": 3.69137,
-   "r": 1030,
-   "x": -878.2,
-   "y": -538.2,
-   "captionSide": "above",
+   "parentId": "theme-aura",
+   "theme": "theme-aura",
+   "x": -370,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 137
   },
   {
@@ -1358,12 +1259,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "spell-2049",
-   "angle": 2.43473,
-   "r": 1030,
-   "x": -783.2,
-   "y": 668.9,
-   "captionSide": "above-left",
+   "parentId": "theme-devotion",
+   "theme": "theme-devotion",
+   "x": -927,
+   "y": 420,
+   "captionSide": "below",
    "captionW": 126
   },
   {
@@ -1397,12 +1297,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "spell-2048",
-   "angle": -0.23562,
-   "r": 1030,
-   "x": 1001.5,
-   "y": -240.4,
-   "captionSide": "below-left",
+   "parentId": "theme-devotion",
+   "theme": "theme-devotion",
+   "x": -1177,
+   "y": 420,
+   "captionSide": "below",
    "captionW": 137
   },
   {
@@ -1437,12 +1336,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "spell-2047",
-   "angle": 2.27765,
-   "r": 1030,
-   "x": -668.9,
-   "y": 783.2,
-   "captionSide": "above-left",
+   "parentId": "theme-devotion",
+   "theme": "theme-devotion",
+   "x": -927,
+   "y": 540,
+   "captionSide": "below",
    "captionW": 105
   },
   {
@@ -1477,11 +1375,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 0.07854,
-   "r": 1030,
-   "x": 1026.8,
-   "y": 80.8,
-   "captionSide": "below-right",
+   "theme": "theme-steed",
+   "x": 928,
+   "y": 420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1516,11 +1413,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 1.1781,
-   "r": 1235,
-   "x": 472.6,
-   "y": 1141,
-   "captionSide": "right",
+   "theme": "theme-steed",
+   "x": 928,
+   "y": 540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1575,12 +1471,11 @@ window.CHAMPION_DATA = {
    "html": "Вы замечаете, что враг уязвим, и атакуете его. Совершите Удар\nв ближнем бою по существу, спровоцировавшему его своими действиями. Если это критический удар, а спровоцировало его действие с дескриптором «манипуляция», вы срываете это действие. Данный Удар не учитывается при определении штрафа за последовательные атаки, также к нему не применяется этот штраф.",
    "requires": [],
    "forbids": [],
-   "parentId": "group-cause",
-   "angle": -0.07854,
-   "r": 1235,
-   "x": 1231.2,
-   "y": -96.9,
-   "captionSide": "above",
+   "parentId": "theme-combat",
+   "theme": "theme-combat",
+   "x": 370,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1612,18 +1507,13 @@ window.CHAMPION_DATA = {
     "Критерии": "аура поборника"
    },
    "html": "Вы расширяете влияние своей сакральной силы. Радиус вашей ауры увеличивается до 30 футов до начала вашего следующего хода. Начиная с 10 уровня расширение длится 1 минуту, а начиная с 16 уровня — до тех пор, пока вы не Прекратите его действие.",
-   "requires": [
-    [
-     "feature-aura"
-    ]
-   ],
+   "requires": [],
    "forbids": [],
-   "parentId": "feature-aura",
-   "angle": 3.22013,
-   "r": 1235,
-   "x": -1231.2,
-   "y": -96.9,
-   "captionSide": "above",
+   "parentId": "theme-aura",
+   "theme": "theme-aura",
+   "x": -120,
+   "y": -540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1656,12 +1546,11 @@ window.CHAMPION_DATA = {
    "html": "Вы выделяете одного врага, которого собираетесь сразить во славу вашего божества. Выберите одного противника, которого вы можете видеть. До начала вашего следующего хода все ваши Удары по этому противнику получают бонус состояния +3 к урону (+4, если вы умелы в этом оружии или безоружной атаке, которыми совершаете Удар, на мастерском уровне). Если вы обладаете дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/517\" href=\"https://pf2.ru/traits/holy\">«священный»</a> или <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/521\" href=\"https://pf2.ru/traits/unholy\">«нечестивый»</a>, а цель — противоположным, бонус увеличивается до +4 (+5, если вы умелы на мас терском уровне).<br>\nЕсли до начала вашего следующего хода цель совершает враждебное действие против вас или вашего союзника, длительность эффекта продлевается до конца следующего хода этого противника. Если противник продолжает совершать враждебные действия каждый ход, длительность эффекта продолжает продлеваться. Если вы используете Сокрушение снова, ваше текущее Сокрушение немедленно прекращается.",
    "requires": [],
    "forbids": [],
-   "parentId": "group-cause",
-   "angle": -0.23562,
-   "r": 1235,
-   "x": 1200.9,
-   "y": -288.3,
-   "captionSide": "above",
+   "parentId": "theme-combat",
+   "theme": "theme-combat",
+   "x": 120,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 105
   },
   {
@@ -1700,19 +1589,15 @@ window.CHAMPION_DATA = {
    "html": "Когда ваш щит поднят, вы можете использовать ответное действие Блок щитом, если атака совершена по союзнику рядом с вами. В этом случае щит защищает от урона не вас, а союзника, согласно обычным правилам Блока щитом.",
    "requires": [
     [
-     "shield-block"
-    ],
-    [
      "blessing-shield"
     ]
    ],
    "forbids": [],
-   "parentId": "shield-block",
-   "angle": 4.00553,
-   "r": 1235,
-   "x": -802.1,
-   "y": -939.1,
-   "captionSide": "right",
+   "parentId": "theme-blessing",
+   "theme": "theme-blessing",
+   "x": 1350,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 95
   },
   {
@@ -1745,18 +1630,13 @@ window.CHAMPION_DATA = {
     "Критерии": "<span class=\"rhombus-wrap\">"
    },
    "html": "Вы почти мгновенно отражаете щитом удары. В начале каждого своего хода вы получаете дополнительное ответное действие, которое можете использовать только для Блока щитом.",
-   "requires": [
-    [
-     "shield-block"
-    ]
-   ],
+   "requires": [],
    "forbids": [],
-   "parentId": "shield-block",
-   "angle": 4.31969,
-   "r": 1440,
-   "x": -551.1,
-   "y": -1330.4,
-   "captionSide": "above-left",
+   "parentId": "theme-shield",
+   "theme": "theme-shield",
+   "x": 610,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1790,12 +1670,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "group-blessing",
-   "angle": 3.53429,
-   "r": 1440,
-   "x": -1330.4,
-   "y": -551.1,
-   "captionSide": "right",
+   "parentId": "theme-blessing",
+   "theme": "theme-blessing",
+   "x": 1100,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1833,11 +1712,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 0.86394,
-   "r": 1440,
-   "x": 935.2,
-   "y": 1095,
-   "captionSide": "right",
+   "theme": "theme-steed",
+   "x": 928,
+   "y": 660,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1872,10 +1750,9 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5883",
-   "angle": 1.33518,
-   "r": 1440,
-   "x": 336.2,
-   "y": 1400.2,
+   "theme": "theme-faith",
+   "x": 313,
+   "y": 420,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1911,11 +1788,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5898",
-   "angle": 2.43473,
-   "r": 1440,
-   "x": -1095,
-   "y": 935.2,
-   "captionSide": "below-left",
+   "theme": "theme-devotion",
+   "x": -677,
+   "y": 420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1950,11 +1826,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5896",
-   "angle": -0.3927,
-   "r": 1440,
-   "x": 1330.4,
-   "y": -551.1,
-   "captionSide": "below-right",
+   "theme": "theme-devotion",
+   "x": -1427,
+   "y": 420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -1990,11 +1865,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5897",
-   "angle": 2.27765,
-   "r": 1440,
-   "x": -935.2,
-   "y": 1095,
-   "captionSide": "above-left",
+   "theme": "theme-devotion",
+   "x": -677,
+   "y": 540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2024,12 +1898,11 @@ window.CHAMPION_DATA = {
    "html": "В присутствии порочного вас начинает подташнивать или становится тревожно на душе. Вы можете почувствовать присутствие существа с дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/521\" href=\"https://pf2.ru/traits/unholy\">нечестивый</a> на расстоянии 120 футов от себя. Эта способность работает как дополнительный способ восприятия и чем-то напоминает человеческое обоняние. Если нечестивое существо использует маскировку или иным способом пытается скрыть своё присутствие, оно должно совершить проверку Обмана против вашей СЛ Внимания, чтобы спрятать своё освящение от вас. Если проверка существа успешна, оно временно невосприимчиво к вашему Чувству нечестивости на 1 день.",
    "requires": [],
    "forbids": [],
-   "parentId": "sanct-unholy",
-   "angle": -1.33518,
-   "r": 1440,
-   "x": 336.2,
-   "y": -1400.2,
-   "captionSide": "below-right",
+   "parentId": "theme-sanct",
+   "theme": "theme-sanct",
+   "x": -610,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2058,12 +1931,11 @@ window.CHAMPION_DATA = {
    "html": "В присутствии добра вас начинает подташнивать от его приторного самодовольства. Вы способны почувствовать существо с дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/517\" href=\"https://pf2.ru/traits/holy\">священный</a> в радиусе 120 футов от вас. Эта способность работает как дополнительный способ восприятия и чем-то напоминает человеческое обоняние. Если священное существо использует маскировку или иным способом пытается скрыть своё присутствие, то оно должно пройти проверку Обмана против вашей СЛ Внимания, чтобы спрятать своё освящение от вас. Если проверка существа успешна, оно временно невосприимчиво к вашему Чувству святости на 1 день.",
    "requires": [],
    "forbids": [],
-   "parentId": "sanct-holy",
-   "angle": -0.23562,
-   "r": 1440,
-   "x": 1400.2,
-   "y": -336.2,
-   "captionSide": "above-left",
+   "parentId": "theme-sanct",
+   "theme": "theme-sanct",
+   "x": -860,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2103,11 +1975,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 1.02102,
-   "r": 1440,
-   "x": 752.4,
-   "y": 1227.8,
-   "captionSide": "above-right",
+   "theme": "theme-steed",
+   "x": 928,
+   "y": 780,
+   "captionSide": "below",
    "captionW": 84
   },
   {
@@ -2142,11 +2013,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5900",
-   "angle": 1.1781,
-   "r": 1645,
-   "x": 629.5,
-   "y": 1519.8,
-   "captionSide": "above-right",
+   "theme": "theme-steed",
+   "x": 1178,
+   "y": 540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2192,12 +2062,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "blessing-swiftness",
-   "angle": 3.84845,
-   "r": 1645,
-   "x": -1250.9,
-   "y": -1068.3,
-   "captionSide": "below-left",
+   "parentId": "theme-blessing",
+   "theme": "theme-blessing",
+   "x": 1100,
+   "y": -540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2231,12 +2100,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "blessing-armament",
-   "angle": 4.63385,
-   "r": 1645,
-   "x": -129.1,
-   "y": -1639.9,
-   "captionSide": "above-left",
+   "parentId": "theme-blessing",
+   "theme": "theme-blessing",
+   "x": 1350,
+   "y": -660,
+   "captionSide": "below",
    "captionW": 147
   },
   {
@@ -2276,11 +2144,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-4807",
-   "angle": 4.00553,
-   "r": 1645,
-   "x": -1068.3,
-   "y": -1250.9,
-   "captionSide": "right",
+   "theme": "theme-blessing",
+   "x": 1600,
+   "y": -420,
+   "captionSide": "below",
    "captionW": 126
   },
   {
@@ -2315,12 +2182,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "group-sanct",
-   "angle": 4.47677,
-   "r": 1850,
-   "x": -431.9,
-   "y": -1798.9,
-   "captionSide": "right",
+   "parentId": "theme-aura",
+   "theme": "theme-aura",
+   "x": -370,
+   "y": -540,
+   "captionSide": "below",
    "captionW": 95
   },
   {
@@ -2362,12 +2228,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "group-cause",
-   "angle": 0.3927,
-   "r": 1850,
-   "x": 1709.2,
-   "y": 708,
-   "captionSide": "left",
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1350,
+   "y": -780,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2402,11 +2267,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 0.23562,
-   "r": 1850,
-   "x": 1798.9,
-   "y": 431.9,
-   "captionSide": "right",
+   "theme": "theme-steed",
+   "x": 928,
+   "y": 900,
+   "captionSide": "below",
    "captionW": 147
   },
   {
@@ -2436,12 +2300,11 @@ window.CHAMPION_DATA = {
    "html": "Вы пользуетесь щитом, чтобы преграждать путь противникам, не давая им отступить от вас или обойти вас. Все клетки рядом с вами считаются для ваших противников пересечённой местностью.",
    "requires": [],
    "forbids": [],
-   "parentId": "shield-block",
-   "angle": 3.37721,
-   "r": 1850,
-   "x": -1798.9,
-   "y": -431.9,
-   "captionSide": "below-right",
+   "parentId": "theme-shield",
+   "theme": "theme-shield",
+   "x": 860,
+   "y": -540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2477,11 +2340,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5897",
-   "angle": 2.12058,
-   "r": 1850,
-   "x": -966.6,
-   "y": 1577.4,
-   "captionSide": "below-right",
+   "theme": "theme-devotion",
+   "x": -677,
+   "y": 660,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2521,11 +2383,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5885",
-   "angle": 0.54978,
-   "r": 1850,
-   "x": 1577.4,
-   "y": 966.6,
-   "captionSide": "above-right",
+   "theme": "theme-steed",
+   "x": 928,
+   "y": 1020,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2564,11 +2425,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-7518",
-   "angle": -1.49226,
-   "r": 1850,
-   "x": 145.1,
-   "y": -1844.3,
-   "captionSide": "above",
+   "theme": "theme-faith",
+   "x": -437,
+   "y": 660,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2600,12 +2460,11 @@ window.CHAMPION_DATA = {
    "forbids": [
     "sanct-unholy"
    ],
-   "parentId": "group-cause",
-   "angle": -0.70686,
-   "r": 1850,
-   "x": 1406.8,
-   "y": -1201.5,
-   "captionSide": "above-right",
+   "parentId": "theme-combat",
+   "theme": "theme-combat",
+   "x": 370,
+   "y": -540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2639,12 +2498,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "group-devotion",
-   "angle": 2.27765,
-   "r": 1850,
-   "x": -1201.5,
-   "y": 1406.8,
-   "captionSide": "above-left",
+   "parentId": "theme-devotion",
+   "theme": "theme-devotion",
+   "x": -1177,
+   "y": 540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2681,12 +2539,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "group-cause",
-   "angle": 1.02102,
-   "r": 1850,
-   "x": 966.6,
-   "y": 1577.4,
-   "captionSide": "left",
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1100,
+   "y": -900,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2715,17 +2572,12 @@ window.CHAMPION_DATA = {
     "Требования": "аура поборника"
    },
    "html": "Ваша аура защищает от сил Пустоты. Вы и все союзники в вашей ауре поборника получаете устойчивость 5 к урону пустотой и бонус состояния +1 к испытаниям против эффектов с дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/510\" href=\"https://pf2.ru/traits/void\">«пустота»</a>.",
-   "requires": [
-    [
-     "feature-aura"
-    ]
-   ],
+   "requires": [],
    "forbids": [],
-   "parentId": "feature-aura",
-   "angle": 2.90597,
-   "r": 2055,
-   "x": -1998.2,
-   "y": 479.7,
+   "parentId": "theme-aura",
+   "theme": "theme-aura",
+   "x": -120,
+   "y": -660,
    "captionSide": "below",
    "captionW": 105
   },
@@ -2757,18 +2609,14 @@ window.CHAMPION_DATA = {
    "requires": [
     [
      "sanct-holy"
-    ],
-    [
-     "feature-aura"
     ]
    ],
    "forbids": [],
-   "parentId": "feature-aura",
-   "angle": 2.74889,
-   "r": 2055,
-   "x": -1898.6,
-   "y": 786.4,
-   "captionSide": "below-right",
+   "parentId": "theme-aura",
+   "theme": "theme-aura",
+   "x": -370,
+   "y": -660,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2797,18 +2645,13 @@ window.CHAMPION_DATA = {
     "Требования": "аура поборника"
    },
    "html": "Ваша аура защищает от сил, искажающих разум и тело. Вы и все союзники в вашей ауре поборника получаете бонус состояния +1\nк испытаниям против эффектов с дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/647\" href=\"https://pf2.ru/traits/mental\">«ментальный»</a>, <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/657\" href=\"https://pf2.ru/traits/morph\">«метаморфоза»</a> и <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/670\" href=\"https://pf2.ru/traits/polymorph\">«полиморф»</a>.",
-   "requires": [
-    [
-     "feature-aura"
-    ]
-   ],
+   "requires": [],
    "forbids": [],
-   "parentId": "feature-aura",
-   "angle": 3.06305,
-   "r": 2055,
-   "x": -2048.7,
-   "y": 161.2,
-   "captionSide": "above-left",
+   "parentId": "theme-aura",
+   "theme": "theme-aura",
+   "x": -120,
+   "y": -780,
+   "captionSide": "below",
    "captionW": 147
   },
   {
@@ -2837,12 +2680,11 @@ window.CHAMPION_DATA = {
    "html": "В начале каждого своего хода вы получаете дополнительное ответное действие, использовать которое можете только для совершения ответного действия поборника.",
    "requires": [],
    "forbids": [],
-   "parentId": "root",
-   "angle": 1.02102,
-   "r": 2055,
-   "x": 1073.7,
-   "y": 1752.2,
-   "captionSide": "above-left",
+   "parentId": "theme-combat",
+   "theme": "theme-combat",
+   "x": 120,
+   "y": -540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2871,11 +2713,10 @@ window.CHAMPION_DATA = {
    "html": "Вы улучшаете своё возвышенное ответное действие, получая следующие преимущества в зависимости от вашего призвания.<br>\n<b>Осквернение:</b> пока у вас есть преимущество, вы также получаете бонус состояния +2 к испытаниям против эффектов, сотворяемых врагами в ауре Поборника.<br>\n<b>Величие:</b> любой <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1653\" href=\"https://pf2.ru/spells/revealing light\">озаряющий свет</a>, сотворённый вашим Проблеском величия, длится 1 минуту.<br>\n<b>Несправедливость:</b> урон, наносимый врагам, не являющихся спровоцировавшими существами, увеличивается на величину, равную кости урона  Разрушительной мести (примените его после того, как уменьшите урон вдвое).<br>\n<b>Справедливость:</b> штраф –2 вместо –5.<br>\n<b>Освобождение:</b> вы и все находящиеся под эффектом союзники можете попытаться <a class=\"item-link quicklink link--popup item-link--action\" data-key=\"action/3009\" href=\"https://pf2.ru/actions/break free\">вырваться</a>, а не только спровоцировавший союзник.<br>\n<b>Послушание:</b> урон, наносимый существам, отличным от спровоцированных и отказывающихся быть <a class=\"item-link quicklink link--popup item-link--condition\" data-key=\"condition/88\" href=\"https://pf2.ru/conditions/prone\">распластанными</a>, увеличивается до половины урона, который получило бы спровоцировавшее существо (бросьте кость урона только один раз против всех спровоцировавшихся существ).<br>\n<b>Искупление:</b> устойчивость не снижается.",
    "requires": [],
    "forbids": [],
-   "parentId": "root",
-   "angle": -1.33518,
-   "r": 2055,
-   "x": 479.7,
-   "y": -1998.2,
+   "parentId": "theme-combat",
+   "theme": "theme-combat",
+   "x": 370,
+   "y": -660,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2911,10 +2752,9 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5914",
-   "angle": 0.23562,
-   "r": 2260,
-   "x": 2197.6,
-   "y": 527.6,
+   "theme": "theme-cause",
+   "x": -1600,
+   "y": -780,
    "captionSide": "below",
    "captionW": 116
   },
@@ -2951,12 +2791,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "group-cause",
-   "angle": 0.07854,
-   "r": 2260,
-   "x": 2253,
-   "y": 177.3,
-   "captionSide": "below-left",
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1350,
+   "y": -900,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -2991,11 +2830,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5908",
-   "angle": 1.1781,
-   "r": 2260,
-   "x": 864.9,
-   "y": 2088,
-   "captionSide": "above-right",
+   "theme": "theme-steed",
+   "x": 1428,
+   "y": 540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -3030,11 +2868,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-4807",
-   "angle": 3.84845,
-   "r": 2260,
-   "x": -1718.5,
-   "y": -1467.8,
-   "captionSide": "right",
+   "theme": "theme-blessing",
+   "x": 1600,
+   "y": -540,
+   "captionSide": "below",
    "captionW": 147
   },
   {
@@ -3069,12 +2906,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "spell-2047",
-   "angle": 0.23562,
-   "r": 2465,
-   "x": 2396.9,
-   "y": 575.4,
-   "captionSide": "below-left",
+   "parentId": "theme-devotion",
+   "theme": "theme-devotion",
+   "x": -1177,
+   "y": 660,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -3108,12 +2944,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "group-cause",
-   "angle": 0.3927,
-   "r": 2465,
-   "x": 2277.4,
-   "y": 943.3,
-   "captionSide": "left",
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1100,
+   "y": -1020,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -3149,11 +2984,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5897",
-   "angle": 1.80642,
-   "r": 2465,
-   "x": -575.4,
-   "y": 2396.9,
-   "captionSide": "below-right",
+   "theme": "theme-devotion",
+   "x": -677,
+   "y": 780,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -3190,11 +3024,10 @@ window.CHAMPION_DATA = {
    ],
    "forbids": [],
    "parentId": "feat-5884",
-   "angle": 2.59181,
-   "r": 2465,
-   "x": -2101.8,
-   "y": 1288,
-   "captionSide": "below-left",
+   "theme": "theme-faith",
+   "x": -437,
+   "y": 420,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -3223,12 +3056,11 @@ window.CHAMPION_DATA = {
    "html": "Вы становитесь похожи на одну из <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/600\" href=\"https://pf2.ru/traits/fiend\">бестий</a>, служащих вашему <a class=\"item-link quicklink link--popup item-link--rules\" data-key=\"rules/2048\" href=\"https://pf2.ru/rules/deity?rule=2048\">божеству</a>. Например,  вы стали похожи на <a class=\"item-link quicklink item-link--monsterfamily\" data-key=\"monsterfamily/387\" href=\"https://pf2.ru/monsterfamilies/demon\">Демона</a>: у вас появится чешуя, витые рога и красные глаза. Вы получаете скорость полёта, равную вашей Скорости. Вы получаете ночное зрение (если у вас его не было), а также дескриптор бестия и дескриптор типа существа, которым вы стали (например, <a class=\"item-link quicklink item-link--monsterfamily\" data-key=\"monsterfamily/386\" href=\"https://pf2.ru/monsterfamilies/daemon\">Даймон</a>, Демон или <a class=\"item-link quicklink item-link--monsterfamily\" data-key=\"monsterfamily/389\" href=\"https://pf2.ru/monsterfamilies/devil\">Дьявол</a>).",
    "requires": [],
    "forbids": [],
-   "parentId": "sanct-unholy",
-   "angle": 4.47677,
-   "r": 2465,
-   "x": -575.4,
-   "y": -2396.9,
-   "captionSide": "above-right",
+   "parentId": "theme-sanct",
+   "theme": "theme-sanct",
+   "x": -610,
+   "y": -540,
+   "captionSide": "below",
    "captionW": 126
   },
   {
@@ -3257,12 +3089,11 @@ window.CHAMPION_DATA = {
    "html": "Вы становитесь похожи на одного из <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/551\" href=\"https://pf2.ru/traits/celestial\">небожителей</a>, служащих вашему божеству. Например, если вы стали похожи на <a class=\"item-link quicklink item-link--monsterfamily\" data-key=\"monsterfamily/359\" href=\"https://pf2.ru/monsterfamilies/angel\">Ангела</a>: у вас появятся нимб и оперённые крылья. Вы получаете скорость полёта, равную вашей Скорости. Вы получаете ночное зрение  (если у вас его не было), а также дескриптор небожитель и дескриптор типа существа, которым вы стали (например, <a class=\"item-link quicklink item-link--monsterfamily\" data-key=\"monsterfamily/365\" href=\"https://pf2.ru/monsterfamilies/archon\">Архон</a>, Ангел или <a class=\"item-link quicklink item-link--monsterfamily\" data-key=\"monsterfamily/368\" href=\"https://pf2.ru/monsterfamilies/azata\">Азата</a>).",
    "requires": [],
    "forbids": [],
-   "parentId": "sanct-holy",
-   "angle": 4.63385,
-   "r": 2465,
-   "x": -193.4,
-   "y": -2457.4,
-   "captionSide": "above-right",
+   "parentId": "theme-sanct",
+   "theme": "theme-sanct",
+   "x": -860,
+   "y": -540,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -3291,12 +3122,11 @@ window.CHAMPION_DATA = {
    "html": "Вы — великий воитель, способный выстоять против даже самых ярых врагов вашего призвания. Вы получаете устойчивость 5 к дробящему, колющему и режущему урону. Если вы обладаете дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/517\" href=\"https://pf2.ru/traits/holy\">«священный»</a>, эта устойчивость увеличивается до 10 против существ с дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/521\" href=\"https://pf2.ru/traits/unholy\">«нечестивый»</a>, а если вы обладаете дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/521\" href=\"https://pf2.ru/traits/unholy\">«нечестивый»</a>, до 10 против существ с дескриптором <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/517\" href=\"https://pf2.ru/traits/holy\">«священный»</a>. Кроме того, существа и эффекты, которые получают натуральную 20 при проверке атаки по вам, не улучшают степень успешности на одну ступень.",
    "requires": [],
    "forbids": [],
-   "parentId": "root",
-   "angle": 0.23562,
-   "r": 2670,
-   "x": 2596.2,
-   "y": 623.3,
-   "captionSide": "below-left",
+   "parentId": "theme-sanct",
+   "theme": "theme-sanct",
+   "x": -610,
+   "y": -660,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -3330,12 +3160,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "blessing-armament",
-   "angle": 3.69137,
-   "r": 2670,
-   "x": -2276.5,
-   "y": -1395.1,
-   "captionSide": "right",
+   "parentId": "theme-blessing",
+   "theme": "theme-blessing",
+   "x": 1100,
+   "y": -660,
+   "captionSide": "below",
    "captionW": 137
   },
   {
@@ -3369,12 +3198,11 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "blessing-swiftness",
-   "angle": 3.53429,
-   "r": 2670,
-   "x": -2466.8,
-   "y": -1021.8,
-   "captionSide": "below-left",
+   "parentId": "theme-blessing",
+   "theme": "theme-blessing",
+   "x": 1350,
+   "y": -780,
+   "captionSide": "below",
    "captionW": 150
   },
   {
@@ -3408,201 +3236,1638 @@ window.CHAMPION_DATA = {
     ]
    ],
    "forbids": [],
-   "parentId": "blessing-shield",
-   "angle": 3.37721,
-   "r": 2670,
-   "x": -2596.2,
-   "y": -623.3,
-   "captionSide": "right",
+   "parentId": "theme-blessing",
+   "theme": "theme-blessing",
+   "x": 1100,
+   "y": -780,
+   "captionSide": "below",
    "captionW": 116
   }
  ],
  "edges": [
   {
    "from": "root",
-   "to": "feature-aura",
+   "to": "theme-cause",
    "kind": "struct",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     -190
+    ],
+    [
+     -1225,
+     -190
+    ],
+    [
+     -1225,
+     -300
+    ]
+   ]
   },
   {
    "from": "root",
-   "to": "shield-block",
+   "to": "theme-devotion",
    "kind": "struct",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     190
+    ],
+    [
+     -1052.5,
+     190
+    ],
+    [
+     -1052.5,
+     300
+    ]
+   ]
   },
   {
-   "from": "feature-aura",
+   "from": "root",
+   "to": "theme-blessing",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     -190
+    ],
+    [
+     1225,
+     -190
+    ],
+    [
+     1225,
+     -300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-aura",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     -190
+    ],
+    [
+     -245,
+     -190
+    ],
+    [
+     -245,
+     -300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-shield",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     -190
+    ],
+    [
+     735,
+     -190
+    ],
+    [
+     735,
+     -300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-steed",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     190
+    ],
+    [
+     552.5,
+     190
+    ],
+    [
+     552.5,
+     300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-faith",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     190
+    ],
+    [
+     -62.5,
+     190
+    ],
+    [
+     -62.5,
+     300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-sanct",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     -190
+    ],
+    [
+     -735,
+     -190
+    ],
+    [
+     -735,
+     -300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-combat",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     -190
+    ],
+    [
+     245,
+     -190
+    ],
+    [
+     245,
+     -300
+    ]
+   ]
+  },
+  {
+   "from": "theme-steed",
+   "to": "feat-5885",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     552.5,
+     300
+    ],
+    [
+     552.5,
+     420
+    ],
+    [
+     677.5,
+     420
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-5889",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -420
+    ],
+    [
+     -1100,
+     -420
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-5891",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -420
+    ],
+    [
+     -1350,
+     -420
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-5883",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -62.5,
+     300
+    ],
+    [
+     -62.5,
+     420
+    ],
+    [
+     62.5,
+     420
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-5886",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -540
+    ],
+    [
+     -1100,
+     -540
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-5890",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -540
+    ],
+    [
+     -1350,
+     -540
+    ]
+   ]
+  },
+  {
+   "from": "theme-shield",
+   "to": "feat-5882",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     735,
+     -300
+    ],
+    [
+     735,
+     -420
+    ],
+    [
+     860,
+     -420
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-5881",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -660
+    ],
+    [
+     -1100,
+     -660
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-5884",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -62.5,
+     300
+    ],
+    [
+     -62.5,
+     420
+    ],
+    [
+     -187.5,
+     420
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-5888",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -660
+    ],
+    [
+     -1350,
+     -660
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-5887",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -780
+    ],
+    [
+     -1100,
+     -780
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-7596",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -62.5,
+     300
+    ],
+    [
+     -62.5,
+     540
+    ],
+    [
+     62.5,
+     540
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-5892",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -62.5,
+     300
+    ],
+    [
+     -62.5,
+     540
+    ],
+    [
+     -187.5,
+     540
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-5893",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -62.5,
+     300
+    ],
+    [
+     -62.5,
+     660
+    ],
+    [
+     62.5,
+     660
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-7518",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -62.5,
+     300
+    ],
+    [
+     -62.5,
+     660
+    ],
+    [
+     -187.5,
+     660
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-7517",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -62.5,
+     300
+    ],
+    [
+     -62.5,
+     780
+    ],
+    [
+     62.5,
+     780
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-7519",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -62.5,
+     300
+    ],
+    [
+     -62.5,
+     780
+    ],
+    [
+     -187.5,
+     780
+    ]
+   ]
+  },
+  {
+   "from": "theme-aura",
    "to": "feat-5894",
-   "kind": "req",
-   "primary": true
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -245,
+     -300
+    ],
+    [
+     -245,
+     -420
+    ],
+    [
+     -120,
+     -420
+    ]
+   ]
   },
   {
-   "from": "feature-aura",
+   "from": "theme-aura",
    "to": "feat-5895",
-   "kind": "req",
-   "primary": true
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -245,
+     -300
+    ],
+    [
+     -245,
+     -420
+    ],
+    [
+     -370,
+     -420
+    ]
+   ]
+  },
+  {
+   "from": "theme-devotion",
+   "to": "feat-5898",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1052.5,
+     300
+    ],
+    [
+     -1052.5,
+     420
+    ],
+    [
+     -927.5,
+     420
+    ]
+   ]
+  },
+  {
+   "from": "theme-devotion",
+   "to": "feat-5896",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1052.5,
+     300
+    ],
+    [
+     -1052.5,
+     420
+    ],
+    [
+     -1177.5,
+     420
+    ]
+   ]
+  },
+  {
+   "from": "theme-devotion",
+   "to": "feat-5897",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1052.5,
+     300
+    ],
+    [
+     -1052.5,
+     540
+    ],
+    [
+     -927.5,
+     540
+    ]
+   ]
   },
   {
    "from": "feat-5885",
    "to": "feat-7991",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     677.5,
+     420
+    ],
+    [
+     927.5,
+     420
+    ]
+   ]
   },
   {
    "from": "feat-5885",
    "to": "feat-5900",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     677.5,
+     420
+    ],
+    [
+     802.5,
+     420
+    ],
+    [
+     802.5,
+     540
+    ],
+    [
+     927.5,
+     540
+    ]
+   ]
   },
   {
-   "from": "feature-aura",
+   "from": "theme-combat",
+   "to": "feat-5832",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     245,
+     -300
+    ],
+    [
+     245,
+     -420
+    ],
+    [
+     370,
+     -420
+    ]
+   ]
+  },
+  {
+   "from": "theme-aura",
    "to": "feat-5899",
-   "kind": "req",
-   "primary": true
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -245,
+     -300
+    ],
+    [
+     -245,
+     -540
+    ],
+    [
+     -120,
+     -540
+    ]
+   ]
   },
   {
-   "from": "shield-block",
+   "from": "theme-combat",
+   "to": "feat-5901",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     245,
+     -300
+    ],
+    [
+     245,
+     -420
+    ],
+    [
+     120,
+     -420
+    ]
+   ]
+  },
+  {
+   "from": "theme-blessing",
    "to": "feat-4807",
-   "kind": "req",
-   "primary": true
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1225,
+     -300
+    ],
+    [
+     1225,
+     -420
+    ],
+    [
+     1350,
+     -420
+    ]
+   ]
   },
   {
-   "from": "shield-block",
+   "from": "theme-shield",
    "to": "feat-4816",
-   "kind": "req",
-   "primary": true
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     735,
+     -300
+    ],
+    [
+     735,
+     -420
+    ],
+    [
+     610,
+     -420
+    ]
+   ]
+  },
+  {
+   "from": "theme-blessing",
+   "to": "feat-5907",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1225,
+     -300
+    ],
+    [
+     1225,
+     -420
+    ],
+    [
+     1100,
+     -420
+    ]
+   ]
   },
   {
    "from": "feat-5885",
    "to": "feat-5906",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     677.5,
+     420
+    ],
+    [
+     802.5,
+     420
+    ],
+    [
+     802.5,
+     660
+    ],
+    [
+     927.5,
+     660
+    ]
+   ]
   },
   {
    "from": "feat-5883",
    "to": "feat-5902",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     62.5,
+     420
+    ],
+    [
+     312.5,
+     420
+    ]
+   ]
   },
   {
    "from": "feat-5898",
    "to": "feat-5905",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     -927.5,
+     420
+    ],
+    [
+     -677.5,
+     420
+    ]
+   ]
   },
   {
    "from": "feat-5896",
    "to": "feat-5903",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     -1177.5,
+     420
+    ],
+    [
+     -1427.5,
+     420
+    ]
+   ]
   },
   {
    "from": "feat-5897",
    "to": "feat-5904",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     -927.5,
+     540
+    ],
+    [
+     -677.5,
+     540
+    ]
+   ]
+  },
+  {
+   "from": "theme-sanct",
+   "to": "feat-7521",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -735,
+     -300
+    ],
+    [
+     -735,
+     -420
+    ],
+    [
+     -610,
+     -420
+    ]
+   ]
+  },
+  {
+   "from": "theme-sanct",
+   "to": "feat-7520",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -735,
+     -300
+    ],
+    [
+     -735,
+     -420
+    ],
+    [
+     -860,
+     -420
+    ]
+   ]
   },
   {
    "from": "feat-5885",
    "to": "feat-7992",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     677.5,
+     420
+    ],
+    [
+     802.5,
+     420
+    ],
+    [
+     802.5,
+     780
+    ],
+    [
+     927.5,
+     780
+    ]
+   ]
   },
   {
    "from": "feat-5900",
    "to": "feat-5908",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     927.5,
+     540
+    ],
+    [
+     1177.5,
+     540
+    ]
+   ]
+  },
+  {
+   "from": "theme-blessing",
+   "to": "feat-5911",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1225,
+     -300
+    ],
+    [
+     1225,
+     -540
+    ],
+    [
+     1100,
+     -540
+    ]
+   ]
+  },
+  {
+   "from": "theme-blessing",
+   "to": "feat-5909",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1225,
+     -300
+    ],
+    [
+     1225,
+     -660
+    ],
+    [
+     1350,
+     -660
+    ]
+   ]
   },
   {
    "from": "feat-4807",
    "to": "feat-5910",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     1350,
+     -420
+    ],
+    [
+     1600,
+     -420
+    ]
+   ]
+  },
+  {
+   "from": "theme-aura",
+   "to": "feat-5913",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -245,
+     -300
+    ],
+    [
+     -245,
+     -540
+    ],
+    [
+     -370,
+     -540
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-5914",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -780
+    ],
+    [
+     -1350,
+     -780
+    ]
+   ]
   },
   {
    "from": "feat-5885",
    "to": "feat-7523",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     677.5,
+     420
+    ],
+    [
+     802.5,
+     420
+    ],
+    [
+     802.5,
+     900
+    ],
+    [
+     927.5,
+     900
+    ]
+   ]
+  },
+  {
+   "from": "theme-shield",
+   "to": "feat-5917",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     735,
+     -300
+    ],
+    [
+     735,
+     -540
+    ],
+    [
+     860,
+     -540
+    ]
+   ]
   },
   {
    "from": "feat-5897",
    "to": "feat-5912",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     -927.5,
+     540
+    ],
+    [
+     -802.5,
+     540
+    ],
+    [
+     -802.5,
+     660
+    ],
+    [
+     -677.5,
+     660
+    ]
+   ]
   },
   {
    "from": "feat-5885",
    "to": "feat-7993",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     677.5,
+     420
+    ],
+    [
+     802.5,
+     420
+    ],
+    [
+     802.5,
+     1020
+    ],
+    [
+     927.5,
+     1020
+    ]
+   ]
   },
   {
    "from": "feat-7518",
    "to": "feat-7522",
    "kind": "or",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     -187.5,
+     660
+    ],
+    [
+     -437.5,
+     660
+    ]
+   ]
   },
   {
-   "from": "feat-7517",
-   "to": "feat-7522",
-   "kind": "or",
-   "primary": false
+   "from": "theme-combat",
+   "to": "feat-5915",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     245,
+     -300
+    ],
+    [
+     245,
+     -540
+    ],
+    [
+     370,
+     -540
+    ]
+   ]
   },
   {
-   "from": "feat-7519",
-   "to": "feat-7522",
-   "kind": "or",
-   "primary": false
+   "from": "theme-devotion",
+   "to": "feat-5916",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1052.5,
+     300
+    ],
+    [
+     -1052.5,
+     540
+    ],
+    [
+     -1177.5,
+     540
+    ]
+   ]
   },
   {
-   "from": "feature-aura",
+   "from": "theme-cause",
+   "to": "feat-5918",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -900
+    ],
+    [
+     -1100,
+     -900
+    ]
+   ]
+  },
+  {
+   "from": "theme-aura",
    "to": "feat-5920",
-   "kind": "req",
-   "primary": true
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -245,
+     -300
+    ],
+    [
+     -245,
+     -660
+    ],
+    [
+     -120,
+     -660
+    ]
+   ]
   },
   {
-   "from": "feature-aura",
+   "from": "theme-aura",
    "to": "feat-5921",
-   "kind": "req",
-   "primary": true
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -245,
+     -300
+    ],
+    [
+     -245,
+     -660
+    ],
+    [
+     -370,
+     -660
+    ]
+   ]
   },
   {
-   "from": "feature-aura",
+   "from": "theme-aura",
    "to": "feat-5919",
-   "kind": "req",
-   "primary": true
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -245,
+     -300
+    ],
+    [
+     -245,
+     -780
+    ],
+    [
+     -120,
+     -780
+    ]
+   ]
+  },
+  {
+   "from": "theme-combat",
+   "to": "feat-5922",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     245,
+     -300
+    ],
+    [
+     245,
+     -540
+    ],
+    [
+     120,
+     -540
+    ]
+   ]
+  },
+  {
+   "from": "theme-combat",
+   "to": "feat-7524",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     245,
+     -300
+    ],
+    [
+     245,
+     -660
+    ],
+    [
+     370,
+     -660
+    ]
+   ]
   },
   {
    "from": "feat-5914",
    "to": "feat-5925",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     -1350,
+     -780
+    ],
+    [
+     -1600,
+     -780
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-5924",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -900
+    ],
+    [
+     -1350,
+     -900
+    ]
+   ]
   },
   {
    "from": "feat-5908",
    "to": "feat-5923",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     1177.5,
+     540
+    ],
+    [
+     1427.5,
+     540
+    ]
+   ]
   },
   {
    "from": "feat-4807",
    "to": "feat-5926",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     1350,
+     -420
+    ],
+    [
+     1475,
+     -420
+    ],
+    [
+     1475,
+     -540
+    ],
+    [
+     1600,
+     -540
+    ]
+   ]
+  },
+  {
+   "from": "theme-devotion",
+   "to": "feat-5927",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1052.5,
+     300
+    ],
+    [
+     -1052.5,
+     660
+    ],
+    [
+     -1177.5,
+     660
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-5928",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -1225,
+     -300
+    ],
+    [
+     -1225,
+     -1020
+    ],
+    [
+     -1100,
+     -1020
+    ]
+   ]
   },
   {
    "from": "feat-5897",
    "to": "feat-5929",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     -927.5,
+     540
+    ],
+    [
+     -802.5,
+     540
+    ],
+    [
+     -802.5,
+     780
+    ],
+    [
+     -677.5,
+     780
+    ]
+   ]
   },
   {
    "from": "feat-5884",
    "to": "feat-7527",
    "kind": "req",
-   "primary": true
+   "primary": true,
+   "points": [
+    [
+     -187.5,
+     420
+    ],
+    [
+     -437.5,
+     420
+    ]
+   ]
+  },
+  {
+   "from": "theme-sanct",
+   "to": "feat-7526",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -735,
+     -300
+    ],
+    [
+     -735,
+     -540
+    ],
+    [
+     -610,
+     -540
+    ]
+   ]
+  },
+  {
+   "from": "theme-sanct",
+   "to": "feat-7525",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -735,
+     -300
+    ],
+    [
+     -735,
+     -540
+    ],
+    [
+     -860,
+     -540
+    ]
+   ]
+  },
+  {
+   "from": "theme-sanct",
+   "to": "feat-5931",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -735,
+     -300
+    ],
+    [
+     -735,
+     -660
+    ],
+    [
+     -610,
+     -660
+    ]
+   ]
+  },
+  {
+   "from": "theme-blessing",
+   "to": "feat-5930",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1225,
+     -300
+    ],
+    [
+     1225,
+     -660
+    ],
+    [
+     1100,
+     -660
+    ]
+   ]
+  },
+  {
+   "from": "theme-blessing",
+   "to": "feat-5933",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1225,
+     -300
+    ],
+    [
+     1225,
+     -780
+    ],
+    [
+     1350,
+     -780
+    ]
+   ]
+  },
+  {
+   "from": "theme-blessing",
+   "to": "feat-5932",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1225,
+     -300
+    ],
+    [
+     1225,
+     -780
+    ],
+    [
+     1100,
+     -780
+    ]
+   ]
   }
  ],
  "warnings": []

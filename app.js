@@ -10,12 +10,13 @@ const EDGES = DATA.edges;
 const STORAGE_KEY = 'pf2e-champion-build-v2';
 
 // ---------- геометрия ----------
-// Координаты узлов посчитаны заранее (tools/layout.mjs): без наложений
-// узлов, без пересечений рёбер и без рёбер поверх чужих узлов.
+// Координаты узлов и ломаные связей посчитаны заранее (tools/tree-layout.mjs):
+// корень → шина → темы → стволы тем → черты.
 
 const GEO = DATA.meta.geometry;
-const { SIZE, R_GROUP, R_OPTION, FEAT_LEVELS } = GEO;
-const featRadius = (level) => GEO.R_FEAT0 + (level <= 1 ? 0 : Math.ceil(level / 2)) * GEO.R_STEP;
+const { SIZE } = GEO;
+/** Уровни, на которых поборник получает классовую черту. */
+const FEAT_LEVELS = [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
 const sizeOf = (n) => SIZE[n.kind] || 54;
 
 // ---------- состояние сборки ----------
@@ -29,7 +30,7 @@ const state = {
     onlyAvailable: false,
 };
 
-const isGranted = (n) => n.kind === 'root' || n.kind === 'feature';
+const isGranted = (n) => n.kind === 'root';
 const isChoice = (n) => n.kind === 'option' || n.kind === 'feat';
 
 function slotsTotal(level) { return 1 + Math.floor(level / 2); }
@@ -220,7 +221,7 @@ function actionsHtml(a) {
     return a.split('/').map((k) => `<span class="act" title="${ACTION_NAME[k] || ''}">${ACTION_GLYPH[k] || esc(k)}</span>`).join(' / ');
 }
 
-const KIND_LABEL = { root: 'Класс', group: 'Выбор', option: 'Вариант', feature: 'Классовая особенность', feat: 'Черта' };
+const KIND_LABEL = { root: 'Класс', group: 'Выбор', option: 'Вариант', hub: 'Тема', feat: 'Черта' };
 const RARITY_LABEL = { common: '', uncommon: 'Необычный', rare: 'Редкий', unique: 'Уникальный' };
 
 function cardHtml(n, full) {
@@ -284,47 +285,31 @@ function svg(tag, attrs, parent) {
 }
 
 function buildScene() {
-    // кольца уровней
+    // мягкое свечение вокруг корня
     const defs = svg('defs', {}, ringsLayer);
     const grad = svg('radialGradient', { id: 'core-glow' }, defs);
     svg('stop', { offset: '0%', 'stop-color': '#f3c66b', 'stop-opacity': '0.28' }, grad);
     svg('stop', { offset: '100%', 'stop-color': '#f3c66b', 'stop-opacity': '0' }, grad);
-    svg('circle', { cx: 0, cy: 0, r: R_OPTION * 1.35, fill: 'url(#core-glow)' }, ringsLayer);
-    svg('circle', { cx: 0, cy: 0, r: R_OPTION, class: 'ring ring-inner' }, ringsLayer);
-    svg('circle', { cx: 0, cy: 0, r: R_OPTION + 110, class: 'ring ring-ornament' }, ringsLayer);
-    for (const l of FEAT_LEVELS) {
-        const r = featRadius(l);
-        svg('circle', { cx: 0, cy: 0, r, class: 'ring', 'data-level': l }, ringsLayer);
-        // подпись уровня — в промежутке между узлами кольца, ближайшем к верху
-        const onRing = DATA.nodes.filter((n) => n.kind === 'feat' && featRadius(n.level) === r)
-            .map((n) => Math.atan2(n.y, n.x)).sort((p, q) => p - q);
-        let la = -Math.PI / 2;
-        if (onRing.length) {
-            let best = Infinity;
-            onRing.forEach((a1, i2) => {
-                const a2 = i2 + 1 < onRing.length ? onRing[i2 + 1] : onRing[0] + Math.PI * 2;
-                const mid = (a1 + a2) / 2;
-                const d = Math.abs(Math.atan2(Math.sin(mid + Math.PI / 2), Math.cos(mid + Math.PI / 2)));
-                if (d < best) { best = d; la = mid; }
-            });
-        }
-        const label = svg('text', { x: Math.cos(la) * r, y: Math.sin(la) * r, class: 'ring-label', 'data-level': l }, ringsLayer);
-        label.textContent = `${l} ур.`;
-    }
+    svg('circle', { cx: 0, cy: 0, r: 420, fill: 'url(#core-glow)' }, ringsLayer);
 
-    // связи (набор рисуемых связей тоже определяет tools/layout.mjs)
-    const drawn = EDGES;
-    for (const e of drawn) {
+    // связи — ломаные из раскладки; концы подрезаются по краю узлов
+    const trim = (p, q, r) => {
+        const dx = q[0] - p[0], dy = q[1] - p[1], len = Math.hypot(dx, dy) || 1;
+        return [p[0] + dx / len * r, p[1] + dy / len * r];
+    };
+    // сначала связи к темам и стволы (под чертами), затем остальные
+    const ordered = [...EDGES].sort((p, q) => (p.kind === 'struct' ? 0 : 1) - (q.kind === 'struct' ? 0 : 1));
+    for (const e of ordered) {
         const a = NODES.get(e.from), b = NODES.get(e.to);
-        const dx = b.x - a.x, dy = b.y - a.y;
-        const len = Math.hypot(dx, dy) || 1;
-        const ra = sizeOf(a) / 2 + 2, rb = sizeOf(b) / 2 + 2;
-        const x1 = a.x + dx / len * ra, y1 = a.y + dy / len * ra;
-        const x2 = b.x - dx / len * rb, y2 = b.y - dy / len * rb;
+        const pts = (e.points || [[a.x, a.y], [b.x, b.y]]).map((p) => [...p]);
+        pts[0] = trim(pts[0], pts[1], sizeOf(a) / 2 + 2);
+        const n = pts.length;
+        pts[n - 1] = trim(pts[n - 1], pts[n - 2], sizeOf(b) / 2 + 2);
+        const d = pts.map((p) => p.join(',')).join(' ');
         const g = svg('g', { class: `edge edge-${e.kind} ${e.primary ? 'primary' : 'secondary'}` }, edgesLayer);
-        svg('line', { x1, y1, x2, y2, class: 'edge-base' }, g);
-        svg('line', { x1, y1, x2, y2, class: 'edge-glow' }, g);
-        svg('line', { x1, y1, x2, y2, class: 'edge-core' }, g);
+        svg('polyline', { points: d, class: 'edge-base' }, g);
+        svg('polyline', { points: d, class: 'edge-glow' }, g);
+        svg('polyline', { points: d, class: 'edge-core' }, g);
         edgeEls.push({ e, g });
     }
 
@@ -361,6 +346,13 @@ function buildScene() {
             badge.className = `badge ${holy && unholy ? 'b-any' : holy ? 'b-holy' : unholy ? 'b-unholy' : 'b-not-unholy'}`;
             badge.title = holy && unholy ? 'Нужно освящение' : holy ? 'Нужно освящение «священный»' : unholy ? 'Нужно освящение «нечестивый»' : 'Недоступно нечестивым';
             el.appendChild(badge);
+        }
+        if (n.kind === 'feat') {
+            const lv = document.createElement('span');
+            lv.className = 'lvl-badge';
+            lv.textContent = n.level;
+            lv.title = `Черта ${n.level} уровня`;
+            el.appendChild(lv);
         }
         // требования-карточки (призвание, заклинание, благословение) — медальоны слева сверху
         const cardReqs = (n.requires || []).filter((cl) => cl.every((id) => isCard(NODES.get(id)) && !id.startsWith('sanct-')));
@@ -450,7 +442,10 @@ function render() {
     for (const n of DATA.nodes) {
         const el = nodeEls.get(n.id) || cardEls.get(n.id);
         if (!el) continue;
-        const on = isGranted(n) ? state.level >= n.level : n.kind === 'group' ? satisfied(n.id) : state.chosen.has(n.id);
+        const on = isGranted(n) ? state.level >= n.level
+            : n.kind === 'group' ? satisfied(n.id)
+            : n.kind === 'hub' ? [...state.chosen].some((id) => NODES.get(id).theme === n.id)
+            : state.chosen.has(n.id);
         const avail = !on && isChoice(n) && blockers(n).length === 0;
         const hiddenByFilter = (!state.showUncommon && n.rarity === 'uncommon' && !on)
             || (!state.showUnholy && isUnholy(n) && !on);
@@ -489,9 +484,6 @@ function render() {
         else hint = picked ? '' : 'выберите одно';
         cardEls.get(gid).querySelector('.choice-hint').textContent = hint;
     }
-    for (const t of ringsLayer.querySelectorAll('[data-level]')) {
-        t.classList.toggle('reached', Number(t.dataset.level) <= state.level);
-    }
     renderPanel();
 }
 
@@ -508,7 +500,8 @@ function requirementPath(id) {
         const n = NODES.get(stack.pop());
         const parents = [...(n.requires || []).flat()];
         if (n.kind === 'option') parents.push(n.group);
-        if (n.kind === 'group' || n.kind === 'feature') parents.push('root');
+        if (n.kind === 'group' || n.kind === 'hub') parents.push('root');
+        if (n.parentId) parents.push(n.parentId);
         for (const p of parents) if (!out.has(p)) { out.add(p); stack.push(p); }
     }
     return out;
@@ -604,11 +597,13 @@ function centerOn(x, y, k = cam.k, animate = true) {
     if (animate) setTimeout(() => world.classList.remove('animate'), 450);
 }
 function fitAll() {
-    const R = featRadius(20) + 160;
+    const b = DATA.meta.bounds;
     const panelW = document.body.classList.contains('panel-collapsed') ? 0 : $('#panel').offsetWidth;
     const barH = $('#choice-bar').offsetHeight + 12;
-    const k = Math.min((viewport.clientWidth - panelW) / (2 * R), (viewport.clientHeight - barH) / (2 * R));
-    centerOn(0, 0, Math.max(MIN_K, k));
+    const w = viewport.clientWidth - panelW - 40, h = viewport.clientHeight - barH - 40;
+    if (w <= 0 || h <= 0) return; // окно ещё не показано
+    const k = Math.min(w / (b.maxX - b.minX), h / (b.maxY - b.minY));
+    centerOn((b.minX + b.maxX) / 2, (b.minY + b.maxY) / 2, Math.max(MIN_K, Math.min(1, k)));
 }
 function focusNode(id) {
     const n = NODES.get(id);
