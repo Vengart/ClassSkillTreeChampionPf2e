@@ -97,10 +97,10 @@ window.CLASS_DATA = {
    "crossings": 0
   },
   "bounds": {
-   "minX": -2290,
-   "maxX": 2290,
+   "minX": -1260,
+   "maxX": 1260,
    "minY": -1820,
-   "maxY": 110
+   "maxY": 1580
   }
  },
  "nodes": [
@@ -462,7 +462,7 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Feats with the spellshape trait: they alter the next spell you cast — its range, area, damage or how noticeable it is.",
    "requires": [],
-   "x": -2070,
+   "x": -1040,
    "y": -300,
    "captionSide": "right",
    "captionW": 133
@@ -475,7 +475,7 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Counterspelling, protective arrays and the senses and reflexes a wizard relies on in a fight.",
    "requires": [],
-   "x": -1630,
+   "x": -600,
    "y": -300,
    "captionSide": "right",
    "captionW": 170
@@ -488,7 +488,7 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Your spellbook, cantrips, scrolls and the way you prepare and recover spell slots.",
    "requires": [],
-   "x": -590,
+   "x": 440,
    "y": -300,
    "captionSide": "right",
    "captionW": 170
@@ -501,8 +501,8 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Your bonded item, school spells and focus points. Every wizard has an arcane bond from 1st level.",
    "requires": [],
-   "x": 450,
-   "y": -300,
+   "x": -810,
+   "y": 300,
    "captionSide": "right",
    "captionW": 170
   },
@@ -514,8 +514,8 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Illusions, words and performances that bend the minds of others.",
    "requires": [],
-   "x": 1090,
-   "y": -300,
+   "x": -170,
+   "y": 300,
    "captionSide": "right",
    "captionW": 170
   },
@@ -527,8 +527,8 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Uncommon feats for those who create or control undead (Book of the Dead).",
    "requires": [],
-   "x": 1530,
-   "y": -300,
+   "x": 270,
+   "y": 300,
    "captionSide": "right",
    "captionW": 94
   },
@@ -540,8 +540,8 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Your familiar and its growth. The Improved Familiar Attunement thesis also grants the Familiar feat.",
    "requires": [],
-   "x": 1870,
-   "y": -300,
+   "x": 610,
+   "y": 300,
    "captionSide": "right",
    "captionW": 107
   },
@@ -573,7 +573,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1130,
+   "x": -100,
    "y": -430,
    "captionSide": "below",
    "captionW": 126
@@ -613,8 +613,8 @@ window.CLASS_DATA = {
    "grantedBy": "thesis-improved-familiar-attunement",
    "parentId": "theme-familiar",
    "theme": "theme-familiar",
-   "x": 1970,
-   "y": -430,
+   "x": 710,
+   "y": 430,
    "captionSide": "below",
    "captionW": 84
   },
@@ -672,7 +672,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -1970,
+   "x": -940,
    "y": -430,
    "captionSide": "below",
    "captionW": 116
@@ -698,7 +698,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -690,
+   "x": 340,
    "y": -430,
    "captionSide": "below",
    "captionW": 150
@@ -749,7 +749,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -2170,
+   "x": -1140,
    "y": -430,
    "captionSide": "below",
    "captionW": 116
@@ -804,7 +804,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -490,
+   "x": 540,
    "y": -560,
    "captionSide": "below",
    "captionW": 150
@@ -851,7 +851,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -1970,
+   "x": -940,
    "y": -560,
    "captionSide": "below",
    "captionW": 137
@@ -882,7 +882,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1730,
+   "x": -700,
    "y": -560,
    "captionSide": "below",
    "captionW": 150
@@ -913,7 +913,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1530,
+   "x": -500,
    "y": -560,
    "captionSide": "below",
    "captionW": 150
@@ -969,8 +969,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5024",
    "theme": "theme-familiar",
-   "x": 2170,
-   "y": -560,
+   "x": 910,
+   "y": 560,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1004,7 +1004,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -2170,
+   "x": -1140,
    "y": -560,
    "captionSide": "below",
    "captionW": 150
@@ -1042,7 +1042,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1730,
+   "x": -700,
    "y": -690,
    "captionSide": "below",
    "captionW": 150
@@ -1077,8 +1077,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 550,
-   "y": -690,
+   "x": -710,
+   "y": 690,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1112,7 +1112,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -1970,
+   "x": -940,
    "y": -690,
    "captionSide": "below",
    "captionW": 150
@@ -1193,8 +1193,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 350,
-   "y": -690,
+   "x": -910,
+   "y": 690,
    "captionSide": "below",
    "captionW": 147
   },
@@ -1225,8 +1225,8 @@ window.CLASS_DATA = {
    ],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 750,
-   "y": -690,
+   "x": -510,
+   "y": 690,
    "captionSide": "below",
    "captionW": 126
   },
@@ -1260,7 +1260,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1530,
+   "x": -500,
    "y": -690,
    "captionSide": "below",
    "captionW": 150
@@ -1307,8 +1307,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 1630,
-   "y": -690,
+   "x": 370,
+   "y": 690,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1336,8 +1336,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": 1190,
-   "y": -820,
+   "x": -70,
+   "y": 820,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1393,7 +1393,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -2170,
+   "x": -1140,
    "y": -820,
    "captionSide": "below",
    "captionW": 150
@@ -1432,7 +1432,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -1970,
+   "x": -940,
    "y": -820,
    "captionSide": "below",
    "captionW": 150
@@ -1458,7 +1458,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1730,
+   "x": -700,
    "y": -820,
    "captionSide": "below",
    "captionW": 150
@@ -1488,7 +1488,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4994",
    "theme": "theme-battle",
-   "x": -930,
+   "x": 100,
    "y": -820,
    "captionSide": "below",
    "captionW": 126
@@ -1514,7 +1514,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -690,
+   "x": 340,
    "y": -820,
    "captionSide": "below",
    "captionW": 105
@@ -1573,7 +1573,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1530,
+   "x": -500,
    "y": -820,
    "captionSide": "below",
    "captionW": 150
@@ -1599,8 +1599,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 350,
-   "y": -950,
+   "x": -910,
+   "y": 950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1636,8 +1636,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 550,
-   "y": -950,
+   "x": -710,
+   "y": 950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1691,7 +1691,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -2170,
+   "x": -1140,
    "y": -950,
    "captionSide": "below",
    "captionW": 137
@@ -1717,7 +1717,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -490,
+   "x": 540,
    "y": -950,
    "captionSide": "below",
    "captionW": 147
@@ -1762,8 +1762,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": 990,
-   "y": -950,
+   "x": -270,
+   "y": 950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1797,7 +1797,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -1970,
+   "x": -940,
    "y": -950,
    "captionSide": "below",
    "captionW": 150
@@ -1823,7 +1823,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -690,
+   "x": 340,
    "y": -950,
    "captionSide": "below",
    "captionW": 150
@@ -1866,8 +1866,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": 1190,
-   "y": -950,
+   "x": -70,
+   "y": 950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1909,7 +1909,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -2170,
+   "x": -1140,
    "y": -1080,
    "captionSide": "below",
    "captionW": 150
@@ -1966,7 +1966,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -1970,
+   "x": -940,
    "y": -1080,
    "captionSide": "below",
    "captionW": 150
@@ -1992,7 +1992,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -490,
+   "x": 540,
    "y": -1080,
    "captionSide": "below",
    "captionW": 126
@@ -2023,8 +2023,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 350,
-   "y": -1080,
+   "x": -910,
+   "y": 1080,
    "captionSide": "below",
    "captionW": 126
   },
@@ -2049,7 +2049,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1730,
+   "x": -700,
    "y": -1080,
    "captionSide": "below",
    "captionW": 150
@@ -2079,7 +2079,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4994",
    "theme": "theme-battle",
-   "x": -930,
+   "x": 100,
    "y": -1210,
    "captionSide": "below",
    "captionW": 150
@@ -2114,7 +2114,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -2170,
+   "x": -1140,
    "y": -1210,
    "captionSide": "below",
    "captionW": 150
@@ -2145,7 +2145,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1530,
+   "x": -500,
    "y": -1210,
    "captionSide": "below",
    "captionW": 150
@@ -2192,7 +2192,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1730,
+   "x": -700,
    "y": -1210,
    "captionSide": "below",
    "captionW": 116
@@ -2235,8 +2235,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 1430,
-   "y": -1210,
+   "x": 170,
+   "y": 1210,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2268,7 +2268,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1330,
+   "x": -300,
    "y": -1210,
    "captionSide": "below",
    "captionW": 150
@@ -2294,8 +2294,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 550,
-   "y": -1340,
+   "x": -710,
+   "y": 1340,
    "captionSide": "below",
    "captionW": 126
   },
@@ -2329,7 +2329,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -1970,
+   "x": -940,
    "y": -1340,
    "captionSide": "below",
    "captionW": 147
@@ -2364,7 +2364,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4994",
    "theme": "theme-battle",
-   "x": -930,
+   "x": 100,
    "y": -1340,
    "captionSide": "below",
    "captionW": 137
@@ -2399,7 +2399,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -2170,
+   "x": -1140,
    "y": -1340,
    "captionSide": "below",
    "captionW": 150
@@ -2452,8 +2452,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 1630,
-   "y": -1340,
+   "x": 370,
+   "y": 1340,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2486,7 +2486,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -1730,
+   "x": -700,
    "y": -1340,
    "captionSide": "below",
    "captionW": 116
@@ -2512,8 +2512,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 350,
-   "y": -1340,
+   "x": -910,
+   "y": 1340,
    "captionSide": "below",
    "captionW": 137
   },
@@ -2565,7 +2565,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -690,
+   "x": 340,
    "y": -1470,
    "captionSide": "below",
    "captionW": 150
@@ -2608,7 +2608,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -1970,
+   "x": -940,
    "y": -1470,
    "captionSide": "below",
    "captionW": 150
@@ -2639,7 +2639,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -490,
+   "x": 540,
    "y": -1470,
    "captionSide": "below",
    "captionW": 126
@@ -2665,7 +2665,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -690,
+   "x": 340,
    "y": -1600,
    "captionSide": "below",
    "captionW": 150
@@ -2691,7 +2691,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -90,
+   "x": 940,
    "y": -1600,
    "captionSide": "below",
    "captionW": 150
@@ -2728,8 +2728,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": 990,
-   "y": -1600,
+   "x": -270,
+   "y": 1470,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2754,7 +2754,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -490,
+   "x": 540,
    "y": -1730,
    "captionSide": "below",
    "captionW": 150
@@ -2789,7 +2789,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5051",
    "theme": "theme-book",
-   "x": 110,
+   "x": 1140,
    "y": -1730,
    "captionSide": "below",
    "captionW": 137
@@ -2815,7 +2815,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -690,
+   "x": 340,
    "y": -1730,
    "captionSide": "below",
    "captionW": 150
@@ -2841,7 +2841,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": -290,
+   "x": 740,
    "y": -1730,
    "captionSide": "below",
    "captionW": 137
@@ -2872,7 +2872,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -2170,
+   "x": -1140,
    "y": -1730,
    "captionSide": "below",
    "captionW": 150
@@ -2909,7 +2909,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -1970,
+   "x": -940,
    "y": -1730,
    "captionSide": "below",
    "captionW": 150
@@ -2931,11 +2931,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     -2070,
+     -1040,
      -190
     ],
     [
-     -2070,
+     -1040,
      -300
     ]
    ]
@@ -2955,11 +2955,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     -1630,
+     -600,
      -190
     ],
     [
-     -1630,
+     -600,
      -300
     ]
    ]
@@ -2979,11 +2979,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     -590,
+     440,
      -190
     ],
     [
-     -590,
+     440,
      -300
     ]
    ]
@@ -3000,15 +3000,15 @@ window.CLASS_DATA = {
     ],
     [
      0,
-     -190
+     190
     ],
     [
-     450,
-     -190
+     -810,
+     190
     ],
     [
-     450,
-     -300
+     -810,
+     300
     ]
    ]
   },
@@ -3024,15 +3024,15 @@ window.CLASS_DATA = {
     ],
     [
      0,
-     -190
+     190
     ],
     [
-     1090,
-     -190
+     -170,
+     190
     ],
     [
-     1090,
-     -300
+     -170,
+     300
     ]
    ]
   },
@@ -3048,15 +3048,15 @@ window.CLASS_DATA = {
     ],
     [
      0,
-     -190
+     190
     ],
     [
-     1530,
-     -190
+     270,
+     190
     ],
     [
-     1530,
-     -300
+     270,
+     300
     ]
    ]
   },
@@ -3072,15 +3072,15 @@ window.CLASS_DATA = {
     ],
     [
      0,
-     -190
+     190
     ],
     [
-     1870,
-     -190
+     610,
+     190
     ],
     [
-     1870,
-     -300
+     610,
+     300
     ]
    ]
   },
@@ -3091,23 +3091,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -470
     ],
     [
-     -1230,
+     -200,
      -470
     ],
     [
-     -1230,
+     -200,
      -430
     ],
     [
-     -1130,
+     -100,
      -430
     ]
    ]
@@ -3119,16 +3119,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1870,
-     -300
+     610,
+     300
     ],
     [
-     1870,
-     -430
+     610,
+     430
     ],
     [
-     1970,
-     -430
+     710,
+     430
     ]
    ]
   },
@@ -3139,15 +3139,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -430
     ],
     [
-     -1970,
+     -940,
      -430
     ]
    ]
@@ -3159,15 +3159,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -430
     ],
     [
-     -690,
+     340,
      -430
     ]
    ]
@@ -3179,15 +3179,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -430
     ],
     [
-     -2170,
+     -1140,
      -430
     ]
    ]
@@ -3199,15 +3199,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -560
     ],
     [
-     -490,
+     540,
      -560
     ]
    ]
@@ -3219,15 +3219,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -560
     ],
     [
-     -1970,
+     -940,
      -560
     ]
    ]
@@ -3239,15 +3239,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -560
     ],
     [
-     -1730,
+     -700,
      -560
     ]
    ]
@@ -3259,15 +3259,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -560
     ],
     [
-     -1530,
+     -500,
      -560
     ]
    ]
@@ -3279,20 +3279,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1970,
-     -430
+     710,
+     430
     ],
     [
-     2070,
-     -430
+     810,
+     430
     ],
     [
-     2070,
-     -560
+     810,
+     560
     ],
     [
-     2170,
-     -560
+     910,
+     560
     ]
    ]
   },
@@ -3303,15 +3303,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -560
     ],
     [
-     -2170,
+     -1140,
      -560
     ]
    ]
@@ -3323,15 +3323,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -690
     ],
     [
-     -1730,
+     -700,
      -690
     ]
    ]
@@ -3343,16 +3343,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     450,
-     -300
+     -810,
+     300
     ],
     [
-     450,
-     -690
+     -810,
+     690
     ],
     [
-     550,
-     -690
+     -710,
+     690
     ]
    ]
   },
@@ -3363,15 +3363,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -690
     ],
     [
-     -1970,
+     -940,
      -690
     ]
    ]
@@ -3383,16 +3383,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     450,
-     -300
+     -810,
+     300
     ],
     [
-     450,
-     -690
+     -810,
+     690
     ],
     [
-     350,
-     -690
+     -910,
+     690
     ]
    ]
   },
@@ -3403,24 +3403,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     450,
-     -300
+     -810,
+     300
     ],
     [
-     450,
-     -730
+     -810,
+     650
     ],
     [
-     650,
-     -730
+     -610,
+     650
     ],
     [
-     650,
-     -690
+     -610,
+     690
     ],
     [
-     750,
-     -690
+     -510,
+     690
     ]
    ]
   },
@@ -3431,15 +3431,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -690
     ],
     [
-     -1530,
+     -500,
      -690
     ]
    ]
@@ -3451,16 +3451,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1530,
-     -300
+     270,
+     300
     ],
     [
-     1530,
-     -690
+     270,
+     690
     ],
     [
-     1630,
-     -690
+     370,
+     690
     ]
    ]
   },
@@ -3471,16 +3471,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1090,
-     -300
+     -170,
+     300
     ],
     [
-     1090,
-     -820
+     -170,
+     820
     ],
     [
-     1190,
-     -820
+     -70,
+     820
     ]
    ]
   },
@@ -3491,15 +3491,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -820
     ],
     [
-     -2170,
+     -1140,
      -820
     ]
    ]
@@ -3511,15 +3511,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -820
     ],
     [
-     -1970,
+     -940,
      -820
     ]
    ]
@@ -3531,15 +3531,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -820
     ],
     [
-     -1730,
+     -700,
      -820
     ]
    ]
@@ -3551,19 +3551,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1130,
+     -100,
      -430
     ],
     [
-     -1030,
+     0,
      -430
     ],
     [
-     -1030,
+     0,
      -820
     ],
     [
-     -930,
+     100,
      -820
     ]
    ]
@@ -3575,15 +3575,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -820
     ],
     [
-     -690,
+     340,
      -820
     ]
    ]
@@ -3595,15 +3595,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -820
     ],
     [
-     -1530,
+     -500,
      -820
     ]
    ]
@@ -3615,16 +3615,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     450,
-     -300
+     -810,
+     300
     ],
     [
-     450,
-     -950
+     -810,
+     950
     ],
     [
-     350,
-     -950
+     -910,
+     950
     ]
    ]
   },
@@ -3635,16 +3635,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     450,
-     -300
+     -810,
+     300
     ],
     [
-     450,
-     -950
+     -810,
+     950
     ],
     [
-     550,
-     -950
+     -710,
+     950
     ]
    ]
   },
@@ -3655,15 +3655,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -950
     ],
     [
-     -2170,
+     -1140,
      -950
     ]
    ]
@@ -3675,15 +3675,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -950
     ],
     [
-     -490,
+     540,
      -950
     ]
    ]
@@ -3695,16 +3695,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1090,
-     -300
+     -170,
+     300
     ],
     [
-     1090,
-     -950
+     -170,
+     950
     ],
     [
-     990,
-     -950
+     -270,
+     950
     ]
    ]
   },
@@ -3715,15 +3715,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -950
     ],
     [
-     -1970,
+     -940,
      -950
     ]
    ]
@@ -3735,15 +3735,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -950
     ],
     [
-     -690,
+     340,
      -950
     ]
    ]
@@ -3755,16 +3755,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1090,
-     -300
+     -170,
+     300
     ],
     [
-     1090,
-     -950
+     -170,
+     950
     ],
     [
-     1190,
-     -950
+     -70,
+     950
     ]
    ]
   },
@@ -3775,15 +3775,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -1080
     ],
     [
-     -2170,
+     -1140,
      -1080
     ]
    ]
@@ -3795,15 +3795,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -1080
     ],
     [
-     -1970,
+     -940,
      -1080
     ]
    ]
@@ -3815,15 +3815,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -1080
     ],
     [
-     -490,
+     540,
      -1080
     ]
    ]
@@ -3835,16 +3835,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     450,
-     -300
+     -810,
+     300
     ],
     [
-     450,
-     -1080
+     -810,
+     1080
     ],
     [
-     350,
-     -1080
+     -910,
+     1080
     ]
    ]
   },
@@ -3855,15 +3855,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -1080
     ],
     [
-     -1730,
+     -700,
      -1080
     ]
    ]
@@ -3875,19 +3875,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1130,
+     -100,
      -430
     ],
     [
-     -1030,
+     0,
      -430
     ],
     [
-     -1030,
+     0,
      -1210
     ],
     [
-     -930,
+     100,
      -1210
     ]
    ]
@@ -3899,15 +3899,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -1210
     ],
     [
-     -2170,
+     -1140,
      -1210
     ]
    ]
@@ -3919,15 +3919,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -1210
     ],
     [
-     -1530,
+     -500,
      -1210
     ]
    ]
@@ -3939,15 +3939,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -1210
     ],
     [
-     -1730,
+     -700,
      -1210
     ]
    ]
@@ -3959,16 +3959,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1530,
-     -300
+     270,
+     300
     ],
     [
-     1530,
-     -1210
+     270,
+     1210
     ],
     [
-     1430,
-     -1210
+     170,
+     1210
     ]
    ]
   },
@@ -3979,23 +3979,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -1250
     ],
     [
-     -1430,
+     -400,
      -1250
     ],
     [
-     -1430,
+     -400,
      -1210
     ],
     [
-     -1330,
+     -300,
      -1210
     ]
    ]
@@ -4007,16 +4007,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     450,
-     -300
+     -810,
+     300
     ],
     [
-     450,
-     -1340
+     -810,
+     1340
     ],
     [
-     550,
-     -1340
+     -710,
+     1340
     ]
    ]
   },
@@ -4027,15 +4027,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -1340
     ],
     [
-     -1970,
+     -940,
      -1340
     ]
    ]
@@ -4047,19 +4047,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1130,
+     -100,
      -430
     ],
     [
-     -1030,
+     0,
      -430
     ],
     [
-     -1030,
+     0,
      -1340
     ],
     [
-     -930,
+     100,
      -1340
     ]
    ]
@@ -4071,15 +4071,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -1340
     ],
     [
-     -2170,
+     -1140,
      -1340
     ]
    ]
@@ -4091,16 +4091,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1530,
-     -300
+     270,
+     300
     ],
     [
-     1530,
-     -1340
+     270,
+     1340
     ],
     [
-     1630,
-     -1340
+     370,
+     1340
     ]
    ]
   },
@@ -4111,15 +4111,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1630,
+     -600,
      -300
     ],
     [
-     -1630,
+     -600,
      -1340
     ],
     [
-     -1730,
+     -700,
      -1340
     ]
    ]
@@ -4131,16 +4131,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     450,
-     -300
+     -810,
+     300
     ],
     [
-     450,
-     -1340
+     -810,
+     1340
     ],
     [
-     350,
-     -1340
+     -910,
+     1340
     ]
    ]
   },
@@ -4151,15 +4151,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -1470
     ],
     [
-     -690,
+     340,
      -1470
     ]
    ]
@@ -4171,15 +4171,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -1470
     ],
     [
-     -1970,
+     -940,
      -1470
     ]
    ]
@@ -4191,15 +4191,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -1470
     ],
     [
-     -490,
+     540,
      -1470
     ]
    ]
@@ -4211,15 +4211,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -1600
     ],
     [
-     -690,
+     340,
      -1600
     ]
    ]
@@ -4231,23 +4231,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -1640
     ],
     [
-     -190,
+     840,
      -1640
     ],
     [
-     -190,
+     840,
      -1600
     ],
     [
-     -90,
+     940,
      -1600
     ]
    ]
@@ -4259,16 +4259,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1090,
-     -300
+     -170,
+     300
     ],
     [
-     1090,
-     -1600
+     -170,
+     1470
     ],
     [
-     990,
-     -1600
+     -270,
+     1470
     ]
    ]
   },
@@ -4279,15 +4279,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -1730
     ],
     [
-     -490,
+     540,
      -1730
     ]
    ]
@@ -4299,19 +4299,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -90,
+     940,
      -1600
     ],
     [
-     10,
+     1040,
      -1600
     ],
     [
-     10,
+     1040,
      -1730
     ],
     [
-     110,
+     1140,
      -1730
     ]
    ]
@@ -4323,15 +4323,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -1730
     ],
     [
-     -690,
+     340,
      -1730
     ]
    ]
@@ -4343,23 +4343,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -590,
+     440,
      -300
     ],
     [
-     -590,
+     440,
      -1770
     ],
     [
-     -390,
+     640,
      -1770
     ],
     [
-     -390,
+     640,
      -1730
     ],
     [
-     -290,
+     740,
      -1730
     ]
    ]
@@ -4371,15 +4371,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -1730
     ],
     [
-     -2170,
+     -1140,
      -1730
     ]
    ]
@@ -4391,15 +4391,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2070,
+     -1040,
      -300
     ],
     [
-     -2070,
+     -1040,
      -1730
     ],
     [
-     -1970,
+     -940,
      -1730
     ]
    ]

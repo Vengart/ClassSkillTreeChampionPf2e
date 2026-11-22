@@ -1,6 +1,6 @@
 // ============================================================
-// Раскладка «дерево со стволами» (ветка tree-trunk): все ветки растут от корня вверх,
-// у каждого уровня черт — одна строка на всё дерево.
+// Раскладка «дерево со стволами» (ветка tree-trunk): половина тем растёт от корня вверх,
+// половина — вниз; у каждого уровня черт — одна строка в своей половине дерева.
 //
 //   ур.4    o   o       o─┐            ← черты одного уровня рядом по горизонтали
 //           │ ┌─┘──────────┘  ← «рельс» в просвете над строкой ведёт к дальним колонкам
@@ -59,14 +59,12 @@ export function computeTreeLayout(nodes, edges, { log = false, themeOrder = THEM
     const setPos = (id, x, y) => { const n = byId.get(id); n.x = Math.round(x); n.y = Math.round(y); };
     const paths = new Map(); // "from>to" → точки ломаной
 
-    // ---------- строки: одна на уровень, общая для всего дерева ----------
+    // ---------- строки: одна на уровень ----------
+    // Дорожки раздаются по общему порядку уровней (row); при расстановке каждая половина дерева
+    // (верхняя и нижняя) берёт только свои уровни — без пустых строк, порядок тот же.
     const featLevels = [...new Set(nodes.filter((n) => n.kind === 'feat').map((n) => n.level))].sort((a, b) => a - b);
     const rowOfLevel = new Map(featLevels.map((lv, i) => [lv, i]));
     const row = (id) => rowOfLevel.get(byId.get(id).level);
-    const hy = -G.HUB_Y;
-    const rowY = (r) => hy - (r + 1) * G.ROW;
-    // рельс строки r; r = −1 — просвет между темой и первой строкой
-    const railY = (r) => (r >= 0 ? rowY(r) - G.RAIL : (hy + rowY(0)) / 2);
 
     // ---------- дорожки ----------
     // Дорожка j стороны s: центр laneX(j); граница b — между дорожками b−1 и b (граница 0 — ствол темы).
@@ -154,13 +152,36 @@ export function computeTreeLayout(nodes, edges, { log = false, themeOrder = THEM
         return { hub, sides, left: reach(-1), right: reach(1) };
     });
 
+    // ---------- две половины: первые темы растут от корня вверх, остальные — вниз ----------
+    // Делим по ширине пополам, сохраняя порядок (родственные темы рядом).
+    const colW = (c) => c.left + c.right + G.COL_GAP;
+    const total = columns.reduce((sum, c) => sum + colW(c), 0);
+    let acc = 0, splitAt = columns.length;
+    for (let i = 0; i < columns.length; i++) {
+        if (acc + colW(columns[i]) / 2 > total / 2) { splitAt = i; break; }
+        acc += colW(columns[i]);
+    }
+    const halves = [{ cols: columns.slice(0, splitAt), v: -1 }, { cols: columns.slice(splitAt), v: 1 }];
+
     // ---------- координаты и связи ----------
     setPos('root', 0, 0);
+    for (const { cols, v } of halves) {
+    // строки половины: только её уровни; рельс — между строкой и предыдущей (ближе к корню) или
+    // над строкой (дальше от корня) — в любом случае на G.RAIL выше центров узлов, в просвете
+    // между узлами и подписями соседней строки
+    const ids = new Set();
+    const collect = (id) => { ids.add(id); for (const c of kids.get(id)) collect(c); };
+    for (const col of cols) for (const sd of [-1, 1]) for (const id of col.sides[sd]) collect(id);
+    const halfRows = [...new Set([...ids].map(row))].sort((a, b) => a - b);
+    const local = (r) => halfRows.filter((x) => x <= r).length - 1;   // глобальная строка → строка половины
+    const hy = v * G.HUB_Y;
+    const rowY = (lr) => hy + v * (lr + 1) * G.ROW;
+    const railY = (r) => { const lr = local(r); return lr >= 0 ? rowY(lr) - G.RAIL : (hy + rowY(0)) / 2; };
     let cursor = 0;
-    for (const col of columns) { col.x = cursor + col.left; cursor = col.x + col.right + G.COL_GAP; }
+    for (const col of cols) { col.x = cursor + col.left; cursor = col.x + col.right + G.COL_GAP; }
     const shift = -(cursor - G.COL_GAP) / 2;
-    const busY = -(G.HUB_Y - G.BUS_GAP);
-    for (const col of columns) {
+    const busY = v * (G.HUB_Y - G.BUS_GAP);
+    for (const col of cols) {
         const hx = col.x + shift;
         setPos(col.hub, hx, hy);
         paths.set(`root>${col.hub}`, [[0, 0], [0, busY], [hx, busY], [hx, hy]]);
@@ -168,7 +189,7 @@ export function computeTreeLayout(nodes, edges, { log = false, themeOrder = THEM
         const bX = (sd, b) => hx + sd * b * G.STEP;
 
         const place = (id) => {
-            setPos(id, laneX(sideOf.get(id), lane.get(id)), rowY(row(id)));
+            setPos(id, laneX(sideOf.get(id), lane.get(id)), rowY(local(row(id))));
             for (const c of kids.get(id)) place(c);
         };
         for (const sd of [-1, 1]) for (const id of col.sides[sd]) place(id);
@@ -206,6 +227,7 @@ export function computeTreeLayout(nodes, edges, { log = false, themeOrder = THEM
                 if (kids.get(id).length) walk(id);
             }
         }
+    }
     }
 
     // связи: основные — по ломаным дерева; дополнительные (вторая черта-критерий,
