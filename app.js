@@ -29,7 +29,10 @@ const MAX_LEVEL = META.maxLevel || 20;
 /** Карточки выбора сверху: { id, optional, multi, fromLevel, limit, bonus }. */
 const CARD_GROUPS = META.cardGroups;
 const CARD_GROUP = new Map(CARD_GROUPS.map((g) => [g.id, g]));
-const sizeOf = (n) => SIZE[n.kind] || 54;
+/** Размер узла на холсте — из CSS-токенов (--node-feat и т.д.); координаты раскладки те же. */
+const tokenPx = (name) => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name)) || 0;
+const NODE_SIZE = { feat: tokenPx('--node-feat'), hub: tokenPx('--node-hub'), root: tokenPx('--node-root') };
+const sizeOf = (n) => NODE_SIZE[n.kind] || SIZE[n.kind] || 54;
 
 // ---------- состояние сборки ----------
 
@@ -290,45 +293,78 @@ function actionsHtml(a) {
     return a.split('/').map((k) => `<span class="act" title="${ACTION_NAME[k] || ''}">${ACTION_GLYPH[k] || esc(k)}</span>`).join(' / ');
 }
 
-const KIND_LABEL = { root: 'Класс', group: 'Выбор', option: 'Вариант', hub: 'Тема', feat: 'Черта' };
 const RARITY_LABEL = { common: '', uncommon: 'Необычный', rare: 'Редкий', unique: 'Уникальный' };
 
+/** Подзаголовок карточки: что это за узел. */
+function cardSubtitle(n) {
+    if (n.kind === 'feat') return `Классовая черта ${META.classGen}`;
+    if (n.kind === 'option') return NODES.get(n.group)?.name || 'Вариант выбора';
+    if (n.kind === 'group') return 'Группа выбора';
+    if (n.kind === 'hub') return 'Ветка дерева';
+    return 'Класс';
+}
+/** Стоимость узла в ячейках черт. */
+function costText(n) {
+    if (!isChoice(n)) return '';
+    if (grantedBy(n)) return `бесплатно — даёт «${esc(grantedBy(n).name)}»`;
+    if (n.kind === 'feat') {
+        const used = chosenFeats().length, total = slotsTotal(state.level);
+        return `1 ячейка черты класса · свободно ${Math.max(0, total - used)} из ${total}`;
+    }
+    return 'выбор при создании, ячейку черты не тратит';
+}
+/** Широкая кнопка «Взять» / «Убрать» (в подсказке и в правой панели). */
+function takeButton(n) {
+    if (!isChoice(n)) return '';
+    const on = state.chosen.has(n.id);
+    const disabled = !on && (blockers(n).length > 0 || !!grantedBy(n));
+    const label = on ? 'Убрать' : grantedBy(n) ? 'Уже есть' : 'Взять';
+    return `<button type="button" class="btn-take${on ? ' is-on' : ''}" data-take="${esc(n.id)}"${disabled ? ' disabled' : ''}>${label}</button>`;
+}
+
+/**
+ * Карточка узла в духе D&D Beyond: название, источник, подзаголовок, метки «Уровень / Требования /
+ * Стоимость», описание, причина запрета и кнопка. full — правая панель (всё описание и ссылка на источник),
+ * иначе — подсказка (описание обрезано, внизу — клавиши).
+ */
 function cardHtml(n, full) {
-    const lvl = n.kind === 'feat' ? `Черта ${n.level}` : n.kind === 'option' && n.level > 1 ? `Уровень ${n.level}` : KIND_LABEL[n.kind];
     const traits = [
         RARITY_LABEL[n.rarity] && `<span class="trait trait-${n.rarity}">${RARITY_LABEL[n.rarity]}</span>`,
         ...(n.traits || []).map((t) => `<span class="trait">${esc(t.name)}</span>`),
     ].filter(Boolean).join('');
+
+    const prereq = n.prereqHtml ? sanitize(n.prereqHtml) : esc(n.prereqText || '');
+    const meta = [];
+    if ((n.kind === 'feat' || n.kind === 'option') && n.level) meta.push(['Уровень', String(n.level)]);
+    if (isChoice(n)) meta.push(['Требования', prereq || 'нет']);
+    for (const [k, v] of Object.entries(n.fields || {})) {
+        if (!['Источник', 'Критерии'].includes(k)) meta.push([esc(k), sanitize(v)]);
+    }
+    if (isChoice(n)) meta.push(['Стоимость', costText(n)]);
+
     const why = blockers(n);
     let status = '';
-    if (isGranted(n)) status = `<div class="status st-granted">Есть у каждого ${esc(META.classGen)}</div>`;
-    else if (grantedBy(n)) status = `<div class="status st-granted">Даётся: «${esc(grantedBy(n).name)}»</div>`;
-    else if (state.chosen.has(n.id)) status = '<div class="status st-on">Выбрано · ЛКМ — снять</div>';
-    else if (isChoice(n) && !why.length) status = '<div class="status st-avail">Доступно · ЛКМ — взять</div>';
-    else if (why.length) status = `<div class="status st-locked">${why.map(esc).join('<br>')}</div>`;
-
-    const prereq = n.prereqHtml ? sanitize(n.prereqHtml) : esc(n.prereqText);
-    const fields = Object.entries(n.fields || {})
-        .filter(([k]) => !['Источник', 'Критерии'].includes(k))
-        .map(([k, v]) => `<div><b>${esc(k)}:</b> ${sanitize(v)}</div>`).join('');
+    if (isGranted(n)) status = `<p class="status st-granted">Есть у каждого ${esc(META.classGen)}</p>`;
+    else if (grantedBy(n)) status = `<p class="status st-granted">Даётся: «${esc(grantedBy(n).name)}»</p>`;
+    else if (!state.chosen.has(n.id) && why.length) status = `<p class="status st-locked">${why.map(esc).join('<br>')}</p>`;
 
     return `
-        <div class="card-head">
-            <div class="card-title">${esc(n.name)} ${actionsHtml(n.actions)}</div>
-            <div class="card-level">${esc(lvl)}</div>
-        </div>
-        ${n.nameEn && n.nameEn !== n.name ? `<div class="card-en">${esc(n.nameEn)}</div>` : ''}
+        <header class="card-head">
+            <h3 class="card-title">${esc(n.name)} ${actionsHtml(n.actions)}</h3>
+            ${n.source ? `<div class="card-source">${esc(n.source)}</div>` : ''}
+            <div class="card-sub">${esc(cardSubtitle(n))}${n.nameEn && n.nameEn !== n.name ? ` · ${esc(n.nameEn)}` : ''}</div>
+        </header>
         ${traits ? `<div class="traits">${traits}</div>` : ''}
+        ${meta.length ? `<dl class="card-meta">${meta.map(([k, v]) => `<dt>${k}:</dt><dd>${v}</dd>`).join('')}</dl>` : ''}
         <div class="card-body ${full ? '' : 'clamp'}">
-            ${prereq ? `<div class="prereq"><b>Критерии:</b> ${prereq}</div>` : ''}
-            ${fields ? `<div class="fields">${fields}</div>` : ''}
-            ${(prereq || fields) && n.html ? '<hr>' : ''}
             <div class="desc">${sanitize(n.html)}</div>
             ${n.hint ? `<p class="hint">${esc(n.hint)}</p>` : ''}
         </div>
         ${status}
+        ${takeButton(n)}
         ${full && n.url ? `<a class="src" href="${esc(n.url)}" target="_blank" rel="noopener noreferrer">Открыть на ${esc(SOURCE_NAME)} ↗</a>` : ''}
-        ${!full ? '<div class="more">ПКМ — подробнее</div>' : ''}`;
+        ${!full && isChoice(n) ? `<p class="tip-keys">Enter — ${state.chosen.has(n.id) ? 'убрать' : 'взять'} · i / ПКМ — подробнее · Esc — закрыть</p>` : ''}
+        ${!full && !isChoice(n) ? '<p class="tip-keys">ПКМ — подробнее</p>' : ''}`;
 }
 
 // ---------- DOM ----------
@@ -355,13 +391,6 @@ function svg(tag, attrs, parent) {
 }
 
 function buildScene() {
-    // мягкое свечение вокруг корня
-    const defs = svg('defs', {}, ringsLayer);
-    const grad = svg('radialGradient', { id: 'core-glow' }, defs);
-    svg('stop', { offset: '0%', style: 'stop-color: var(--c-root-glow); stop-opacity: 0.28' }, grad);
-    svg('stop', { offset: '100%', style: 'stop-color: var(--c-root-glow); stop-opacity: 0' }, grad);
-    svg('circle', { cx: 0, cy: 0, r: 420, fill: 'url(#core-glow)' }, ringsLayer);
-
     // связи — ломаные из раскладки; концы подрезаются по краю узлов
     const trim = (p, q, r) => {
         const dx = q[0] - p[0], dy = q[1] - p[1], len = Math.hypot(dx, dy) || 1;
@@ -410,8 +439,7 @@ function buildScene() {
             const c = GEO.CAPTION[n.kind] || GEO.CAPTION.feat;
             const cap = document.createElement('span');
             cap.className = `caption cap-${n.captionSide || 'below'}`;
-            cap.style.fontSize = `${c.fs}px`;
-            cap.style.width = `${n.captionW || c.maxW}px`;
+            cap.style.maxWidth = `${c.maxW}px`;
             cap.textContent = n.name;
             el.appendChild(cap);
         } else {
@@ -462,130 +490,115 @@ function buildScene() {
         nodesLayer.appendChild(el);
         nodeEls.set(n.id, el);
     }
-    buildChoiceBar();
+    buildChoiceBar();   // группы выбора в сайдбаре
 }
 
-// ---------- верхняя панель выбора (карточки) ----------
+// ---------- сайдбар: группы выбора ----------
+// Школа и диссертация волшебника, освящение / призвание / заклинание / благословение поборника.
+// Каждая группа — раздел со списком вариантов, раскрывается кнопкой +/−; выбранный вариант
+// отмечен акцентной полосой слева. ⓘ — полное описание в правой панели.
 
 const cardEls = new Map();
+const NAV_KEY = `pf2e-${CLASS_ID}-nav`;   // какие разделы свёрнуты (удобство, только в этом браузере)
+function readNav() {
+    try { return JSON.parse(localStorage.getItem(NAV_KEY)) || {}; } catch { return {}; }
+}
+function setSectionOpen(key, open, remember = true) {
+    const sec = document.querySelector(`[data-sec-block="${key}"]`);
+    if (!sec) return;
+    sec.classList.toggle('collapsed', !open);
+    const btn = sec.querySelector('.sec-toggle');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.title = open ? 'Свернуть' : 'Развернуть';
+    if (!remember) return;
+    const nav = readNav();
+    nav[key] = open;
+    try { localStorage.setItem(NAV_KEY, JSON.stringify(nav)); } catch { /* нет доступа */ }
+}
+
+/** После загрузки сборки: раздел группы открыт, пока в нём ничего не выбрано; дальше — как оставил пользователь. */
+function initNavSections() {
+    const nav = readNav();
+    for (const { id: gid } of CARD_GROUPS) {
+        const picked = [...state.chosen].some((id) => NODES.get(id).group === gid);
+        setSectionOpen(gid, nav[gid] ?? !picked, false);
+    }
+}
 
 function buildChoiceBar() {
-    const bar = $('#choice-bar');
+    const box = $('#choice-groups');
     for (const { id: gid } of CARD_GROUPS) {
         const g = NODES.get(gid);
         const sec = document.createElement('section');
-        sec.className = 'choice-group';
-        const head = document.createElement('button');
-        head.type = 'button';
-        head.className = 'choice-head';
-        head.dataset.id = gid;
-        head.innerHTML = `<span>${esc(g.name)}</span><small class="choice-hint"></small>`;
+        sec.className = 'block nav-group';
+        sec.dataset.secBlock = gid;
+        // заголовок раздела: название, подсказка (выбранное / «не выбрано»), ⓘ и +/−
+        const head = document.createElement('h2');
+        head.className = 'sec-head';
+        head.innerHTML = `<button type="button" class="sec-toggle choice-head" data-sec="${esc(gid)}" aria-expanded="true">` +
+            `<span class="nav-title">${esc(g.name)}</span><small class="choice-hint"></small>` +
+            '<span class="nav-sign" aria-hidden="true"></span></button>' +
+            `<button type="button" class="nav-more" data-more="${esc(gid)}" title="Описание: ${esc(g.name)}" aria-label="Описание: ${esc(g.name)}">i</button>`;
         sec.appendChild(head);
-        cardEls.set(gid, head);
-        const row = document.createElement('div');
-        // compact — только иконки (много вариантов); имя выбранного видно в заголовке, остальные — в подсказке
-        // noImages — без иконок: мелкие текстовые «таблетки» с коротким названием
-        const cg = CARD_GROUP.get(gid);
-        row.className = `choice-row${cg.noImages ? ' chips' : cg.compact ? ' compact' : ''}`;
+        cardEls.set(gid, head.querySelector('.choice-head'));
+        const list = document.createElement('ul');
+        list.className = 'nav-list';
         for (const o of DATA.nodes.filter((x) => x.group === gid)) {
+            const li = document.createElement('li');
+            li.className = 'nav-row';
             const c = document.createElement('button');
             c.type = 'button';
-            c.className = `choice-card rarity-${o.rarity || 'common'}`;
+            c.className = `nav-item choice-card rarity-${o.rarity || 'common'}`;
             c.dataset.id = o.id;
-            c.setAttribute('aria-label', o.name);
-            c.innerHTML = (cg.noImages ? '' : `<span class="choice-art"${o.image ? ` style="background-image:url('images/${o.image}')"` : ''}></span>`) +
-                `<span class="choice-name">${esc(o.short || o.name)}</span>` +
+            c.innerHTML = (o.image ? `<span class="nav-icon" style="background-image:url('images/${o.image}')" aria-hidden="true"></span>` : '') +
+                `<span class="nav-name">${esc(o.name)}</span>` +
                 (o.sanct ? `<span class="badge b-${o.sanct}" title="Нужно освящение «${o.sanct === 'holy' ? 'священный' : 'нечестивый'}»"></span>` : '');
-            row.appendChild(c);
+            li.appendChild(c);
+            li.insertAdjacentHTML('beforeend', `<button type="button" class="nav-more" data-more="${esc(o.id)}" title="Описание" aria-label="Описание: ${esc(o.name)}">i</button>`);
+            list.appendChild(li);
             cardEls.set(o.id, c);
         }
-        sec.appendChild(row);
-        bar.appendChild(sec);
+        sec.appendChild(list);
+        box.appendChild(sec);
     }
-    // описание выбранного — в свободном месте справа (когда все группы компактные, как у волшебника)
-    if (CARD_GROUPS.every((g) => CARD_GROUP.get(g.id).compact)) {
-        const info = document.createElement('section');
-        info.id = 'choice-info';
-        info.className = 'choice-info';
-        info.setAttribute('aria-live', 'polite');
-        bar.appendChild(info);
-        bar.classList.add('with-info');
-    }
-    // свернуть / развернуть панель
-    const tgl = document.createElement('button');
-    tgl.type = 'button';
-    tgl.id = 'bar-toggle';
-    tgl.className = 'bar-toggle';
-    bar.appendChild(tgl);
-    tgl.addEventListener('click', (ev) => { ev.stopPropagation(); setBarCollapsed(!document.body.classList.contains('bar-collapsed')); });
-    setBarCollapsed(readBarCollapsed(), false);
 
-    bar.addEventListener('click', (ev) => {
+    box.addEventListener('click', (ev) => {
         const more = ev.target.closest('[data-more]');
         if (more) { openDetails(NODES.get(more.dataset.more)); return; }
-        const c = ev.target.closest('[data-id]');
+        const c = ev.target.closest('.nav-item[data-id]');
         if (c) toggle(NODES.get(c.dataset.id));
     });
-    bar.addEventListener('contextmenu', (ev) => {
-        const c = ev.target.closest('[data-id]');
+    box.addEventListener('contextmenu', (ev) => {
+        const c = ev.target.closest('.nav-item[data-id]');
         if (!c) return;
         ev.preventDefault();
         openDetails(NODES.get(c.dataset.id));
     });
-    bar.addEventListener('pointerover', (ev) => {
-        const c = ev.target.closest('[data-id]');
+    box.addEventListener('pointerover', (ev) => {
+        const c = ev.target.closest('.nav-item[data-id]');
         if (!c) return;
         hoverId = c.dataset.id;
-        showTooltip(NODES.get(hoverId), c, 'below');
+        showTooltip(NODES.get(hoverId), c);
         render();
     });
-    bar.addEventListener('pointerout', (ev) => {
-        const c = ev.target.closest('[data-id]');
+    box.addEventListener('pointerout', (ev) => {
+        const c = ev.target.closest('.nav-item[data-id]');
         if (!c || c.contains(ev.relatedTarget)) return;
         hoverId = null;
-        hideTooltip();
+        if (!tooltip.contains(ev.relatedTarget)) scheduleHideTooltip();
         render();
     });
 }
-
-// ---------- верхняя панель: сворачивание и описание выбранного ----------
-
-const BAR_KEY = 'pf2e-bar-collapsed';
-function readBarCollapsed() {
-    try { return localStorage.getItem(BAR_KEY) === '1'; } catch { return false; }
-}
-/** Свёрнутая панель — одна строка: названия групп и выбранное; карточки и описание скрыты. */
-function setBarCollapsed(on, refit = true) {
-    document.body.classList.toggle('bar-collapsed', on);
-    const tgl = $('#bar-toggle');
-    tgl.textContent = on ? '▾' : '▴';
-    tgl.title = on ? 'Развернуть панель выбора' : 'Свернуть панель выбора';
-    tgl.setAttribute('aria-label', tgl.title);
-    tgl.setAttribute('aria-expanded', String(!on));
-    try { localStorage.setItem(BAR_KEY, on ? '1' : '0'); } catch { /* нет доступа */ }
-    syncBarHeight();
-    if (refit) fitAll();
-}
-/** Первый абзац описания без разметки. */
-function plainSummary(html) {
-    const doc = new DOMParser().parseFromString(`<div>${html || ''}</div>`, 'text/html');
-    const p = doc.querySelector('p') || doc.body;
-    return p.textContent.replace(/\s+/g, ' ').trim();
-}
-function renderChoiceInfo() {
-    const info = $('#choice-info');
-    if (!info) return;
-    const key = CARD_GROUPS.flatMap((g) => [...state.chosen].filter((id) => NODES.get(id).group === g.id)).join('|');
-    if (info.dataset.key === key) return;   // перерисовываем только при смене выбора
-    info.dataset.key = key;
-    info.innerHTML =CARD_GROUPS.map((g) => {
-        const group = NODES.get(g.id);
-        const picked = [...state.chosen].map((id) => NODES.get(id)).find((n) => n.group === g.id);
-        if (!picked) return `<div class="info-item empty"><b>${esc(group.name)}:</b> не выбрано</div>`;
-        return `<div class="info-item"><div class="info-title"><span>${esc(group.name)}:</span> ${esc(picked.name)}` +
-            ` <button type="button" class="info-more" data-more="${esc(picked.id)}">подробнее</button></div>` +
-            `<p class="info-text">${esc(plainSummary(picked.html))}</p></div>`;
-    }).join('');
+// раскрытие разделов сайдбара (группы выбора, «Черты», «Поиск», «Как пользоваться»)
+$('#panel').addEventListener('click', (ev) => {
+    const t = ev.target.closest('.sec-toggle');
+    if (!t) return;
+    const key = t.dataset.sec;
+    setSectionOpen(key, document.querySelector(`[data-sec-block="${key}"]`).classList.contains('collapsed'));
+});
+for (const key of ['feats', 'search', 'help']) {
+    const open = readNav()[key];
+    if (open !== undefined) setSectionOpen(key, open, false);
 }
 
 let hoverId = null;
@@ -653,14 +666,13 @@ function render() {
         const pickedIds = [...state.chosen].filter((id) => NODES.get(id).group === g.id);
         const picked = pickedIds.length;
         let hint = '';
+        const names = pickedIds.map((id) => NODES.get(id).short || NODES.get(id).name).join(', ');
         if (g.fromLevel && state.level < g.fromLevel) hint = `с ${g.fromLevel} уровня`;
-        else if (g.multi) hint = `${picked} / ${groupLimit(g.id)}`;
-        else if (!picked) hint = g.optional ? 'не обязательно' : 'выберите одно';
-        else if (g.compact) hint = NODES.get(pickedIds[0]).name;
+        else if (!picked) hint = g.optional ? 'не обязательно' : 'не выбрано';
+        else hint = g.multi ? `${names} · ${picked} / ${groupLimit(g.id)}` : names;
         cardEls.get(g.id).classList.toggle('picked', !!picked);
         cardEls.get(g.id).querySelector('.choice-hint').textContent = hint;
     }
-    renderChoiceInfo();
     renderPanel();
     scheduleLabels();   // приоритет подписей зависит от состояния узлов
 }
@@ -693,10 +705,9 @@ function renderPanel() {
     const used = chosenFeats().length, total = slotsTotal(state.level);
     $('#points-used').textContent = used;
     $('#points-total').textContent = total;
-    $('#hud-level').textContent = state.level;
-    $('#hud-used').textContent = used;
-    $('#hud-total').textContent = total;
-    $('#hud').classList.toggle('over', used > total);
+    $('#hdr-used').textContent = used;
+    $('#hdr-total').textContent = total;
+    $('#app-header').classList.toggle('over', used > total);
     $('#root-used').textContent = used;
     $('#root-total').textContent = total;
     nodeEls.get('root')?.querySelector('.root-points').classList.toggle('over', used > total);
@@ -713,22 +724,6 @@ function renderPanel() {
 
 // ---------- подсказка и подробности ----------
 
-/** Стоимость и кнопка действия для подсказки. */
-function tooltipActions(n) {
-    if (!isChoice(n)) return '';
-    const used = chosenFeats().length, total = slotsTotal(state.level);
-    let cost;
-    if (grantedBy(n)) cost = `бесплатно — даёт «${esc(grantedBy(n).name)}»`;
-    else if (n.kind === 'feat') cost = `1 ячейка черты класса · свободно ${Math.max(0, total - used)} из ${total}`;
-    else cost = 'выбор при создании, ячейку черты не тратит';
-    const on = state.chosen.has(n.id);
-    const why = blockers(n);
-    const disabled = !on && (why.length > 0 || !!grantedBy(n));
-    const label = on ? 'Снять' : grantedBy(n) ? 'Уже есть' : 'Взять';
-    return `<div class="tip-cost"><b>Стоимость:</b> ${cost}</div>` +
-        `<div class="tip-actions"><button type="button" class="btn tip-take${on ? ' btn-danger' : ''}" data-tip-toggle="${esc(n.id)}"${disabled ? ' disabled' : ''}>${label}</button>` +
-        `<span class="tip-keys">Enter — ${on ? 'снять' : 'взять'} · i / ПКМ — подробнее · Esc — закрыть</span></div>`;
-}
 let tipFor = null;      // { id, el, place } — для кого открыта подсказка
 let tipHideTimer = 0;
 function refreshTooltip() {
@@ -741,7 +736,7 @@ function scheduleHideTooltip() {
 function showTooltip(n, el, place = 'side') {
     clearTimeout(tipHideTimer);
     tipFor = { id: n.id, el, place };
-    tooltip.innerHTML = cardHtml(n, false).replace('<div class="more">ПКМ — подробнее</div>', '') + tooltipActions(n);
+    tooltip.innerHTML = cardHtml(n, false);
     tooltip.className = `tooltip card rarity-${n.rarity || 'common'}`;
     const r = el.getBoundingClientRect();
     const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
@@ -757,9 +752,9 @@ tooltip.addEventListener('pointerleave', () => {
     scheduleHideTooltip();
     if (hoverId) { hoverId = null; render(); }
 });
-tooltip.addEventListener('click', (ev) => {
-    const b = ev.target.closest('[data-tip-toggle]');
-    if (b && !b.disabled) toggle(NODES.get(b.dataset.tipToggle));
+document.addEventListener('click', (ev) => {
+    const b = ev.target.closest('[data-take]');
+    if (b && !b.disabled) toggle(NODES.get(b.dataset.take));
 });
 
 let detailsId = null;
@@ -809,10 +804,11 @@ const labels = { k: null, raf: 0, boxes: null };
 const cssPx = (name) => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name)) || 0;
 const LABEL = {
     min: cssPx('--label-min'), minHub: cssPx('--label-min-hub'),
+    fs: cssPx('--label-fs'), fsHub: cssPx('--label-fs-hub'),
     badgeMin: cssPx('--badge-min'), badgeFs: cssPx('--badge-fs'), rootPointsFs: cssPx('--root-points-fs'),
 };
 const CAP_GAP = 8;     // отступ подписи от рамки — как в .cap-* (style.css)
-const BADGE_H = 20;    // высота .lvl-badge (style.css)
+const BADGE_H = 18;    // высота .lvl-badge (style.css)
 
 // ---------- слишком светлые иконки ----------
 // Иконки BG3 в основном тёмные; несколько почти белых (свиток Oghma и т.п.) выбиваются из палитры.
@@ -883,7 +879,8 @@ function updateLabels() {
     if (!labels.boxes) return;
     const k = cam.k;
     labels.k = k;
-    const capScale = (kind, min) => Math.max(1, min / ((GEO.CAPTION[kind] || GEO.CAPTION.feat).fs * k));
+    const capFs = { feat: LABEL.fs, option: LABEL.fs, hub: LABEL.fsHub };
+    const capScale = (kind, min) => Math.max(1, min / ((capFs[kind] || LABEL.fs) * k));
     const scale = { feat: capScale('feat', LABEL.min), hub: capScale('hub', LABEL.minHub), option: capScale('option', LABEL.min),
         root: Math.max(1, LABEL.min / (LABEL.rootPointsFs * k)) };   // по меньшей строке — счётчику
     viewport.style.setProperty('--cap-s-feat', scale.feat);
@@ -894,7 +891,7 @@ function updateLabels() {
     // бейдж уровня: не мельче --badge-min; прячется, когда перерастает половину узла
     const badgeS = Math.max(1, LABEL.badgeMin / (LABEL.badgeFs * k));
     viewport.style.setProperty('--badge-s', badgeS);
-    viewport.classList.toggle('badges-off', BADGE_H * badgeS > GEO.SIZE.feat * 0.5);
+    viewport.classList.toggle('badges-off', BADGE_H * badgeS > NODE_SIZE.feat * 0.5);
 
     // жадная расстановка подписей по приоритету, без наложений
     const pad = 4 / k;   // зазор между подписями — 4px на экране
@@ -932,9 +929,8 @@ function zoomAt(factor, cx, cy) {
 function freeArea(aspect = 1) {
     const vw = viewport.clientWidth, vh = viewport.clientHeight, M = 12;
     const panel = document.body.classList.contains('panel-collapsed') ? null : $('#panel').getBoundingClientRect();
-    const hud = $('#hud').getBoundingClientRect();
-    const area = { left: (panel ? panel.right : 0) + M, top: $('#choice-bar').getBoundingClientRect().bottom + M, right: vw - M,
-        bottom: (hud.height ? hud.top : vh) - M };   // полоса HUD внизу — всегда
+    const area = { left: (panel ? panel.right : 0) + M, top: $('#app-header').getBoundingClientRect().bottom + M, right: vw - M,
+        bottom: vh - M };
     const legend = $('#map-legend')?.getBoundingClientRect();
     const zoomCtl = $('#zoom-ctl').getBoundingClientRect();
     const corner = { w: vw - Math.min(legend?.width ? legend.left : vw, zoomCtl.left), h: vh - Math.min(legend?.height ? legend.top : vh, zoomCtl.top) };
@@ -1085,7 +1081,6 @@ $('#search').addEventListener('keydown', (ev) => {
 $('#f-uncommon').addEventListener('change', (ev) => { state.showUncommon = ev.target.checked; render(); });
 $('#f-unholy').addEventListener('change', (ev) => { state.showUnholy = ev.target.checked; render(); });
 $('#f-avail').addEventListener('change', (ev) => { state.onlyAvailable = ev.target.checked; render(); });
-$('#btn-center').addEventListener('click', () => fitAll());
 function resetBuild() {
     const before = encodeBuild();
     state.chosen.clear();
@@ -1137,13 +1132,12 @@ for (const b of document.querySelectorAll('[data-zoom]')) {
     });
 }
 $('#btn-fit').addEventListener('click', () => fitAll());
-/** Высота верхней панели — для отступов боковых панелей (CSS-переменная --bar-h). */
-function syncBarHeight() {
-    document.documentElement.style.setProperty('--bar-h', `${$('#choice-bar').offsetHeight}px`);
+addEventListener('resize', () => applyCam());
+/** Высота шапки — отступ для боковых панелей (CSS --header-h); на узком экране шапка переносится. */
+function syncHeaderHeight() {
+    document.documentElement.style.setProperty('--header-h', `${$('#app-header').offsetHeight}px`);
 }
-addEventListener('resize', () => { syncBarHeight(); applyCam(); });
-// высота панели меняется и без resize окна (описание выбранного, сворачивание) — следим за ней
-if ('ResizeObserver' in window) new ResizeObserver(syncBarHeight).observe($('#choice-bar'));
+if ('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe($('#app-header'));
 
 // ---------- класс: заголовки, вкладки, фильтры ----------
 
@@ -1162,7 +1156,7 @@ function setupClass() {
     for (const el of document.querySelectorAll('[data-filter]')) el.hidden = !(META.filters || []).includes(el.dataset.filter);
     for (const el of document.querySelectorAll('[data-legend]')) el.hidden = !(META.legend || []).includes(el.dataset.legend);
     const cardNames = CARD_GROUPS.map((g) => NODES.get(g.id).name.toLowerCase());
-    $('#legend-cards').textContent = `Сверху — карточки выбора: ${cardNames.join(', ')}`;
+    $('#legend-cards').textContent = `Слева — группы выбора: ${cardNames.join(', ')}`;
     $('#legend-card-req').textContent = `нужна карточка (${cardNames.join(', ')})`;
     // значок в легенде — как на узлах: иконка первой карточки или ромб, если иконок у карточек нет
     const sample = DATA.nodes.find((x) => x.group === CARD_GROUPS[0]?.id && x.image);
@@ -1182,8 +1176,9 @@ buildScene();
 measureLabels();
 toneBrightIcons();
 document.fonts?.ready.then(measureLabels);   // ширина подписей меняется, когда догружается шрифт
-syncBarHeight();
+syncHeaderHeight();
 load();
+initNavSections();
 const dt = new Date(META.fetchedAt);
 $('#data-source').innerHTML = `Данные: <a href="${esc(META.source)}" target="_blank" rel="noopener noreferrer">${esc(SOURCE_NAME)}</a>, ` +
     `обновлено ${dt.toLocaleDateString('ru-RU')}. Обновить: <code>${esc(META.updateCmd || 'node tools/fetch-pf2.mjs')}</code>`;

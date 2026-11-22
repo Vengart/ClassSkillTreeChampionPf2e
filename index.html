@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Дерево черт PF2e</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="fonts/fonts.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,21 +17,26 @@
         </div>
     </div>
 
-    <!-- Верхняя панель: выбор освящения, призвания, заклинания и благословения -->
-    <header id="choice-bar" class="frame" aria-label="Выбор при создании персонажа"></header>
+    <!-- Шапка: класс, очки, действия со сборкой -->
+    <header id="app-header" class="frame">
+        <button id="panel-toggle" class="icon-btn" title="Свернуть панель" aria-label="Свернуть панель">‹</button>
+        <div class="crest" aria-hidden="true"></div>
+        <div class="hdr-title">
+            <h1 id="class-name">Поборник</h1>
+            <div class="hdr-sub">дерево классовых черт · PF2e <span id="class-note" class="class-note"></span></div>
+        </div>
+        <div class="hdr-points" role="status" aria-live="polite">Очки: <b id="hdr-used">0</b> / <b id="hdr-total">0</b></div>
+        <div class="hdr-actions">
+            <button type="button" class="btn" data-undo title="Отменить последнее изменение (Ctrl+Z)">Отменить</button>
+            <button type="button" id="btn-share" class="btn" title="Скопировать ссылку на эту сборку">Ссылка на сборку</button>
+            <button type="button" id="btn-reset" class="btn btn-danger" data-reset title="Сбросить сборку (можно отменить)">Сброс</button>
+            <button type="button" id="btn-fit" class="btn" title="Показать всё дерево (клавиша 0)">Уместить на экран</button>
+        </div>
+    </header>
 
     <!-- Левая панель: сборка -->
     <aside id="panel" class="frame">
         <nav id="class-tabs" class="class-tabs" aria-label="Класс"></nav>
-        <header class="panel-head">
-            <div class="crest" aria-hidden="true"></div>
-            <div>
-                <h1 id="class-name">Поборник</h1>
-                <div class="subtitle">дерево классовых черт · PF2e</div>
-                <div id="class-note" class="class-note"></div>
-            </div>
-            <button id="panel-toggle" class="icon-btn" title="Свернуть панель" aria-label="Свернуть панель">‹</button>
-        </header>
 
         <div class="panel-body">
             <section class="block">
@@ -48,15 +51,17 @@
                 </div>
             </section>
 
+            <!-- Группы выбора класса (школа и диссертация волшебника, освящение и призвание поборника…) -->
+            <div id="choice-groups" aria-label="Выбор при создании персонажа"></div>
 
-            <section class="block">
-                <h2>Черты <span id="feat-count" class="muted"></span></h2>
+            <section class="block" data-sec-block="feats">
+                <h2 class="sec-head"><button type="button" class="sec-toggle" data-sec="feats" aria-expanded="true"><span>Черты</span> <span id="feat-count" class="muted"></span><span class="nav-sign" aria-hidden="true"></span></button></h2>
                 <ol id="feat-list" class="feat-list"></ol>
                 <p id="feat-empty" class="muted small">Пока ничего не выбрано.</p>
             </section>
 
-            <section class="block">
-                <h2>Поиск и фильтры</h2>
+            <section class="block" data-sec-block="search">
+                <h2 class="sec-head"><button type="button" class="sec-toggle" data-sec="search" aria-expanded="true"><span>Поиск и фильтры</span><span class="nav-sign" aria-hidden="true"></span></button></h2>
                 <input id="search" type="search" placeholder="Название черты…" autocomplete="off">
                 <div class="filters">
                     <label data-filter="uncommon"><input type="checkbox" id="f-uncommon" checked> необычные</label>
@@ -65,17 +70,11 @@
                 </div>
             </section>
 
-            <section class="block buttons">
-                <button id="btn-center" class="btn">Центрировать</button>
-                <button id="btn-share" class="btn">Ссылка на сборку</button>
-                <button class="btn" data-undo title="Отменить последнее изменение (Ctrl+Z)">Отменить</button>
-                <button id="btn-reset" class="btn btn-danger" data-reset>Сбросить</button>
-            </section>
 
-            <section class="block legend">
-                <h2>Как пользоваться</h2>
+            <section class="block legend" data-sec-block="help">
+                <h2 class="sec-head"><button type="button" class="sec-toggle" data-sec="help" aria-expanded="true"><span>Как пользоваться</span><span class="nav-sign" aria-hidden="true"></span></button></h2>
                 <ul class="small">
-                    <li id="legend-cards">Сверху — карточки выбора</li>
+                    <li id="legend-cards">Слева — группы выбора</li>
                     <li><b>ЛКМ</b> по узлу или карточке — взять / снять</li>
                     <li><b>ПКМ</b> по узлу — подробное описание</li>
                     <li>Перетаскивание — перемещение, колесо — масштаб</li>
@@ -101,14 +100,6 @@
     <!-- Всплывающая подсказка -->
     <div id="tooltip" class="tooltip hidden" role="tooltip"></div>
     <div id="toast" class="toast hidden"></div>
-    <!-- Всегда на виду: уровень, потраченные ячейки, отмена и сброс -->
-    <div id="hud" class="frame" role="status" aria-live="polite">
-        <span class="hud-stat">Уровень <b id="hud-level">1</b></span>
-        <span class="hud-stat">Черты <b id="hud-used">0</b> / <b id="hud-total">0</b></span>
-        <button type="button" class="btn hud-btn" data-undo title="Отменить последнее изменение (Ctrl+Z)">↶ Отменить</button>
-        <button type="button" class="btn btn-danger hud-btn" data-reset title="Сбросить сборку (можно отменить)">Сброс</button>
-    </div>
-
     <!-- Компактная легенда: состояния узлов и виды связей -->
     <details id="map-legend" class="frame" open>
         <summary>Легенда</summary>
@@ -118,12 +109,12 @@
             <li><span class="lg-node lg-locked"><span class="lock-badge"></span></span>закрыто</li>
             <li><span class="lg lg-req"></span>обязательное условие</li>
             <li><span class="lg lg-or"></span>одно из условий (или)</li>
+            <li><span class="lg lg-taken"></span>путь к взятым</li>
         </ul>
     </details>
     <div id="zoom-ctl">
         <button class="icon-btn" data-zoom="1.25" aria-label="Приблизить">+</button>
         <button class="icon-btn" data-zoom="0.8" aria-label="Отдалить">−</button>
-        <button class="icon-btn" id="btn-fit" aria-label="Вписать в экран" title="Вписать в экран (0)">⤢</button>
     </div>
     <script>
         // класс из адреса (?class=wizard): сначала его данные, затем приложение
