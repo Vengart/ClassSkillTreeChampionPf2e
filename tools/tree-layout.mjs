@@ -7,7 +7,7 @@
 //   [Призвание] [Преданность] [Скакун] …
 //      │            │
 //   o──┼──o      o──┼──o            ← ствол темы, черты слева и справа,
-//      │            │  └──o           сверху вниз по возрастанию уровня
+//      │            │  └──o           черты одного уровня — в одной строке (полосы уровней)
 //   o──┼──o      o──┘                ← у черты с детьми свой короткий ствол,
 //      │                               ветка уходит дальше наружу
 //
@@ -54,54 +54,63 @@ export function computeTreeLayout(nodes, edges, { log = false, themeOrder = THEM
     const byLevel = (a, b) => byId.get(a).level - byId.get(b).level || byId.get(a).name.localeCompare(byId.get(b).name, 'ru');
     for (const list of kids.values()) list.sort(byLevel);
 
-    // размеры поддерева черты: высота в строках, ширина в шагах наружу
-    const hCache = new Map(), wCache = new Map();
-    const height = (id) => {
-        if (!hCache.has(id)) hCache.set(id, Math.max(1, kids.get(id).reduce((s, c) => s + height(c), 0)));
-        return hCache.get(id);
-    };
-    const width = (id) => {
-        if (!wCache.has(id)) wCache.set(id, 1 + Math.max(0, ...kids.get(id).map(width)));
-        return wCache.get(id);
-    };
-
     const half = G.STEP / 2;
     const setPos = (id, x, y) => { const n = byId.get(id); n.x = Math.round(x); n.y = Math.round(y); };
     const paths = new Map(); // "from>to" → точки ломаной
 
-    /** Черта и её поддерево; dir = +1 вправо, −1 влево от ствола. */
-    function placeFeat(id, x, y, dir, v = 1) {
-        setPos(id, x, y);
-        const ch = kids.get(id);
-        if (!ch.length) return;
-        const trunkX = x + dir * half;
-        let cy = y;
-        for (const c of ch) {
-            const cx = x + dir * G.STEP;
-            placeFeat(c, cx, cy, dir, v);
-            paths.set(`${id}>${c}`, cy === y ? [[x, y], [cx, cy]] : [[x, y], [trunkX, y], [trunkX, cy], [cx, cy]]);
-            cy += v * height(c) * G.ROW;
-        }
+    // ---------- полосы уровней ----------
+    // Черты одного уровня стоят в одной строке во всех темах своей половины дерева (верхней или нижней):
+    // у каждого уровня — своя полоса, её высота = наибольшее число черт этого уровня в одной колонке.
+    // Колонка (дорожка) — сторона ствола темы и шаг наружу: дорожка 0 — черты прямо у ствола темы,
+    // дальше — поддеревья черт с детьми. Каждое поддерево получает свои дорожки, поэтому стволы
+    // разных поддеревьев не накладываются; ближе к стволу темы — поддеревья старших черт, чтобы
+    // горизонталь от младшей черты к её детям не пересекала чужие стволы.
+
+    /** Раздаёт дорожки поддереву черты: дети — в дорожке start, поддеревья детей — дальше. */
+    // ближе к стволу — поддерево, чья черта дальше от корня: старший уровень, при равном — позже в списке
+    // (она же ниже по подстроке полосы); тогда горизонталь к детям не пересекает чужих стволов
+    const innerFirst = (list) => (a, b) => byId.get(b).level - byId.get(a).level || list.indexOf(b) - list.indexOf(a);
+    const lane = new Map();
+    function allocate(id, start) {
+        let next = start + 1;
+        const list = kids.get(id);
+        const withKids = list.filter((c) => kids.get(c).length).sort(innerFirst(list));
+        for (const c of kids.get(id)) lane.set(c, start);
+        for (const c of withKids) next += allocate(c, next);
+        return next - start;
     }
 
-    // колонны тем
+    // колонны тем: черты у ствола делятся на стороны так, чтобы черт одного уровня на стороне было поменьше
     const hubs = themeOrder.filter((id) => byId.has(id));
     for (const n of nodes) if (n.kind === 'hub' && !hubs.includes(n.id)) hubs.push(n.id);
+    const sideOf = new Map(), hubOf = new Map();
     const columns = hubs.map((hub) => {
-        // черты темы делятся на левую и правую стороны ствола по очереди уровней,
-        // каждая следующая идёт на ту сторону, где сейчас короче
-        const sides = { [-1]: { rows: 0, items: [] }, [1]: { rows: 0, items: [] } };
+        const sides = { [-1]: { items: [], lanes: 1, perLevel: new Map() }, [1]: { items: [], lanes: 1, perLevel: new Map() } };
         for (const c of kids.get(hub)) {
-            const side = sides[1].rows < sides[-1].rows ? 1 : sides[-1].rows < sides[1].rows ? -1 : (sides[1].items.length <= sides[-1].items.length ? 1 : -1);
-            sides[side].items.push({ id: c, row: sides[side].rows });
-            sides[side].rows += height(c);
+            const lv = byId.get(c).level;
+            const cnt = (sd) => sides[sd].perLevel.get(lv) || 0;
+            const side = cnt(1) !== cnt(-1) ? (cnt(1) < cnt(-1) ? 1 : -1)
+                : sides[1].lanes !== sides[-1].lanes ? (sides[1].lanes < sides[-1].lanes ? 1 : -1)
+                : (sides[1].items.length <= sides[-1].items.length ? 1 : -1);
+            sides[side].items.push(c);
+            sides[side].perLevel.set(lv, cnt(side) + 1);
+            lane.set(c, 0);
         }
-        const reach = (side) => Math.max(0, ...sides[side].items.map((it) => half + (width(it.id) - 1) * G.STEP))
-            + G.CAPTION.feat.maxW / 2;
-        return { hub, sides, left: reach(-1), right: reach(1), rows: Math.max(sides[1].rows, sides[-1].rows) };
+        for (const sd of [-1, 1]) {
+            // поддеревья: старшие (дальние от корня) — ближе к стволу темы
+            const items = sides[sd].items;
+            const roots = items.filter((c) => kids.get(c).length).sort(innerFirst(items));
+            let next = 1;
+            for (const c of roots) next += allocate(c, next);
+            sides[sd].lanes = next;
+        }
+        const mark = (id, sd) => { sideOf.set(id, sd); hubOf.set(id, hub); for (const c of kids.get(id)) mark(c, sd); };
+        for (const sd of [-1, 1]) for (const c of sides[sd].items) mark(c, sd);
+        const reach = (sd) => (sides[sd].items.length ? half + (sides[sd].lanes - 1) * G.STEP : 0) + G.CAPTION.feat.maxW / 2;
+        return { hub, sides, left: reach(-1), right: reach(1) };
     });
 
-    // Две полосы: первые темы растут от корня вверх, остальные — вниз.
+    // Две полосы тем: первые растут от корня вверх, остальные — вниз.
     // Делим по ширине пополам, сохраняя порядок (родственные темы рядом).
     const colW = (c) => c.left + c.right + G.COL_GAP;
     const total = columns.reduce((sum, c) => sum + colW(c), 0);
@@ -114,6 +123,28 @@ export function computeTreeLayout(nodes, edges, { log = false, themeOrder = THEM
 
     setPos('root', 0, 0);
     for (const band of bands) {
+        // строки полос уровней в этой половине дерева
+        const bandHubs = new Set(band.cols.map((c) => c.hub));
+        const feats = nodes.filter((n) => n.kind === 'feat' && bandHubs.has(hubOf.get(n.id)));
+        const laneKey = (n) => `${hubOf.get(n.id)}|${sideOf.get(n.id)}|${lane.get(n.id)}`;
+        const levelRows = new Map();   // уровень → строк в полосе
+        const count = new Map();
+        for (const n of feats) {
+            const k = `${laneKey(n)}|${n.level}`;
+            count.set(k, (count.get(k) || 0) + 1);
+            levelRows.set(n.level, Math.max(levelRows.get(n.level) || 0, count.get(k)));
+        }
+        const levelStart = new Map();
+        let rowCursor = 0;
+        for (const lv of [...levelRows.keys()].sort((a, b) => a - b)) { levelStart.set(lv, rowCursor); rowCursor += levelRows.get(lv); }
+        const subrow = new Map();
+        const rowOf = (n) => {
+            const k = `${laneKey(n)}|${n.level}`;
+            const r = subrow.get(k) || 0;
+            subrow.set(k, r + 1);
+            return levelStart.get(n.level) + r;
+        };
+
         let cursor = 0;
         for (const col of band.cols) { col.x = cursor + col.left; cursor = col.x + col.right + G.COL_GAP; }
         const shift = -(cursor - G.COL_GAP) / 2;
@@ -123,13 +154,35 @@ export function computeTreeLayout(nodes, edges, { log = false, themeOrder = THEM
             const hx = col.x + shift, hy = v * G.HUB_Y;
             setPos(col.hub, hx, hy);
             paths.set(`root>${col.hub}`, [[0, 0], [0, busY], [hx, busY], [hx, hy]]);
-            for (const side of [-1, 1]) {
-                for (const it of col.sides[side].items) {
-                    const y = hy + v * (it.row + 1) * G.ROW;
-                    const x = hx + side * half;
-                    placeFeat(it.id, x, y, side, v);
-                    paths.set(`${col.hub}>${it.id}`, [[hx, hy], [hx, y], [x, y]]);
+            const laneX = (sd, l) => hx + sd * (half + l * G.STEP);
+            const rowY = (r) => hy + v * (r + 1) * G.ROW;
+            // черта и её поддерево: дорожка → x, полоса уровня (+ подстрока) → y
+            const place = (id, sd) => {
+                const n = byId.get(id);
+                setPos(id, laneX(sd, lane.get(id)), rowY(rowOf(n)));
+                for (const c of kids.get(id)) place(c, sd);
+            };
+            for (const sd of [-1, 1]) {
+                for (const id of col.sides[sd].items) {
+                    place(id, sd);
+                    const n = byId.get(id);
+                    paths.set(`${col.hub}>${id}`, [[hx, hy], [hx, n.y], [n.x, n.y]]);
                 }
+            }
+            // связи черта → дети: вбок до короткого ствола перед колонкой детей, вдоль него, к ребёнку
+            for (const id of [...col.sides[-1].items, ...col.sides[1].items]) {
+                const walk = (pid) => {
+                    const p = byId.get(pid);
+                    for (const c of kids.get(pid)) {
+                        const ch = byId.get(c), sd = sideOf.get(c);
+                        const trunkX = ch.x - sd * half;
+                        paths.set(`${pid}>${c}`, ch.y === p.y && lane.get(c) === lane.get(pid) + 1
+                            ? [[p.x, p.y], [ch.x, ch.y]]
+                            : [[p.x, p.y], [trunkX, p.y], [trunkX, ch.y], [ch.x, ch.y]]);
+                        walk(c);
+                    }
+                };
+                walk(id);
             }
         }
     }
