@@ -84,8 +84,9 @@ window.CLASS_DATA = {
    },
    "CAPTION_GAP": 8,
    "CHAR_W": 0.7,
-   "STEP": 250,
-   "ROW": 120,
+   "STEP": 200,
+   "ROW": 130,
+   "RAIL": 40,
    "HUB_Y": 300,
    "BUS_GAP": 110,
    "COL_GAP": 90
@@ -96,10 +97,10 @@ window.CLASS_DATA = {
    "crossings": 0
   },
   "bounds": {
-   "minX": -1042,
-   "maxX": 1043,
-   "minY": -1950,
-   "maxY": 1610
+   "minX": -2290,
+   "maxX": 2290,
+   "minY": -1820,
+   "maxY": 110
   }
  },
  "nodes": [
@@ -461,7 +462,7 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Feats with the spellshape trait: they alter the next spell you cast — its range, area, damage or how noticeable it is.",
    "requires": [],
-   "x": -740,
+   "x": -2070,
    "y": -300,
    "captionSide": "right",
    "captionW": 133
@@ -474,7 +475,7 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Counterspelling, protective arrays and the senses and reflexes a wizard relies on in a fight.",
    "requires": [],
-   "x": -250,
+   "x": -1630,
    "y": -300,
    "captionSide": "right",
    "captionW": 170
@@ -487,7 +488,7 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Your spellbook, cantrips, scrolls and the way you prepare and recover spell slots.",
    "requires": [],
-   "x": 740,
+   "x": -590,
    "y": -300,
    "captionSide": "right",
    "captionW": 170
@@ -500,8 +501,8 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Your bonded item, school spells and focus points. Every wizard has an arcane bond from 1st level.",
    "requires": [],
-   "x": -797,
-   "y": 300,
+   "x": 450,
+   "y": -300,
    "captionSide": "right",
    "captionW": 170
   },
@@ -513,8 +514,8 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Illusions, words and performances that bend the minds of others.",
    "requires": [],
-   "x": -307,
-   "y": 300,
+   "x": 1090,
+   "y": -300,
    "captionSide": "right",
    "captionW": 170
   },
@@ -526,8 +527,8 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Uncommon feats for those who create or control undead (Book of the Dead).",
    "requires": [],
-   "x": 183,
-   "y": 300,
+   "x": 1530,
+   "y": -300,
    "captionSide": "right",
    "captionW": 94
   },
@@ -539,8 +540,8 @@ window.CLASS_DATA = {
    "level": 0,
    "html": "Your familiar and its growth. The Improved Familiar Attunement thesis also grants the Familiar feat.",
    "requires": [],
-   "x": 548,
-   "y": 300,
+   "x": 1870,
+   "y": -300,
    "captionSide": "right",
    "captionW": 107
   },
@@ -572,8 +573,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -125,
-   "y": -420,
+   "x": -1130,
+   "y": -430,
    "captionSide": "below",
    "captionW": 126
   },
@@ -612,8 +613,8 @@ window.CLASS_DATA = {
    "grantedBy": "thesis-improved-familiar-attunement",
    "parentId": "theme-familiar",
    "theme": "theme-familiar",
-   "x": 673,
-   "y": 420,
+   "x": 1970,
+   "y": -430,
    "captionSide": "below",
    "captionW": 84
   },
@@ -671,8 +672,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -615,
-   "y": -420,
+   "x": -1970,
+   "y": -430,
    "captionSide": "below",
    "captionW": 116
   },
@@ -697,8 +698,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 865,
-   "y": -420,
+   "x": -690,
+   "y": -430,
    "captionSide": "below",
    "captionW": 150
   },
@@ -748,8 +749,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -865,
-   "y": -420,
+   "x": -2170,
+   "y": -430,
    "captionSide": "below",
    "captionW": 116
   },
@@ -803,8 +804,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 615,
-   "y": -540,
+   "x": -490,
+   "y": -560,
    "captionSide": "below",
    "captionW": 150
   },
@@ -850,8 +851,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -615,
-   "y": -540,
+   "x": -1970,
+   "y": -560,
    "captionSide": "below",
    "captionW": 137
   },
@@ -881,8 +882,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -375,
-   "y": -540,
+   "x": -1730,
+   "y": -560,
    "captionSide": "below",
    "captionW": 150
   },
@@ -912,8 +913,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -125,
-   "y": -540,
+   "x": -1530,
+   "y": -560,
    "captionSide": "below",
    "captionW": 150
   },
@@ -968,8 +969,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5024",
    "theme": "theme-familiar",
-   "x": 923,
-   "y": 540,
+   "x": 2170,
+   "y": -560,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1003,8 +1004,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -865,
-   "y": -540,
+   "x": -2170,
+   "y": -560,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1041,8 +1042,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -375,
-   "y": -660,
+   "x": -1730,
+   "y": -690,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1076,8 +1077,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -672,
-   "y": 660,
+   "x": 550,
+   "y": -690,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1111,8 +1112,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -615,
-   "y": -660,
+   "x": -1970,
+   "y": -690,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1192,8 +1193,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -922,
-   "y": 660,
+   "x": 350,
+   "y": -690,
    "captionSide": "below",
    "captionW": 147
   },
@@ -1224,8 +1225,8 @@ window.CLASS_DATA = {
    ],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -672,
-   "y": 780,
+   "x": 750,
+   "y": -690,
    "captionSide": "below",
    "captionW": 126
   },
@@ -1259,8 +1260,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -125,
-   "y": -660,
+   "x": -1530,
+   "y": -690,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1306,8 +1307,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 308,
-   "y": 660,
+   "x": 1630,
+   "y": -690,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1335,8 +1336,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": -182,
-   "y": 900,
+   "x": 1190,
+   "y": -820,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1392,8 +1393,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -865,
-   "y": -780,
+   "x": -2170,
+   "y": -820,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1431,8 +1432,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -615,
-   "y": -780,
+   "x": -1970,
+   "y": -820,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1457,8 +1458,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -375,
-   "y": -780,
+   "x": -1730,
+   "y": -820,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1487,8 +1488,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4994",
    "theme": "theme-battle",
-   "x": 125,
-   "y": -780,
+   "x": -930,
+   "y": -820,
    "captionSide": "below",
    "captionW": 126
   },
@@ -1513,8 +1514,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 865,
-   "y": -780,
+   "x": -690,
+   "y": -820,
    "captionSide": "below",
    "captionW": 105
   },
@@ -1572,8 +1573,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -125,
-   "y": -780,
+   "x": -1530,
+   "y": -820,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1598,8 +1599,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -922,
-   "y": 1020,
+   "x": 350,
+   "y": -950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1635,8 +1636,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -672,
-   "y": 1020,
+   "x": 550,
+   "y": -950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1690,8 +1691,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -865,
-   "y": -900,
+   "x": -2170,
+   "y": -950,
    "captionSide": "below",
    "captionW": 137
   },
@@ -1716,8 +1717,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 615,
-   "y": -900,
+   "x": -490,
+   "y": -950,
    "captionSide": "below",
    "captionW": 147
   },
@@ -1761,8 +1762,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": -432,
-   "y": 1020,
+   "x": 990,
+   "y": -950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1796,8 +1797,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -615,
-   "y": -900,
+   "x": -1970,
+   "y": -950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1822,8 +1823,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 865,
-   "y": -900,
+   "x": -690,
+   "y": -950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1865,8 +1866,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": -182,
-   "y": 1020,
+   "x": 1190,
+   "y": -950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1908,8 +1909,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -865,
-   "y": -1020,
+   "x": -2170,
+   "y": -1080,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1965,8 +1966,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -615,
-   "y": -1020,
+   "x": -1970,
+   "y": -1080,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1991,8 +1992,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 615,
-   "y": -1020,
+   "x": -490,
+   "y": -1080,
    "captionSide": "below",
    "captionW": 126
   },
@@ -2022,8 +2023,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -922,
-   "y": 1140,
+   "x": 350,
+   "y": -1080,
    "captionSide": "below",
    "captionW": 126
   },
@@ -2048,8 +2049,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -375,
-   "y": -1020,
+   "x": -1730,
+   "y": -1080,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2078,8 +2079,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4994",
    "theme": "theme-battle",
-   "x": 125,
-   "y": -1140,
+   "x": -930,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2113,8 +2114,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -865,
-   "y": -1140,
+   "x": -2170,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2144,8 +2145,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -125,
-   "y": -1140,
+   "x": -1530,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2191,8 +2192,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -375,
-   "y": -1140,
+   "x": -1730,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 116
   },
@@ -2234,8 +2235,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 58,
-   "y": 1260,
+   "x": 1430,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2267,8 +2268,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -125,
-   "y": -1260,
+   "x": -1330,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2293,8 +2294,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -672,
-   "y": 1380,
+   "x": 550,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 126
   },
@@ -2328,8 +2329,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -615,
-   "y": -1380,
+   "x": -1970,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 147
   },
@@ -2363,8 +2364,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4994",
    "theme": "theme-battle",
-   "x": 125,
-   "y": -1380,
+   "x": -930,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 137
   },
@@ -2398,8 +2399,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -865,
-   "y": -1380,
+   "x": -2170,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2451,8 +2452,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 308,
-   "y": 1380,
+   "x": 1630,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2485,8 +2486,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": -375,
-   "y": -1380,
+   "x": -1730,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 116
   },
@@ -2511,8 +2512,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -922,
-   "y": 1380,
+   "x": 350,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 137
   },
@@ -2564,8 +2565,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 865,
-   "y": -1500,
+   "x": -690,
+   "y": -1470,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2607,8 +2608,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -615,
-   "y": -1500,
+   "x": -1970,
+   "y": -1470,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2638,8 +2639,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 615,
-   "y": -1500,
+   "x": -490,
+   "y": -1470,
    "captionSide": "below",
    "captionW": 126
   },
@@ -2664,8 +2665,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 865,
-   "y": -1620,
+   "x": -690,
+   "y": -1600,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2690,8 +2691,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 615,
-   "y": -1620,
+   "x": -90,
+   "y": -1600,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2727,8 +2728,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": -432,
-   "y": 1500,
+   "x": 990,
+   "y": -1600,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2753,8 +2754,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 865,
-   "y": -1740,
+   "x": -490,
+   "y": -1730,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2788,8 +2789,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5051",
    "theme": "theme-book",
-   "x": 365,
-   "y": -1740,
+   "x": 110,
+   "y": -1730,
    "captionSide": "below",
    "captionW": 137
   },
@@ -2814,8 +2815,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 615,
-   "y": -1740,
+   "x": -690,
+   "y": -1730,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2840,8 +2841,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 865,
-   "y": -1860,
+   "x": -290,
+   "y": -1730,
    "captionSide": "below",
    "captionW": 137
   },
@@ -2871,8 +2872,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -865,
-   "y": -1740,
+   "x": -2170,
+   "y": -1730,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2908,8 +2909,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": -615,
-   "y": -1740,
+   "x": -1970,
+   "y": -1730,
    "captionSide": "below",
    "captionW": 150
   }
@@ -2930,11 +2931,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     -740,
+     -2070,
      -190
     ],
     [
-     -740,
+     -2070,
      -300
     ]
    ]
@@ -2954,11 +2955,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     -250,
+     -1630,
      -190
     ],
     [
-     -250,
+     -1630,
      -300
     ]
    ]
@@ -2978,11 +2979,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     740,
+     -590,
      -190
     ],
     [
-     740,
+     -590,
      -300
     ]
    ]
@@ -2999,15 +3000,15 @@ window.CLASS_DATA = {
     ],
     [
      0,
-     190
+     -190
     ],
     [
-     -797.5,
-     190
+     450,
+     -190
     ],
     [
-     -797.5,
-     300
+     450,
+     -300
     ]
    ]
   },
@@ -3023,15 +3024,15 @@ window.CLASS_DATA = {
     ],
     [
      0,
-     190
+     -190
     ],
     [
-     -307.5,
-     190
+     1090,
+     -190
     ],
     [
-     -307.5,
-     300
+     1090,
+     -300
     ]
    ]
   },
@@ -3047,15 +3048,15 @@ window.CLASS_DATA = {
     ],
     [
      0,
-     190
+     -190
     ],
     [
-     182.5,
-     190
+     1530,
+     -190
     ],
     [
-     182.5,
-     300
+     1530,
+     -300
     ]
    ]
   },
@@ -3071,15 +3072,15 @@ window.CLASS_DATA = {
     ],
     [
      0,
-     190
+     -190
     ],
     [
-     547.5,
-     190
+     1870,
+     -190
     ],
     [
-     547.5,
-     300
+     1870,
+     -300
     ]
    ]
   },
@@ -3090,16 +3091,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -420
+     -1630,
+     -470
     ],
     [
-     -125,
-     -420
+     -1230,
+     -470
+    ],
+    [
+     -1230,
+     -430
+    ],
+    [
+     -1130,
+     -430
     ]
    ]
   },
@@ -3110,16 +3119,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     547.5,
-     300
+     1870,
+     -300
     ],
     [
-     547.5,
-     420
+     1870,
+     -430
     ],
     [
-     673,
-     420
+     1970,
+     -430
     ]
    ]
   },
@@ -3130,16 +3139,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -420
+     -2070,
+     -430
     ],
     [
-     -615,
-     -420
+     -1970,
+     -430
     ]
    ]
   },
@@ -3150,16 +3159,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -420
+     -590,
+     -430
     ],
     [
-     865,
-     -420
+     -690,
+     -430
     ]
    ]
   },
@@ -3170,16 +3179,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -420
+     -2070,
+     -430
     ],
     [
-     -865,
-     -420
+     -2170,
+     -430
     ]
    ]
   },
@@ -3190,16 +3199,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -540
+     -590,
+     -560
     ],
     [
-     615,
-     -540
+     -490,
+     -560
     ]
    ]
   },
@@ -3210,16 +3219,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -540
+     -2070,
+     -560
     ],
     [
-     -615,
-     -540
+     -1970,
+     -560
     ]
    ]
   },
@@ -3230,16 +3239,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -540
+     -1630,
+     -560
     ],
     [
-     -375,
-     -540
+     -1730,
+     -560
     ]
    ]
   },
@@ -3250,16 +3259,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -540
+     -1630,
+     -560
     ],
     [
-     -125,
-     -540
+     -1530,
+     -560
     ]
    ]
   },
@@ -3270,20 +3279,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     673,
-     420
+     1970,
+     -430
     ],
     [
-     798,
-     420
+     2070,
+     -430
     ],
     [
-     798,
-     540
+     2070,
+     -560
     ],
     [
-     923,
-     540
+     2170,
+     -560
     ]
    ]
   },
@@ -3294,16 +3303,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -540
+     -2070,
+     -560
     ],
     [
-     -865,
-     -540
+     -2170,
+     -560
     ]
    ]
   },
@@ -3314,16 +3323,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -660
+     -1630,
+     -690
     ],
     [
-     -375,
-     -660
+     -1730,
+     -690
     ]
    ]
   },
@@ -3334,16 +3343,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -797.5,
-     300
+     450,
+     -300
     ],
     [
-     -797.5,
-     660
+     450,
+     -690
     ],
     [
-     -672,
-     660
+     550,
+     -690
     ]
    ]
   },
@@ -3354,16 +3363,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -660
+     -2070,
+     -690
     ],
     [
-     -615,
-     -660
+     -1970,
+     -690
     ]
    ]
   },
@@ -3374,16 +3383,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -797.5,
-     300
+     450,
+     -300
     ],
     [
-     -797.5,
-     660
+     450,
+     -690
     ],
     [
-     -922,
-     660
+     350,
+     -690
     ]
    ]
   },
@@ -3394,16 +3403,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -797.5,
-     300
+     450,
+     -300
     ],
     [
-     -797.5,
-     780
+     450,
+     -730
     ],
     [
-     -672,
-     780
+     650,
+     -730
+    ],
+    [
+     650,
+     -690
+    ],
+    [
+     750,
+     -690
     ]
    ]
   },
@@ -3414,16 +3431,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -660
+     -1630,
+     -690
     ],
     [
-     -125,
-     -660
+     -1530,
+     -690
     ]
    ]
   },
@@ -3434,16 +3451,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     182.5,
-     300
+     1530,
+     -300
     ],
     [
-     182.5,
-     660
+     1530,
+     -690
     ],
     [
-     308,
-     660
+     1630,
+     -690
     ]
    ]
   },
@@ -3454,16 +3471,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -307.5,
-     300
+     1090,
+     -300
     ],
     [
-     -307.5,
-     900
+     1090,
+     -820
     ],
     [
-     -182,
-     900
+     1190,
+     -820
     ]
    ]
   },
@@ -3474,16 +3491,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -780
+     -2070,
+     -820
     ],
     [
-     -865,
-     -780
+     -2170,
+     -820
     ]
    ]
   },
@@ -3494,16 +3511,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -780
+     -2070,
+     -820
     ],
     [
-     -615,
-     -780
+     -1970,
+     -820
     ]
    ]
   },
@@ -3514,16 +3531,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -780
+     -1630,
+     -820
     ],
     [
-     -375,
-     -780
+     -1730,
+     -820
     ]
    ]
   },
@@ -3534,20 +3551,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -125,
-     -420
+     -1130,
+     -430
     ],
     [
-     0,
-     -420
+     -1030,
+     -430
     ],
     [
-     0,
-     -780
+     -1030,
+     -820
     ],
     [
-     125,
-     -780
+     -930,
+     -820
     ]
    ]
   },
@@ -3558,16 +3575,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -780
+     -590,
+     -820
     ],
     [
-     865,
-     -780
+     -690,
+     -820
     ]
    ]
   },
@@ -3578,16 +3595,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -780
+     -1630,
+     -820
     ],
     [
-     -125,
-     -780
+     -1530,
+     -820
     ]
    ]
   },
@@ -3598,16 +3615,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -797.5,
-     300
+     450,
+     -300
     ],
     [
-     -797.5,
-     1020
+     450,
+     -950
     ],
     [
-     -922,
-     1020
+     350,
+     -950
     ]
    ]
   },
@@ -3618,16 +3635,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -797.5,
-     300
+     450,
+     -300
     ],
     [
-     -797.5,
-     1020
+     450,
+     -950
     ],
     [
-     -672,
-     1020
+     550,
+     -950
     ]
    ]
   },
@@ -3638,16 +3655,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -900
+     -2070,
+     -950
     ],
     [
-     -865,
-     -900
+     -2170,
+     -950
     ]
    ]
   },
@@ -3658,16 +3675,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -900
+     -590,
+     -950
     ],
     [
-     615,
-     -900
+     -490,
+     -950
     ]
    ]
   },
@@ -3678,16 +3695,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -307.5,
-     300
+     1090,
+     -300
     ],
     [
-     -307.5,
-     1020
+     1090,
+     -950
     ],
     [
-     -432,
-     1020
+     990,
+     -950
     ]
    ]
   },
@@ -3698,16 +3715,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -900
+     -2070,
+     -950
     ],
     [
-     -615,
-     -900
+     -1970,
+     -950
     ]
    ]
   },
@@ -3718,16 +3735,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -900
+     -590,
+     -950
     ],
     [
-     865,
-     -900
+     -690,
+     -950
     ]
    ]
   },
@@ -3738,16 +3755,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -307.5,
-     300
+     1090,
+     -300
     ],
     [
-     -307.5,
-     1020
+     1090,
+     -950
     ],
     [
-     -182,
-     1020
+     1190,
+     -950
     ]
    ]
   },
@@ -3758,16 +3775,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -1020
+     -2070,
+     -1080
     ],
     [
-     -865,
-     -1020
+     -2170,
+     -1080
     ]
    ]
   },
@@ -3778,16 +3795,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -1020
+     -2070,
+     -1080
     ],
     [
-     -615,
-     -1020
+     -1970,
+     -1080
     ]
    ]
   },
@@ -3798,16 +3815,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -1020
+     -590,
+     -1080
     ],
     [
-     615,
-     -1020
+     -490,
+     -1080
     ]
    ]
   },
@@ -3818,16 +3835,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -797.5,
-     300
+     450,
+     -300
     ],
     [
-     -797.5,
-     1140
+     450,
+     -1080
     ],
     [
-     -922,
-     1140
+     350,
+     -1080
     ]
    ]
   },
@@ -3838,16 +3855,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -1020
+     -1630,
+     -1080
     ],
     [
-     -375,
-     -1020
+     -1730,
+     -1080
     ]
    ]
   },
@@ -3858,20 +3875,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -125,
-     -420
+     -1130,
+     -430
     ],
     [
-     0,
-     -420
+     -1030,
+     -430
     ],
     [
-     0,
-     -1140
+     -1030,
+     -1210
     ],
     [
-     125,
-     -1140
+     -930,
+     -1210
     ]
    ]
   },
@@ -3882,16 +3899,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -1140
+     -2070,
+     -1210
     ],
     [
-     -865,
-     -1140
+     -2170,
+     -1210
     ]
    ]
   },
@@ -3902,16 +3919,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -1140
+     -1630,
+     -1210
     ],
     [
-     -125,
-     -1140
+     -1530,
+     -1210
     ]
    ]
   },
@@ -3922,16 +3939,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -1140
+     -1630,
+     -1210
     ],
     [
-     -375,
-     -1140
+     -1730,
+     -1210
     ]
    ]
   },
@@ -3942,16 +3959,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     182.5,
-     300
+     1530,
+     -300
     ],
     [
-     182.5,
-     1260
+     1530,
+     -1210
     ],
     [
-     58,
-     1260
+     1430,
+     -1210
     ]
    ]
   },
@@ -3962,16 +3979,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -1260
+     -1630,
+     -1250
     ],
     [
-     -125,
-     -1260
+     -1430,
+     -1250
+    ],
+    [
+     -1430,
+     -1210
+    ],
+    [
+     -1330,
+     -1210
     ]
    ]
   },
@@ -3982,16 +4007,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -797.5,
-     300
+     450,
+     -300
     ],
     [
-     -797.5,
-     1380
+     450,
+     -1340
     ],
     [
-     -672,
-     1380
+     550,
+     -1340
     ]
    ]
   },
@@ -4002,16 +4027,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -1380
+     -2070,
+     -1340
     ],
     [
-     -615,
-     -1380
+     -1970,
+     -1340
     ]
    ]
   },
@@ -4022,20 +4047,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -125,
-     -420
+     -1130,
+     -430
     ],
     [
-     0,
-     -420
+     -1030,
+     -430
     ],
     [
-     0,
-     -1380
+     -1030,
+     -1340
     ],
     [
-     125,
-     -1380
+     -930,
+     -1340
     ]
    ]
   },
@@ -4046,16 +4071,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -1380
+     -2070,
+     -1340
     ],
     [
-     -865,
-     -1380
+     -2170,
+     -1340
     ]
    ]
   },
@@ -4066,16 +4091,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     182.5,
-     300
+     1530,
+     -300
     ],
     [
-     182.5,
-     1380
+     1530,
+     -1340
     ],
     [
-     308,
-     1380
+     1630,
+     -1340
     ]
    ]
   },
@@ -4086,16 +4111,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -250,
+     -1630,
      -300
     ],
     [
-     -250,
-     -1380
+     -1630,
+     -1340
     ],
     [
-     -375,
-     -1380
+     -1730,
+     -1340
     ]
    ]
   },
@@ -4106,16 +4131,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -797.5,
-     300
+     450,
+     -300
     ],
     [
-     -797.5,
-     1380
+     450,
+     -1340
     ],
     [
-     -922,
-     1380
+     350,
+     -1340
     ]
    ]
   },
@@ -4126,16 +4151,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -1500
+     -590,
+     -1470
     ],
     [
-     865,
-     -1500
+     -690,
+     -1470
     ]
    ]
   },
@@ -4146,16 +4171,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -1500
+     -2070,
+     -1470
     ],
     [
-     -615,
-     -1500
+     -1970,
+     -1470
     ]
    ]
   },
@@ -4166,16 +4191,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -1500
+     -590,
+     -1470
     ],
     [
-     615,
-     -1500
+     -490,
+     -1470
     ]
    ]
   },
@@ -4186,16 +4211,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -1620
+     -590,
+     -1600
     ],
     [
-     865,
-     -1620
+     -690,
+     -1600
     ]
    ]
   },
@@ -4206,16 +4231,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -1620
+     -590,
+     -1640
     ],
     [
-     615,
-     -1620
+     -190,
+     -1640
+    ],
+    [
+     -190,
+     -1600
+    ],
+    [
+     -90,
+     -1600
     ]
    ]
   },
@@ -4226,16 +4259,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -307.5,
-     300
+     1090,
+     -300
     ],
     [
-     -307.5,
-     1500
+     1090,
+     -1600
     ],
     [
-     -432,
-     1500
+     990,
+     -1600
     ]
    ]
   },
@@ -4246,16 +4279,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -1740
+     -590,
+     -1730
     ],
     [
-     865,
-     -1740
+     -490,
+     -1730
     ]
    ]
   },
@@ -4266,20 +4299,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     615,
-     -1620
+     -90,
+     -1600
     ],
     [
-     490,
-     -1620
+     10,
+     -1600
     ],
     [
-     490,
-     -1740
+     10,
+     -1730
     ],
     [
-     365,
-     -1740
+     110,
+     -1730
     ]
    ]
   },
@@ -4290,16 +4323,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -1740
+     -590,
+     -1730
     ],
     [
-     615,
-     -1740
+     -690,
+     -1730
     ]
    ]
   },
@@ -4310,16 +4343,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     740,
+     -590,
      -300
     ],
     [
-     740,
-     -1860
+     -590,
+     -1770
     ],
     [
-     865,
-     -1860
+     -390,
+     -1770
+    ],
+    [
+     -390,
+     -1730
+    ],
+    [
+     -290,
+     -1730
     ]
    ]
   },
@@ -4330,16 +4371,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -1740
+     -2070,
+     -1730
     ],
     [
-     -865,
-     -1740
+     -2170,
+     -1730
     ]
    ]
   },
@@ -4350,16 +4391,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -740,
+     -2070,
      -300
     ],
     [
-     -740,
-     -1740
+     -2070,
+     -1730
     ],
     [
-     -615,
-     -1740
+     -1970,
+     -1730
     ]
    ]
   }

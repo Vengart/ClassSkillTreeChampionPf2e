@@ -1,19 +1,19 @@
 // ============================================================
-// Раскладка «дерево со стволами» (ветка tree-trunk).
+// Раскладка «дерево со стволами» (ветка tree-trunk): все ветки растут от корня вверх,
+// у каждого уровня черт — одна строка на всё дерево.
 //
-//   Поборник
-//      │
-//   ───┴──────────┬──────────┬───  ← шина от корня к темам
-//   [Призвание] [Преданность] [Скакун] …
-//      │            │
-//   o──┼──o      o──┼──o            ← ствол темы, черты слева и справа,
-//      │            │  └──o           черты одного уровня — в одной строке (полосы уровней)
-//   o──┼──o      o──┘                ← у черты с детьми свой короткий ствол,
-//      │                               ветка уходит дальше наружу
+//   ур.4    o   o       o─┐            ← черты одного уровня рядом по горизонтали
+//           │ ┌─┘──────────┘  ← «рельс» в просвете над строкой ведёт к дальним колонкам
+//   ур.2  o─┤   o─┐
+//   ур.1    ├─o   │                    ← у цепочки свой ствол между колонками
+//        [Метамагия]  [Бой]  [Связь]   ← темы
+//   ────────┴────────┬──────           ← шина
+//                 Корень
 //
-// Всё строится детерминированно, без оптимизации: связи — ломаные из
-// горизонтальных и вертикальных отрезков, поддеревья не пересекаются
-// по построению. Подписи — под узлами.
+// Колонки (дорожки) считаются от ствола наружу по обе стороны темы. Связи — ломаные
+// из горизонталей и вертикалей: вертикали идут по границам между дорожками (мимо узлов
+// и подписей), горизонтали — по строке узла (только к соседней дорожке) или по рельсу
+// над строкой. Всё детерминированно, без оптимизации. Подписи — под узлами.
 // ============================================================
 
 export const GEOMETRY = {
@@ -27,10 +27,11 @@ export const GEOMETRY = {
     },
     CAPTION_GAP: 8,
     CHAR_W: 0.7,
-    STEP: 250,      // по горизонтали: узел → его ствол → ребёнок (половина шага до ствола)
-    ROW: 120,       // по вертикали между строками черт
-    HUB_Y: 300,     // строка тем
-    BUS_GAP: 110,   // шина над темами
+    STEP: 200,      // шаг между дорожками; вертикали связей — посередине между ними (подпись ≤ 150 их не задевает)
+    ROW: 130,       // шаг между строками уровней
+    RAIL: 40,       // рельс — на столько выше центра узлов строки (между узлами и подписями строки выше)
+    HUB_Y: 300,     // строка тем (над корнем)
+    BUS_GAP: 110,   // шина под темами
     COL_GAP: 90,    // промежуток между колоннами тем
 };
 const G = GEOMETRY;
@@ -58,131 +59,151 @@ export function computeTreeLayout(nodes, edges, { log = false, themeOrder = THEM
     const setPos = (id, x, y) => { const n = byId.get(id); n.x = Math.round(x); n.y = Math.round(y); };
     const paths = new Map(); // "from>to" → точки ломаной
 
-    // ---------- полосы уровней ----------
-    // Черты одного уровня стоят в одной строке во всех темах своей половины дерева (верхней или нижней):
-    // у каждого уровня — своя полоса, её высота = наибольшее число черт этого уровня в одной колонке.
-    // Колонка (дорожка) — сторона ствола темы и шаг наружу: дорожка 0 — черты прямо у ствола темы,
-    // дальше — поддеревья черт с детьми. Каждое поддерево получает свои дорожки, поэтому стволы
-    // разных поддеревьев не накладываются; ближе к стволу темы — поддеревья старших черт, чтобы
-    // горизонталь от младшей черты к её детям не пересекала чужие стволы.
+    // ---------- строки: одна на уровень, общая для всего дерева ----------
+    const featLevels = [...new Set(nodes.filter((n) => n.kind === 'feat').map((n) => n.level))].sort((a, b) => a - b);
+    const rowOfLevel = new Map(featLevels.map((lv, i) => [lv, i]));
+    const row = (id) => rowOfLevel.get(byId.get(id).level);
+    const hy = -G.HUB_Y;
+    const rowY = (r) => hy - (r + 1) * G.ROW;
+    // рельс строки r; r = −1 — просвет между темой и первой строкой
+    const railY = (r) => (r >= 0 ? rowY(r) - G.RAIL : (hy + rowY(0)) / 2);
 
-    /** Раздаёт дорожки поддереву черты: дети — в дорожке start, поддеревья детей — дальше. */
-    // ближе к стволу — поддерево, чья черта дальше от корня: старший уровень, при равном — позже в списке
-    // (она же ниже по подстроке полосы); тогда горизонталь к детям не пересекает чужих стволов
-    const innerFirst = (list) => (a, b) => byId.get(b).level - byId.get(a).level || list.indexOf(b) - list.indexOf(a);
-    const lane = new Map();
-    function allocate(id, start) {
-        let next = start + 1;
-        const list = kids.get(id);
-        const withKids = list.filter((c) => kids.get(c).length).sort(innerFirst(list));
-        for (const c of kids.get(id)) lane.set(c, start);
-        for (const c of withKids) next += allocate(c, next);
-        return next - start;
+    // ---------- дорожки ----------
+    // Дорожка j стороны s: центр laneX(j); граница b — между дорожками b−1 и b (граница 0 — ствол темы).
+    const lane = new Map(), sideOf = new Map(), railRow = new Map(), spineOf = new Map();
+    /**
+     * Дети одного родителя (темы или черты) раскладываются наружу от его ствола-границы spineB.
+     * Цепочки (черты с детьми) — каждая в своём блоке дорожек, ближе к стволу — старшие: горизонталь
+     * к младшей цепочке идёт ниже начала их стволов. Рельс цепочки (railRow) — не выше начала стволов
+     * более близких цепочек.
+     * Черты без детей: «высокие» (их строка не ниже рельса какой-нибудь цепочки) — во внутренние
+     * дорожки перед цепочками; «низкие» занимают первую свободную клетку своей строки, в том числе
+     * под блоками цепочек: их связь проходит ниже всех стволов, которые она пересекала бы.
+     * Возвращает число занятых дорожек.
+     */
+    function layoutGroup(spineB, children, side, parentRow) {
+        const plain = children.filter((c) => !kids.get(c).length);
+        const chains = children.filter((c) => kids.get(c).length)
+            .sort((x, y) => row(y) - row(x) || byId.get(x).name.localeCompare(byId.get(y).name, 'ru'));
+        // рельсы цепочек не зависят от дорожек
+        let lowestInner = Infinity;
+        for (const c of chains) {
+            railRow.set(c, Math.max(Math.min(row(c), lowestInner - 1), parentRow));
+            lowestInner = Math.min(lowestInner, row(c));
+        }
+        const qMin = Math.min(Infinity, ...chains.map((c) => railRow.get(c)));
+        const taken = new Set();                       // "дорожка|строка"
+        const put = (c, j) => { lane.set(c, j); sideOf.set(c, side); railRow.set(c, row(c)); taken.add(`${j}|${row(c)}`); };
+        // высокие черты без детей — внутрь
+        const high = plain.filter((c) => row(c) >= qMin);
+        const perRow = new Map();
+        for (const c of high) { const k = perRow.get(row(c)) || 0; perRow.set(row(c), k + 1); put(c, spineB + k); }
+        const inner = Math.max(0, ...perRow.values());
+        // блоки цепочек
+        let cursor = spineB + inner;
+        const blocks = [];   // { from, q } — с дорожки from и выше строки рельса q всё занято цепочкой
+        for (const c of chains) {
+            lane.set(c, cursor); sideOf.set(c, side); spineOf.set(c, cursor + 1);
+            taken.add(`${cursor}|${row(c)}`);
+            blocks.push({ from: cursor, q: railRow.get(c) });
+            const w = 1 + layoutGroup(cursor + 1, kids.get(c), side, row(c));
+            for (let j = cursor; j < cursor + w; j++) for (let r = 0; r < featLevels.length; r++) {
+                // клетки блока занимают его потомки — отметим занятые
+                for (const d of descendants(c)) if (lane.get(d) === j && row(d) === r) taken.add(`${j}|${r}`);
+            }
+            cursor += w;
+        }
+        let width = cursor - spineB;
+        // низкие черты без детей — в первую подходящую клетку своей строки
+        for (const c of plain.filter((x) => row(x) < qMin)) {
+            const r = row(c);
+            let j = spineB;
+            while (taken.has(`${j}|${r}`) || blocks.some((bl) => bl.from <= j && r >= bl.q)) j++;
+            put(c, j);
+            width = Math.max(width, j - spineB + 1);
+        }
+        return width;
+    }
+    const descCache = new Map();
+    function descendants(id) {
+        if (!descCache.has(id)) descCache.set(id, kids.get(id).flatMap((c) => [c, ...descendants(c)]));
+        return descCache.get(id);
     }
 
-    // колонны тем: черты у ствола делятся на стороны так, чтобы черт одного уровня на стороне было поменьше
+    // колонны тем: цепочки — поочерёдно по сторонам (сначала старшие), черты без детей — туда,
+    // где в их строке меньше черт
     const hubs = themeOrder.filter((id) => byId.has(id));
     for (const n of nodes) if (n.kind === 'hub' && !hubs.includes(n.id)) hubs.push(n.id);
-    const sideOf = new Map(), hubOf = new Map();
     const columns = hubs.map((hub) => {
-        const sides = { [-1]: { items: [], lanes: 1, perLevel: new Map() }, [1]: { items: [], lanes: 1, perLevel: new Map() } };
-        for (const c of kids.get(hub)) {
-            const lv = byId.get(c).level;
-            const cnt = (sd) => sides[sd].perLevel.get(lv) || 0;
-            const side = cnt(1) !== cnt(-1) ? (cnt(1) < cnt(-1) ? 1 : -1)
-                : sides[1].lanes !== sides[-1].lanes ? (sides[1].lanes < sides[-1].lanes ? 1 : -1)
-                : (sides[1].items.length <= sides[-1].items.length ? 1 : -1);
-            sides[side].items.push(c);
-            sides[side].perLevel.set(lv, cnt(side) + 1);
-            lane.set(c, 0);
+        const sides = { [-1]: [], [1]: [] };
+        const perRow = { [-1]: new Map(), [1]: new Map() };
+        const chainCount = { [-1]: 0, [1]: 0 };
+        const children = kids.get(hub);
+        for (const c of children.filter((x) => kids.get(x).length).sort((a, b) => row(b) - row(a))) {
+            const sd = chainCount[1] < chainCount[-1] ? 1 : chainCount[-1] < chainCount[1] ? -1 : (sides[1].length <= sides[-1].length ? 1 : -1);
+            sides[sd].push(c); chainCount[sd]++;
         }
-        for (const sd of [-1, 1]) {
-            // поддеревья: старшие (дальние от корня) — ближе к стволу темы
-            const items = sides[sd].items;
-            const roots = items.filter((c) => kids.get(c).length).sort(innerFirst(items));
-            let next = 1;
-            for (const c of roots) next += allocate(c, next);
-            sides[sd].lanes = next;
+        for (const c of children.filter((x) => !kids.get(x).length)) {
+            const n1 = perRow[1].get(row(c)) || 0, n2 = perRow[-1].get(row(c)) || 0;
+            const sd = n1 !== n2 ? (n1 < n2 ? 1 : -1) : (sides[1].length <= sides[-1].length ? 1 : -1);
+            sides[sd].push(c);
+            perRow[sd].set(row(c), (perRow[sd].get(row(c)) || 0) + 1);
         }
-        const mark = (id, sd) => { sideOf.set(id, sd); hubOf.set(id, hub); for (const c of kids.get(id)) mark(c, sd); };
-        for (const sd of [-1, 1]) for (const c of sides[sd].items) mark(c, sd);
-        const reach = (sd) => (sides[sd].items.length ? half + (sides[sd].lanes - 1) * G.STEP : 0) + G.CAPTION.feat.maxW / 2;
+        const lanes = { [-1]: layoutGroup(0, sides[-1], -1, -1), [1]: layoutGroup(0, sides[1], 1, -1) };
+        const reach = (sd) => (lanes[sd] ? half + (lanes[sd] - 1) * G.STEP : 0) + G.CAPTION.feat.maxW / 2;
         return { hub, sides, left: reach(-1), right: reach(1) };
     });
 
-    // Две полосы тем: первые растут от корня вверх, остальные — вниз.
-    // Делим по ширине пополам, сохраняя порядок (родственные темы рядом).
-    const colW = (c) => c.left + c.right + G.COL_GAP;
-    const total = columns.reduce((sum, c) => sum + colW(c), 0);
-    let acc = 0, splitAt = columns.length;
-    for (let i = 0; i < columns.length; i++) {
-        if (acc + colW(columns[i]) / 2 > total / 2) { splitAt = i; break; }
-        acc += colW(columns[i]);
-    }
-    const bands = [{ cols: columns.slice(0, splitAt), dir: -1 }, { cols: columns.slice(splitAt), dir: 1 }];
-
+    // ---------- координаты и связи ----------
     setPos('root', 0, 0);
-    for (const band of bands) {
-        // строки полос уровней в этой половине дерева
-        const bandHubs = new Set(band.cols.map((c) => c.hub));
-        const feats = nodes.filter((n) => n.kind === 'feat' && bandHubs.has(hubOf.get(n.id)));
-        const laneKey = (n) => `${hubOf.get(n.id)}|${sideOf.get(n.id)}|${lane.get(n.id)}`;
-        const levelRows = new Map();   // уровень → строк в полосе
-        const count = new Map();
-        for (const n of feats) {
-            const k = `${laneKey(n)}|${n.level}`;
-            count.set(k, (count.get(k) || 0) + 1);
-            levelRows.set(n.level, Math.max(levelRows.get(n.level) || 0, count.get(k)));
-        }
-        const levelStart = new Map();
-        let rowCursor = 0;
-        for (const lv of [...levelRows.keys()].sort((a, b) => a - b)) { levelStart.set(lv, rowCursor); rowCursor += levelRows.get(lv); }
-        const subrow = new Map();
-        const rowOf = (n) => {
-            const k = `${laneKey(n)}|${n.level}`;
-            const r = subrow.get(k) || 0;
-            subrow.set(k, r + 1);
-            return levelStart.get(n.level) + r;
-        };
+    let cursor = 0;
+    for (const col of columns) { col.x = cursor + col.left; cursor = col.x + col.right + G.COL_GAP; }
+    const shift = -(cursor - G.COL_GAP) / 2;
+    const busY = -(G.HUB_Y - G.BUS_GAP);
+    for (const col of columns) {
+        const hx = col.x + shift;
+        setPos(col.hub, hx, hy);
+        paths.set(`root>${col.hub}`, [[0, 0], [0, busY], [hx, busY], [hx, hy]]);
+        const laneX = (sd, j) => hx + sd * (half + j * G.STEP);
+        const bX = (sd, b) => hx + sd * b * G.STEP;
 
-        let cursor = 0;
-        for (const col of band.cols) { col.x = cursor + col.left; cursor = col.x + col.right + G.COL_GAP; }
-        const shift = -(cursor - G.COL_GAP) / 2;
-        const v = band.dir; // −1 — вверх от корня, +1 — вниз
-        const busY = v * (G.HUB_Y - G.BUS_GAP);
-        for (const col of band.cols) {
-            const hx = col.x + shift, hy = v * G.HUB_Y;
-            setPos(col.hub, hx, hy);
-            paths.set(`root>${col.hub}`, [[0, 0], [0, busY], [hx, busY], [hx, hy]]);
-            const laneX = (sd, l) => hx + sd * (half + l * G.STEP);
-            const rowY = (r) => hy + v * (r + 1) * G.ROW;
-            // черта и её поддерево: дорожка → x, полоса уровня (+ подстрока) → y
-            const place = (id, sd) => {
-                const n = byId.get(id);
-                setPos(id, laneX(sd, lane.get(id)), rowY(rowOf(n)));
-                for (const c of kids.get(id)) place(c, sd);
-            };
-            for (const sd of [-1, 1]) {
-                for (const id of col.sides[sd].items) {
-                    place(id, sd);
-                    const n = byId.get(id);
-                    paths.set(`${col.hub}>${id}`, [[hx, hy], [hx, n.y], [n.x, n.y]]);
-                }
+        const place = (id) => {
+            setPos(id, laneX(sideOf.get(id), lane.get(id)), rowY(row(id)));
+            for (const c of kids.get(id)) place(c);
+        };
+        for (const sd of [-1, 1]) for (const id of col.sides[sd]) place(id);
+
+        /** Связь от ствола-границы spineB (начиная с точки start) к черте c. */
+        const route = (start, spineB, c) => {
+            const sd = sideOf.get(c), n = byId.get(c);
+            const sx = bX(sd, spineB), cb = lane.get(c);   // граница у ребёнка со стороны ствола
+            const pts = [...start];
+            if (cb === spineB) {
+                pts.push([sx, n.y], [n.x, n.y]);           // соседняя дорожка — прямо по строке
+            } else {
+                const ry = railY(railRow.get(c));
+                const cx = bX(sd, cb);
+                pts.push([sx, ry], [cx, ry], [cx, n.y], [n.x, n.y]);
             }
-            // связи черта → дети: вбок до короткого ствола перед колонкой детей, вдоль него, к ребёнку
-            for (const id of [...col.sides[-1].items, ...col.sides[1].items]) {
-                const walk = (pid) => {
-                    const p = byId.get(pid);
-                    for (const c of kids.get(pid)) {
-                        const ch = byId.get(c), sd = sideOf.get(c);
-                        const trunkX = ch.x - sd * half;
-                        paths.set(`${pid}>${c}`, ch.y === p.y && lane.get(c) === lane.get(pid) + 1
-                            ? [[p.x, p.y], [ch.x, ch.y]]
-                            : [[p.x, p.y], [trunkX, p.y], [trunkX, ch.y], [ch.x, ch.y]]);
-                        walk(c);
-                    }
-                };
-                walk(id);
+            // убрать точки, лежащие на одной прямой с соседями
+            return pts.filter((p, i) => {
+                if (i === 0 || i === pts.length - 1) return true;
+                const a = pts[i - 1], b = pts[i + 1];
+                return !((a[0] === p[0] && p[0] === b[0]) || (a[1] === p[1] && p[1] === b[1]));
+            });
+        };
+        const walk = (pid) => {
+            const p = byId.get(pid), spineB = spineOf.get(pid);
+            for (const c of kids.get(pid)) {
+                const sx = bX(sideOf.get(c), spineB);
+                paths.set(`${pid}>${c}`, route([[p.x, p.y], [sx, p.y]], spineB, c));
+                if (kids.get(c).length) walk(c);
+            }
+        };
+        for (const sd of [-1, 1]) {
+            for (const id of col.sides[sd]) {
+                paths.set(`${col.hub}>${id}`, route([[hx, hy]], 0, id));
+                if (kids.get(id).length) walk(id);
             }
         }
     }
