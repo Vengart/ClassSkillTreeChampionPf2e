@@ -1,10 +1,57 @@
 // Сгенерировано tools/build-graph.mjs — не редактируйте вручную.
 // Источник: https://pf2.ru/classes/champion?tab=feats (2026-11-20T20:00:27.888Z)
-window.CHAMPION_DATA = {
+window.CLASS_DATA = {
  "meta": {
+  "classId": "champion",
+  "className": "Поборник",
+  "classGen": "поборника",
   "source": "https://pf2.ru/classes/champion?tab=feats",
   "fetchedAt": "2026-11-20T20:00:27.888Z",
-  "className": "Поборник",
+  "featLevels": [
+   1,
+   2,
+   4,
+   6,
+   8,
+   10,
+   12,
+   14,
+   16,
+   18,
+   20
+  ],
+  "maxLevel": 20,
+  "cardGroups": [
+   {
+    "id": "group-sanct",
+    "optional": true
+   },
+   {
+    "id": "group-cause"
+   },
+   {
+    "id": "group-devotion"
+   },
+   {
+    "id": "group-blessing",
+    "multi": true,
+    "fromLevel": 3,
+    "limit": 1,
+    "bonus": {
+     "id": "feat-5907",
+     "add": 1,
+     "name": "Второе благословление"
+    }
+   }
+  ],
+  "filters": [
+   "uncommon",
+   "unholy"
+  ],
+  "legend": [
+   "sanct",
+   "card"
+  ],
   "geometry": {
    "SIZE": {
     "root": 120,

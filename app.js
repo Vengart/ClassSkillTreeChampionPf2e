@@ -1,13 +1,21 @@
 'use strict';
 // ============================================================
-// Дерево черт Поборника (PF2e) в духе пассивного дерева PoE2.
-// Данные: data/champion-data.js (генерируется tools/fetch-pf2.mjs)
+// Деревья классовых черт PF2e в духе пассивного дерева PoE2.
+// Класс выбирается вкладкой (?class=…); данные — data/<класс>-data.js
+// (поборник — tools/fetch-pf2.mjs, волшебник — tools/fetch-wizard-aon.mjs).
 // ============================================================
 
-const DATA = window.CHAMPION_DATA;
+/** Вкладки классов. Новый класс: data/<id>-data.js + строка здесь и в index.html. */
+const CLASSES = [
+    { id: 'champion', name: 'Поборник' },
+    { id: 'wizard', name: 'Волшебник', note: 'EN · 1–20' },
+];
+const DATA = window.CLASS_DATA;
+const META = DATA.meta;
+const CLASS_ID = META.classId;
 const NODES = new Map(DATA.nodes.map((n) => [n.id, n]));
 const EDGES = DATA.edges;
-const STORAGE_KEY = 'pf2e-champion-build-v2';
+const STORAGE_KEY = `pf2e-${CLASS_ID}-build-v2`;
 
 // ---------- геометрия ----------
 // Координаты узлов и ломаные связей посчитаны заранее (tools/tree-layout.mjs):
@@ -15,8 +23,12 @@ const STORAGE_KEY = 'pf2e-champion-build-v2';
 
 const GEO = DATA.meta.geometry;
 const { SIZE } = GEO;
-/** Уровни, на которых поборник получает классовую черту. */
-const FEAT_LEVELS = [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
+/** Уровни, на которых класс получает классовую черту. */
+const FEAT_LEVELS = META.featLevels;
+const MAX_LEVEL = META.maxLevel || 20;
+/** Карточки выбора сверху: { id, optional, multi, fromLevel, limit, bonus }. */
+const CARD_GROUPS = META.cardGroups;
+const CARD_GROUP = new Map(CARD_GROUPS.map((g) => [g.id, g]));
 const sizeOf = (n) => SIZE[n.kind] || 54;
 
 // ---------- состояние сборки ----------
@@ -31,23 +43,29 @@ const state = {
 };
 
 const isGranted = (n) => n.kind === 'root';
+/** Узел даётся другим выбором (например, «Фамильяр» — диссертацией). */
+const grantedBy = (n, chosen = state.chosen) => (n.grantedBy && chosen.has(n.grantedBy) ? NODES.get(n.grantedBy) : null);
 const isChoice = (n) => n.kind === 'option' || n.kind === 'feat';
 
-function slotsTotal(level) { return 1 + Math.floor(level / 2); }
-function slotLevels(level) { return FEAT_LEVELS.filter((l) => l <= level); }
+/** Ячейки черт класса: по таблице класса и дополнительные (школа единой теории и т.п.). */
+function slotLevels(level, chosen = state.chosen) {
+    const extra = (META.bonusSlots || []).filter((b) => chosen.has(b.id)).map((b) => b.level);
+    return [...FEAT_LEVELS, ...extra].filter((l) => l <= level).sort((a, b) => a - b);
+}
+function slotsTotal(level) { return slotLevels(level).length; }
 
 function satisfied(id, chosen = state.chosen) {
     const n = NODES.get(id);
     if (!n) return false;
     if (isGranted(n)) return state.level >= n.level;
     if (n.kind === 'group') return [...chosen].some((c) => NODES.get(c).group === id);
-    return chosen.has(id);
+    return chosen.has(id) || !!grantedBy(n, chosen);
 }
 
 /** Проверяет, что взятые черты можно разложить по ячейкам черт класса. */
-function featsFit(featIds, level) {
+function featsFit(featIds, level, chosen = state.chosen) {
     const feats = featIds.map((id) => NODES.get(id).level).sort((a, b) => a - b);
-    const slots = slotLevels(level);
+    const slots = slotLevels(level, chosen);
     let s = 0;
     for (const lvl of feats) {
         while (s < slots.length && slots[s] < lvl) s++;
@@ -59,9 +77,13 @@ function featsFit(featIds, level) {
 
 const chosenFeats = (chosen = state.chosen) => [...chosen].filter((id) => NODES.get(id).kind === 'feat');
 
-function blessingLimit(chosen = state.chosen) {
-    return 1 + (chosen.has('feat-5907') ? 1 : 0); // «Второе благословление»
+/** Сколько вариантов группы можно взять (благословение поборника — 1, с чертой — 2). */
+function groupLimit(gid, chosen = state.chosen) {
+    const g = CARD_GROUP.get(gid);
+    if (!g) return 1;
+    return (g.limit || 1) + (g.bonus && chosen.has(g.bonus.id) ? g.bonus.add : 0);
 }
+const isMulti = (gid) => !!CARD_GROUP.get(gid)?.multi;
 
 /** Причины, по которым узел нельзя взять (пустой массив — можно). */
 function blockers(n, chosen = state.chosen) {
@@ -76,12 +98,15 @@ function blockers(n, chosen = state.chosen) {
     for (const id of n.forbids || []) {
         if (chosen.has(id)) out.push(`Несовместимо с «${NODES.get(id).name}»`);
     }
+    const giver = grantedBy(n, chosen);
+    if (giver) { out.push(`Уже даётся: «${giver.name}»`); return out; }
     if (n.kind === 'feat' && !chosen.has(n.id)) {
-        if (!featsFit([...chosenFeats(chosen), n.id], state.level)) out.push('Нет свободной ячейки черты подходящего уровня');
+        if (!featsFit([...chosenFeats(chosen), n.id], state.level, chosen)) out.push('Нет свободной ячейки черты подходящего уровня');
     }
-    if (n.group === 'group-blessing' && !chosen.has(n.id)) {
-        const taken = [...chosen].filter((id) => NODES.get(id).group === 'group-blessing').length;
-        if (taken >= blessingLimit(chosen)) out.push('Благословение уже выбрано (второе даёт черта «Второе благословление»)');
+    if (isMulti(n.group) && !chosen.has(n.id)) {
+        const taken = [...chosen].filter((id) => NODES.get(id).group === n.group).length;
+        const g = CARD_GROUP.get(n.group);
+        if (taken >= groupLimit(n.group, chosen)) out.push(`«${NODES.get(n.group).name}» уже выбрано${g.bonus ? ` (ещё одно даёт черта «${g.bonus.name}»)` : ''}`);
     }
     return out;
 }
@@ -97,12 +122,15 @@ function prune() {
             const others = new Set(state.chosen); others.delete(id);
             const bad = state.level < n.level
                 || (n.requires || []).some((cl) => !cl.some((x) => satisfied(x, others)))
-                || (n.forbids || []).some((x) => others.has(x));
+                || (n.forbids || []).some((x) => others.has(x))
+                || !!grantedBy(n, others); // теперь даётся бесплатно — ячейка освобождается
             if (bad) { state.chosen.delete(id); removed.push(n); changed = true; }
         }
-        // лишние благословения
-        const bless = [...state.chosen].filter((id) => NODES.get(id).group === 'group-blessing');
-        while (bless.length > blessingLimit()) { const id = bless.pop(); state.chosen.delete(id); removed.push(NODES.get(id)); changed = true; }
+        // лишние варианты в группах с несколькими выборами
+        for (const g of CARD_GROUPS.filter((x) => x.multi)) {
+            const picked = [...state.chosen].filter((id) => NODES.get(id).group === g.id);
+            while (picked.length > groupLimit(g.id)) { const id = picked.pop(); state.chosen.delete(id); removed.push(NODES.get(id)); changed = true; }
+        }
         // черты, не влезающие в ячейки: снимаем самые высокоуровневые
         let feats = chosenFeats().sort((a, b) => NODES.get(b).level - NODES.get(a).level);
         while (feats.length && !featsFit(feats, state.level)) {
@@ -112,9 +140,47 @@ function prune() {
     return removed;
 }
 
+// ---------- история изменений (кнопка «Отменить», Ctrl+Z) ----------
+
+const undoStack = [];
+const UNDO_LIMIT = 50;
+function pushUndo(before) {
+    if (before === encodeBuild()) return;
+    undoStack.push(before);
+    if (undoStack.length > UNDO_LIMIT) undoStack.shift();
+    updateUndo();
+}
+function updateUndo() {
+    for (const b of document.querySelectorAll('[data-undo]')) b.disabled = !undoStack.length;
+}
+/** Восстановить сборку из строки encodeBuild() — тот же путь, что при загрузке. */
+function applyBuild(s) {
+    const b = decodeBuild(s);
+    state.level = b.level;
+    state.chosen.clear();
+    b.chosen.sort((a, c) => NODES.get(a).level - NODES.get(c).level);
+    for (const id of b.chosen) state.chosen.add(id);
+    prune();
+    save();
+    render();
+    refreshDetails();
+    refreshTooltip();
+}
+function undo() {
+    if (!undoStack.length) return;
+    applyBuild(undoStack.pop());
+    updateUndo();
+    toast('Отменено последнее изменение');
+}
+
 function toggle(n) {
+    const before = encodeBuild();
     if (!isChoice(n)) {
         openDetails(n);
+        return;
+    }
+    if (grantedBy(n)) {
+        toast(`«${n.name}» уже даёт «${grantedBy(n).name}» — ячейка черты не тратится`);
         return;
     }
     if (state.chosen.has(n.id)) {
@@ -124,7 +190,7 @@ function toggle(n) {
     } else {
         // взаимоисключающие варианты: замена соседнего
         let replaced = null;
-        if (n.kind === 'option' && n.group !== 'group-blessing') {
+        if (n.kind === 'option' && !isMulti(n.group)) {
             for (const id of [...state.chosen]) {
                 if (NODES.get(id).group === n.group) { state.chosen.delete(id); replaced = id; }
             }
@@ -140,9 +206,11 @@ function toggle(n) {
         const removed = prune();
         if (removed.length) toast(`Снято: ${removed.map((r) => r.name).join(', ')}`);
     }
+    pushUndo(before);
     save();
     render();
     refreshDetails();
+    refreshTooltip();
 }
 
 // ---------- сохранение ----------
@@ -152,7 +220,7 @@ function encodeBuild() {
 }
 function decodeBuild(s) {
     const [lvl, list] = String(s).split('.');
-    const level = Math.min(20, Math.max(1, parseInt(lvl, 10) || 1));
+    const level = Math.min(MAX_LEVEL, Math.max(1, parseInt(lvl, 10) || 1));
     const chosen = (list || '').split(',').filter((id) => NODES.has(id) && isChoice(NODES.get(id)));
     return { level, chosen };
 }
@@ -176,6 +244,7 @@ function load() {
 // ---------- безопасный HTML описаний ----------
 
 const ALLOWED_TAGS = new Set(['B', 'STRONG', 'I', 'EM', 'BR', 'HR', 'UL', 'OL', 'LI', 'P', 'SPAN', 'A', 'H4', 'TABLE', 'THEAD', 'TBODY', 'TR', 'TD', 'TH', 'SUP', 'SUB', 'DIV']);
+const SOURCE_NAME = META.sourceName || 'pf2.ru';
 const ACTION_GLYPH = { 1: '◆', 2: '◆◆', 3: '◆◆◆', 4: '◇', 5: '⟲' };
 const ACTION_NAME = { 1: 'одно действие', 2: 'два действия', 3: 'три действия', 4: 'свободное действие', 5: 'ответное действие' };
 
@@ -194,7 +263,7 @@ function sanitize(html) {
             const cls = child.getAttribute('class') || '';
             const href = child.getAttribute('href');
             for (const a of [...child.attributes]) child.removeAttribute(a.name);
-            if (child.tagName === 'A' && href && /^https:\/\/pf2\.ru\//.test(href)) {
+            if (child.tagName === 'A' && href && /^https:\/\/(pf2\.ru|2e\.aonprd\.com)\//.test(href)) {
                 child.setAttribute('href', href);
                 child.setAttribute('target', '_blank');
                 child.setAttribute('rel', 'noopener noreferrer');
@@ -232,7 +301,8 @@ function cardHtml(n, full) {
     ].filter(Boolean).join('');
     const why = blockers(n);
     let status = '';
-    if (isGranted(n)) status = '<div class="status st-granted">Есть у каждого поборника</div>';
+    if (isGranted(n)) status = `<div class="status st-granted">Есть у каждого ${esc(META.classGen)}</div>`;
+    else if (grantedBy(n)) status = `<div class="status st-granted">Даётся: «${esc(grantedBy(n).name)}»</div>`;
     else if (state.chosen.has(n.id)) status = '<div class="status st-on">Выбрано · ЛКМ — снять</div>';
     else if (isChoice(n) && !why.length) status = '<div class="status st-avail">Доступно · ЛКМ — взять</div>';
     else if (why.length) status = `<div class="status st-locked">${why.map(esc).join('<br>')}</div>`;
@@ -257,7 +327,7 @@ function cardHtml(n, full) {
             ${n.hint ? `<p class="hint">${esc(n.hint)}</p>` : ''}
         </div>
         ${status}
-        ${full && n.url ? `<a class="src" href="${esc(n.url)}" target="_blank" rel="noopener noreferrer">Открыть на pf2.ru ↗</a>` : ''}
+        ${full && n.url ? `<a class="src" href="${esc(n.url)}" target="_blank" rel="noopener noreferrer">Открыть на ${esc(SOURCE_NAME)} ↗</a>` : ''}
         ${!full ? '<div class="more">ПКМ — подробнее</div>' : ''}`;
 }
 
@@ -288,8 +358,8 @@ function buildScene() {
     // мягкое свечение вокруг корня
     const defs = svg('defs', {}, ringsLayer);
     const grad = svg('radialGradient', { id: 'core-glow' }, defs);
-    svg('stop', { offset: '0%', 'stop-color': '#f3c66b', 'stop-opacity': '0.28' }, grad);
-    svg('stop', { offset: '100%', 'stop-color': '#f3c66b', 'stop-opacity': '0' }, grad);
+    svg('stop', { offset: '0%', style: 'stop-color: var(--c-root-glow); stop-opacity: 0.28' }, grad);
+    svg('stop', { offset: '100%', style: 'stop-color: var(--c-root-glow); stop-opacity: 0' }, grad);
     svg('circle', { cx: 0, cy: 0, r: 420, fill: 'url(#core-glow)' }, ringsLayer);
 
     // связи — ломаные из раскладки; концы подрезаются по краю узлов
@@ -297,6 +367,10 @@ function buildScene() {
         const dx = q[0] - p[0], dy = q[1] - p[1], len = Math.hypot(dx, dy) || 1;
         return [p[0] + dx / len * r, p[1] + dy / len * r];
     };
+    // Связи со общим участком ствола раньше рисовались целиком одна за другой: тёмная подложка
+    // следующей ложилась поверх светлой середины предыдущей, и на стволе виднелись две параллельные
+    // полоски. Теперь три слоя: все подложки → все свечения → все середины (подсвеченные — сверху, см. render).
+    const layers = ['base', 'glow', 'core'].map((name) => svg('g', { class: `edge-layer layer-${name}` }, edgesLayer));
     // сначала связи к темам и стволы (под чертами), затем остальные
     const ordered = [...EDGES].sort((p, q) => (p.kind === 'struct' ? 0 : 1) - (q.kind === 'struct' ? 0 : 1));
     for (const e of ordered) {
@@ -306,11 +380,13 @@ function buildScene() {
         const n = pts.length;
         pts[n - 1] = trim(pts[n - 1], pts[n - 2], sizeOf(b) / 2 + 2);
         const d = pts.map((p) => p.join(',')).join(' ');
-        const g = svg('g', { class: `edge edge-${e.kind} ${e.primary ? 'primary' : 'secondary'}` }, edgesLayer);
-        svg('polyline', { points: d, class: 'edge-base' }, g);
-        svg('polyline', { points: d, class: 'edge-glow' }, g);
-        svg('polyline', { points: d, class: 'edge-core' }, g);
-        edgeEls.push({ e, g });
+        const cls = `edge edge-${e.kind} ${e.primary ? 'primary' : 'secondary'}`;
+        const gs = ['edge-base', 'edge-glow', 'edge-core'].map((part, i) => {
+            const g = svg('g', { class: cls }, layers[i]);
+            svg('polyline', { points: d, class: part }, g);
+            return g;
+        });
+        edgeEls.push({ e, gs, rank: 0 });
     }
 
     // узлы (группы выбора и их варианты — карточки в верхней панели, не на холсте)
@@ -338,9 +414,17 @@ function buildScene() {
             cap.style.width = `${n.captionW || c.maxW}px`;
             cap.textContent = n.name;
             el.appendChild(cap);
+        } else {
+            // центральный узел: название класса и счётчик потраченных ячеек черт (обновляет renderPanel)
+            const cap = document.createElement('span');
+            cap.className = 'caption cap-right root-caption';
+            cap.innerHTML = `<span class="root-name">${esc(n.name)}</span>` +
+                '<span class="root-points">потрачено <b id="root-used">0</b> / <b id="root-total">0</b></span>';
+            el.appendChild(cap);
+            n.captionSide = 'right';
         }
         const sanctReq = (n.requires || []).find((cl) => cl.every((id) => id.startsWith('sanct-')));
-        if ((n.kind === 'feat' || n.kind === 'option') && (sanctReq || n.forbids?.length)) {
+        if ((n.kind === 'feat' || n.kind === 'option') && (sanctReq || n.forbids?.some((id) => id.startsWith('sanct-')))) {
             const badge = document.createElement('span');
             const holy = sanctReq?.includes('sanct-holy'), unholy = sanctReq?.includes('sanct-unholy');
             badge.className = `badge ${holy && unholy ? 'b-any' : holy ? 'b-holy' : unholy ? 'b-unholy' : 'b-not-unholy'}`;
@@ -354,6 +438,13 @@ function buildScene() {
             lv.title = `Черта ${n.level} уровня`;
             el.appendChild(lv);
         }
+        if (n.kind === 'feat' || n.kind === 'option') {
+            // значок замка — виден только у заблокированного узла (.node.locked, style.css)
+            const lock = document.createElement('span');
+            lock.className = 'lock-badge';
+            lock.setAttribute('aria-hidden', 'true');
+            el.appendChild(lock);
+        }
         // требования-карточки (призвание, заклинание, благословение) — медальоны слева сверху
         const cardReqs = (n.requires || []).filter((cl) => cl.every((id) => isCard(NODES.get(id)) && !id.startsWith('sanct-')));
         cardReqs.slice(0, 2).forEach((clause, k) => {
@@ -361,8 +452,10 @@ function buildScene() {
             const icon = clause.length === 1 ? first : NODES.get(first.kind === 'group' ? first.id : first.group);
             const b = document.createElement('span');
             b.className = `req-badge req-${k}`;
+            // у карточек без иконок (школы волшебника) — знак-ромб вместо пустого кольца
             if (icon.image) b.style.backgroundImage = `url("images/${icon.image}")`;
-            b.title = 'Нужно: ' + clause.map((id) => NODES.get(id).name).join(' или ');
+            else b.classList.add('no-art');
+            b.title = 'Нужно: '+ clause.map((id) => NODES.get(id).name).join(' или ');
             el.appendChild(b);
             reqBadges.push({ el: b, clause });
         });
@@ -374,12 +467,11 @@ function buildScene() {
 
 // ---------- верхняя панель выбора (карточки) ----------
 
-const CARD_GROUPS = ['group-sanct', 'group-cause', 'group-devotion', 'group-blessing'];
 const cardEls = new Map();
 
 function buildChoiceBar() {
     const bar = $('#choice-bar');
-    for (const gid of CARD_GROUPS) {
+    for (const { id: gid } of CARD_GROUPS) {
         const g = NODES.get(gid);
         const sec = document.createElement('section');
         sec.className = 'choice-group';
@@ -391,15 +483,18 @@ function buildChoiceBar() {
         sec.appendChild(head);
         cardEls.set(gid, head);
         const row = document.createElement('div');
-        row.className = 'choice-row';
+        // compact — только иконки (много вариантов); имя выбранного видно в заголовке, остальные — в подсказке
+        // noImages — без иконок: мелкие текстовые «таблетки» с коротким названием
+        const cg = CARD_GROUP.get(gid);
+        row.className = `choice-row${cg.noImages ? ' chips' : cg.compact ? ' compact' : ''}`;
         for (const o of DATA.nodes.filter((x) => x.group === gid)) {
             const c = document.createElement('button');
             c.type = 'button';
             c.className = `choice-card rarity-${o.rarity || 'common'}`;
             c.dataset.id = o.id;
             c.setAttribute('aria-label', o.name);
-            c.innerHTML = `<span class="choice-art"${o.image ? ` style="background-image:url('images/${o.image}')"` : ''}></span>` +
-                `<span class="choice-name">${esc(o.name)}</span>` +
+            c.innerHTML = (cg.noImages ? '' : `<span class="choice-art"${o.image ? ` style="background-image:url('images/${o.image}')"` : ''}></span>`) +
+                `<span class="choice-name">${esc(o.short || o.name)}</span>` +
                 (o.sanct ? `<span class="badge b-${o.sanct}" title="Нужно освящение «${o.sanct === 'holy' ? 'священный' : 'нечестивый'}»"></span>` : '');
             row.appendChild(c);
             cardEls.set(o.id, c);
@@ -407,7 +502,27 @@ function buildChoiceBar() {
         sec.appendChild(row);
         bar.appendChild(sec);
     }
+    // описание выбранного — в свободном месте справа (когда все группы компактные, как у волшебника)
+    if (CARD_GROUPS.every((g) => CARD_GROUP.get(g.id).compact)) {
+        const info = document.createElement('section');
+        info.id = 'choice-info';
+        info.className = 'choice-info';
+        info.setAttribute('aria-live', 'polite');
+        bar.appendChild(info);
+        bar.classList.add('with-info');
+    }
+    // свернуть / развернуть панель
+    const tgl = document.createElement('button');
+    tgl.type = 'button';
+    tgl.id = 'bar-toggle';
+    tgl.className = 'bar-toggle';
+    bar.appendChild(tgl);
+    tgl.addEventListener('click', (ev) => { ev.stopPropagation(); setBarCollapsed(!document.body.classList.contains('bar-collapsed')); });
+    setBarCollapsed(readBarCollapsed(), false);
+
     bar.addEventListener('click', (ev) => {
+        const more = ev.target.closest('[data-more]');
+        if (more) { openDetails(NODES.get(more.dataset.more)); return; }
         const c = ev.target.closest('[data-id]');
         if (c) toggle(NODES.get(c.dataset.id));
     });
@@ -433,19 +548,61 @@ function buildChoiceBar() {
     });
 }
 
+// ---------- верхняя панель: сворачивание и описание выбранного ----------
+
+const BAR_KEY = 'pf2e-bar-collapsed';
+function readBarCollapsed() {
+    try { return localStorage.getItem(BAR_KEY) === '1'; } catch { return false; }
+}
+/** Свёрнутая панель — одна строка: названия групп и выбранное; карточки и описание скрыты. */
+function setBarCollapsed(on, refit = true) {
+    document.body.classList.toggle('bar-collapsed', on);
+    const tgl = $('#bar-toggle');
+    tgl.textContent = on ? '▾' : '▴';
+    tgl.title = on ? 'Развернуть панель выбора' : 'Свернуть панель выбора';
+    tgl.setAttribute('aria-label', tgl.title);
+    tgl.setAttribute('aria-expanded', String(!on));
+    try { localStorage.setItem(BAR_KEY, on ? '1' : '0'); } catch { /* нет доступа */ }
+    syncBarHeight();
+    if (refit) fitAll();
+}
+/** Первый абзац описания без разметки. */
+function plainSummary(html) {
+    const doc = new DOMParser().parseFromString(`<div>${html || ''}</div>`, 'text/html');
+    const p = doc.querySelector('p') || doc.body;
+    return p.textContent.replace(/\s+/g, ' ').trim();
+}
+function renderChoiceInfo() {
+    const info = $('#choice-info');
+    if (!info) return;
+    const key = CARD_GROUPS.flatMap((g) => [...state.chosen].filter((id) => NODES.get(id).group === g.id)).join('|');
+    if (info.dataset.key === key) return;   // перерисовываем только при смене выбора
+    info.dataset.key = key;
+    info.innerHTML =CARD_GROUPS.map((g) => {
+        const group = NODES.get(g.id);
+        const picked = [...state.chosen].map((id) => NODES.get(id)).find((n) => n.group === g.id);
+        if (!picked) return `<div class="info-item empty"><b>${esc(group.name)}:</b> не выбрано</div>`;
+        return `<div class="info-item"><div class="info-title"><span>${esc(group.name)}:</span> ${esc(picked.name)}` +
+            ` <button type="button" class="info-more" data-more="${esc(picked.id)}">подробнее</button></div>` +
+            `<p class="info-text">${esc(plainSummary(picked.html))}</p></div>`;
+    }).join('');
+}
+
 let hoverId = null;
 
 function render() {
     const searchQ = state.search.trim().toLowerCase();
     const pathIds = hoverId ? requirementPath(hoverId) : null;
+    // при наведении всё, что не входит в цепочку требований, отступает на второй план
+    viewport.classList.toggle('tracing', !!pathIds && pathIds.size > 1);
 
     for (const n of DATA.nodes) {
         const el = nodeEls.get(n.id) || cardEls.get(n.id);
         if (!el) continue;
         const on = isGranted(n) ? state.level >= n.level
             : n.kind === 'group' ? satisfied(n.id)
-            : n.kind === 'hub' ? [...state.chosen].some((id) => NODES.get(id).theme === n.id)
-            : state.chosen.has(n.id);
+            : n.kind === 'hub' ? DATA.nodes.some((x) => x.theme === n.id && satisfied(x.id))
+            : state.chosen.has(n.id) || !!grantedBy(n);
         const avail = !on && isChoice(n) && blockers(n).length === 0;
         const hiddenByFilter = (!state.showUncommon && n.rarity === 'uncommon' && !on)
             || (!state.showUnholy && isUnholy(n) && !on);
@@ -460,31 +617,52 @@ function render() {
         el.classList.toggle('match', !!match);
         el.classList.toggle('in-path', !!pathIds && pathIds.has(n.id));
     }
-    for (const { e, g } of edgeEls) {
-        const a = NODES.get(e.from), b = NODES.get(e.to);
+    const raised = [];
+    for (const item of edgeEls) {
+        const { e, gs } = item;
         const fromOn = nodeEls.get(e.from).classList.contains('on');
         const toEl = nodeEls.get(e.to);
         const toOn = toEl.classList.contains('on');
-        g.classList.toggle('on', fromOn && toOn);
-        g.classList.toggle('avail', fromOn && !toOn && toEl.classList.contains('avail'));
-        g.classList.toggle('in-path', !!pathIds && pathIds.has(e.from) && pathIds.has(e.to));
-        g.classList.toggle('filtered', nodeEls.get(e.from).classList.contains('filtered') || toEl.classList.contains('filtered'));
-        g.classList.toggle('dim', !!searchQ && !(nodeEls.get(e.to).classList.contains('match')));
-        void a; void b;
+        const on = fromOn && toOn;
+        const avail = fromOn && !toOn && toEl.classList.contains('avail');
+        const inPath = !!pathIds && pathIds.has(e.from) && pathIds.has(e.to);
+        const filtered = nodeEls.get(e.from).classList.contains('filtered') || toEl.classList.contains('filtered');
+        const dim = !!searchQ && !toEl.classList.contains('match');
+        for (const g of gs) {
+            g.classList.toggle('on', on);
+            g.classList.toggle('avail', avail);
+            g.classList.toggle('in-path', inPath);
+            g.classList.toggle('filtered', filtered);
+            g.classList.toggle('dim', dim);
+        }
+        // на общем стволе подсвеченная связь должна лежать поверх обычных
+        const rank = inPath ? 3 : on ? 2 : avail ? 1 : 0;
+        if (rank !== item.rank) { item.rank = rank; raised.push(item); }
+    }
+    if (raised.length) {
+        for (const item of [...edgeEls].filter((x) => x.rank > 0).sort((p, q) => p.rank - q.rank)) {
+            item.gs[1].parentNode.appendChild(item.gs[1]);
+            item.gs[2].parentNode.appendChild(item.gs[2]);
+        }
     }
     for (const { el, clause } of reqBadges) {
         el.classList.toggle('met', clause.some((id) => satisfied(id)));
     }
     // подсказки в заголовках групп
-    for (const gid of CARD_GROUPS) {
-        const picked = [...state.chosen].filter((id) => NODES.get(id).group === gid).length;
+    for (const g of CARD_GROUPS) {
+        const pickedIds = [...state.chosen].filter((id) => NODES.get(id).group === g.id);
+        const picked = pickedIds.length;
         let hint = '';
-        if (gid === 'group-sanct') hint = picked ? '' : 'не обязательно';
-        else if (gid === 'group-blessing') hint = state.level < 3 ? 'с 3 уровня' : `${picked} / ${blessingLimit()}`;
-        else hint = picked ? '' : 'выберите одно';
-        cardEls.get(gid).querySelector('.choice-hint').textContent = hint;
+        if (g.fromLevel && state.level < g.fromLevel) hint = `с ${g.fromLevel} уровня`;
+        else if (g.multi) hint = `${picked} / ${groupLimit(g.id)}`;
+        else if (!picked) hint = g.optional ? 'не обязательно' : 'выберите одно';
+        else if (g.compact) hint = NODES.get(pickedIds[0]).name;
+        cardEls.get(g.id).classList.toggle('picked', !!picked);
+        cardEls.get(g.id).querySelector('.choice-hint').textContent = hint;
     }
+    renderChoiceInfo();
     renderPanel();
+    scheduleLabels();   // приоритет подписей зависит от состояния узлов
 }
 
 function isUnholy(n) {
@@ -515,19 +693,55 @@ function renderPanel() {
     const used = chosenFeats().length, total = slotsTotal(state.level);
     $('#points-used').textContent = used;
     $('#points-total').textContent = total;
+    $('#hud-level').textContent = state.level;
+    $('#hud-used').textContent = used;
+    $('#hud-total').textContent = total;
+    $('#hud').classList.toggle('over', used > total);
+    $('#root-used').textContent = used;
+    $('#root-total').textContent = total;
+    nodeEls.get('root')?.querySelector('.root-points').classList.toggle('over', used > total);
     $('#points-fill').style.width = `${Math.min(100, used / total * 100)}%`;
 
-    const feats = chosenFeats().map((id) => NODES.get(id)).sort((a, b) => a.level - b.level || a.name.localeCompare(b.name, 'ru'));
+    const feats = DATA.nodes.filter((n) => n.kind === 'feat' && (state.chosen.has(n.id) || grantedBy(n)))
+        .sort((a, b) => a.level - b.level || a.name.localeCompare(b.name, 'ru'));
     $('#feat-list').innerHTML = feats.map((f) =>
-        `<li><button class="feat-item" data-focus="${f.id}"><span class="lvl">${f.level}</span>${esc(f.name)}</button></li>`).join('');
+        `<li><button class="feat-item" data-focus="${f.id}"><span class="lvl">${f.level}</span>${esc(f.name)}` +
+        `${grantedBy(f) ? ` <small class="muted">— даёт «${esc(grantedBy(f).name)}»</small>` : ''}</button></li>`).join('');
     $('#feat-empty').hidden = feats.length > 0;
     $('#feat-count').textContent = feats.length ? `(${feats.length})` : '';
 }
 
 // ---------- подсказка и подробности ----------
 
+/** Стоимость и кнопка действия для подсказки. */
+function tooltipActions(n) {
+    if (!isChoice(n)) return '';
+    const used = chosenFeats().length, total = slotsTotal(state.level);
+    let cost;
+    if (grantedBy(n)) cost = `бесплатно — даёт «${esc(grantedBy(n).name)}»`;
+    else if (n.kind === 'feat') cost = `1 ячейка черты класса · свободно ${Math.max(0, total - used)} из ${total}`;
+    else cost = 'выбор при создании, ячейку черты не тратит';
+    const on = state.chosen.has(n.id);
+    const why = blockers(n);
+    const disabled = !on && (why.length > 0 || !!grantedBy(n));
+    const label = on ? 'Снять' : grantedBy(n) ? 'Уже есть' : 'Взять';
+    return `<div class="tip-cost"><b>Стоимость:</b> ${cost}</div>` +
+        `<div class="tip-actions"><button type="button" class="btn tip-take${on ? ' btn-danger' : ''}" data-tip-toggle="${esc(n.id)}"${disabled ? ' disabled' : ''}>${label}</button>` +
+        `<span class="tip-keys">Enter — ${on ? 'снять' : 'взять'} · i / ПКМ — подробнее · Esc — закрыть</span></div>`;
+}
+let tipFor = null;      // { id, el, place } — для кого открыта подсказка
+let tipHideTimer = 0;
+function refreshTooltip() {
+    if (tipFor && !tooltip.classList.contains('hidden')) showTooltip(NODES.get(tipFor.id), tipFor.el, tipFor.place);
+}
+function scheduleHideTooltip() {
+    clearTimeout(tipHideTimer);
+    tipHideTimer = setTimeout(hideTooltip, 220);   // успеть перевести мышь на подсказку
+}
 function showTooltip(n, el, place = 'side') {
-    tooltip.innerHTML = cardHtml(n, false);
+    clearTimeout(tipHideTimer);
+    tipFor = { id: n.id, el, place };
+    tooltip.innerHTML = cardHtml(n, false).replace('<div class="more">ПКМ — подробнее</div>', '') + tooltipActions(n);
     tooltip.className = `tooltip card rarity-${n.rarity || 'common'}`;
     const r = el.getBoundingClientRect();
     const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
@@ -537,7 +751,16 @@ function showTooltip(n, el, place = 'side') {
     y = Math.max(10, Math.min(innerHeight - th - 10, y));
     tooltip.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px)`;
 }
-function hideTooltip() { tooltip.className = 'tooltip hidden'; }
+function hideTooltip() { clearTimeout(tipHideTimer); tipFor = null; tooltip.className = 'tooltip hidden'; }
+tooltip.addEventListener('pointerenter', () => clearTimeout(tipHideTimer));
+tooltip.addEventListener('pointerleave', () => {
+    scheduleHideTooltip();
+    if (hoverId) { hoverId = null; render(); }
+});
+tooltip.addEventListener('click', (ev) => {
+    const b = ev.target.closest('[data-tip-toggle]');
+    if (b && !b.disabled) toggle(NODES.get(b.dataset.tipToggle));
+});
 
 let detailsId = null;
 function openDetails(n) {
@@ -573,9 +796,125 @@ const MIN_K = 0.07, MAX_K = 2;
 function applyCam() {
     world.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.k})`;
     viewport.style.setProperty('--k', cam.k);
-    // подписи появляются по мере приближения: группы → варианты → черты
-    viewport.classList.toggle('z-far', cam.k < 0.22);
-    viewport.classList.toggle('z-mid', cam.k < 0.4);
+    if (cam.k !== labels.k) scheduleLabels();
+}
+
+// ---------- читаемость подписей при любом масштабе ----------
+// Подписи живут в координатах дерева и уменьшаются вместе с ним. Чтобы на экране они не были мельче
+// --label-min, при отдалении они увеличиваются (CSS scale вокруг точки у узла). Подпись, которая
+// после этого налезла бы на другие подписи или узлы, прячется (.cap-off) — видна при наведении.
+// Приоритет: темы → выбранные → доступные → остальные, младшие уровни раньше.
+
+const labels = { k: null, raf: 0, boxes: null };
+const cssPx = (name) => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name)) || 0;
+const LABEL = {
+    min: cssPx('--label-min'), minHub: cssPx('--label-min-hub'),
+    badgeMin: cssPx('--badge-min'), badgeFs: cssPx('--badge-fs'), rootPointsFs: cssPx('--root-points-fs'),
+};
+const CAP_GAP = 8;     // отступ подписи от рамки — как в .cap-* (style.css)
+const BADGE_H = 20;    // высота .lvl-badge (style.css)
+
+// ---------- слишком светлые иконки ----------
+// Иконки BG3 в основном тёмные; несколько почти белых (свиток Oghma и т.п.) выбиваются из палитры.
+// Для каждой иконки один раз на маленьком холсте считается доля почти белых непрозрачных пикселей:
+// у белых силуэтов она ~1, у обычных иконок ≤ 0.35. Выше порога (--art-white-max) — класс .bright-art
+// и тёплый тон --art-tone (style.css). Порог и тон — токены, без списка файлов.
+function toneBrightIcons() {
+    const max = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--art-white-max')) || 0.6;
+    const byImage = new Map();
+    for (const [id, el] of nodeEls) {
+        const img = NODES.get(id).image;
+        if (img) (byImage.get(img) || byImage.set(img, []).get(img)).push(el);
+    }
+    const c = document.createElement('canvas');
+    c.width = c.height = 24;
+    const ctx = c.getContext('2d', { willReadFrequently: true });
+    for (const [src, els] of byImage) {
+        const im = new Image();
+        im.onload = () => {
+            ctx.clearRect(0, 0, 24, 24);
+            ctx.drawImage(im, 0, 0, 24, 24);
+            let white = 0, cnt = 0;
+            const d = ctx.getImageData(0, 0, 24, 24).data;
+            for (let i = 0; i < d.length; i += 4) {
+                if (d[i + 3] < 128) continue;   // прозрачный фон не считаем
+                if ((0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2]) / 255 > 0.8) white++;
+                cnt++;
+            }
+            const bright = cnt && white / cnt > max;
+            for (const el of els) el.classList.toggle('bright-art', !!bright);
+        };
+        im.src = `images/${src}`;
+    }
+}
+
+function scheduleLabels() {
+    if (!labels.raf) labels.raf = requestAnimationFrame(() => { labels.raf = 0; updateLabels(); });
+}
+/** Размеры подписей без масштаба — один раз (и после загрузки шрифтов). */
+function measureLabels() {
+    labels.boxes = [];
+    for (const [id, el] of nodeEls) {
+        const cap = el.querySelector('.caption');
+        if (!cap) continue;
+        const n = NODES.get(id);
+        labels.boxes.push({ n, el, cap, side: n.captionSide || 'below', w: cap.offsetWidth, h: cap.offsetHeight, size: sizeOf(n) });
+    }
+    labels.k = null;
+    scheduleLabels();
+}
+/** Прямоугольник подписи в координатах дерева при увеличении s. */
+function captionRect(b, s) {
+    const { n, side, size } = b, w = b.w * s, h = b.h * s, r = size / 2 + CAP_GAP, d = size * 0.3536 + 4;
+    let x, y;
+    switch (side) {
+        case 'above': x = n.x - w / 2; y = n.y - r - h; break;
+        case 'right': x = n.x + r; y = n.y - h / 2; break;
+        case 'left': x = n.x - r - w; y = n.y - h / 2; break;
+        case 'below-right': x = n.x + d; y = n.y + d; break;
+        case 'below-left': x = n.x - d - w; y = n.y + d; break;
+        case 'above-right': x = n.x + d; y = n.y - d - h; break;
+        case 'above-left': x = n.x - d - w; y = n.y - d - h; break;
+        default: x = n.x - w / 2; y = n.y + r;
+    }
+    return { x1: x, y1: y, x2: x + w, y2: y + h };
+}
+function updateLabels() {
+    if (!labels.boxes) return;
+    const k = cam.k;
+    labels.k = k;
+    const capScale = (kind, min) => Math.max(1, min / ((GEO.CAPTION[kind] || GEO.CAPTION.feat).fs * k));
+    const scale = { feat: capScale('feat', LABEL.min), hub: capScale('hub', LABEL.minHub), option: capScale('option', LABEL.min),
+        root: Math.max(1, LABEL.min / (LABEL.rootPointsFs * k)) };   // по меньшей строке — счётчику
+    viewport.style.setProperty('--cap-s-feat', scale.feat);
+    viewport.style.setProperty('--cap-s-hub', scale.hub);
+    viewport.style.setProperty('--cap-s-option', scale.option);
+    viewport.style.setProperty('--cap-s-root', scale.root);
+
+    // бейдж уровня: не мельче --badge-min; прячется, когда перерастает половину узла
+    const badgeS = Math.max(1, LABEL.badgeMin / (LABEL.badgeFs * k));
+    viewport.style.setProperty('--badge-s', badgeS);
+    viewport.classList.toggle('badges-off', BADGE_H * badgeS > GEO.SIZE.feat * 0.5);
+
+    // жадная расстановка подписей по приоритету, без наложений
+    const pad = 4 / k;   // зазор между подписями — 4px на экране
+    const heading = (b) => b.n.kind === 'hub' || b.n.kind === 'root';
+    const rank = (b) => (heading(b) ? 0 : b.el.classList.contains('on') ? 1 : b.el.classList.contains('avail') ? 2 : 3);
+    const order = labels.boxes.filter((b) => !b.el.classList.contains('filtered'))
+        .sort((a, b) => rank(a) - rank(b) || (a.n.level || 0) - (b.n.level || 0));
+    const nodeRects = order.map((b) => ({ id: b.n.id, x1: b.n.x - b.size / 2, y1: b.n.y - b.size / 2, x2: b.n.x + b.size / 2, y2: b.n.y + b.size / 2 }));
+    const hit = (a, b) => a.x1 < b.x2 + pad && b.x1 < a.x2 + pad && a.y1 < b.y2 + pad && b.y1 < a.y2 + pad;
+    const placed = [];
+    for (const b of order) {
+        const s = scale[b.n.kind] || scale.option;
+        const r = captionRect(b, s);
+        // заголовки веток уступают только друг другу (узлы им не помеха); остальные подписи — всем
+        const ok = heading(b)
+            ? !placed.some((p) => hit(r, p))
+            : !placed.some((p) => hit(r, p)) && !nodeRects.some((nr) => nr.id !== b.n.id && hit(r, nr));
+        b.cap.classList.toggle('cap-off', !ok);
+        if (ok) placed.push(r);
+    }
 }
 function zoomAt(factor, cx, cy) {
     const k = Math.min(MAX_K, Math.max(MIN_K, cam.k * factor));
@@ -585,25 +924,42 @@ function zoomAt(factor, cx, cy) {
     cam.k = k;
     applyCam();
 }
-function centerOn(x, y, k = cam.k, animate = true) {
-    const vw = viewport.clientWidth, vh = viewport.clientHeight;
-    const panelW = document.body.classList.contains('panel-collapsed') ? 0 : $('#panel').offsetWidth;
+/**
+ * Свободная от панелей часть экрана: правее левой панели, ниже верхней.
+ * Легенда в правом нижнем углу отнимает либо полосу справа, либо полосу снизу —
+ * выбирается та, при которой дерево (aspect = ширина / высота) помещается крупнее.
+ */
+function freeArea(aspect = 1) {
+    const vw = viewport.clientWidth, vh = viewport.clientHeight, M = 12;
+    const panel = document.body.classList.contains('panel-collapsed') ? null : $('#panel').getBoundingClientRect();
+    const hud = $('#hud').getBoundingClientRect();
+    const area = { left: (panel ? panel.right : 0) + M, top: $('#choice-bar').getBoundingClientRect().bottom + M, right: vw - M,
+        bottom: (hud.height ? hud.top : vh) - M };   // полоса HUD внизу — всегда
+    const legend = $('#map-legend')?.getBoundingClientRect();
+    const zoomCtl = $('#zoom-ctl').getBoundingClientRect();
+    const corner = { w: vw - Math.min(legend?.width ? legend.left : vw, zoomCtl.left), h: vh - Math.min(legend?.height ? legend.top : vh, zoomCtl.top) };
+    const byRight = { ...area, right: vw - corner.w - M };
+    const byBottom = { ...area, bottom: vh - corner.h - M };
+    const fit = (a) => Math.min((a.right - a.left) / aspect, a.bottom - a.top);
+    return fit(byRight) >= fit(byBottom) ? byRight : byBottom;
+}
+function centerOn(x, y, k = cam.k, animate = true, area = freeArea()) {
     cam.k = k;
-    const barH = $('#choice-bar').offsetHeight + 12;
-    cam.x = panelW / 2 + vw / 2 - x * k;
-    cam.y = barH / 2 + vh / 2 - y * k;
+    cam.x = (area.left + area.right) / 2 - x * k;
+    cam.y = (area.top + area.bottom) / 2 - y * k;
     world.classList.toggle('animate', animate);
     applyCam();
     if (animate) setTimeout(() => world.classList.remove('animate'), 450);
 }
-function fitAll() {
+/** Вписать всё дерево в свободную область (кнопка ⤢, клавиши 0 / Home). */
+function fitAll(animate = true) {
     const b = DATA.meta.bounds;
-    const panelW = document.body.classList.contains('panel-collapsed') ? 0 : $('#panel').offsetWidth;
-    const barH = $('#choice-bar').offsetHeight + 12;
-    const w = viewport.clientWidth - panelW - 40, h = viewport.clientHeight - barH - 40;
+    const bw = b.maxX - b.minX, bh = b.maxY - b.minY;
+    const area = freeArea(bw / bh);
+    const w = area.right - area.left - 16, h = area.bottom - area.top - 16;
     if (w <= 0 || h <= 0) return; // окно ещё не показано
-    const k = Math.min(w / (b.maxX - b.minX), h / (b.maxY - b.minY));
-    centerOn((b.minX + b.maxX) / 2, (b.minY + b.maxY) / 2, Math.max(MIN_K, Math.min(1, k)));
+    const k = Math.min(w / bw, h / bh);
+    centerOn((b.minX + b.maxX) / 2, (b.minY + b.maxY) / 2, Math.max(MIN_K, Math.min(1, k)), animate, area);
 }
 function focusNode(id) {
     const n = NODES.get(id);
@@ -677,7 +1033,7 @@ nodesLayer.addEventListener('pointerout', (ev) => {
     const el = ev.target.closest('.node');
     if (!el || el.contains(ev.relatedTarget)) return;
     hoverId = null;
-    hideTooltip();
+    if (!tooltip.contains(ev.relatedTarget)) scheduleHideTooltip();   // на подсказку — оставляем
     render();
 });
 // клавиатура: Enter/пробел на узле
@@ -686,21 +1042,36 @@ nodesLayer.addEventListener('keydown', (ev) => {
     if (!el) return;
     if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(NODES.get(el.dataset.id)); }
     if (ev.key === 'i') openDetails(NODES.get(el.dataset.id));
+    if (ev.key === 'Escape') hideTooltip();
 });
+// с клавиатуры: подсказка у узла в фокусе (Tab) и цепочка требований — как при наведении
 nodesLayer.addEventListener('focusin', (ev) => {
     const el = ev.target.closest('.node');
-    if (el && !drag) showTooltip(NODES.get(el.dataset.id), el);
+    if (!el || drag) return;
+    showTooltip(NODES.get(el.dataset.id), el);
+    if (el.matches(':focus-visible')) { hoverId = el.dataset.id; render(); }
+});
+nodesLayer.addEventListener('focusout', (ev) => {
+    if (ev.relatedTarget?.closest?.('.node') || tooltip.contains(ev.relatedTarget)) return;
+    hideTooltip();
+    if (hoverId) { hoverId = null; render(); }
 });
 
 // ---------- элементы панели ----------
 
+let levelBefore = null;   // сборка до начала движения ползунка — для «Отменить»
 $('#level').addEventListener('input', (ev) => {
+    if (levelBefore === null) levelBefore = encodeBuild();
     state.level = Number(ev.target.value);
     const removed = prune();
     if (removed.length) toast(`Снято из-за уровня: ${removed.map((r) => r.name).join(', ')}`, true);
     save();
     render();
     refreshDetails();
+});
+$('#level').addEventListener('change', () => {
+    if (levelBefore !== null) pushUndo(levelBefore);
+    levelBefore = null;
 });
 $('#search').addEventListener('input', (ev) => {
     state.search = ev.target.value;
@@ -714,18 +1085,23 @@ $('#search').addEventListener('keydown', (ev) => {
 $('#f-uncommon').addEventListener('change', (ev) => { state.showUncommon = ev.target.checked; render(); });
 $('#f-unholy').addEventListener('change', (ev) => { state.showUnholy = ev.target.checked; render(); });
 $('#f-avail').addEventListener('change', (ev) => { state.onlyAvailable = ev.target.checked; render(); });
-$('#btn-center').addEventListener('click', fitAll);
-$('#btn-reset').addEventListener('click', () => {
-    if (!state.chosen.size || confirm('Сбросить сборку?')) {
-        state.chosen.clear();
-        state.level = 1;
-        history.replaceState(null, '', location.pathname);
-        save();
-        render();
-    }
-});
+$('#btn-center').addEventListener('click', () => fitAll());
+function resetBuild() {
+    const before = encodeBuild();
+    state.chosen.clear();
+    state.level = 1;
+    history.replaceState(null, '', location.pathname + location.search);
+    pushUndo(before);
+    save();
+    render();
+    refreshTooltip();
+    if (before !== encodeBuild()) toast('Сборка сброшена — «Отменить» вернёт её');
+}
+// подтверждение больше не нужно: сброс можно отменить
+for (const b of document.querySelectorAll('[data-reset]')) b.addEventListener('click', resetBuild);
+for (const b of document.querySelectorAll('[data-undo]')) b.addEventListener('click', undo);
 $('#btn-share').addEventListener('click', async () => {
-    const url = `${location.origin}${location.pathname}#b=${encodeURIComponent(encodeBuild())}`;
+    const url = `${location.origin}${location.pathname}?class=${CLASS_ID}#b=${encodeURIComponent(encodeBuild())}`;
     history.replaceState(null, '', url);
     try { await navigator.clipboard.writeText(url); toast('Ссылка на сборку скопирована'); } catch { toast('Ссылка в адресной строке'); }
 });
@@ -744,28 +1120,73 @@ $('#panel-toggle').addEventListener('click', () => {
 });
 $('#details-close').addEventListener('click', closeDetails);
 document.addEventListener('keydown', (ev) => {
+    if ((ev.ctrlKey || ev.metaKey) && !ev.shiftKey && ev.key.toLowerCase() === 'z' && !ev.target.matches('input[type=search]')) {
+        ev.preventDefault();
+        undo();
+        return;
+    }
     if (ev.target.matches('input')) return;
-    if (ev.key === 'Escape') closeDetails();
+    if (ev.key === 'Escape') { hideTooltip(); closeDetails(); }
     if (ev.key === '0' || ev.key === 'Home') fitAll();
 });
 for (const b of document.querySelectorAll('[data-zoom]')) {
-    b.addEventListener('click', () => zoomAt(Number(b.dataset.zoom), innerWidth / 2, innerHeight / 2));
+    // масштаб кнопками — относительно центра свободной области
+    b.addEventListener('click', () => {
+        const a = freeArea();
+        zoomAt(Number(b.dataset.zoom), (a.left + a.right) / 2, (a.top + a.bottom) / 2);
+    });
 }
+$('#btn-fit').addEventListener('click', () => fitAll());
 /** Высота верхней панели — для отступов боковых панелей (CSS-переменная --bar-h). */
 function syncBarHeight() {
     document.documentElement.style.setProperty('--bar-h', `${$('#choice-bar').offsetHeight}px`);
 }
 addEventListener('resize', () => { syncBarHeight(); applyCam(); });
+// высота панели меняется и без resize окна (описание выбранного, сворачивание) — следим за ней
+if ('ResizeObserver' in window) new ResizeObserver(syncBarHeight).observe($('#choice-bar'));
+
+// ---------- класс: заголовки, вкладки, фильтры ----------
+
+function setupClass() {
+    const root = NODES.get('root');
+    document.title = `${META.className} — дерево черт`;
+    $('#class-name').textContent = META.className;
+    if (META.note) $('#class-note').textContent = META.note;
+    if (root.image) $('.crest').style.backgroundImage = `url("images/${root.image}")`;
+    $('#level').max = MAX_LEVEL;
+    $('#level-max').textContent = MAX_LEVEL < 20 ? `из ${MAX_LEVEL}` : '';
+    const tabs = $('#class-tabs');
+    tabs.innerHTML = CLASSES.map((c) => `<a class="class-tab${c.id === CLASS_ID ? ' active' : ''}" href="?class=${c.id}"` +
+        `${c.id === CLASS_ID ? ' aria-current="page"' : ''}>${esc(c.name)}${c.note ? `<small>${esc(c.note)}</small>` : ''}</a>`).join('');
+    // фильтры и легенда, относящиеся к другим классам, прячем
+    for (const el of document.querySelectorAll('[data-filter]')) el.hidden = !(META.filters || []).includes(el.dataset.filter);
+    for (const el of document.querySelectorAll('[data-legend]')) el.hidden = !(META.legend || []).includes(el.dataset.legend);
+    const cardNames = CARD_GROUPS.map((g) => NODES.get(g.id).name.toLowerCase());
+    $('#legend-cards').textContent = `Сверху — карточки выбора: ${cardNames.join(', ')}`;
+    $('#legend-card-req').textContent = `нужна карточка (${cardNames.join(', ')})`;
+    // значок в легенде — как на узлах: иконка первой карточки или ромб, если иконок у карточек нет
+    const sample = DATA.nodes.find((x) => x.group === CARD_GROUPS[0]?.id && x.image);
+    const lg = $('.legend-req');
+    if (lg) {
+        lg.style.backgroundImage = sample ? `url("images/${sample.image}")` : '';
+        lg.classList.toggle('no-art', !sample);
+    }
+}
 
 // ---------- старт ----------
 
 const isNarrow = () => matchMedia('(max-width: 720px)').matches;
 if (isNarrow()) setPanelCollapsed(true);
+setupClass();
 buildScene();
+measureLabels();
+toneBrightIcons();
+document.fonts?.ready.then(measureLabels);   // ширина подписей меняется, когда догружается шрифт
 syncBarHeight();
 load();
-const dt = new Date(DATA.meta.fetchedAt);
-$('#data-source').innerHTML = `Данные: <a href="${esc(DATA.meta.source)}" target="_blank" rel="noopener noreferrer">pf2.ru</a>, ` +
-    `обновлено ${dt.toLocaleDateString('ru-RU')}. Обновить: <code>node tools/fetch-pf2.mjs</code>`;
+const dt = new Date(META.fetchedAt);
+$('#data-source').innerHTML = `Данные: <a href="${esc(META.source)}" target="_blank" rel="noopener noreferrer">${esc(SOURCE_NAME)}</a>, ` +
+    `обновлено ${dt.toLocaleDateString('ru-RU')}. Обновить: <code>${esc(META.updateCmd || 'node tools/fetch-pf2.mjs')}</code>`;
 render();
-fitAll();
+updateUndo();
+fitAll(false);

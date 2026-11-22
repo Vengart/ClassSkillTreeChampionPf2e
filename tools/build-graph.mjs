@@ -1,7 +1,7 @@
 // ============================================================
 // Сборка графа из сырых данных pf2.ru.
 //
-//   node tools/build-graph.mjs      — пересобрать data/champion-data.js
+//   node tools/build-graph.mjs      — пересобрать data/champion-data.js (поборник)
 //                                     из data/pf2-raw.json без скачивания
 //
 // Здесь живут «ручные» правила, которых нет в машиночитаемом виде
@@ -17,6 +17,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { computeTreeLayout, GEOMETRY } from './tree-layout.mjs';
+import { writeClassData } from './pf2-common.mjs';
 
 // ---------- ручные данные ----------
 
@@ -320,7 +321,21 @@ export function buildGraph(raw) {
     const layout = computeTreeLayout(nodes, edges, { log: true });
 
     return {
-        meta: { source: raw.source, fetchedAt: raw.fetchedAt, className: 'Поборник', geometry: GEOMETRY, layout: layout.stats, bounds: layout.bounds },
+        meta: {
+            classId: 'champion', className: 'Поборник', classGen: 'поборника',
+            source: raw.source, fetchedAt: raw.fetchedAt,
+            featLevels: [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20], maxLevel: 20,
+            // карточки сверху: limit — сколько можно взять, bonus — черта, дающая ещё одну
+            cardGroups: [
+                { id: 'group-sanct', optional: true },
+                { id: 'group-cause' },
+                { id: 'group-devotion' },
+                { id: 'group-blessing', multi: true, fromLevel: 3, limit: 1, bonus: { id: 'feat-5907', add: 1, name: 'Второе благословление' } },
+            ],
+            filters: ['uncommon', 'unholy'],
+            legend: ['sanct', 'card'],
+            geometry: GEOMETRY, layout: layout.stats, bounds: layout.bounds,
+        },
         nodes,
         edges,
         warnings,
@@ -331,14 +346,5 @@ export function buildGraph(raw) {
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
     const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
     const raw = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'pf2-raw.json'), 'utf8'));
-    const graph = buildGraph(raw);
-    await fs.writeFile(
-        path.join(ROOT, 'data', 'champion-data.js'),
-        `// Сгенерировано tools/build-graph.mjs — не редактируйте вручную.\n` +
-        `// Источник: ${raw.source} (${raw.fetchedAt})\n` +
-        `window.CHAMPION_DATA = ${JSON.stringify(graph, null, 1)};\n`,
-        'utf8',
-    );
-    console.log(`✓ data/champion-data.js — узлов: ${graph.nodes.length}, связей: ${graph.edges.length}`);
-    for (const w of graph.warnings) console.warn('  ! ' + w);
+    await writeClassData('champion', buildGraph(raw), raw, 'tools/build-graph.mjs');
 }

@@ -35,7 +35,7 @@ export const GEOMETRY = {
 };
 const G = GEOMETRY;
 
-/** Порядок тем слева направо: родственные рядом. */
+/** Порядок тем поборника слева направо: родственные рядом (другие классы передают свой). */
 const THEME_ORDER = ['theme-cause', 'theme-sanct', 'theme-aura', 'theme-combat', 'theme-shield',
     'theme-blessing', 'theme-devotion', 'theme-faith', 'theme-steed'];
 
@@ -47,7 +47,7 @@ export function captionBox(n) {
     return { w: Math.ceil(lines === 1 ? full : c.maxW), h: Math.ceil(lines * c.fs * 1.15) };
 }
 
-export function computeTreeLayout(nodes, edges, { log = false } = {}) {
+export function computeTreeLayout(nodes, edges, { log = false, themeOrder = THEME_ORDER } = {}) {
     const byId = new Map(nodes.map((n) => [n.id, n]));
     const kids = new Map(nodes.map((n) => [n.id, []]));
     for (const n of nodes) if (n.kind === 'feat' && n.parentId) kids.get(n.parentId).push(n.id);
@@ -85,7 +85,7 @@ export function computeTreeLayout(nodes, edges, { log = false } = {}) {
     }
 
     // колонны тем
-    const hubs = THEME_ORDER.filter((id) => byId.has(id));
+    const hubs = themeOrder.filter((id) => byId.has(id));
     for (const n of nodes) if (n.kind === 'hub' && !hubs.includes(n.id)) hubs.push(n.id);
     const columns = hubs.map((hub) => {
         // черты темы делятся на левую и правую стороны ствола по очереди уровней,

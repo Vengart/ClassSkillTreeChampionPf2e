@@ -232,6 +232,60 @@ HTML описаний вставляй только через санитайз�
 
 ---
 
+## Блок 10. Вкладки классов и волшебник 1–20 (английский, Archives of Nethys)
+
+```text
+Сайт показывает несколько классов: вкладки над панелью, класс в адресе (?class=wizard).
+index.html сначала грузит data/<класс>-data.js (window.CLASS_DATA), затем app.js.
+Всё, что отличает класс, лежит в meta графа: featLevels, maxLevel, bonusSlots, cardGroups
+({id, optional, multi, fromLevel, limit, bonus, compact, noImages}), filters, legend, classGen, note,
+updateCmd, sourceName (подпись источника: «pf2.ru» / «Archives of Nethys»).
+У каждого класса своя сборка в localStorage (pf2e-<класс>-build-v2).
+
+Волшебник — на английском, с Archives of Nethys (https://2e.aonprd.com/Feats.aspx?Traits=166).
+AoN строит страницы в браузере из открытого поискового индекса https://elasticsearch.aonprd.com/aon
+(POST _search, без ключей) — tools/fetch-wizard-aon.mjs берёт данные оттуда, кеш в data/cache/wizard-aon/:
+- черты: category=feat и trait_raw=Wizard; записи с remaster_id — старые копии, пропускаются;
+  дубли по названию (Spell Mastery из AP) — оставляется версия Player Core;
+- школы (category=arcane-school, кроме девяти школ Core Rulebook) и диссертации (arcane-thesis, Remaster);
+- умения Arcane Bond / School / Thesis и действие Drain Bonded Item;
+- разметка AoN (markdown + <title>, <traits>, <actions>, <column>) переводится в HTML функцией aonToHtml;
+  шапка записи (Prerequisites, Requirements, Trigger, Frequency) — отдельные поля.
+Id черт = ID на AoN (совпадают с pf2.ru, поэтому старые сборки не ломаются).
+Ручные правила (build-wizard.mjs):
+- навыки и умения, которые есть у всех (arcane bond, focus pool, archwizard's spellcraft) → PASSIVE_PREREQ;
+- School of Unified Magical Theory даёт ячейку черты 1 уровня (bonusSlots);
+- Familiar даёт диссертация Improved Familiar Attunement (grantedBy); Enhanced Familiar — Familiar или эта диссертация;
+- Linked Focus — нужна школа, но не единая теория (requires group-school + forbids).
+Темы: Spellshape, Counterspell & Defense, Spellbook & Slots, Arcane Bond & School, Illusion & Influence,
+Undeath, Familiar (THEME_BY_NAME; остальное со spellshape → Spellshape).
+Иконки черт — с https://bg3.wiki/wiki/Wizard, лежат в images/wizard/, сопоставление в FEAT_IMAGES.
+Школы и диссертации — без иконок (cardGroups.noImages): короткие названия мелкими «таблетками».
+```
+
+## Блок 11. Улучшение интерфейса (5 этапов, после каждого — diff и ОК пользователя)
+
+```text
+Стилистику (тёмное золото, пергамент) сохраняем; игровую логику и данные не трогаем; без новых зависимостей.
+1. Читаемость: цвета, шрифты, радиусы — токены в :root (--c-* палитра, --rgb-* для полупрозрачных,
+   --label-*, --state-*, --fs-*, --r-*), в CSS нет hex/rgba-литералов. Подписи узлов не мельче --label-min
+   (13px) на экране: при отдалении увеличиваются (CSS scale), налезающие прячутся (.cap-off, видны при
+   наведении) — updateLabels() в app.js. Контраст подписей ≥ 4.5:1 во всех состояниях. Капитель — только
+   заголовки. Бейджи уровня ≥ 12px, издалека прячутся.
+2. Состояния: .on — золото+свечение, .avail — светлая рамка, .locked — тусклая иконка + замок (.lock-badge,
+   маска SVG). Наведение: #viewport.tracing приглушает всё вне цепочки. Легенда — #map-legend.
+3. Компоновка: верхняя панель сворачивается (body.bar-collapsed), группы прижаты влево, справа
+   #choice-info — описание выбранного; камера вписывает дерево в freeArea() (без панелей, HUD, легенды);
+   кнопка ⤢ (#btn-fit).
+4. Баги: связи рисуются в три слоя (подложки → свечения → середины, подсвеченные сверху) — иначе на общих
+   стволах «двойные линии»; карточка без иконки — ромб (.req-badge.no-art); белые силуэты иконок
+   тонируются (.bright-art, доля почти белых пикселей > --art-white-max); подпись и счётчик у корня.
+5. Взаимодействие: подсказка интерактивная (стоимость, «Взять»/«Снять», Enter/Esc), HUD (#hud),
+   история «Отменить» (undoStack, Ctrl+Z), «Сброс» без confirm — его можно отменить.
+```
+
+---
+
 ## Бэклог: готовые промпты на будущее
 
 ### Б1. Сделать новую версию основной в ClassSkillTreeChampionPf2e
@@ -249,11 +303,16 @@ HTML описаний вставляй только через санитайз�
 Проверь, что метрики раскладки остались нулевыми; если нет — перебери seed (блок 7) и проверь в браузере (блок 8).
 ```
 
-### Б3. Другой класс
+### Б3. Другой класс (по образцу волшебника — блок 10)
 ```text
-Обобщи загрузчик и сборщик: сделай CLASS_SLUG параметром и вынеси ручные правила
-(группы выбора, OVERRIDES, картинки, ROOT_ORDER, LAYOUT_ANCHOR) в отдельный файл класса.
-Начни с разведки страницы класса (блок 2).
+Повтори блок 10 для нового класса: tools/fetch-<класс>-aon.mjs (по образцу fetch-wizard-aon.mjs) + tools/build-<класс>.mjs, данные в data/<класс>-data.js, строка в CLASSES (app.js) и known (index.html).
+```
+
+### Б5. Перевести интерфейс на английский
+```text
+Данные волшебника уже английские (блок 10). Вынеси подписи интерфейса app.js/index.html
+(«Уровень», «Черты класса», статусы, подсказки) в словарь и переключай язык по meta.lang.
+Поборника при желании перевести на AoN тем же способом (tools/fetch-<класс>-aon.mjs).
 ```
 
 ### Б4. Удалить отработавшую локальную ветку

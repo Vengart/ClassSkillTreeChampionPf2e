@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // ============================================================
-// Загрузчик данных с pf2.ru для дерева черт Поборника.
+// Загрузчик данных с pf2.ru для дерева черт Поборника
+// (волшебник — tools/fetch-wizard-aon.mjs).
 //
 //   node tools/fetch-pf2.mjs
 //
@@ -19,128 +20,24 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { buildGraph } from './build-graph.mjs';
+import {
+    DATA_DIR, BASE, get as getUrl, readTables, cleanHtml, parseViewbox, parseTraits, parseActions,
+    sliceSection, splitBoldItems, featFromRow, writeClassData,
+} from './pf2-common.mjs';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DATA_DIR = path.join(ROOT, 'data');
 const CACHE_DIR = path.join(DATA_DIR, 'cache');
-const BASE = 'https://pf2.ru';
 const CLASS_SLUG = 'champion';
-const DELAY_MS = 350;
-const FORCE = process.argv.includes('--force');
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-async function get(url, cacheName) {
-    const cacheFile = cacheName && path.join(CACHE_DIR, cacheName);
-    if (cacheFile && !FORCE) {
-        try { return await fs.readFile(cacheFile, 'utf8'); } catch { /* нет в кеше */ }
-    }
-    for (let attempt = 0; attempt < 4; attempt++) {
-        const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (feat-tree fetcher)' } });
-        if (res.ok) {
-            const text = await res.text();
-            if (cacheFile) await fs.writeFile(cacheFile, text, 'utf8');
-            await sleep(DELAY_MS);
-            return text;
-        }
-        if (![425, 429, 502, 503].includes(res.status)) throw new Error(`${res.status} ${url}`);
-        await sleep(1500 * (attempt + 1));
-    }
-    throw new Error(`Не удалось скачать ${url}`);
-}
-
-const decodeAttr = (s) => s
-    .replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>').replace(/&amp;/g, '&');
-
-// ---------- очистка HTML описаний ----------
-
-function cleanHtml(html) {
-    return html
-        .replace(/<script[\s\S]*?<\/script>/gi, '')
-        .replace(/<style[\s\S]*?<\/style>/gi, '')
-        // «ромбики» раскрытия на сайте нам не нужны
-        .replace(/<span class="rhombus"[^>]*><\/span>/g, '')
-        .replace(/<span class="rhombus-wrap">\s*([\s\S]*?)<\/span>/g, '$1')
-        .replace(/\s(on\w+|itemID|itemType|itemId|data-quicklink-bound|style)="[^"]*"/g, '')
-        .replace(/\s(on\w+|itemID|itemType)=\S+/g, '')
-        // относительные ссылки → абсолютные на pf2.ru
-        .replace(/href="\/(?!\/)/g, `href="${BASE}/`)
-        .replace(/­/g, '') // мягкие переносы из вёрстки книги
-        .replace(/[ \t]+\n/g, '\n')
-        .replace(/\n{2,}/g, '\n')
-        .trim();
-}
-
-const stripTags = (html) => cleanHtml(html).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-
-/** Разбирает вьюбокс: шапку («Источник», «Критерии»…) и тело описания. */
-function parseViewbox(html) {
-    const m = html.match(/<div class="item-box-in"[^>]*>([\s\S]*?)<\/div>\s*(?:<\/div>|<script|$)/);
-    let inner = m ? m[1] : '';
-    inner = inner.replace(/<script[\s\S]*$/i, '');
-    const hr = inner.indexOf('<hr>');
-    const head = hr >= 0 ? inner.slice(0, hr) : '';
-    const body = hr >= 0 ? inner.slice(hr + 4) : inner;
-    const fields = {};
-    for (const line of head.split(/<br>|\n/)) {
-        const f = line.match(/<b>([^<:]+):<\/b>\s*([\s\S]*)/);
-        if (f) fields[f[1].trim()] = cleanHtml(f[2]).replace(/\.\s*$/, '');
-    }
-    // вложенные действия (ответное действие призвания и т.п.)
-    const nested = [...html.matchAll(/const itemBoxId = '(\w+)-(\d+)-ru-item-box'/g)]
-        .map((x) => ({ type: x[1], id: x[2] }));
-    return { fields, html: cleanHtml(body), nested };
-}
-
-function parseTraits(traitsHtml = '') {
-    const traits = [...traitsHtml.matchAll(/href="\/traits\/([^"]+)"[^>]*>([^<]+)</g)]
-        .map((m) => ({ slug: m[1], name: m[2].trim() }));
-    let rarity = 'common';
-    if (/trait-uncommon/.test(traitsHtml)) rarity = 'uncommon';
-    if (/trait-rare/.test(traitsHtml)) rarity = 'rare';
-    if (/trait-unique/.test(traitsHtml)) rarity = 'unique';
-    return { traits: traits.filter((t) => !['uncommon', 'rare', 'unique'].includes(t.slug)), rarity };
-}
-
-function parseActions(actionsHtml = '') {
-    return [...actionsHtml.matchAll(/action-icon">([^<]+)</g)].map((m) => m[1]).join('/') || null;
-}
-
-function parsePrereqLinks(html = '') {
-    return [...html.matchAll(/data-key="(\w+)\/(\d+)"/g)].map((m) => ({ type: m[1], id: Number(m[2]) }));
-}
-
-/** Вырезает раздел страницы details между якорем id и следующим якорем. */
-function sliceSection(html, anchorId) {
-    const start = html.indexOf(`id="${anchorId}"`);
-    if (start < 0) return '';
-    const after = html.indexOf('class="anchor--link"', start + 10);
-    let chunk = html.slice(start, after > 0 ? after : undefined);
-    chunk = chunk.replace(/^[^>]*>\s*(<\/a>)?/, '').replace(/<a[^>]*$/, '');
-    chunk = chunk.replace(/<h[23][^>]*>[\s\S]*?<\/h[23]>/, '');
-    return chunk;
-}
-
-/** Делит раздел вида «<b>Название:</b> текст<br>» на пункты. */
-function splitBoldItems(sectionHtml) {
-    const out = {};
-    const re = /<b>([^<]+?):<\/b>([\s\S]*?)(?=<br>\s*<b>|<b>[^<]+?:<\/b>|$)/g;
-    let m;
-    while ((m = re.exec(sectionHtml))) out[m[1].trim()] = cleanHtml(m[2]).replace(/^(<br>\s*)+|(<br>\s*)+$/g, '');
-    return out;
-}
+const get = (url, name) => getUrl(url, name && path.join(CACHE_DIR, name));
 
 async function main() {
     await fs.mkdir(CACHE_DIR, { recursive: true });
 
     console.log('→ страница класса (черты)');
     const featsPage = await get(`${BASE}/classes/${CLASS_SLUG}?tab=feats`, `class-feats.html`);
-    const tables = [...featsPage.matchAll(/<pf2-table[^>]*?items='([^']*)'/g)].map((m) => JSON.parse(decodeAttr(m[1])));
-    const featRows = tables.flat().filter((r) => r.item_type === 'feat');
-    const spellRows = tables.flat().filter((r) => r.item_type === 'spell');
+    const tables = readTables(featsPage);
+    const featRows = tables.filter((r) => r.item_type === 'feat');
+    const spellRows = tables.filter((r) => r.item_type === 'spell');
     console.log(`  черт: ${featRows.length}, заклинаний: ${spellRows.length}`);
 
     console.log('→ страница класса (особенности)');
@@ -150,24 +47,7 @@ async function main() {
     for (const [i, r] of featRows.entries()) {
         process.stdout.write(`\r  черты ${i + 1}/${featRows.length}   `);
         const vb = parseViewbox(await get(`${BASE}/viewbox/feats/${r.id}?lang=ru`, `feat-${r.id}.html`));
-        const { traits, rarity } = parseTraits(r.traits);
-        feats.push({
-            id: r.id,
-            name: r.rus_name || r.name,
-            nameEn: r.name,
-            url: BASE + encodeURI(r.item_url),
-            level: r.level_sort,
-            actions: parseActions(r.actions),
-            traits,
-            rarity,
-            legacy: !!r.is_legacy,
-            source: r.source,
-            prerequisitesHtml: r.prerequisites === '-' ? '' : cleanHtml(r.prerequisites),
-            prerequisitesText: r.prerequisites === '-' ? '' : stripTags(r.prerequisites),
-            prereqLinks: parsePrereqLinks(r.prerequisites),
-            fields: vb.fields,
-            html: vb.html,
-        });
+        feats.push(featFromRow(r, vb));
     }
     console.log();
 
@@ -232,16 +112,7 @@ async function main() {
     await fs.writeFile(path.join(DATA_DIR, 'pf2-raw.json'), JSON.stringify(raw, null, 2), 'utf8');
     console.log('✓ data/pf2-raw.json');
 
-    const graph = buildGraph(raw);
-    await fs.writeFile(
-        path.join(DATA_DIR, 'champion-data.js'),
-        `// Сгенерировано tools/fetch-pf2.mjs — не редактируйте вручную.\n` +
-        `// Источник: ${raw.source} (${raw.fetchedAt})\n` +
-        `window.CHAMPION_DATA = ${JSON.stringify(graph, null, 1)};\n`,
-        'utf8',
-    );
-    console.log(`✓ data/champion-data.js — узлов: ${graph.nodes.length}, связей: ${graph.edges.length}`);
-    for (const w of graph.warnings) console.warn('  ! ' + w);
+    await writeClassData('champion', buildGraph(raw), raw, 'tools/fetch-pf2.mjs');
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

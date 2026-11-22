@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Поборник — дерево черт</title>
+    <title>Дерево черт PF2e</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="data/champion-data.js" defer></script>
-    <script src="app.js" defer></script>
 </head>
 <body>
     <!-- Холст дерева -->
@@ -26,11 +24,13 @@
 
     <!-- Левая панель: сборка -->
     <aside id="panel" class="frame">
+        <nav id="class-tabs" class="class-tabs" aria-label="Класс"></nav>
         <header class="panel-head">
             <div class="crest" aria-hidden="true"></div>
             <div>
-                <h1>Поборник</h1>
+                <h1 id="class-name">Поборник</h1>
                 <div class="subtitle">дерево классовых черт · PF2e</div>
+                <div id="class-note" class="class-note"></div>
             </div>
             <button id="panel-toggle" class="icon-btn" title="Свернуть панель" aria-label="Свернуть панель">‹</button>
         </header>
@@ -39,7 +39,7 @@
             <section class="block">
                 <div class="level-row">
                     <label for="level">Уровень</label>
-                    <output id="level-out">1</output>
+                    <span><output id="level-out">1</output> <small id="level-max" class="muted"></small></span>
                 </div>
                 <input id="level" type="range" min="1" max="20" value="1">
                 <div class="points">
@@ -59,8 +59,8 @@
                 <h2>Поиск и фильтры</h2>
                 <input id="search" type="search" placeholder="Название черты…" autocomplete="off">
                 <div class="filters">
-                    <label><input type="checkbox" id="f-uncommon" checked> необычные</label>
-                    <label><input type="checkbox" id="f-unholy" checked> нечестивые</label>
+                    <label data-filter="uncommon"><input type="checkbox" id="f-uncommon" checked> необычные</label>
+                    <label data-filter="unholy"><input type="checkbox" id="f-unholy" checked> нечестивые</label>
                     <label><input type="checkbox" id="f-avail"> только доступные</label>
                 </div>
             </section>
@@ -68,21 +68,22 @@
             <section class="block buttons">
                 <button id="btn-center" class="btn">Центрировать</button>
                 <button id="btn-share" class="btn">Ссылка на сборку</button>
-                <button id="btn-reset" class="btn btn-danger">Сбросить</button>
+                <button class="btn" data-undo title="Отменить последнее изменение (Ctrl+Z)">Отменить</button>
+                <button id="btn-reset" class="btn btn-danger" data-reset>Сбросить</button>
             </section>
 
             <section class="block legend">
                 <h2>Как пользоваться</h2>
                 <ul class="small">
-                    <li>Сверху — карточки выбора: освящение, призвание, заклинание, благословение</li>
+                    <li id="legend-cards">Сверху — карточки выбора</li>
                     <li><b>ЛКМ</b> по узлу или карточке — взять / снять</li>
                     <li><b>ПКМ</b> по узлу — подробное описание</li>
                     <li>Перетаскивание — перемещение, колесо — масштаб</li>
                     <li><span class="lg lg-req"></span> обязательное условие</li>
                     <li><span class="lg lg-or"></span> одно из условий</li>
-                    <li><span class="badge b-holy"></span>нужно освящение «священный»</li>
-                    <li><span class="badge b-unholy"></span>нужно освящение «нечестивый»</li>
-                    <li><span class="req-badge legend-req" style="background-image:url('images/brave.webp')"></span>нужна карточка (призвание, заклинание, благословение)</li>
+                    <li data-legend="sanct"><span class="badge b-holy"></span>нужно освящение «священный»</li>
+                    <li data-legend="sanct"><span class="badge b-unholy"></span>нужно освящение «нечестивый»</li>
+                    <li data-legend="card"><span class="req-badge legend-req" style="background-image:url('images/brave.webp')"></span><span id="legend-card-req">нужна карточка</span></li>
                     <li>Наведение на узел подсвечивает всю цепочку требований</li>
                 </ul>
             </section>
@@ -100,9 +101,43 @@
     <!-- Всплывающая подсказка -->
     <div id="tooltip" class="tooltip hidden" role="tooltip"></div>
     <div id="toast" class="toast hidden"></div>
+    <!-- Всегда на виду: уровень, потраченные ячейки, отмена и сброс -->
+    <div id="hud" class="frame" role="status" aria-live="polite">
+        <span class="hud-stat">Уровень <b id="hud-level">1</b></span>
+        <span class="hud-stat">Черты <b id="hud-used">0</b> / <b id="hud-total">0</b></span>
+        <button type="button" class="btn hud-btn" data-undo title="Отменить последнее изменение (Ctrl+Z)">↶ Отменить</button>
+        <button type="button" class="btn btn-danger hud-btn" data-reset title="Сбросить сборку (можно отменить)">Сброс</button>
+    </div>
+
+    <!-- Компактная легенда: состояния узлов и виды связей -->
+    <details id="map-legend" class="frame" open>
+        <summary>Легенда</summary>
+        <ul>
+            <li><span class="lg-node lg-on"></span>взято</li>
+            <li><span class="lg-node lg-avail"></span>можно взять</li>
+            <li><span class="lg-node lg-locked"><span class="lock-badge"></span></span>закрыто</li>
+            <li><span class="lg lg-req"></span>обязательное условие</li>
+            <li><span class="lg lg-or"></span>одно из условий (или)</li>
+        </ul>
+    </details>
     <div id="zoom-ctl">
         <button class="icon-btn" data-zoom="1.25" aria-label="Приблизить">+</button>
         <button class="icon-btn" data-zoom="0.8" aria-label="Отдалить">−</button>
+        <button class="icon-btn" id="btn-fit" aria-label="Вписать в экран" title="Вписать в экран (0)">⤢</button>
     </div>
+    <script>
+        // класс из адреса (?class=wizard): сначала его данные, затем приложение
+        (function () {
+            var known = ['champion', 'wizard'];
+            var cls = new URLSearchParams(location.search).get('class');
+            if (known.indexOf(cls) < 0) cls = 'champion';
+            ['data/' + cls + '-data.js', 'app.js'].forEach(function (src) {
+                var s = document.createElement('script');
+                s.src = src;
+                s.async = false;
+                document.body.appendChild(s);
+            });
+        })();
+    </script>
 </body>
 </html>
