@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Иконки класса (data/<класс>/manual/images.json)",
+  "description": "Пути к файлам относительно папки images/. Черта без своей иконки получает иконку темы.",
+  "type": "object",
+  "required": ["nodes", "feats"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "nodes": { "type": "object", "description": "иконки по id узла (корень, группы, темы, варианты)", "additionalProperties": { "$ref": "#/definitions/file" } },
+    "feats": { "type": "object", "description": "иконки черт по английскому названию", "additionalProperties": { "$ref": "#/definitions/file" } }
+  },
+  "definitions": {
+    "file": { "type": "string", "pattern": "^[^/]+(/[^/]+)*\\.(webp|png|jpg|jpeg|svg)$" }
+  }
+}

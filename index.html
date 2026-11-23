@@ -119,19 +119,24 @@
         <button class="icon-btn" data-zoom="0.8" aria-label="Отдалить">−</button>
     </div>
     <script>
-        // класс из адреса (?class=wizard): сначала его данные и переводы текстов (если есть), затем приложение
+        // класс из адреса (?class=wizard): сначала граф класса (data/<класс>/build/graph.js),
+        // затем тексты всех его переводов (список — в meta.langs графа) и приложение
         (function () {
             var known = ['champion', 'wizard'];
-            var withI18n = ['wizard'];   // у этих классов есть data/<класс>-i18n.js
             var cls = new URLSearchParams(location.search).get('class');
             if (known.indexOf(cls) < 0) cls = 'champion';
-            var files = ['data/' + cls + '-data.js'];
-            if (withI18n.indexOf(cls) >= 0) files.push('data/' + cls + '-i18n.js');
-            files.concat(['app.js']).forEach(function (src) {
+            var dir = 'data/' + cls + '/build/';
+            function load(src, onload) {
                 var s = document.createElement('script');
                 s.src = src;
                 s.async = false;
+                if (onload) s.onload = onload;
                 document.body.appendChild(s);
+            }
+            load(dir + 'graph.js', function () {
+                var langs = (window.CLASS_DATA && window.CLASS_DATA.meta.langs) || [];
+                langs.forEach(function (l) { load(dir + 'text-' + l.id + '.js'); });
+                load('app.js');
             });
         })();
     </script>

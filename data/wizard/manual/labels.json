@@ -1,0 +1,166 @@
+{
+  "$schema": "../../schema/labels.schema.json",
+  "langs": [
+    {
+      "id": "aon",
+      "label": "AoN",
+      "title": "Archives of Nethys — оригинал на английском",
+      "source": "Archives of Nethys",
+      "terms": {
+        "feat": "черта",
+        "feats": "черты",
+        "Feat": "Черта",
+        "Feats": "Черты",
+        "prereq": "Требования"
+      }
+    },
+    {
+      "id": "pf2ru",
+      "label": "pf2.ru",
+      "title": "Перевод сайта pf2.ru",
+      "source": "pf2.ru",
+      "terms": {
+        "feat": "черта",
+        "feats": "черты",
+        "Feat": "Черта",
+        "Feats": "Черты",
+        "prereq": "Критерии"
+      }
+    },
+    {
+      "id": "doc",
+      "label": "Док и Юра",
+      "title": "Перевод Дока и Юры (pf2e.ru) — как в модуле перевода Foundry VTT",
+      "source": "перевод Дока и Юры (Foundry)",
+      "terms": {
+        "feat": "способность",
+        "feats": "способности",
+        "Feat": "Способность",
+        "Feats": "Способности",
+        "prereq": "Предварительные условия"
+      }
+    }
+  ],
+  "texts": {
+    "aon": {
+      "root": {
+        "name": "Wizard",
+        "html": "A scholar who masters magic through study and experiment. Pick an arcane school and an arcane thesis above, then your wizard feats."
+      },
+      "group-school": {
+        "name": "Arcane School",
+        "hint": "Pick one school. The School of Unified Magical Theory grants an extra 1st-level wizard feat."
+      },
+      "group-thesis": {
+        "name": "Arcane Thesis",
+        "hint": "Pick one thesis."
+      },
+      "theme-metamagic": {
+        "name": "Spellshape",
+        "html": "Feats with the spellshape trait: they alter the next spell you cast — its range, area, damage or how noticeable it is."
+      },
+      "theme-battle": {
+        "name": "Counterspell & Defense",
+        "html": "Counterspelling, protective arrays and the senses and reflexes a wizard relies on in a fight."
+      },
+      "theme-book": {
+        "name": "Spellbook & Slots",
+        "html": "Your spellbook, cantrips, scrolls and the way you prepare and recover spell slots."
+      },
+      "theme-bond": {
+        "name": "Arcane Bond & School",
+        "html": "Your bonded item, school spells and focus points. Every wizard has an arcane bond from 1st level."
+      },
+      "theme-mind": {
+        "name": "Illusion & Influence",
+        "html": "Illusions, words and performances that bend the minds of others."
+      },
+      "theme-necro": {
+        "name": "Undeath",
+        "html": "Uncommon feats for those who create or control undead (Book of the Dead)."
+      },
+      "theme-familiar": {
+        "name": "Familiar",
+        "html": "Your familiar and its growth. The Improved Familiar Attunement thesis also grants the Familiar feat."
+      }
+    },
+    "pf2ru": {
+      "root": {
+        "name": "Волшебник"
+      },
+      "group-school": {
+        "name": "Школа магии",
+        "hint": "Выберите одну школу. Школа единой магической теории даёт дополнительную черту волшебника 1 уровня."
+      },
+      "group-thesis": {
+        "name": "Магическая диссертация",
+        "hint": "Выберите одну диссертацию."
+      },
+      "theme-metamagic": {
+        "name": "Метамагия"
+      },
+      "theme-battle": {
+        "name": "Контрзаклинания и защита"
+      },
+      "theme-book": {
+        "name": "Книга и ячейки"
+      },
+      "theme-bond": {
+        "name": "Мистическая связь и школа"
+      },
+      "theme-mind": {
+        "name": "Иллюзии и влияние"
+      },
+      "theme-necro": {
+        "name": "Нежить"
+      },
+      "theme-familiar": {
+        "name": "Фамильяр"
+      }
+    },
+    "doc": {
+      "root": {
+        "name": "Волшебник"
+      },
+      "group-school": {
+        "name": "Арканная школа",
+        "hint": "Выберите одну школу. Учение единой магической теории даёт дополнительную способность волшебника 1 уровня."
+      },
+      "group-thesis": {
+        "name": "Диссертация",
+        "hint": "Выберите одну диссертацию."
+      },
+      "theme-metamagic": {
+        "name": "Формы заклинаний"
+      },
+      "theme-battle": {
+        "name": "Контрзаклинания и защита"
+      },
+      "theme-book": {
+        "name": "Книга и слоты"
+      },
+      "theme-bond": {
+        "name": "Арканная связь и школа"
+      },
+      "theme-mind": {
+        "name": "Иллюзии и влияние"
+      },
+      "theme-necro": {
+        "name": "Нежить"
+      },
+      "theme-familiar": {
+        "name": "Фамильяр"
+      }
+    }
+  },
+  "notes": {
+    "noRu": "На pf2.ru этой черты нет — показан перевод Дока и Юры.",
+    "noRuText": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys.",
+    "noDoc": "Этой способности нет на скриншотах перевода Дока и Юры — показан перевод pf2.ru.",
+    "noDocText": "Этой способности нет в переводе Дока и Юры — показан оригинал Archives of Nethys.",
+    "docNameOnly": "В переводе Дока и Юры есть только название — описание из pf2.ru.",
+    "docNameOnlyAon": "В переводе Дока и Юры есть только название — описание из оригинала Archives of Nethys.",
+    "partial": "Текст на скриншоте Foundry обрезан — полностью он есть в модуле перевода Foundry.",
+    "ownEn": "Описание есть только в оригинале Archives of Nethys."
+  }
+}

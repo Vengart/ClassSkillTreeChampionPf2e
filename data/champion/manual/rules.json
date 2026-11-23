@@ -1,0 +1,192 @@
+{
+  "$schema": "../../schema/rules.schema.json",
+  "class": {
+    "id": "champion",
+    "gen": "поборника",
+    "featLevels": [
+      1,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20
+    ],
+    "maxLevel": 20
+  },
+  "causeSanct": {
+    "8": "unholy",
+    "9": "holy",
+    "10": "unholy",
+    "11": null,
+    "12": null,
+    "13": null,
+    "14": "holy"
+  },
+  "blessings": [
+    {
+      "id": "blessing-armament",
+      "key": "Благословенное оружие"
+    },
+    {
+      "id": "blessing-shield",
+      "key": "Благословенный щит"
+    },
+    {
+      "id": "blessing-swiftness",
+      "key": "Благословенная скорость"
+    }
+  ],
+  "devotionSpells": [
+    2047,
+    2049,
+    2048
+  ],
+  "overrides": {
+    "Shield Warden": {
+      "requires": [
+        [
+          "blessing-shield"
+        ]
+      ]
+    },
+    "Aura of Faith": {
+      "requires": [
+        [
+          "sanct-holy",
+          "sanct-unholy"
+        ]
+      ]
+    },
+    "Champion's Sacrifice": {
+      "requires": [],
+      "forbids": [
+        "sanct-unholy"
+      ]
+    },
+    "Blessed Counterstrike": {
+      "requires": [
+        [
+          "cause-9",
+          "cause-14",
+          "cause-11",
+          "cause-12"
+        ]
+      ]
+    },
+    "Gruesome Strike": {
+      "requires": [
+        [
+          "cause-10",
+          "cause-8",
+          "cause-13"
+        ]
+      ]
+    },
+    "Instrument of Slaughter": {
+      "requires": [
+        [
+          "cause-10",
+          "cause-8",
+          "cause-13"
+        ]
+      ]
+    },
+    "Instrument of Zeal": {
+      "requires": [
+        [
+          "feat-5914"
+        ]
+      ]
+    },
+    "Shield of Reckoning": {
+      "requires": [
+        [
+          "feat-4807"
+        ],
+        [
+          "blessing-shield"
+        ]
+      ]
+    },
+    "Divine Wall": {
+      "requires": []
+    }
+  },
+  "themes": [
+    "theme-cause",
+    "theme-devotion",
+    "theme-blessing",
+    "theme-aura",
+    "theme-shield",
+    "theme-steed",
+    "theme-faith",
+    "theme-sanct",
+    "theme-combat"
+  ],
+  "themeByName": {
+    "Expand Aura": "theme-aura",
+    "Aura of Life": "theme-aura",
+    "Aura of Determination": "theme-aura",
+    "Aura of Courage": "theme-aura",
+    "Aura of Despair": "theme-aura",
+    "Aura of Righteousness": "theme-aura",
+    "Aura of Faith": "theme-aura",
+    "Quick Shield Block": "theme-shield",
+    "Defensive Advance": "theme-shield",
+    "Divine Wall": "theme-shield",
+    "Faithful Steed": "theme-steed",
+    "Deity's Domain": "theme-faith",
+    "Desperate Prayer": "theme-faith",
+    "Splinter Faith": "theme-faith",
+    "Divine Grace": "theme-faith",
+    "Divine Health": "theme-faith",
+    "Oath of The Defender": "theme-faith",
+    "Oath of The Avenger": "theme-faith",
+    "Oath of The Slayer": "theme-faith",
+    "Sense Holiness": "theme-sanct",
+    "Sense Unholiness": "theme-sanct",
+    "Celestial Form": "theme-sanct",
+    "Fiendish Form": "theme-sanct",
+    "Sacred Defender": "theme-sanct",
+    "Reactive Strike": "theme-combat",
+    "Smite": "theme-combat",
+    "Divine Reflexes": "theme-combat",
+    "Exalted Greatness": "theme-combat",
+    "Champion's Sacrifice": "theme-combat"
+  },
+  "cardGroups": [
+    {
+      "id": "group-sanct",
+      "optional": true
+    },
+    {
+      "id": "group-cause"
+    },
+    {
+      "id": "group-devotion"
+    },
+    {
+      "id": "group-blessing",
+      "multi": true,
+      "fromLevel": 3,
+      "limit": 1,
+      "bonus": {
+        "id": "feat-5907",
+        "add": 1
+      }
+    }
+  ],
+  "filters": [
+    "uncommon",
+    "unholy"
+  ],
+  "legend": [
+    "sanct",
+    "card"
+  ]
+}

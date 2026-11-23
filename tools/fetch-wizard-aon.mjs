@@ -7,13 +7,14 @@
 // Сайт AoN сам строит страницы из открытого поискового индекса
 // https://elasticsearch.aonprd.com/aon (без ключей) — берём данные оттуда же.
 // Берутся версии Remaster: если у записи есть remaster_id, это старая (legacy) копия, она пропускается.
-// Результат: data/wizard-raw.json и data/wizard-data.js (через build-wizard.mjs).
+// Результат: data/wizard/source/aon.json и сборка data/wizard/build/ (через build-wizard.mjs).
 // ============================================================
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { DATA_DIR, FORCE, writeClassData } from './pf2-common.mjs';
-import { buildWizardGraph } from './build-wizard.mjs';
+import { DATA_DIR, FORCE } from './pf2-common.mjs';
+import { writeWizard } from './build-wizard.mjs';
+import { writeSource } from './class-build.mjs';
 
 const ES = 'https://elasticsearch.aonprd.com/aon/_search';
 const SITE = 'https://2e.aonprd.com';
@@ -193,5 +194,5 @@ const raw = {
     },
 };
 console.log(`черт ${feats.length}, школ ${schools.length}, диссертаций ${theses.length}`);
-await fs.writeFile(path.join(DATA_DIR, 'wizard-raw.json'), JSON.stringify(raw, null, 1), 'utf8');
-await writeClassData('wizard', buildWizardGraph(raw), raw, 'tools/fetch-wizard-aon.mjs');
+await writeSource('wizard', 'aon', raw);
+await writeWizard(raw, 'tools/fetch-wizard-aon.mjs');

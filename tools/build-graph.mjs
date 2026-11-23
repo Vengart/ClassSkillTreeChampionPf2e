@@ -1,145 +1,45 @@
 // ============================================================
-// Сборка графа из сырых данных pf2.ru.
+// Сборка графа поборника из data/champion/source/pf2ru.json.
 //
-//   node tools/build-graph.mjs      — пересобрать data/champion-data.js (поборник)
-//                                     из data/pf2-raw.json без скачивания
+//   node tools/build-graph.mjs      — пересобрать data/champion/build/ без скачивания
 //
-// Здесь живут «ручные» правила, которых нет в машиночитаемом виде
-// на сайте: какие призвания требуют освящения, как текстовые
-// критерии («благословенный щит», «аура поборника»…) превращаются
-// в связи, картинки узлов и т.п.
+// Ручные данные — в data/champion/manual/:
+//   rules.json   какие призвания требуют освящения, благословения, заклинания преданности,
+//                исправления критериев (overrides), темы и тема по названию черты, группы выбора
+//   images.json  иконки узлов и черт
+//   labels.json  переводы (сейчас только pf2.ru) и подписи узлов, которых нет на сайте: корень, группы, темы
+// Здесь остаётся только логика: как текстовые критерии («благословенный щит»,
+// «аура поборника»…) превращаются в связи.
 //
 // Требования узла: requires = [[a, b], [c]]  →  (a ИЛИ b) И c
 //                  forbids  = [x]           →  нельзя, если взят x
 // ============================================================
 
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { computeTreeLayout, GEOMETRY } from './tree-layout.mjs';
-import { writeClassData } from './pf2-common.mjs';
+import { readSource, readManual, writeBuild, isMain } from './class-build.mjs';
 
-// ---------- ручные данные ----------
+// ---------- ручные данные (data/champion/manual) ----------
+
+const rules = await readManual('champion', 'rules');
+const images = await readManual('champion', 'images');
+const labels = await readManual('champion', 'labels');
+const L = labels.texts.pf2ru;
 
 /** Освящение призваний: holy / unholy / null (любое). */
-const CAUSE_SANCT = { 9: 'holy', 14: 'holy', 8: 'unholy', 10: 'unholy', 11: null, 12: null, 13: null };
-
-const BLESSINGS = [
-    { id: 'blessing-armament', key: 'Благословенное оружие', image: 'DevWeapon.webp' },
-    { id: 'blessing-shield', key: 'Благословенный щит', image: 'DevShield.webp' },
-    { id: 'blessing-swiftness', key: 'Благословенная скорость', image: 'DevProvornost.webp' },
-];
-
+const CAUSE_SANCT = rules.causeSanct;
+const BLESSINGS = rules.blessings.map((b) => ({ ...b, image: images.nodes[b.id] }));
 /** Только эти заклинания выбираются при создании (остальные дают черты). */
-const DEVOTION_SPELLS = [2047, 2049, 2048];
-
-const IMAGES = {
-    root: 'startChampIcon.webp',
-    'group-sanct': 'Holy.webp',
-    'group-cause': 'brave.webp',
-    'group-devotion': 'prayer.webp',
-    'group-blessing': 'oath-of-defender.webp',
-    'sanct-holy': 'Holy.webp',
-    'sanct-unholy': 'Unholy.webp',
-    'cause-11': 'SubClassJustice.webp',
-    'cause-12': 'SubClassLiberation.webp',
-    'cause-13': 'SubClassObedience.webp',
-    'cause-14': 'SubClassRedemption.webp',
-    'cause-9': 'SubClassVelichie.webp',
-    'cause-8': 'SubClassDesecration.webp',
-    'cause-10': 'SubClassInequality.webp',
-    'spell-2047': 'SpellLayOfHands.webp',
-    'spell-2049': 'SpellShieldsOfTheSpirit.webp',
-    'spell-2048': 'SpellTouchOfCorruption.webp',
-};
-
+const DEVOTION_SPELLS = rules.devotionSpells;
+const IMAGES = images.nodes;
 /** Картинки черт по английскому названию. */
-const FEAT_IMAGES = {
-    "Deity's Domain": 'prayer.webp', 'Desperate Prayer': 'prayer.webp', 'Splinter Faith': 'prayer.webp',
-    'Defensive Advance': 'shieldfeatsprotection.webp', 'Faithful Steed': 'Horse.webp',
-    'Oath of The Slayer': 'oath-of-assassin.webp', 'Oath of The Defender': 'oath-of-defender.webp',
-    'Oath of The Avenger': 'oath-of-avenger.webp', 'Divine Grace': 'prayer.webp', 'Divine Health': 'health.webp',
-    'Aura of Despair': 'Unholy.webp', 'Aura of Courage': '300px-Dethrone.webp',
-    Security: 'SpellShieldsOfTheSpirit.webp', Mercy: 'SpellLayOfHands.webp', Cruelty: 'SpellTouchOfCorruption.webp',
-    'Acclimated Mount': 'Horse.webp', 'Loyal Warhorse': 'Horse.webp', 'Expand Aura': '300px-Hunger_of_Hadar.webp',
-    'Reactive Strike': 'fight.webp', Smite: 'smite.webp', 'Shield Warden': 'shieldfeatsprotection.webp',
-    'Quick Shield Block': 'shieldfeatsprotection.webp', 'Greater Cruelty': 'SpellTouchOfCorruption.webp',
-    'Greater Security': 'SpellShieldsOfTheSpirit.webp', 'Greater Mercy': 'SpellLayOfHands.webp',
-    "Advanced Deity's Domain": 'prayer.webp', 'Heal Mount': 'SpellLayOfHands.webp',
-    'Sense Holiness': 'sight.webp', 'Sense Unholiness': 'sight.webp', 'Faithful Stride': 'Horse.webp',
-    'Second Blessing': 'oath-of-defender.webp', 'Imposing Destrier': 'Horse.webp',
-    'Radiant Armament': 'DevWeapon.webp', 'Spectral Advance': 'DevProvornost.webp',
-    'Shield of Reckoning': 'DevShield.webp', 'Devoted Focus': 'prayer.webp',
-    'Aura of Faith': '300px-Calm_Emotions.webp', 'Blessed Counterstrike': 'fight.webp',
-    'Divine Wall': 'shieldfeatsprotection.webp', "Champion's Sacrifice": 'smite.webp',
-    'Enforce Oath': 'oath-of-avenger.webp', 'Pale Horse': 'Unholy.webp', 'Affliction Mercy': 'SpellLayOfHands.webp',
-    "Steed's Toppling Strike": 'Horse.webp', 'Gruesome Strike': 'Unholy.webp', 'Aura of Life': '300px-Cure_Wounds.webp',
-    'Aura of Righteousness': 'Holy.webp', 'Aura of Determination': 'brave.webp',
-    'Divine Reflexes': '300px-Longstrider.webp', 'Exalted Greatness': '300px-Conjure_Barrage.webp',
-    'Instrument of Zeal': 'fight.webp', 'Instrument of Slaughter': 'Unholy.webp', 'Auspicious Mount': 'Horse.webp',
-    'Shield of Grace': 'shieldfeatsprotection.webp', 'Rejuvenating Touch': 'SpellLayOfHands.webp',
-    'Ultimate Mercy': 'SpellLayOfHands.webp', 'Swift Retribution': 'fight.webp', 'Celestial Form': 'Holy.webp',
-    'Fiendish Form': '300px-Planar_Binding.webp', 'Retributive Focus': 'prayer.webp', 'Sacred Defender': 'Holy.webp',
-    'Armament Paragon': 'DevWeapon.webp', 'Shield Paragon': 'DevShield.webp', 'Swift Paragon': 'DevProvornost.webp',
-    'Weight of Guilt': 'SubClassRedemption.webp', 'Iron Repercussions': 'SubClassObedience.webp',
-    'Vicious Vengeance': 'SubClassInequality.webp', 'Brilliant Flash': 'SubClassVelichie.webp',
-    'Ongoing Selfishness': 'SubClassDesecration.webp', 'Nimble Reprisal': 'SubClassJustice.webp',
-    'Unimpeded Step': 'SubClassLiberation.webp',
-};
-
+const FEAT_IMAGES = images.feats;
 /** Ручные переопределения требований (по английскому названию черты). */
-const OVERRIDES = {
-    // в критериях смешаны условия для Воина и старой редакции
-    'Shield Warden': { requires: [['blessing-shield']] },
-    // на сайте «священный и нечестивый» — по смыслу «или»
-    'Aura of Faith': { requires: [['sanct-holy', 'sanct-unholy']] },
-    "Champion's Sacrifice": { requires: [], forbids: ['sanct-unholy'] },
-    // ответное действие, дающее устойчивость к урону
-    'Blessed Counterstrike': { requires: [['cause-9', 'cause-14', 'cause-11', 'cause-12']] },
-    // ответное действие, дающее доп. урон
-    'Gruesome Strike': { requires: [['cause-10', 'cause-8', 'cause-13']] },
-    'Instrument of Slaughter': { requires: [['cause-10', 'cause-8', 'cause-13']] },
-    'Instrument of Zeal': { requires: [['feat-5914']] },
-    'Shield of Reckoning': { requires: [['feat-4807'], ['blessing-shield']] },
-    // «Требования», а не критерии — к постройке не относится
-    'Divine Wall': { requires: [] },
-};
-
-// ---------- темы дерева ----------
-
+const OVERRIDES = rules.overrides;
 /** Узлы-темы: стволы, от которых растут черты без черт-предшественников. */
-const THEMES = [
-    { id: 'theme-cause', name: 'Призвание', image: 'brave.webp',
-        html: 'Черты призвания и ответного действия поборника. Нужное призвание выбирается карточкой сверху.' },
-    { id: 'theme-devotion', name: 'Преданность', image: 'SpellLayOfHands.webp',
-        html: 'Черты заклинаний преданности: возложение рук, духовный щит, касание пустоты.' },
-    { id: 'theme-blessing', name: 'Благословение', image: 'oath-of-defender.webp',
-        html: 'Черты благословения верного: оружие, щит, скорость.' },
-    { id: 'theme-aura', name: 'Ауры', image: '300px-Hunger_of_Hadar.webp',
-        html: 'Черты, усиливающие ауру поборника (она есть у каждого поборника с 1 уровня).' },
-    { id: 'theme-shield', name: 'Щит', image: 'shieldfeatsprotection.webp',
-        html: 'Черты для боя со щитом. Блок щитом есть у каждого поборника с 1 уровня.' },
-    { id: 'theme-steed', name: 'Скакун', image: 'Horse.webp', html: 'Верный скакун и его развитие.' },
-    { id: 'theme-faith', name: 'Вера и клятвы', image: 'prayer.webp', html: 'Домен божества, молитвы, клятвы.' },
-    { id: 'theme-sanct', name: 'Освящение', image: 'Holy.webp', html: 'Черты священных и нечестивых поборников.' },
-    { id: 'theme-combat', name: 'Бой', image: 'fight.webp', html: 'Боевые приёмы поборника.' },
-];
+const THEMES = rules.themes.map((id) => ({ id, name: L[id].name, html: L[id].html, image: images.nodes[id] }));
+const THEME_BY_NAME = rules.themeByName;
 
-/** Тема черты без черт-предшественников: сначала ручной список, потом по критериям. */
-const THEME_BY_NAME = {
-    'Expand Aura': 'theme-aura', 'Aura of Life': 'theme-aura', 'Aura of Determination': 'theme-aura',
-    'Aura of Courage': 'theme-aura', 'Aura of Despair': 'theme-aura', 'Aura of Righteousness': 'theme-aura',
-    'Aura of Faith': 'theme-aura',
-    'Quick Shield Block': 'theme-shield', 'Defensive Advance': 'theme-shield', 'Divine Wall': 'theme-shield',
-    'Faithful Steed': 'theme-steed',
-    "Deity's Domain": 'theme-faith', 'Desperate Prayer': 'theme-faith', 'Splinter Faith': 'theme-faith',
-    'Divine Grace': 'theme-faith', 'Divine Health': 'theme-faith',
-    'Oath of The Defender': 'theme-faith', 'Oath of The Avenger': 'theme-faith', 'Oath of The Slayer': 'theme-faith',
-    'Sense Holiness': 'theme-sanct', 'Sense Unholiness': 'theme-sanct', 'Celestial Form': 'theme-sanct',
-    'Fiendish Form': 'theme-sanct', 'Sacred Defender': 'theme-sanct',
-    'Reactive Strike': 'theme-combat', 'Smite': 'theme-combat', 'Divine Reflexes': 'theme-combat',
-    'Exalted Greatness': 'theme-combat', "Champion's Sacrifice": 'theme-combat',
-};
+/** Тема черты без черт-предшественников: сначала ручной список (rules.themeByName), потом по критериям. */
 function themeOf(n) {
     if (THEME_BY_NAME[n.nameEn]) return THEME_BY_NAME[n.nameEn];
     const ids = (n.requires || []).flat();
@@ -157,16 +57,10 @@ export function buildGraph(raw) {
     const warnings = [];
     const add = (n) => { nodes.push({ image: IMAGES[n.id] || null, ...n }); return n; };
 
-    add({
-        id: 'root', kind: 'root', name: 'Поборник', nameEn: 'Champion', level: 0,
-        url: 'https://pf2.ru/classes/champion?tab=details',
-        html: 'Посланник божества и его преданный служитель. Кликайте по узлам, чтобы собрать персонажа: ' +
-            'сначала выберите освящение, призвание и заклинание преданности, затем черты.',
-    });
+    add({ id: 'root', kind: 'root', nameEn: 'Champion', level: 0, ...L.root });
 
     // --- Освящение ---
-    add({ id: 'group-sanct', kind: 'group', name: 'Освящение', level: 0, branch: 'sanct', html: raw.features.sanctification,
-        hint: 'Необязательный выбор: священный, нечестивый или без освящения.' });
+    add({ id: 'group-sanct', kind: 'group', level: 0, branch: 'sanct', html: raw.features.sanctification, ...L['group-sanct'] });
     for (const [id, key, en] of [['sanct-holy', 'Священный', 'Holy'], ['sanct-unholy', 'Нечестивый', 'Unholy']]) {
         add({ id, kind: 'option', group: 'group-sanct', name: key, nameEn: en, level: 1, branch: 'sanct',
             rarity: id === 'sanct-unholy' ? 'uncommon' : 'common',
@@ -174,8 +68,7 @@ export function buildGraph(raw) {
     }
 
     // --- Призвание ---
-    add({ id: 'group-cause', kind: 'group', name: 'Призвание', level: 0, branch: 'cause', html: raw.features.cause,
-        hint: 'Выберите одно призвание. Оно даёт ответное действие поборника.' });
+    add({ id: 'group-cause', kind: 'group', level: 0, branch: 'cause', html: raw.features.cause, ...L['group-cause'] });
     for (const c of raw.causes) {
         const sanct = CAUSE_SANCT[c.id];
         // убираем строку «Источник» и заглушку вложенного вьюбокса
@@ -197,8 +90,7 @@ export function buildGraph(raw) {
     }
 
     // --- Заклинания преданности ---
-    add({ id: 'group-devotion', kind: 'group', name: 'Заклинания преданности', level: 0, branch: 'devotion',
-        html: raw.features.devotion, hint: 'Выберите одно заклинание преданности.' });
+    add({ id: 'group-devotion', kind: 'group', level: 0, branch: 'devotion', html: raw.features.devotion, ...L['group-devotion'] });
     for (const id of DEVOTION_SPELLS) {
         const s = raw.spells.find((x) => x.id === id);
         if (!s) { warnings.push(`нет заклинания ${id}`); continue; }
@@ -208,8 +100,7 @@ export function buildGraph(raw) {
     }
 
     // --- Благословение верного ---
-    add({ id: 'group-blessing', kind: 'group', name: 'Благословение верного', level: 0, branch: 'blessing',
-        html: raw.features.blessing, hint: 'Доступно с 3 уровня. Черта «Второе благословление» позволяет взять ещё одно.' });
+    add({ id: 'group-blessing', kind: 'group', level: 0, branch: 'blessing', html: raw.features.blessing, ...L['group-blessing'] });
     for (const b of BLESSINGS) {
         add({ id: b.id, kind: 'option', group: 'group-blessing', name: b.key, level: 3, branch: 'blessing',
             image: b.image, html: raw.features.blessingOptions[b.key] || '', requires: [] });
@@ -322,18 +213,14 @@ export function buildGraph(raw) {
 
     return {
         meta: {
-            classId: 'champion', className: 'Поборник', classGen: 'поборника',
+            classId: rules.class.id, className: L.root.name, classGen: rules.class.gen,
             source: raw.source, fetchedAt: raw.fetchedAt,
-            featLevels: [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20], maxLevel: 20,
-            // карточки сверху: limit — сколько можно взять, bonus — черта, дающая ещё одну
-            cardGroups: [
-                { id: 'group-sanct', optional: true },
-                { id: 'group-cause' },
-                { id: 'group-devotion' },
-                { id: 'group-blessing', multi: true, fromLevel: 3, limit: 1, bonus: { id: 'feat-5907', add: 1, name: 'Второе благословление' } },
-            ],
-            filters: ['uncommon', 'unholy'],
-            legend: ['sanct', 'card'],
+            featLevels: rules.class.featLevels, maxLevel: rules.class.maxLevel,
+            // группы выбора: limit — сколько можно взять, bonus — черта, дающая ещё одну
+            cardGroups: rules.cardGroups,
+            filters: rules.filters,
+            legend: rules.legend,
+            updateCmd: 'node tools/fetch-pf2.mjs',
             geometry: GEOMETRY, layout: layout.stats, bounds: layout.bounds,
         },
         nodes,
@@ -342,9 +229,8 @@ export function buildGraph(raw) {
     };
 }
 
-// запуск как скрипта: пересобрать из pf2-raw.json
-if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
-    const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-    const raw = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'pf2-raw.json'), 'utf8'));
-    await writeClassData('champion', buildGraph(raw), raw, 'tools/build-graph.mjs');
-}
+/** Записать собранного поборника: data/champion/build/graph.js и тексты. */
+export const writeChampion = (raw, by) => writeBuild('champion', buildGraph(raw), labels.langs, {}, by);
+
+// запуск как скрипта: пересобрать из data/champion/source/pf2ru.json
+if (isMain(import.meta.url)) await writeChampion(await readSource('champion', 'pf2ru'), 'tools/build-graph.mjs');

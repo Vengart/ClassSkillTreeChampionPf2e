@@ -11,8 +11,8 @@
 //    «вьюбокс» (/viewbox/<type>/<id>) — HTML с описанием.
 // 3. Вырезает разделы «Освящение», «Аура поборника»,
 //    «Благословение верного» со вкладки details.
-// 4. Сохраняет всё в data/pf2-raw.json (сырые данные) и
-//    собирает граф в data/champion-data.js (см. build-graph.mjs).
+// 4. Сохраняет всё в data/champion/source/pf2ru.json (сырые данные) и
+//    собирает граф в data/champion/build/ (см. build-graph.mjs).
 //
 // Запросы идут последовательно с паузой, чтобы не нагружать сайт.
 // Уже скачанные описания кешируются в data/cache/.
@@ -20,10 +20,11 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { buildGraph } from './build-graph.mjs';
+import { writeChampion } from './build-graph.mjs';
+import { writeSource } from './class-build.mjs';
 import {
     DATA_DIR, BASE, get as getUrl, readTables, cleanHtml, parseViewbox, parseTraits, parseActions,
-    sliceSection, splitBoldItems, featFromRow, writeClassData,
+    sliceSection, splitBoldItems, featFromRow,
 } from './pf2-common.mjs';
 
 const CACHE_DIR = path.join(DATA_DIR, 'cache');
@@ -109,10 +110,9 @@ async function main() {
         },
     };
 
-    await fs.writeFile(path.join(DATA_DIR, 'pf2-raw.json'), JSON.stringify(raw, null, 2), 'utf8');
-    console.log('✓ data/pf2-raw.json');
+    await writeSource('champion', 'pf2ru', raw);
 
-    await writeClassData('champion', buildGraph(raw), raw, 'tools/fetch-pf2.mjs');
+    await writeChampion(raw, 'tools/fetch-pf2.mjs');
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

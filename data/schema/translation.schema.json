@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Перевод, набранный вручную (data/<класс>/manual/<перевод>.json, например doc-yura.json)",
+  "description": "Ключи — английские названия черт, школ и диссертаций, как в source/aon.json.",
+  "type": "object",
+  "required": ["source", "feats"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "source": { "type": "string", "description": "откуда перевод" },
+    "namesOnly": { "type": "string", "description": "пояснение, почему у школ и диссертаций только названия" },
+    "feats": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "html"],
+        "additionalProperties": false,
+        "properties": {
+          "shot": { "type": "integer", "description": "номер скриншота, с которого переписано" },
+          "name": { "type": "string" },
+          "html": { "type": "string" },
+          "prereq": { "type": "string", "description": "критерии текстом" },
+          "fields": { "type": "object", "additionalProperties": { "type": "string" }, "description": "поля: Частота, Триггер…" },
+          "partial": { "type": "boolean", "description": "текст на скриншоте виден не целиком" }
+        }
+      }
+    },
+    "schools": { "type": "object", "additionalProperties": { "type": "string" }, "description": "название школы в переводе" },
+    "theses": { "type": "object", "additionalProperties": { "type": "string" }, "description": "название диссертации в переводе" }
+  }
+}

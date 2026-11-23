@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Правила класса (data/<класс>/manual/rules.json)",
+  "description": "Всё, чего нет на сайтах в машиночитаемом виде: темы, исправления критериев, группы выбора. Тексты (названия тем, групп) — в labels.json.",
+  "type": "object",
+  "required": ["class", "themes", "themeByName", "overrides", "cardGroups", "filters", "legend"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "class": {
+      "type": "object",
+      "required": ["id", "gen", "featLevels", "maxLevel"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z]+$", "description": "id класса, совпадает с папкой data/<класс>" },
+        "gen": { "type": "string", "description": "название класса в родительном падеже: «черта поборника»" },
+        "featLevels": { "type": "array", "items": { "type": "integer", "minimum": 1, "maximum": 20 }, "description": "уровни, на которых даётся классовая черта" },
+        "maxLevel": { "type": "integer", "minimum": 1, "maximum": 20 }
+      }
+    },
+    "themes": { "type": "array", "items": { "$ref": "#/definitions/nodeId" }, "description": "узлы-темы (стволы дерева) по порядку" },
+    "themeByName": {
+      "type": "object",
+      "description": "тема черты по английскому названию",
+      "additionalProperties": { "$ref": "#/definitions/nodeId" }
+    },
+    "overrides": {
+      "type": "object",
+      "description": "ручные критерии по английскому названию черты; «@Имя» — черта по названию",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "requires": { "type": "array", "items": { "type": "array", "items": { "type": "string" } }, "description": "[[A, B], [C]] — (A или B) и C" },
+          "forbids": { "type": "array", "items": { "type": "string" } },
+          "grantedBy": { "type": "array", "items": { "type": "string" } },
+          "theme": { "$ref": "#/definitions/nodeId" }
+        }
+      }
+    },
+    "cardGroups": {
+      "type": "array",
+      "description": "группы выбора слева",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/definitions/nodeId" },
+          "optional": { "type": "boolean" },
+          "multi": { "type": "boolean" },
+          "compact": { "type": "boolean" },
+          "noImages": { "type": "boolean" },
+          "fromLevel": { "type": "integer", "minimum": 1 },
+          "limit": { "type": "integer", "minimum": 1 },
+          "bonus": {
+            "type": "object",
+            "required": ["id", "add"],
+            "additionalProperties": false,
+            "properties": { "id": { "$ref": "#/definitions/nodeId" }, "add": { "type": "integer", "minimum": 1 } },
+            "description": "черта, дающая ещё add выборов в группе"
+          }
+        }
+      }
+    },
+    "bonusSlots": {
+      "type": "array",
+      "description": "узлы, дающие дополнительную ячейку черты",
+      "items": {
+        "type": "object",
+        "required": ["id", "level"],
+        "additionalProperties": false,
+        "properties": { "id": { "$ref": "#/definitions/nodeId" }, "level": { "type": "integer", "minimum": 1 } }
+      }
+    },
+    "filters": { "type": "array", "items": { "enum": ["uncommon", "unholy"] } },
+    "legend": { "type": "array", "items": { "enum": ["sanct", "card"] } },
+
+    "causeSanct": {
+      "type": "object",
+      "description": "поборник: освящение призвания по id pf2.ru (null — любое)",
+      "additionalProperties": { "enum": ["holy", "unholy", null] }
+    },
+    "blessings": {
+      "type": "array",
+      "description": "поборник: благословения и ключ, по которому их находят в критериях",
+      "items": {
+        "type": "object",
+        "required": ["id", "key"],
+        "additionalProperties": false,
+        "properties": { "id": { "$ref": "#/definitions/nodeId" }, "key": { "type": "string" } }
+      }
+    },
+    "devotionSpells": { "type": "array", "items": { "type": "integer" }, "description": "поборник: id заклинаний pf2.ru, выбираемых при создании" },
+
+    "schoolUnified": { "$ref": "#/definitions/nodeId", "description": "волшебник: школа единой теории (бонусная ячейка)" },
+    "thesisFamiliar": { "$ref": "#/definitions/nodeId", "description": "волшебник: диссертация, дающая фамильяра" },
+    "passivePrereq": { "type": "array", "items": { "type": "string" }, "description": "волшебник: регулярные выражения (без учёта регистра) для критериев, которые дерево не отслеживает" },
+    "outsideFeats": { "type": "array", "items": { "type": "string" }, "description": "волшебник: черты-критерии вне дерева" }
+  },
+  "definitions": {
+    "nodeId": { "type": "string", "pattern": "^[a-z]+(-[a-z0-9]+)*$" }
+  }
+}

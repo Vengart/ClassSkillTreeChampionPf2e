@@ -13,6 +13,12 @@ const CLASSES = [
 const DATA = window.CLASS_DATA;
 const META = DATA.meta;
 const CLASS_ID = META.classId;
+/** Тексты узлов по переводам: data/<класс>/build/text-<язык>.js. */
+const TEXTS = window.CLASS_TEXT || {};
+const LANGS = (META.langs || []).filter((l) => TEXTS[l.id]);
+const DEFAULT_LANG = TEXTS[META.defaultLang] ? META.defaultLang : LANGS[0]?.id;
+// до выбора перевода у узлов — тексты базового
+for (const n of DATA.nodes) Object.assign(n, TEXTS[DEFAULT_LANG]?.[n.id]);
 const NODES = new Map(DATA.nodes.map((n) => [n.id, n]));
 const EDGES = DATA.edges;
 const STORAGE_KEY = `pf2e-${CLASS_ID}-build-v2`;
@@ -109,7 +115,7 @@ function blockers(n, chosen = state.chosen) {
     if (isMulti(n.group) && !chosen.has(n.id)) {
         const taken = [...chosen].filter((id) => NODES.get(id).group === n.group).length;
         const g = CARD_GROUP.get(n.group);
-        if (taken >= groupLimit(n.group, chosen)) out.push(`«${NODES.get(n.group).name}» уже выбрано${g.bonus ? ` (ещё одно даёт черта «${g.bonus.name}»)` : ''}`);
+        if (taken >= groupLimit(n.group, chosen)) out.push(`«${NODES.get(n.group).name}» уже выбрано${g.bonus ? ` (ещё одно даёт черта «${NODES.get(g.bonus.id)?.name}»)` : ''}`);
     }
     return out;
 }
@@ -295,38 +301,34 @@ function actionsHtml(a) {
 
 const RARITY_LABEL = { common: '', uncommon: 'Необычный', rare: 'Редкий', unique: 'Уникальный' };
 
-// ---------- переводы текстов (data/<класс>-i18n.js) ----------
+// ---------- переводы текстов (data/<класс>/build/text-<язык>.js) ----------
 // Граф один на все переводы: при переключении меняются только поля текста узлов (название, описание,
-// критерии, поля, дескрипторы, ссылка). Оригинал (AoN) хранится в n._base и возвращается при выборе «AoN».
-const I18N = window.CLASS_I18N || null;
+// критерии, поля, дескрипторы, ссылка) — они целиком берутся из текста выбранного перевода.
 const TEXT_FIELDS = ['name', 'short', 'html', 'prereqText', 'prereqHtml', 'fields', 'traits', 'url', 'source', 'hint', 'note'];
 const LANG_KEY = `pf2e-${CLASS_ID}-lang`;
 const DEFAULT_TERMS = { feat: 'черта', feats: 'черты', Feat: 'Черта', Feats: 'Черты', prereq: 'Требования' };
-let lang = 'aon';
+let lang = DEFAULT_LANG;
 /** Термины текущего перевода: «черта» (AoN, pf2.ru) или «способность» (Док и Юра). */
 let T = DEFAULT_TERMS;
-const langInfo = (id = lang) => I18N?.langs.find((l) => l.id === id);
+const langInfo = (id = lang) => LANGS.find((l) => l.id === id);
 function applyLang(id) {
-    if (!I18N || !langInfo(id)) id = 'aon';
+    if (!langInfo(id)) id = DEFAULT_LANG;
     lang = id;
     T = langInfo()?.terms || DEFAULT_TERMS;
+    const texts = TEXTS[id] || {};
     for (const n of DATA.nodes) {
-        if (!n._base) { n._base = {}; for (const k of TEXT_FIELDS) n._base[k] = n[k]; }
-        for (const k of TEXT_FIELDS) n[k] = n._base[k];
-        const tr = I18N?.nodes[id]?.[n.id];
-        // поле перевода перекрывает оригинал, даже пустое (нет критериев — значит нет)
-        if (tr) for (const [k, v] of Object.entries(tr)) if (v !== undefined) n[k] = v;
+        for (const k of TEXT_FIELDS) delete n[k];
+        Object.assign(n, texts[n.id]);
     }
 }
 /** Названия узла во всех переводах (для карточки: «как это называется у других»). */
 function otherNames(n) {
-    if (!I18N) return [];
-    return I18N.langs.filter((l) => l.id !== lang).map((l) => {
-        const name = l.id === 'aon' ? n._base?.name : I18N.nodes[l.id]?.[n.id]?.name;
+    return LANGS.filter((l) => l.id !== lang).map((l) => {
+        const name = TEXTS[l.id][n.id]?.name;
         return name ? [l.label, name] : null;
     }).filter((x) => x && x[1] !== n.name);
 }
-try { applyLang(localStorage.getItem(LANG_KEY) || 'aon'); } catch { applyLang('aon'); }
+try { applyLang(localStorage.getItem(LANG_KEY) || DEFAULT_LANG); } catch { applyLang(DEFAULT_LANG); }
 
 /** Подзаголовок карточки: что это за узел. */
 function cardSubtitle(n) {
@@ -1177,12 +1179,12 @@ if ('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe($('
 
 // ---------- класс: заголовки, вкладки, фильтры ----------
 
-/** Кнопки перевода в шапке (только у классов с data/<класс>-i18n.js). */
+/** Кнопки перевода в шапке (только у классов с несколькими переводами). */
 function buildLangSwitch() {
     const box = $('#lang-switch');
-    if (!I18N) return;
+    if (LANGS.length < 2) return;
     box.hidden = false;
-    box.innerHTML = '<span class="lang-label">Перевод:</span>' + I18N.langs.map((l) =>
+    box.innerHTML = '<span class="lang-label">Перевод:</span>' + LANGS.map((l) =>
         `<button type="button" class="lang-btn" role="radio" data-lang="${esc(l.id)}" title="${esc(l.title)}">${esc(l.label)}</button>`).join('');
     box.addEventListener('click', (ev) => {
         const b = ev.target.closest('[data-lang]');
@@ -1246,14 +1248,14 @@ function setTermLabels() {
     const src = langInfo();
     // шапка: название класса и пометка о текстах — по выбранному переводу
     const root = NODES.get('root');
-    $('#class-name').textContent = lang === 'aon' ? META.className : root.name;
+    $('#class-name').textContent = root.name || META.className;
     document.title = `${$('#class-name').textContent} — дерево ${T.feats === 'черты' ? 'черт' : 'способностей'}`;
-    $('#class-note').textContent = src && src.id !== 'aon' ? `Тексты: ${src.label}` : (META.note || '');
+    $('#class-note').textContent = src && src.id !== DEFAULT_LANG ? `Тексты: ${src.label}` : (META.note || '');
     const cardNames = CARD_GROUPS.map((g) => NODES.get(g.id).name.toLowerCase());
     $('#legend-cards').textContent = `Слева — группы выбора: ${cardNames.join(', ')}`;
     $('#legend-card-req').textContent = `нужна карточка (${cardNames.join(', ')})`;
     $('#data-source').innerHTML = `Данные: <a href="${esc(META.source)}" target="_blank" rel="noopener noreferrer">${esc(SOURCE_NAME)}</a>` +
-        (src && src.id !== 'aon' ? `, тексты: ${esc(src.source)}` : '') +
+        (src && src.id !== DEFAULT_LANG ? `, тексты: ${esc(src.source)}` : '') +
         `, обновлено ${new Date(META.fetchedAt).toLocaleDateString('ru-RU')}. Обновить: <code>${esc(META.updateCmd || 'node tools/fetch-pf2.mjs')}</code>`;
 }
 

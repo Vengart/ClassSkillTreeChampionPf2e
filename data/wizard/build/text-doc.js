@@ -1,0 +1,1543 @@
+// Сгенерировано tools/build-wizard.mjs — не редактируйте вручную (правьте data/wizard/manual или source и пересоберите).
+(window.CLASS_TEXT = window.CLASS_TEXT || {})["doc"] = {
+ "root": {
+  "name": "Волшебник",
+  "html": "A scholar who masters magic through study and experiment. Pick an arcane school and an arcane thesis above, then your wizard feats.<hr><h4 class=\"sub-ability\">Arcane Bond</h4><p>You place some of your magical power in a bonded item. Each day when you prepare your spells, you can designate a single item you own as your bonded item. This is typically an item associated with spellcasting, such as a wand, ring, or staff, but you are free to designate a weapon or other item. You gain the Drain Bonded Item free action.</p><h4 class=\"sub-ability\">Drain Bonded Item</h4><p>You expend the magical power stored in your bonded item. During the current turn, you can cast one spell you prepared today and already cast, without spending a spell slot. You must still Cast the Spell and meet the spell's other requirements.</p>",
+  "url": "https://2e.aonprd.com/Classes.aspx?ID=39",
+  "note": "Описание есть только в оригинале Archives of Nethys."
+ },
+ "group-school": {
+  "name": "Арканная школа",
+  "html": "<p>Most wizards acquire their knowledge of spells from a formal educational institution, such as the Arcanamirium or the Magaambya. At 1st level, you choose your <a href=\"https://2e.aonprd.com/ArcaneSchools.aspx\">arcane school</a>, which grants you magical abilities.</p><p>You gain additional spells and spell slots from the curriculum taught at the school you attended. Some wizards follow the school of unified magical theory, which attempts to forge a new school by studying independently and drawing information from a multitude of texts and tutors. Though a wizard with this approach lacks the focus of formal training, they have greater flexibility.</p>",
+  "hint": "Выберите одну школу. Учение единой магической теории даёт дополнительную способность волшебника 1 уровня.",
+  "note": "Описание есть только в оригинале Archives of Nethys."
+ },
+ "school-red-mantis-magic-school": {
+  "name": "Школа Красного Богомола",
+  "short": "Красного Богомола",
+  "html": "В то время как любой бандит может совершить убийство, правильное убийство требует ловкости и коварства. В глубине Багровой цитадели ассасины Красного богомола разработали особый набор заклинаний, которым они обучают всех обладающих магическими способностями членов. Эти заклинания дополняют тайные и смертоносные методы ассасинов.<br>\n<b>Заклинания учебного плана</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1528\" href=\"https://pf2.ru/spells/figment\">вымысел</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1546\" href=\"https://pf2.ru/spells/gouging claw\">терзающий коготь</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1531\" href=\"https://pf2.ru/spells/fleet step\">легконогость</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1568\" href=\"https://pf2.ru/spells/illusory disguise\">иллюзорный облик</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1709\" href=\"https://pf2.ru/spells/sure strike\">верный удар</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1577\" href=\"https://pf2.ru/spells/invisibility\">невидимость</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1606\" href=\"https://pf2.ru/spells/mist\">непроглядный туман</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1465\" href=\"https://pf2.ru/spells/clairaudience\">яснослышание</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1622\" href=\"https://pf2.ru/spells/paralyze\">паралич</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1466\" href=\"https://pf2.ru/spells/clairvoyance\">ясновидение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1724\" href=\"https://pf2.ru/spells/translocate\">транслокация</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1551\" href=\"https://pf2.ru/spells/hallucination\">галлюцинация</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1570\" href=\"https://pf2.ru/spells/illusory scene\">иллюзорная сцена</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1605\" href=\"https://pf2.ru/spells/mislead\">обманка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1630\" href=\"https://pf2.ru/spells/phantasmal calamity\">катастрофический фантазм</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1505\" href=\"https://pf2.ru/spells/duplicate foe\">двойник врага</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1640\" href=\"https://pf2.ru/spells/project image\">проекция образа</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1490\" href=\"https://pf2.ru/spells/disappearance\">исчезновение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1734\" href=\"https://pf2.ru/spells/unrelenting observation\">неусыпное наблюдение</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1629\" href=\"https://pf2.ru/spells/phantasmagoria\">фантасмагория</a>.<br>\n<b>Заклинания школы</b>.<br>\nНачальное:  <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2130\" href=\"https://pf2.ru/spells/debilitating terror\">калечащий ужас</a>.<br>\nПродвинутое:  <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2131\" href=\"https://pf2.ru/spells/shroud of the mantis\">покров богомола</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=23",
+  "source": "Prey for Death",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-ars-grammatica": {
+  "name": "Школа искусства языкознания",
+  "short": "Искусства языкознания",
+  "html": "Руны и охранные символы, числа и буквы — именно на них зиждется  вся магия, и потому волшебники, желающие постичь фундаментальные  силы, прилежно занимаются их изучением. Возможно,  вы обучались в Школе заклинаний Общества искателей  или в похожем учебном заведении. Так или иначе, наделяя слова  принуждающей магией, защищая мастерскую оберегами или разрушая  саму структуру заклинаний вашего противника, вы знаете,  что выбранная вами непримечательная школа изысканно сильна.\n<br>\n<b>Заклинания Учебного Плана</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1598\" href=\"https://pf2.ru/spells/message\">сообщение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1673\" href=\"https://pf2.ru/spells/sigil\">метка</a>.\n<br>\n1й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1470\" href=\"https://pf2.ru/spells/command\">приказ</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1491\" href=\"https://pf2.ru/spells/disguise magic\">сокрытие магии</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1657\" href=\"https://pf2.ru/spells/runic body\">рунное тело</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1658\" href=\"https://pf2.ru/spells/runic weapon\">рунное оружие</a>.\n<br>\n2й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1493\" href=\"https://pf2.ru/spells/dispel magic\">рассеивание магии</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1723\" href=\"https://pf2.ru/spells/translate\">перевод</a>.\n<br>\n3й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1516\" href=\"https://pf2.ru/spells/enthrall\">захватывающая речь</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1739\" href=\"https://pf2.ru/spells/veil of privacy\">покров необнаружимости</a>.\n<br>\n4й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1494\" href=\"https://pf2.ru/spells/dispelling globe\">сфера рассеивания</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1693\" href=\"https://pf2.ru/spells/suggestion\">внушение</a>.\n<br>\n5й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1665\" href=\"https://pf2.ru/spells/sending\">послание</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1728\" href=\"https://pf2.ru/spells/truespeech\">истинная речь</a>.\n<br>\n6й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1650\" href=\"https://pf2.ru/spells/repulsion\">отторжение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1683\" href=\"https://pf2.ru/spells/spellwrack\">деформация заклинаний</a>.\n<br>\n7й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1472\" href=\"https://pf2.ru/spells/contingency\">заготовка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1635\" href=\"https://pf2.ru/spells/planar seal\">планарная преграда</a>.\n<br>\n8й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1644\" href=\"https://pf2.ru/spells/quandary\">головоломка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1734\" href=\"https://pf2.ru/spells/unrelenting observation\">неусыпное наблюдение</a>.\n<br>\n9й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1488\" href=\"https://pf2.ru/spells/detonate magic\">взрыв магии</a>.\n<br>\n<b>Заклинания Школы</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1894\" href=\"https://pf2.ru/spells/protective wards\">защитный оберег</a>.\n<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1895\" href=\"https://pf2.ru/spells/rune of observation\">руна наблюдения</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=16",
+  "source": "Player Core",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-battle-magic": {
+  "name": "Школа боевой магии",
+  "short": "Боевой магии",
+  "html": "Магия несёт в себе силу, и всегда есть те, кто желает использовать  её в бою. Быть может, вы обучались владению ею в войсках государства  на грани войны — в Челии или Андоране либо в Гебе или  Нексё. Вы способны призвать вихри энергий, сулящие смерть  как отдельным солдатам, так и целым армиям, но не забываете  и об оборонительной магии, ведь на поле боя живыми остаются  благодаря верно выстроенной магической защите.\n<br>\n<b>Заклинания Учебного Плана</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1671\" href=\"https://pf2.ru/spells/shield\">щит</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1718\" href=\"https://pf2.ru/spells/telekinetic projectile\">телекинетический снаряд</a>.\n<br>\n1й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1457\" href=\"https://pf2.ru/spells/breathe fire\">огненное дыхание</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1536\" href=\"https://pf2.ru/spells/force barrage\">силовой залп</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1611\" href=\"https://pf2.ru/spells/mystic armor\">магический доспех</a>.\n<br>\n2й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1606\" href=\"https://pf2.ru/spells/mist\">непроглядный туман</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1651\" href=\"https://pf2.ru/spells/resist energy\">устойчивость к энергии</a>.\n<br>\n3й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1506\" href=\"https://pf2.ru/spells/earthbind\">приземление</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1530\" href=\"https://pf2.ru/spells/fireball\">огненный шар</a>.\n<br>\n4й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1748\" href=\"https://pf2.ru/spells/wall of fire\">огненная стена</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1758\" href=\"https://pf2.ru/spells/weapon storm\">буря клинков</a>.\n<br>\n5й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1559\" href=\"https://pf2.ru/spells/howling blizzard\">воющая вьюга</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1571\" href=\"https://pf2.ru/spells/impaling spike\">пронзающий шип</a>.\n<br>\n6й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1462\" href=\"https://pf2.ru/spells/chain lightning\">цепь молний</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1492\" href=\"https://pf2.ru/spells/disintegrate\">дезинтеграция</a>.\n<br>\n7й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1512\" href=\"https://pf2.ru/spells/energy aegis\">энергетическая защита</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1726\" href=\"https://pf2.ru/spells/true target\">верная цель</a>.\n<br>\n8й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1444\" href=\"https://pf2.ru/spells/arctic rift\">полярный разлом</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1484\" href=\"https://pf2.ru/spells/desiccate\">жуткое иссушение</a>.\n<br>\n9й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1521\" href=\"https://pf2.ru/spells/falling stars\">метеориты</a>.\n<br>\n<b>Заклинания Школы</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1896\" href=\"https://pf2.ru/spells/force bolt\">сгусток силы</a>.\n<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1897\" href=\"https://pf2.ru/spells/energy absorption\">поглощение энергии</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=22",
+  "source": "Player Core",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-breathtaking-influence": {
+  "name": "Школа ошеломляющего влияния",
+  "short": "Breathtaking Influence",
+  "html": "Вы пользуетесь влиянием в высших кругах общества и гордитесь своей способностью предугадывать действия оппонентов и манипулировать ими. В менее щепетильных академиях эту программу открыто преподают будущим политикам, в то время как в других учебных заведениях её преподносят как изучение методов противодействия ментальному воздействию. Эти заклинания широко распространены в Квантиуме, где амбициозность и безжалостность являются показателями успеха.<br>\n<b>Заклинания учебного плана:</b><br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1482\" href=\"https://pf2.ru/spells/daze\">ступор</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2748\" href=\"https://pf2.ru/spells/infectious enthusiasm\">заразительный энтузиазм</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1470\" href=\"https://pf2.ru/spells/command\">приказ</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1524\" href=\"https://pf2.ru/spells/fear\">ужас</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1675\" href=\"https://pf2.ru/spells/sleep\">сон</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1454\" href=\"https://pf2.ru/spells/blood vendetta\">кровавая месть</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2787\" href=\"https://pf2.ru/spells/phantom crowd\">фантомная толпа</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1516\" href=\"https://pf2.ru/spells/enthrall\">захватывающая речь</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2769\" href=\"https://pf2.ru/spells/mind of menace\">разум возмездия</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1471\" href=\"https://pf2.ru/spells/confusion\">замешательство</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1620\" href=\"https://pf2.ru/spells/outcast's curse\">проклятие изгоя</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1692\" href=\"https://pf2.ru/spells/subconscious suggestion\">подсознательное внушение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1757\" href=\"https://pf2.ru/spells/wave of despair\">сокрушительное отчаяние</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1501\" href=\"https://pf2.ru/spells/dominate\">подчинение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1614\" href=\"https://pf2.ru/spells/never mind\">слабоумие</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1472\" href=\"https://pf2.ru/spells/contingency\">заготовка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2796\" href=\"https://pf2.ru/spells/puppet strings\">нити марионетки</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1988\" href=\"https://pf2.ru/spells/dream council\">совместное сновидение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1556\" href=\"https://pf2.ru/spells/hidden mind\">сокрытие разума</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2036\" href=\"https://pf2.ru/spells/telepathic demand\">телепатическое требование</a>.<br>\n<b>Заклинания школы:</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2920\" href=\"https://pf2.ru/spells/appeal to authority\">обращение к авторитету</a>.<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2921\" href=\"https://pf2.ru/spells/hot air\">горячий воздух</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=31",
+  "source": "Impossible Magic",
+  "note": "Этой школы нет на скриншотах перевода Дока и Юры — показан перевод pf2.ru."
+ },
+ "school-civic-wizardry": {
+  "name": "Школа городской магии",
+  "short": "Городской магии",
+  "html": "Учились ли вы в Оккулярии Манакета или в Академии прикладной  магии, теперь вы знаете, что плоды мистических изысканий — как  и всех других — в конечном счёте должны служить простому народу.  Вы освоили скромное искусство строительства, поиска пропавших  людей и вещей, быстрого лавирования между построек  и рвов — однако эти же таланты можно применить для разрушения,  а ваши оживлённые конструкции, изначально предназначенные  для постройки мостов, могут столь же легко их уничтожить.\n<br>\n<b>Заклинания Учебного Плана</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1639\" href=\"https://pf2.ru/spells/prestidigitation\">мелкие фокусы</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1646\" href=\"https://pf2.ru/spells/read aura\">чтение ауры</a>.\n<br>\n1й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1561\" href=\"https://pf2.ru/spells/hydraulic push\">гидравлический толчок</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1642\" href=\"https://pf2.ru/spells/pummeling rubble\">град обломков</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1696\" href=\"https://pf2.ru/spells/summon construct\">призыв конструкции</a>.\n<br>\n2й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1653\" href=\"https://pf2.ru/spells/revealing light\">озаряющий свет</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1756\" href=\"https://pf2.ru/spells/water walk\">хождение по воде</a>.\n<br>\n3й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1474\" href=\"https://pf2.ru/spells/cozy cabin\">уютная хижина</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1659\" href=\"https://pf2.ru/spells/safe passage\">безопасный проход</a>.\n<br>\n4й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1477\" href=\"https://pf2.ru/spells/creation\">творение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1732\" href=\"https://pf2.ru/spells/unfettered movement\">свобода движений</a>.\n<br>\n5й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1473\" href=\"https://pf2.ru/spells/control water\">власть над водой</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1751\" href=\"https://pf2.ru/spells/wall of stone\">каменная стена</a>.\n<br>\n6й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1492\" href=\"https://pf2.ru/spells/disintegrate\">дезинтеграция</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1749\" href=\"https://pf2.ru/spells/wall of force\">силовая стена</a>.\n<br>\n7й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1634\" href=\"https://pf2.ru/spells/planar palace\">планарный дворец</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1652\" href=\"https://pf2.ru/spells/retrocognition\">ретрокогниция</a>.\n<br>\n8й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1507\" href=\"https://pf2.ru/spells/earthquake\">землетрясение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1633\" href=\"https://pf2.ru/spells/pinpoint\">выявление местоположения</a>.\n<br>\n9й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1537\" href=\"https://pf2.ru/spells/foresight\">предвидение</a>.\n<br>\n<b>Заклинания Школы</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1900\" href=\"https://pf2.ru/spells/earthworks\">земляные преграды</a>.\n<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1901\" href=\"https://pf2.ru/spells/community restoration\">всеобщее обновление</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=18",
+  "source": "Player Core",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-corentyn-armada": {
+  "name": "School of Corentyn Armada",
+  "short": "School of Corentyn Armada",
+  "html": "<p>The Corentyn armada is well-known for their fierceness in battle, a reputation owed in large part to their naval wizards, each an expert in both tactics and torrential magic. Many such wizards are assigned to a ship in the armada, and they often take an apprentice along with them for the sea voyage.</p><p><b>Curriculum</b></p><ul><li>Cantrips:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1598\">Message</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2031\">Spout</a></p><ul><li>1st:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1550\">Gust of Wind</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1561\">Hydraulic Push</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2934\">Rude Awakening</a></p><ul><li>2nd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1755\">Water Breathing</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1756\">Water Walk</a></p><ul><li>3rd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1984\">Crashing Wave</a></p><ul><li>4th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2001\">Ice Storm</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1719\">Telepathy</a></p><ul><li>5th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1473\">Control Water</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2936\">Searing Rain</a></p><ul><li>6th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1462\">Chain Lightning</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1727\">Truesight</a></p><ul><li>7th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1512\">Energy Aegis</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1640\">Project Image</a></p><ul><li>8th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1444\">Arctic Rift</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1484\">Desiccate</a></p><ul><li>9th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1759\">Wrathful Storm</a></p><p><b>School Spells</b></p><ul><li>Initial: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2938\">Control Currents</a></li><li>Advanced: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2939\">Choking Fog</a></li></ul>",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=35",
+  "source": "Cheliax, Infernal Inheritance",
+  "note": "В переводе Дока и Юры есть только название — описание из оригинала Archives of Nethys."
+ },
+ "school-gates": {
+  "name": "Школа врат",
+  "short": "Врат",
+  "html": "<p><i><a href=\"https://2e.aonprd.com/pathfinder-society\"><b>PFS Note</b></a> Characters from Kyonin have access to this option.</i></p><p>Some are content to stay in place and let the world shape them, but you prefer to move at your own pace. You’ve studied the ancient aiudara and other structures to learn the magic of transposition, using your knowledge to move across great distances and even planes. With knowledge as your path and magic as your key, there’s no door you can’t open, and no world you won’t explore.</p><p><b>Curriculum</b></p><ul><li>Cantrips:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1598\">Message</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1715\">Telekinetic Hand</a></p><ul><li>1st:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1531\">Fleet Step</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1589\">Lock</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2037\">Thoughtful Gift</a></p><ul><li>2nd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1581\">Knock</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2486\">Warping Pull</a></p><ul><li>3rd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2481\">Echo Jump</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2485\">Trade Items</a></p><ul><li>4th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1532\">Flicker</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1724\">Translocate</a></p><ul><li>5th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2483\">King's Castle</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1591\">Magic Passage</a></p><ul><li>6th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1978\">Collective Transposition</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1720\">Teleport</a></p><ul><li>7th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1576\">Interplanar Teleport</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1635\">Planar Seal</a></p><ul><li>8th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1644\">Quandary</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2484\">Sudden Transposition</a></p><ul><li>9th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2482\">Forest of Gates</a></p><p><b>School Spells</b></p><ul><li>Initial: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2479\">Friendly Push</a></li><li>Advanced: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2480\">Rapid Retreat</a></li></ul>",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=28",
+  "source": "Shining Kingdoms",
+  "note": "В переводе Дока и Юры есть только название — описание из оригинала Archives of Nethys."
+ },
+ "school-kalistrade": {
+  "name": "Школа Калистрада",
+  "short": "Калистрада",
+  "html": "<p>Power and money are closely intertwined, and you recognize the potential for magic to assist in your pursuit of wealth and influence. Though you might study this school without joining the <a href=\"https://2e.aonprd.com/Deities.aspx?ID=23\">Prophets of Kalistrade</a>, most who do so are either a part of the organization or local to Kerse and therefore used to the customs and culture of the Kalistocrats. You deploy magic to help you see through the illusions and trickery of others. At the same time, you push boundaries and exploit loopholes to get ahead of your competitors.</p><p><b>Curriculum</b></p><ul><li>Cantrips:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1639\">Prestidigitation</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1646\">Read Aura</a></p><ul><li>1st:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1439\">Alarm</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1463\">Charm</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1579\">Item Facade</a></p><ul><li>2nd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1543\">Ghostly Carrier</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1577\">Invisibility</a></p><ul><li>3rd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1465\">Clairaudience</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1739\">Veil of Privacy</a></p><ul><li>4th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1620\">Outcast's Curse</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1693\">Suggestion</a></p><ul><li>5th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2002\">Imaginary Lockbox</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1692\">Subconscious Suggestion</a></p><ul><li>6th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1650\">Repulsion</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1662\">Scrying</a></p><ul><li>7th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1640\">Project Image</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1652\">Retrocognition</a></p><ul><li>8th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1490\">Disappearance</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1556\">Hidden Mind</a></p><ul><li>9th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2018\">Resplendent Mansion</a></p><p><b>School Spells</b></p><ul><li>Initial: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2465\">Unexpected Windfall</a></li><li>Advanced: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2466\">Capital Dividend</a></li></ul>",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=27",
+  "source": "Shining Kingdoms",
+  "note": "В переводе Дока и Юры есть только название — описание из оригинала Archives of Nethys."
+ },
+ "school-keen-inquiry": {
+  "name": "Школа глубокого исследования",
+  "short": "Глубокого исследования",
+  "html": "Вы — исследователь истины, стремящийся к знаниям о природе бытия и событиях прошлого, настоящего и будущего. Независимо от того, разделяете вы эту истину или скрываете её, лучше воздержаться от суждений, пока не поймёте, с чем имеете дело. Элита Квантиума утверждает, что этот учебный план разработали её самые зоркие агенты — шпионская сеть Некса, но она является одним из основных предметов во многих политически ориентированных академий.<br>\n<b>Заклинания учебного плана:</b><br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1485\" href=\"https://pf2.ru/spells/detect magic\">обнаружение магии</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1673\" href=\"https://pf2.ru/spells/sigil\">метка</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1491\" href=\"https://pf2.ru/spells/disguise magic\">сокрытие магии</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1568\" href=\"https://pf2.ru/spells/illusory disguise\">иллюзорный облик</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1603\" href=\"https://pf2.ru/spells/mindlink\">связь разумов</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1581\" href=\"https://pf2.ru/spells/knock\">стук</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1663\" href=\"https://pf2.ru/spells/see the unseen\">видение невидимого</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1465\" href=\"https://pf2.ru/spells/clairaudience\">яснослышание</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1588\" href=\"https://pf2.ru/spells/locate\">указатель</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1466\" href=\"https://pf2.ru/spells/clairvoyance\">ясновидение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1487\" href=\"https://pf2.ru/spells/detect scrying\">обнаружение тайновидения</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1601\" href=\"https://pf2.ru/spells/mind probe\">зондирование памяти</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1661\" href=\"https://pf2.ru/spells/scouting eye\">глаз-разведчик</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1662\" href=\"https://pf2.ru/spells/scrying\">тайновидение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1727\" href=\"https://pf2.ru/spells/truesight\">истинное зрение</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1652\" href=\"https://pf2.ru/spells/retrocognition\">ретрокогниция</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1726\" href=\"https://pf2.ru/spells/true target\">верная цель</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1490\" href=\"https://pf2.ru/spells/disappearance\">исчезновение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1633\" href=\"https://pf2.ru/spells/pinpoint\">выявление местоположения</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1537\" href=\"https://pf2.ru/spells/foresight\">предвидение</a>.<br>\n<b>Заклинания школы:</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2922\" href=\"https://pf2.ru/spells/fact check\">проверка фактов</a>.<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2923\" href=\"https://pf2.ru/spells/unsettling perspective\">тревожная перспектива</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=32",
+  "source": "Impossible Magic",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-magical-technologies": {
+  "name": "Школа магической технологии",
+  "short": "Магической технологии",
+  "html": "<p>At the height of ancient Azlant, the study of magical technologies—better known as magitech—was considered among the most prestigious of arcane specializations, and practitioners were both well regarded and well paid. While some magitech specialists trained in academies or as apprentices, others studied at religious cloisters dedicated to the worship of <a href=\"https://2e.aonprd.com/Deities.aspx?ID=404\">Amaznen</a>, a now-dead god of invention and <a href=\"https://2e.aonprd.com/Domains.aspx?ID=82\">magic</a>. Today, practitioners are more likely to learn from scraps of ancient spellbooks, forgotten lore unearthed in Azlanti ruins, or from a time‑displaced graduate like Anoreth Zorillen. Modern magitech schools exist today, divorced from their ancient Azlanti origins but no less prestigious, including the famed Clockwork Cathedral in Absalom and temples of <a href=\"https://2e.aonprd.com/Deities.aspx?ID=333\">Brigh</a>, goddess of clockwork and invention.</p><p>As a student of magical technologies, you’ve learned the art of fusing magic with mundane technology to create something truly unique.</p><p><b>Curriculum</b></p><ul><li>Cantrips:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1375\">Needle Darts</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1671\">Shield</a></p><ul><li>1st:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1597\">Mending</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1658\">Runic Weapon</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1696\">Summon Construct</a></p><ul><li>2nd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1964\">Animated Assault</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1987\">Dismantle</a></p><ul><li>3rd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2026\">Shrink Item</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1416\">Wooden Double</a></p><ul><li>4th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1477\">Creation</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1758\">Weapon Storm</a></p><ul><li>5th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1571\">Impaling Spike</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1751\">Wall of Stone</a></p><ul><li>6th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1370\">Field of Razors</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1628\">Petrify</a></p><ul><li>7th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1365\">Beheading Buzz Saw</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2006\">Lifewood Cage</a></p><ul><li>8th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1369\">Ferrous Form</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1644\">Quandary</a></p><ul><li>9th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2018\">Resplendent Mansion</a></p><p><b>School Spells</b></p><ul><li>Initial: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2488\">Augmented Body</a></li><li>Advanced: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2487\">Conjured Clockwork</a></li></ul>",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=29",
+  "source": "Pathfinder #215: To Blot Out the Sun",
+  "note": "В переводе Дока и Юры есть только название — описание из оригинала Archives of Nethys."
+ },
+ "school-mentalism": {
+  "name": "Школа ментализма",
+  "short": "Ментализма",
+  "html": "Благодаря образованию вы прекрасно понимаете важность  здоровья разума. Вы избрали подходящее учебное заведение  — например; Камень Провидцев, где вас обучили искусству  сбивать с толку слабые умы иллюзиями или ложными ощущениями  и воспоминаниями.\n<br>\n<b>Заклинания Учебного Плана</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1482\" href=\"https://pf2.ru/spells/daze\">ступор</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1528\" href=\"https://pf2.ru/spells/figment\">вымысел</a>.\n<br>\n1й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1500\" href=\"https://pf2.ru/spells/dizzying colors\">цветные брызги</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1675\" href=\"https://pf2.ru/spells/sleep\">сон</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1709\" href=\"https://pf2.ru/spells/sure strike\">верный удар</a>.\n<br>\n2й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1567\" href=\"https://pf2.ru/spells/illusory creature\">иллюзорное существо</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1691\" href=\"https://pf2.ru/spells/stupefy\">ошеломление</a>.\n<br>\n3й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1503\" href=\"https://pf2.ru/spells/dream message\">сообщение во сне</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1602\" href=\"https://pf2.ru/spells/mind reading\">чтение мыслей</a>.\n<br>\n4й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1615\" href=\"https://pf2.ru/spells/nightmare\">кошмар</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1742\" href=\"https://pf2.ru/spells/vision of death\">видение смерти</a>.\n<br>\n5й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1551\" href=\"https://pf2.ru/spells/hallucination\">галлюцинация</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1570\" href=\"https://pf2.ru/spells/illusory scene\">иллюзорная сцена</a>.\n<br>\n6й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1614\" href=\"https://pf2.ru/spells/never mind\">слабоумие</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1630\" href=\"https://pf2.ru/spells/phantasmal calamity\">катастрофический фантазм</a>.\n<br>\n7й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1640\" href=\"https://pf2.ru/spells/project image\">проекция образа</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1754\" href=\"https://pf2.ru/spells/warp mind\">искажение разума</a>.\n<br>\n8й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1490\" href=\"https://pf2.ru/spells/disappearance\">исчезновение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1730\" href=\"https://pf2.ru/spells/uncontrollable dance\">безудержная пляска</a>.\n<br>\n9й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1629\" href=\"https://pf2.ru/spells/phantasmagoria\">фантасмагория</a>.\n<br>\n<b>Заклинания Школы</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1902\" href=\"https://pf2.ru/spells/charming push\">чарующее отторжение</a>.\n<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1903\" href=\"https://pf2.ru/spells/invisibility cloak\">покров невидимости</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=19",
+  "source": "Player Core",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-nexian-spaces": {
+  "name": "Школа нексийских пространств",
+  "short": "Нексийских пространств",
+  "html": "Независимо от того, является ли вашей целью бессмертие или создание мира, в котором каждая деталь будет соответствовать вашему вкусу, повторение экспериментов Некса с демипланами — это путь к достижению ваших желаний. Ваше формальное обучение начинается с изменения текущей реальности и привлечения энергии из других плоскостей существования. Вы переходите к созданию внеплоскостных пространств и путешествиям между плоскостями, используя время и пространство для лепки, словно глину.<br>\n<b>Заклинания учебного плана:</b><br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2576\" href=\"https://pf2.ru/spells/phase bolt\">межфазный снаряд</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2583\" href=\"https://pf2.ru/spells/warp step\">искажённые шаги</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1439\" href=\"https://pf2.ru/spells/alarm\">сигнал тревоги</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1627\" href=\"https://pf2.ru/spells/pet cache\">схрон для питомца</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2037\" href=\"https://pf2.ru/spells/thoughtful gift\">полезный подарок</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2676\" href=\"https://pf2.ru/spells/dimensional drop\">пространственная брешь</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2857\" href=\"https://pf2.ru/spells/vanish weapon\">исчезающее оружие</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1474\" href=\"https://pf2.ru/spells/cozy cabin\">уютная хижина</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2698\" href=\"https://pf2.ru/spells/far reach\">значительная досягаемость</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1532\" href=\"https://pf2.ru/spells/flicker\">мерцание</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1587\" href=\"https://pf2.ru/spells/liminal doorway\">нарисованная дверь</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1448\" href=\"https://pf2.ru/spells/banishment\">изгнание</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2822\" href=\"https://pf2.ru/spells/space fold gate\">складные пространственные ворота</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1978\" href=\"https://pf2.ru/spells/collective transposition\">коллективная перестановка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2794\" href=\"https://pf2.ru/spells/proximal shift\">проксимальный сдвиг</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1576\" href=\"https://pf2.ru/spells/interplanar teleport\">межпланарная телепортация</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1634\" href=\"https://pf2.ru/spells/planar palace\">планарный дворец</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1644\" href=\"https://pf2.ru/spells/quandary\">головоломка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2828\" href=\"https://pf2.ru/spells/stars of another sky\">звёзды иного неба</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2018\" href=\"https://pf2.ru/spells/resplendent mansion\">роскошный особняк</a>.<br>\n<b>Заклинания школы:</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2924\" href=\"https://pf2.ru/spells/extradimensional cover\">межпространственное укрытие</a>.<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2925\" href=\"https://pf2.ru/spells/unbounded sphere\">замкнутая сфера</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=33",
+  "source": "Impossible Magic",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-protean-form": {
+  "name": "Школа изменчивой формы",
+  "short": "Изменчивой формы",
+  "html": "Непосвящённые часто считают, что волшебники — это мыслители,  сосредоточенные на тренировках одного лишь разума,  а не тела, но ваша школа магии помогла вам понять связь между  ними. Вы могли обучаться в легендарном заведении вроде Алебастровой  академии Кинтарго или в более зловещем месте, например  в кузнях плоти Некса, и теперь ваша магия направлена  на временное преобразование материи: зёрнышко вы обращаете  в лозу, человека — в зверя, а безопасную субстанцию —  в смертоносный яд.\n<br>\n<b>Заклинания Учебного Плана</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1546\" href=\"https://pf2.ru/spells/gouging claw\">терзающий коготь</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1713\" href=\"https://pf2.ru/spells/tangle vine\">опутывающая лиана</a>.\n<br>\n1й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1580\" href=\"https://pf2.ru/spells/jump\">прыжок</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1626\" href=\"https://pf2.ru/spells/pest form\">форма зверька</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1684\" href=\"https://pf2.ru/spells/spider sting\">паучий укус</a>.\n<br>\n2й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1514\" href=\"https://pf2.ru/spells/enlarge\">увеличение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1560\" href=\"https://pf2.ru/spells/humanoid form\">форма гуманоида</a>.\n<br>\n3й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1525\" href=\"https://pf2.ru/spells/feet to fins\">ноги-ласты</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1736\" href=\"https://pf2.ru/spells/vampiric feast\">касание вампира</a>.\n<br>\n4й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1610\" href=\"https://pf2.ru/spells/mountain resilience\">стойкость горы</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1738\" href=\"https://pf2.ru/spells/vapor form\">газообразность</a>.\n<br>\n5й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1510\" href=\"https://pf2.ru/spells/elemental form\">форма элементаля</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1722\" href=\"https://pf2.ru/spells/toxic cloud\">токсичное облако</a>.\n<br>\n6й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1479\" href=\"https://pf2.ru/spells/cursed metamorphosis\">проклятие полиморфа</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1628\" href=\"https://pf2.ru/spells/petrify\">окаменение</a>.\n<br>\n7й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1505\" href=\"https://pf2.ru/spells/duplicate foe\">двойник врага</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1527\" href=\"https://pf2.ru/spells/fiery body\">огненное тело</a>.\n<br>\n8й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1484\" href=\"https://pf2.ru/spells/desiccate\">жуткое иссушение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1608\" href=\"https://pf2.ru/spells/monstrosity form\">чудовищная форма</a>.\n<br>\n9й: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1599\" href=\"https://pf2.ru/spells/metamorphosis\">метаморфоза</a>.\n<br>\n<b>Заклинания Школы</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1904\" href=\"https://pf2.ru/spells/scramble body\">сбой органов</a>.\n<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1905\" href=\"https://pf2.ru/spells/shifting form\">изменчивая форма</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=20",
+  "source": "Player Core",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-quantic-control": {
+  "name": "Школа квантического контроля",
+  "short": "Квантического контроля",
+  "html": "Вы — архитектор, но не только зданий. Вы призываете стихийные силы управлять строительными блоками самой реальности, изменяя окружающую среду и перемещая существ, как будто мир — это диорама, которую вы можете усовершенствовать. Ваш учебный план в значительной степени основан на опыте джиннорождённых из Квантиума, которые поддерживают инфраструктуру столицы Некса, казалось бы, вопреки самой физике.<br>\n<b>Заклинания учебного плана:</b><br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1994\" href=\"https://pf2.ru/spells/gale blast\">штормовой порыв</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2021\" href=\"https://pf2.ru/spells/scatter scree\">камнепад</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2663\" href=\"https://pf2.ru/spells/cradle aloft\">воздушная колыбель</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1542\" href=\"https://pf2.ru/spells/gentle landing\">плавное падение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1642\" href=\"https://pf2.ru/spells/pummeling rubble\">град обломков</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1987\" href=\"https://pf2.ru/spells/dismantle\">деконструкция</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2855\" href=\"https://pf2.ru/spells/unrelenting gravity\">неумолимая гравитация</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2654\" href=\"https://pf2.ru/spells/chosen gravity\">избранная гравитация</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2746\" href=\"https://pf2.ru/spells/inertia lock\">блокировка инерции</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1981\" href=\"https://pf2.ru/spells/containment\">заточение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2758\" href=\"https://pf2.ru/spells/living terrain\">живая местность</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1473\" href=\"https://pf2.ru/spells/control water\">власть над водой</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1751\" href=\"https://pf2.ru/spells/wall of stone\">каменная стена</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1650\" href=\"https://pf2.ru/spells/repulsion\">отторжение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1749\" href=\"https://pf2.ru/spells/wall of force\">силовая стена</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2750\" href=\"https://pf2.ru/spells/infinitesimal collapse field\">поле бесконечно малого коллапса</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1635\" href=\"https://pf2.ru/spells/planar seal\">планарная преграда</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1444\" href=\"https://pf2.ru/spells/arctic rift\">полярный разлом</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2684\" href=\"https://pf2.ru/spells/earthbreaker stride\">шаг землелома</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1572\" href=\"https://pf2.ru/spells/implosion\">схлопывание</a>.<br>\n<b>Заклинания школы:</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2926\" href=\"https://pf2.ru/spells/circle of weakness\">круг слабости</a>.<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2927\" href=\"https://pf2.ru/spells/quantic dampening\">количественное ослабление</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=34",
+  "source": "Impossible Magic",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-rooted-wisdom": {
+  "name": "Школа укоренившейся мудрости",
+  "short": "Укоренившейся мудрости",
+  "html": "Вы учились в Магаамбии или у одного из её странствующих\nпрофессоров, познавая древнюю магию старейшей академии Голариона. Ваше обучение самостоятельно направляемо, позволяя вам\nвыбрать ветвь изучения и персонализировать своё обучение. Если вы выбираете Школу укоренённой мудрости, вы получаете\nуказанный ниже учебный план и школьные заклинания. Это ваш основной ствол изучения, к которому вы добавляете одну из\nследующих пяти вторичных ветвей, дающих вам дополнительные заклинания учебного плана.<br>\n<b>Заклинания учебного\n    плана</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1485\" href=\"https://pf2.ru/spells/detect magic\">обнаружение магии</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1439\" href=\"https://pf2.ru/spells/alarm\">сигнал тревоги</a>.<br>\n2 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1493\" href=\"https://pf2.ru/spells/dispel magic\">рассеивание магии</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1659\" href=\"https://pf2.ru/spells/safe passage\">безопасный проход</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1610\" href=\"https://pf2.ru/spells/mountain resilience\">стойкость горы</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1473\" href=\"https://pf2.ru/spells/control water\">власть над водой</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1727\" href=\"https://pf2.ru/spells/truesight\">истинное зрение</a>.<br>\n7 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1512\" href=\"https://pf2.ru/spells/energy aegis\">энергетическая защита</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1644\" href=\"https://pf2.ru/spells/quandary\">головоломка</a>.<br>\n<b>Заклинания\n    школы</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2303\" href=\"https://pf2.ru/spells/halcyon mists\">безмятежные туманы</a>.<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2304\" href=\"https://pf2.ru/spells/call the ten\">призыв десяти</a>.\n<h1 class=\"h1-header\">Учебные планы ветвей</h1>\n<h2 class=\"h2-header\">Носители Каскада</h2>\nНосители Каскада проводят значительное время, изучая качества самой магии в стремлении продвинуть магическую теорию. Они\nценят воображение и часто привносят чувство игривого любопытства в то, что иначе было бы напряжёнными изысканиями на\nграницах известной магии. Из всех ветвей эти студенты с наибольшей вероятностью становятся учителями и продолжают свои\nисследования после выпуска. На самом деле, некоторые Носители Каскада никогда не покидают Магаамбию, независимо от того,\nполучают ли они официальную преподавательскую или исследовательскую должность. Их курсовая работа широко охватывает\nиспользование магии, включая атаку, защиту, манипулирование предметами и видение сквозь материю.<br>\n<b>Дополнительный\n    учебный план</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1718\" href=\"https://pf2.ru/spells/telekinetic projectile\">телекинетический снаряд</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1536\" href=\"https://pf2.ru/spells/force barrage\">силовой залп</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1611\" href=\"https://pf2.ru/spells/mystic armor\">магический доспех</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1717\" href=\"https://pf2.ru/spells/telekinetic maneuver\">телекинетический манёвр</a>.<br>\n3 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1584\" href=\"https://pf2.ru/spells/levitate\">левитация</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1532\" href=\"https://pf2.ru/spells/flicker\">мерцание</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1716\" href=\"https://pf2.ru/spells/telekinetic haul\">телекинетическая ноша</a>.<br>\n6\nкруг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1479\" href=\"https://pf2.ru/spells/cursed metamorphosis\">проклятие полиморфа</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1472\" href=\"https://pf2.ru/spells/contingency\">заготовка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1640\" href=\"https://pf2.ru/spells/project image\">проекция образа</a>.<br>\n8\nкруг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1633\" href=\"https://pf2.ru/spells/pinpoint\">выявление местоположения</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1488\" href=\"https://pf2.ru/spells/detonate magic\">взрыв магии</a>.\n<h2 class=\"h2-header\">Изумрудные Ветви</h2>\nИзумрудные Ветви ценят общества и природные сообщества сегодняшнего дня, стремясь понять мир, каков он есть, и как магия\nв нём действует. Подчёркивая дух товарищества и социальность, эти студенты, как правило, с наибольшей готовностью\nпринимают учебный план «практической магии» Магаамбии, покидая кампус и работая в сообществах. Хотя некоторых из этих\nстудентов обвиняли в шпионаже в пользу школы, шпионаж не является официальной частью их учебного плана. Вместо этого в\nоснове этого учебного плана лежит магия, которая может служить другим или влиять на них, а также магия, раскрывающая\nзнания или позволяющая получить к ним доступ.<br>\n<b>Дополнительный учебный план</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1703\" href=\"https://pf2.ru/spells/summon instrument\">призыв инструмента</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1463\" href=\"https://pf2.ru/spells/charm\">приворот</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1491\" href=\"https://pf2.ru/spells/disguise magic\">сокрытие магии</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1653\" href=\"https://pf2.ru/spells/revealing light\">озаряющий свет</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1564\" href=\"https://pf2.ru/spells/hypnotize\">гипноз</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1471\" href=\"https://pf2.ru/spells/confusion\">замешательство</a>.<br>\n5 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1661\" href=\"https://pf2.ru/spells/scouting eye\">глаз-разведчик</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1662\" href=\"https://pf2.ru/spells/scrying\">тайновидение</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1726\" href=\"https://pf2.ru/spells/true target\">верная цель</a>.<br>\n8\nкруг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1490\" href=\"https://pf2.ru/spells/disappearance\">исчезновение</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1537\" href=\"https://pf2.ru/spells/foresight\">предвидение</a>.\n<h2 class=\"h2-header\">Писцы Дождя</h2>\nПисцы Дождя, стремящиеся исследовать мир и особенно его неизведанные уголки, ближе всех из ветвей подходят к первобытной\nмагии в своём изучении мистического. Они также принимают обучение «практической магии», которое уводит их с кампуса,\nчасто в дикие земли Простора Мванги, но иногда и дальше, на другие континенты Голариона или даже на далёкие планы. Их\nкурс магического изучения включает связь с природой и её понимание, работу со стихиями, призыв животных и обеспечение\nсобственного выживания.<br>\n<b>Дополнительный учебный план</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1585\" href=\"https://pf2.ru/spells/light\">свет</a>.<br>\n1 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1597\" href=\"https://pf2.ru/spells/mending\">починка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1694\" href=\"https://pf2.ru/spells/summon animal\">призыв животного</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1668\" href=\"https://pf2.ru/spells/shape wood\">преображение дерева</a>.<br>\n3 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1474\" href=\"https://pf2.ru/spells/cozy cabin\">уютная хижина</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1587\" href=\"https://pf2.ru/spells/liminal doorway\">нарисованная дверь</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1732\" href=\"https://pf2.ru/spells/unfettered movement\">свобода движений</a>.<br>\n5\nкруг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1591\" href=\"https://pf2.ru/spells/magic passage\">магический проход</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1697\" href=\"https://pf2.ru/spells/summon dragon\">призыв дракона</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1462\" href=\"https://pf2.ru/spells/chain lightning\">цепь молний</a>.<br>\n7\nкруг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1634\" href=\"https://pf2.ru/spells/planar palace\">планарный дворец</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1507\" href=\"https://pf2.ru/spells/earthquake\">землетрясение</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1599\" href=\"https://pf2.ru/spells/metamorphosis\">метаморфоза</a>.\n<h2 class=\"h2-header\">Маги Бури-Солнца</h2>\nМаги Бури-Солнца ценят физическую храбрость так же, как и интеллектуальную отвагу. Они чувствуют призвание защищать от\nугроз любого рода, от тирании и вторжения до интеллектуальной подрывной деятельности и запугивания. Обычно обладая\nострым чувством справедливости, они заступаются за угнетённых и выступают вперёд, когда появляется опасность. Их занятия\nчасто сопровождаются жаркими дебатами, которые иногда перетекают в соперничество и дуэли за пределами класса. Видя себя\nпрямыми наследниками силы, которую Десять Магических Воинов использовали для преобразования мира, Маги Бури-Солнца\nсклонны рассматривать магию как фундаментальную силу на службе высшей цели — распространения справедливости и создания\nлучшего мира, сосредотачиваясь на магии, которая взывает к силе солнца и укрепляет их собственную\nрешимость.<br>\n<b>Дополнительный учебный план</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1565\" href=\"https://pf2.ru/spells/ignition\">поджигание</a>.<br>\n1 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1457\" href=\"https://pf2.ru/spells/breathe fire\">огненное дыхание</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1531\" href=\"https://pf2.ru/spells/fleet step\">легконогость</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1450\" href=\"https://pf2.ru/spells/blazing bolt\">всполох пламени</a>.<br>\n3 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1530\" href=\"https://pf2.ru/spells/fireball\">огненный шар</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1534\" href=\"https://pf2.ru/spells/fly\">полёт</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1510\" href=\"https://pf2.ru/spells/elemental form\">форма элементаля</a>.<br>\n6 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1749\" href=\"https://pf2.ru/spells/wall of force\">силовая стена</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1527\" href=\"https://pf2.ru/spells/fiery body\">огненное тело</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1608\" href=\"https://pf2.ru/spells/monstrosity form\">чудовищная форма</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1572\" href=\"https://pf2.ru/spells/implosion\">схлопывание</a>.\n<h2 class=\"h2-header\">Узунджати</h2>\nУзунджати, пожалуй, самые знаковые магаамбийцы и, безусловно, наиболее известные за пределами Простора Мванги, потому\nчто они — сказители, странствующие по Голариону и собирающие знания, заложенные в устных традициях и фольклоре. Хотя они\nчасто путешествуют так же широко, как и Писцы Дождя, их фокус существенно отличается, ибо их исследования всегда служат\nсбору и сохранению устных знаний сообщества и культуры. В дополнение к магии их собственных историй, они подчёркивают\nмагию, которая защищает и воздействует на разум других.<br>\n<b>Дополнительный учебный план</b>.<br>\nФокусы.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1482\" href=\"https://pf2.ru/spells/daze\">ступор</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1603\" href=\"https://pf2.ru/spells/mindlink\">связь разумов</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1740\" href=\"https://pf2.ru/spells/ventriloquism\">чревовещание</a>.<br>\n2 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2308\" href=\"https://pf2.ru/spells/kgalaserke's axes\">топоры кгаласерке</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2307\" href=\"https://pf2.ru/spells/ibex's harvest\">жатва козерога</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1719\" href=\"https://pf2.ru/spells/telepathy\">телепатия</a>.<br>\n5\nкруг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1601\" href=\"https://pf2.ru/spells/mind probe\">зондирование памяти</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1728\" href=\"https://pf2.ru/spells/truespeech\">истинная речь</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1605\" href=\"https://pf2.ru/spells/mislead\">обманка</a>.<br>\n7 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1652\" href=\"https://pf2.ru/spells/retrocognition\">ретрокогниция</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1556\" href=\"https://pf2.ru/spells/hidden mind\">сокрытие разума</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1629\" href=\"https://pf2.ru/spells/phantasmagoria\">фантасмагория</a>.\n    </div>\n</div>\n    </div>\n    <div class=\"tab-content\" id=\"arcane-thesises\">\n      <h1 class=\"h1-header\">Магическая Диссертация</h1>\n      <p>\n      <div>\n        Вы постоянно занимались исследованиями, стремясь стать могущественным волшебником, и даже написали научную\n        работу о ваших уникальных открытиях. Вы получаете особое преимущество, зависящее от темы этой работы. Список тем\n        приведён ниже, но название вашей диссертации, скорее всего, более развёрнутое и детальное, например <i>«Методы\n          интерполяции заклинаний и становление основополагающей теории о базисных блоках магии»</i>.\n      </div>\n      </p>\n      <div class=\"content-table\">\n    <div class=\"content-item \">\n        <a class=\"content-header\" href=\"#wizardarcanethesis-spell-substitution\">\n            Замена заклинаний\n        </a>\n    </div>\n    <div class=\"content-item \">\n        <a class=\"content-header\" href=\"#wizardarcanethesis-experimental-spellshaping\">\n            Метамагические эксперименты\n        </a>\n    </div>\n    <div class=\"content-item \">\n        <a class=\"content-header\" href=\"#wizardarcanethesis-staff-nexus\">\n            Посох-проводник\n        </a>\n    </div>\n    <div class=\"content-item \">\n        <a class=\"content-header\" href=\"#wizardarcanethesis-spell-blending\">\n            Слияние заклинаний\n        </a>\n    </div>\n    <div class=\"content-item \">\n        <a class=\"content-header\" href=\"#wizardarcanethesis-improved-familiar-attunement\">\n            Улучшенная связь с фамильяром\n        </a>",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=24",
+  "source": "Rival Academies",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-shadow-veils": {
+  "name": "School of Shadow Veils",
+  "short": "School of Shadow Veils",
+  "html": "<p>You’ve received brutal instruction in shadow and illusion magic from the shadowcallers of the Duskhall.</p><p><b>Curriculum</b></p><ul><li>Cantrips:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1528\">Figment</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1539\">Frostbite</a></p><ul><li>1st:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1491\">Disguise Magic</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2948\">Gloom Mantle</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1569\">Illusory Object</a></p><ul><li>2nd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1480\">Darkness</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1567\">Illusory Creature</a></p><ul><li>3rd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2812\">Shadow Projectile</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2025\">Shared Invisibility</a></p><ul><li>4th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1587\">Liminal Doorway</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1604\">Mirage</a></p><ul><li>5th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1666\">Shadow Blast</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1676\">Slither</a></p><ul><li>6th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1605\">Mislead</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1630\">Phantasmal Calamity</a></p><ul><li>7th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1595\">Mask of Terror</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2949\">Shadow Form</a></p><ul><li>8th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1490\">Disappearance</a></p><ul><li>9th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1629\">Phantasmagoria</a></p><p><b>School Spells</b></p><ul><li>Initial: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2950\">The Night Is Mine</a></li><li>Advanced: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2951\">Tenebrous Freedom</a></li></ul>",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=36",
+  "source": "Cheliax, Infernal Inheritance",
+  "note": "В переводе Дока и Юры есть только название — описание из оригинала Archives of Nethys."
+ },
+ "school-thassilonian-rune-magic": {
+  "name": "Рунный лорд",
+  "short": "Рунный лорд",
+  "html": "Этот учебный план, преподаваемый в нескольких избранных академиях\nНового Тассилона, может быть изучен только волшебниками с классовым архетипом <a class=\"item-link quicklink item-link--archetype\" data-key=\"archetype/303\" href=\"https://pf2.ru/archetypes/runelord\">рунный властитель</a>. Вы\nначали изучать одну из семи рун греха, дарующую вам великую силу, но ценой запрета магии другого греха. Все\nрунные властители получают указанный ниже учебный план и школьные заклинания. Кроме того, вы должны выбрать один из семи\nгрехов для специализации. Вы добавляете заклинания вашего греха и начальные школьные заклинания в свой учебный план.\nВызывающая привыкание природа магии греха не позволяет вам использовать магию, связанную с другими грехами, что\nпредставлено табу этого греха. Сотворение заклинания греха никогда не вызывает табу его школы греха.<br>\nВ отличие от\nдругих волшебников, некоторые заклинания вашего учебного плана могут быть заклинаниями, которые обычно не встречаются в\nмистическом списке заклинаний (отмечены звёздочкой). Вы всё равно сотворяете эти заклинания как мистические, так как\nобъединяющее знание греха преодолевает разрыв между разрозненными магиями.<br>\n<b>Заклинания учебного\n    плана</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1485\" href=\"https://pf2.ru/spells/detect magic\">обнаружение магии</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1673\" href=\"https://pf2.ru/spells/sigil\">метка</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1611\" href=\"https://pf2.ru/spells/mystic armor\">магический доспех</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1657\" href=\"https://pf2.ru/spells/runic body\">рунное тело</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1658\" href=\"https://pf2.ru/spells/runic weapon\">рунное оружие</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1709\" href=\"https://pf2.ru/spells/sure strike\">верный удар</a>.<br>\n2 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1481\" href=\"https://pf2.ru/spells/darkvision\">ночное зрение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1663\" href=\"https://pf2.ru/spells/see the unseen\">видение невидимого</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1465\" href=\"https://pf2.ru/spells/clairaudience\">яснослышание</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1739\" href=\"https://pf2.ru/spells/veil of privacy\">покров необнаружимости</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1466\" href=\"https://pf2.ru/spells/clairvoyance\">ясновидение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1534\" href=\"https://pf2.ru/spells/fly\">полёт</a>.<br>\n5 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1601\" href=\"https://pf2.ru/spells/mind probe\">зондирование памяти</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1665\" href=\"https://pf2.ru/spells/sending\">послание</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1662\" href=\"https://pf2.ru/spells/scrying\">тайновидение</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1727\" href=\"https://pf2.ru/spells/truesight\">истинное зрение</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1472\" href=\"https://pf2.ru/spells/contingency\">заготовка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2027\" href=\"https://pf2.ru/spells/spell riposte\">отражение заклинаний</a>.<br>\n8\nкруг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1556\" href=\"https://pf2.ru/spells/hidden mind\">сокрытие разума</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1734\" href=\"https://pf2.ru/spells/unrelenting observation\">неусыпное наблюдение</a>.<br>\n9 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1537\" href=\"https://pf2.ru/spells/foresight\">предвидение</a>.<br>\n<b>Заклинания школы</b>.<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2325\" href=\"https://pf2.ru/spells/personal runewell\">личный рунный источник</a>.\n<h1 class=\"h1-header\">Отыгрыш грехов</h1>\nПотворство греху — это тема, в которой у игроков может быть разный уровень комфорта. Обычно существует множество\nспособов потворствовать греху вашего персонажа, и некоторые версии (такие как медитация на грех и позволение ему\nзаполнить ваше сердце или создание искусства, тематически восхваляющего его) могут быть изображены менее явно. Как и в\nслучае с любыми другими действиями в игре, придерживайтесь <a class=\"item-link quicklink link--popup item-link--rules\" data-key=\"rules/2265\" href=\"https://pf2.ru/rules/the pathfinder baseline?rule=2265\">содержания Pathfinder по умолчанию</a> или любых\nдругих правил, которые вы заранее обсудили со своей группой.\n<h1 class=\"h1-header\">Учебные планы грехов</h1>\n<h2 class=\"h2-header\">Зависть</h2>\nРежущий глаз раскрывает слабости в вас и других, создавая эти слабости, когда вам нужно унизить тех, кто осмеливается\nпревзойти вас.<br>\n<b>Табу:</b> использовать вашу магию для причинения вреда стихиями или пустотой.<br>\n<b>Заклинания\n    греха</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1671\" href=\"https://pf2.ru/spells/shield\">щит</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1713\" href=\"https://pf2.ru/spells/tangle vine\">опутывающая лиана</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2022\" href=\"https://pf2.ru/spells/schadenfreude\">злорадство</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1513\" href=\"https://pf2.ru/spells/enfeeble\">слабость</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1493\" href=\"https://pf2.ru/spells/dispel magic\">рассеивание магии</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1691\" href=\"https://pf2.ru/spells/stupefy\">ошеломление</a>.<br>\n3 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1506\" href=\"https://pf2.ru/spells/earthbind\">приземление</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2330\" href=\"https://pf2.ru/spells/thief of fortune\">вор удачи</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1981\" href=\"https://pf2.ru/spells/containment\">заточение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1620\" href=\"https://pf2.ru/spells/outcast's curse\">проклятие изгоя</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1448\" href=\"https://pf2.ru/spells/banishment\">изгнание</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1998\" href=\"https://pf2.ru/spells/grisly growths\">жуткое разрастание</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1479\" href=\"https://pf2.ru/spells/cursed metamorphosis\">проклятие полиморфа</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1683\" href=\"https://pf2.ru/spells/spellwrack\">деформация заклинаний</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1505\" href=\"https://pf2.ru/spells/duplicate foe\">двойник врага</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1635\" href=\"https://pf2.ru/spells/planar seal\">планарная преграда</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1644\" href=\"https://pf2.ru/spells/quandary\">головоломка</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1488\" href=\"https://pf2.ru/spells/detonate magic\">взрыв магии</a>.<br>\n<b>Начальное школьное\n    заклинание:</b> <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2320\" href=\"https://pf2.ru/spells/cutting eye\">режущий глаз</a>.\n<h2 class=\"h2-header\">Чревоугодие</h2>\nВсепоглощающий голод взывает к глубокой пустоте в своих пользователях, побуждая их поглощать и поглощать, и ничто, и\nникогда не\nутолит их голод.<br>\n<b>Табу:</b> использовать вашу магию для защиты других или манипулирования\nразумом.<br>\n<b>Заклинания греха</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1461\" href=\"https://pf2.ru/spells/caustic blast\">всплеск кислоты</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1745\" href=\"https://pf2.ru/spells/void warp\">пустотное искажение</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1548\" href=\"https://pf2.ru/spells/grim tendrils\">тёмные нити</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1706\" href=\"https://pf2.ru/spells/summon undead\">призыв нежити</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1475\" href=\"https://pf2.ru/spells/create food\">создание еды</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1996\" href=\"https://pf2.ru/spells/ghoulish cravings\">голод упыря</a>*.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2019\" href=\"https://pf2.ru/spells/rouse skeletons\">подъятие скелетов</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1736\" href=\"https://pf2.ru/spells/vampiric feast\">касание вампира</a>.<br>\n4\nкруг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2024\" href=\"https://pf2.ru/spells/seal fate\">приговор судьбы</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2039\" href=\"https://pf2.ru/spells/vampiric maiden\">вампирическая дева</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1982\" href=\"https://pf2.ru/spells/corrosive muck\">коррозийная слизь</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1676\" href=\"https://pf2.ru/spells/slither\">ползучие гады</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1492\" href=\"https://pf2.ru/spells/disintegrate\">дезинтеграция</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1735\" href=\"https://pf2.ru/spells/vampiric exsanguination\">вампирическое обескровливание</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2327\" href=\"https://pf2.ru/spells/devouring void\">пожирающая пустота</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1508\" href=\"https://pf2.ru/spells/eclipse burst\">взрыв затмения</a>.<br>\n8 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1484\" href=\"https://pf2.ru/spells/desiccate\">жуткое иссушение</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1596\" href=\"https://pf2.ru/spells/massacre\">расправа</a>.<br>\n<b>Начальное школьное заклинание:</b> <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2318\" href=\"https://pf2.ru/spells/all-encompassing hunger\">всепоглощающий голод</a>.\n<h2 class=\"h2-header\">Алчность</h2>\nДрагоценный отблеск несёт знание о том, что проблемы мира далеко за пределами нынешней формы и ресурсов человека. Но\nформы могут меняться, а ресурсы можно накапливать с помощью магии этой руны.<br>\n<b>Табу:</b> использовать вашу магию\nдля воздействия на разум или восприятие, а не на физическую реальность.<br>\n<b>Заклинания греха</b>.<br>\nФокусы.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2008\" href=\"https://pf2.ru/spells/live wire\">живой провод</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1646\" href=\"https://pf2.ru/spells/read aura\">чтение ауры</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1442\" href=\"https://pf2.ru/spells/ant haul\">муравьиная грузоподъёмность</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2005\" href=\"https://pf2.ru/spells/leaden steps\">свинцовые шаги</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1514\" href=\"https://pf2.ru/spells/enlarge\">увеличение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2013\" href=\"https://pf2.ru/spells/phantasmal treasure\">фантомное сокровище</a>.<br>\n3 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1619\" href=\"https://pf2.ru/spells/one with stone\">слияние с камнем</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2026\" href=\"https://pf2.ru/spells/shrink item\">уменьшение предмета</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1437\" href=\"https://pf2.ru/spells/aerial form\">крылатая форма</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1667\" href=\"https://pf2.ru/spells/shape stone\">преображение камня</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1510\" href=\"https://pf2.ru/spells/elemental form\">форма элементаля</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1571\" href=\"https://pf2.ru/spells/impaling spike\">пронзающий шип</a>.<br>\n6\nкруг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1502\" href=\"https://pf2.ru/spells/dragon form\">форма дракона</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1628\" href=\"https://pf2.ru/spells/petrify\">окаменение</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2326\" href=\"https://pf2.ru/spells/chrysopoetic curse\">златотворное проклятие</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2006\" href=\"https://pf2.ru/spells/lifewood cage\">древесная клетка</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1608\" href=\"https://pf2.ru/spells/monstrosity form\">чудовищная форма</a>.<br>\n9 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1599\" href=\"https://pf2.ru/spells/metamorphosis\">метаморфоза</a>.<br>\n<b>Начальное школьное заклинание:</b> <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2322\" href=\"https://pf2.ru/spells/precious gleam\">драгоценный отблеск</a>.\n<h2 class=\"h2-header\">Похоть</h2>\nСердечный крюк топит рациональность в желаниях, искажая мысли своих целей, пока они с готовностью не начнут служить\nжеланиям рунного властителя.<br>\n<b>Табу:</b> использовать вашу магию для изменения физической формы или взывать к\nпустоте.<br>\n<b>Заклинания греха</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1482\" href=\"https://pf2.ru/spells/daze\">ступор</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1598\" href=\"https://pf2.ru/spells/message\">сообщение</a>.<br>\n1 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1463\" href=\"https://pf2.ru/spells/charm\">приворот</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1470\" href=\"https://pf2.ru/spells/command\">приказ</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1974\" href=\"https://pf2.ru/spells/charitable urge\">неслыханная щедрость</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1691\" href=\"https://pf2.ru/spells/stupefy\">ошеломление</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1503\" href=\"https://pf2.ru/spells/dream message\">сообщение во сне</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1516\" href=\"https://pf2.ru/spells/enthrall\">захватывающая речь</a>.<br>\n4 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1471\" href=\"https://pf2.ru/spells/confusion\">замешательство</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1693\" href=\"https://pf2.ru/spells/suggestion\">внушение</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1601\" href=\"https://pf2.ru/spells/mind probe\">зондирование памяти</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1692\" href=\"https://pf2.ru/spells/subconscious suggestion\">подсознательное внушение</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1501\" href=\"https://pf2.ru/spells/dominate\">подчинение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1614\" href=\"https://pf2.ru/spells/never mind\">слабоумие</a>.<br>\n7 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2329\" href=\"https://pf2.ru/spells/love's sacrifice\">жертва любви</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1754\" href=\"https://pf2.ru/spells/warp mind\">искажение разума</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1730\" href=\"https://pf2.ru/spells/uncontrollable dance\">безудержная пляска</a>.<br>\n9 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2036\" href=\"https://pf2.ru/spells/telepathic demand\">телепатическое требование</a>.<br>\n<b>Начальное школьное заклинание:</b> <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2321\" href=\"https://pf2.ru/spells/heart's hook\">сердечный крюк</a>.\n<h2 class=\"h2-header\">Гордыня</h2>\nСерповидный скипетр бесконечно убеждён в собственном превосходстве и возвышении своих пользователей. Если чьи-то глаза\nпоказывают что-то иное, очевидно, их глаза ошибаются.<br>\n<b>Табу:</b> использовать вашу магию для изменения или\nсоздания физических вещей, а не их видимости.<br>\n<b>Заклинания греха</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1971\" href=\"https://pf2.ru/spells/bullhorn\">рупор</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1528\" href=\"https://pf2.ru/spells/figment\">вымысел</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1500\" href=\"https://pf2.ru/spells/dizzying colors\">цветные брызги</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1568\" href=\"https://pf2.ru/spells/illusory disguise\">иллюзорный облик</a>.<br>\n2 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1567\" href=\"https://pf2.ru/spells/illusory creature\">иллюзорное существо</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1577\" href=\"https://pf2.ru/spells/invisibility\">невидимость</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1453\" href=\"https://pf2.ru/spells/blindness\">слепота</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1584\" href=\"https://pf2.ru/spells/levitate\">левитация</a>.<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1604\" href=\"https://pf2.ru/spells/mirage\">мираж</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1742\" href=\"https://pf2.ru/spells/vision of death\">видение смерти</a>.<br>\n5 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1977\" href=\"https://pf2.ru/spells/cloak of colors\">цветной покров</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1570\" href=\"https://pf2.ru/spells/illusory scene\">иллюзорная сцена</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1630\" href=\"https://pf2.ru/spells/phantasmal calamity\">катастрофический фантазм</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1741\" href=\"https://pf2.ru/spells/vibrant pattern\">пульсирующий узор</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1595\" href=\"https://pf2.ru/spells/mask of terror\">маска ужаса</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1640\" href=\"https://pf2.ru/spells/project image\">проекция образа</a>.<br>\n8 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1980\" href=\"https://pf2.ru/spells/confusing colors\">ошеломляющие цвета</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1621\" href=\"https://pf2.ru/spells/overwhelming presence\">ошеломительное присутствие</a>*.<br>\n<b>Начальное школьное\n    заклинание:</b> <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2319\" href=\"https://pf2.ru/spells/crescent scepter\">серповидный скипетр</a>.\n<h2 class=\"h2-header\">Лень</h2>\nБезмятежный перенос распространяет чувство умиротворяющего покоя на своих пользователей, чувство отдыха после тяжёлого\nрабочего дня без предшествующей ему рутины. С помощью этой магии рунные властители могут отсечь даже малейшую\nрутину.<br>\n<b>Табу:</b> использовать вашу магию для манипулирования внешностью или прямого причинения вреда\nстихиями.<br>\n<b>Заклинания греха</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1715\" href=\"https://pf2.ru/spells/telekinetic hand\">телекинетическая рука</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1718\" href=\"https://pf2.ru/spells/telekinetic projectile\">телекинетический снаряд</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1675\" href=\"https://pf2.ru/spells/sleep\">сон</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1513\" href=\"https://pf2.ru/spells/enfeeble\">слабость</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1543\" href=\"https://pf2.ru/spells/ghostly carrier\">призрачная фигура</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1698\" href=\"https://pf2.ru/spells/summon elemental\">призыв элементаля</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1474\" href=\"https://pf2.ru/spells/cozy cabin\">уютная хижина</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1677\" href=\"https://pf2.ru/spells/slow\">замедление</a>.<br>\n4 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1990\" href=\"https://pf2.ru/spells/dull ambition\">прилив апатии</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1724\" href=\"https://pf2.ru/spells/translocate\">транслокация</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1697\" href=\"https://pf2.ru/spells/summon dragon\">призыв дракона</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1716\" href=\"https://pf2.ru/spells/telekinetic haul\">телекинетическая ноша</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1978\" href=\"https://pf2.ru/spells/collective transposition\">коллективная перестановка</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1720\" href=\"https://pf2.ru/spells/teleport\">телепортация</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2328\" href=\"https://pf2.ru/spells/indolent haze\">ленивая дымка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1634\" href=\"https://pf2.ru/spells/planar palace\">планарный дворец</a>.<br>\n8 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1644\" href=\"https://pf2.ru/spells/quandary\">головоломка</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2018\" href=\"https://pf2.ru/spells/resplendent mansion\">роскошный особняк</a>.<br>\n<b>Начальное школьное заклинание:</b> <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2323\" href=\"https://pf2.ru/spells/reclined apport\">безмятежный перенос</a>.\n<h2 class=\"h2-header\">Гнев</h2>\nМстительный взгляд наполняет своих пользователей ревностной яростью и неугомонной потребностью решать проблемы, что\nобычно принимает форму выбора самого прямого решения.<br>\n<b>Табу:</b> использовать вашу магию для защиты или\nсозидания.<br>\n<b>Заклинания греха</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1539\" href=\"https://pf2.ru/spells/frostbite\">обморожение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1565\" href=\"https://pf2.ru/spells/ignition\">поджигание</a>.<br>\n1 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1536\" href=\"https://pf2.ru/spells/force barrage\">силовой залп</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1721\" href=\"https://pf2.ru/spells/thunderstrike\">раскат грома</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1970\" href=\"https://pf2.ru/spells/blistering invective\">обжигающее сквернословие</a>*,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1533\" href=\"https://pf2.ru/spells/floating flame\">парящее пламя</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1530\" href=\"https://pf2.ru/spells/fireball\">огненный шар</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1586\" href=\"https://pf2.ru/spells/lightning bolt\">удар молнии</a>.<br>\n4 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2001\" href=\"https://pf2.ru/spells/ice storm\">ледяная буря</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1748\" href=\"https://pf2.ru/spells/wall of fire\">огненная стена</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1559\" href=\"https://pf2.ru/spells/howling blizzard\">воющая вьюга</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1750\" href=\"https://pf2.ru/spells/wall of ice\">стена льда</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1968\" href=\"https://pf2.ru/spells/blinding fury\">слепящая ярость</a>*, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1492\" href=\"https://pf2.ru/spells/disintegrate\">дезинтеграция</a>.<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1508\" href=\"https://pf2.ru/spells/eclipse burst\">взрыв затмения</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1527\" href=\"https://pf2.ru/spells/fiery body\">огненное тело</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1507\" href=\"https://pf2.ru/spells/earthquake\">землетрясение</a>.<br>\n9 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1521\" href=\"https://pf2.ru/spells/falling stars\">метеориты</a>.<br>\n<b>Начальное школьное заклинание:</b> <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2324\" href=\"https://pf2.ru/spells/vengeful glare\">мстительный взгляд</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=25",
+  "source": "Rival Academies",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-boundary": {
+  "name": "Школа пределов",
+  "short": "Пределов",
+  "html": "Зачем использовать магию ради изменения чего-то столь обыденного, как мир смертных? Вы могли обучаться в Коллегии Планарных Изысканий в Катапеше или в подпольной школе в призрачном Усталаве — и теперь ваша магия проникает сквозь грань Вселенной, позволяя вам призывать духов и теней, манипулировать измерениями и планами, а также попадать в места, не предназначенные для смертных.\n<br>\n<b>Заклинания Учебного Плана</b>.<br>\nФокусы: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1715\" href=\"https://pf2.ru/spells/telekinetic hand\">телекинетическая рука</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1745\" href=\"https://pf2.ru/spells/void warp\">пустотное искажение</a>.\n<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1548\" href=\"https://pf2.ru/spells/grim tendrils\">тёмные нити</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1631\" href=\"https://pf2.ru/spells/phantasmal minion\">фантомный слуга</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1706\" href=\"https://pf2.ru/spells/summon undead\">призыв нежити</a>.\n<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1480\" href=\"https://pf2.ru/spells/darkness\">тьма</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1663\" href=\"https://pf2.ru/spells/see the unseen\">видение невидимого</a>.\n<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1449\" href=\"https://pf2.ru/spells/bind undead\">управление нежитью</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1544\" href=\"https://pf2.ru/spells/ghostly weapon\">призрачное оружие</a>.\n<br>\n4 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1532\" href=\"https://pf2.ru/spells/flicker\">мерцание</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1724\" href=\"https://pf2.ru/spells/translocate\">транслокация</a>.\n<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1448\" href=\"https://pf2.ru/spells/banishment\">изгнание</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1578\" href=\"https://pf2.ru/spells/invoke spirits\">воззвание к духам</a>.\n<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1720\" href=\"https://pf2.ru/spells/teleport\">телепортация</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1735\" href=\"https://pf2.ru/spells/vampiric exsanguination\">вампирическое обескровливание</a>.\n<br>\n7 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1508\" href=\"https://pf2.ru/spells/eclipse burst\">взрыв затмения</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1576\" href=\"https://pf2.ru/spells/interplanar teleport\">межпланарная телепортация</a>.\n<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1644\" href=\"https://pf2.ru/spells/quandary\">головоломка</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1734\" href=\"https://pf2.ru/spells/unrelenting observation\">неусыпное наблюдение</a>.\n<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1596\" href=\"https://pf2.ru/spells/massacre\">расправа</a>.\n<br>\n<b>Заклинания Школы</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1898\" href=\"https://pf2.ru/spells/fortify summoning\">усиленный призыв</a>.\n<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1899\" href=\"https://pf2.ru/spells/spiral of horrors\">вихрь ужаса</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=17",
+  "source": "Player Core",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-reclamation": {
+  "name": "Школа восстановления",
+  "short": "Восстановления",
+  "html": "Будь то утерянное в войне, оставленное во время бедствия или\nпросто погребённое веками, в скрытых уголках мира можно найти столько же важных знаний, сколько в школах и библиотеках\nакадемии. Ваше изучение магии на службе восстановления утраченных знаний для Возрождения Саркориса научило вас, что\nмногое из когда-то утерянного всё ещё может быть найдено, но только если кто-то готов искать это и возвращать. Вы\nсосредоточили свою магию на достижении скрытых и забытых мест мира, будь то далёкие руины или глубины утерянных\nвоспоминаний, и возвращении их знаний на поверхность — любой ценой.<br>\n<b>Заклинания учебного плана</b>.<br>\nФокусы.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1715\" href=\"https://pf2.ru/spells/telekinetic hand\">телекинетическая рука</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1718\" href=\"https://pf2.ru/spells/telekinetic projectile\">телекинетический снаряд</a>.<br>\n1 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1531\" href=\"https://pf2.ru/spells/fleet step\">легконогость</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1550\" href=\"https://pf2.ru/spells/gust of wind\">порыв ветра</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1597\" href=\"https://pf2.ru/spells/mending\">починка</a>.<br>\n2 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1581\" href=\"https://pf2.ru/spells/knock\">стук</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2295\" href=\"https://pf2.ru/spells/mental map\">ментальная карта</a>.<br>\n3 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1588\" href=\"https://pf2.ru/spells/locate\">указатель</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2296\" href=\"https://pf2.ru/spells/overwhelming memory\">всепоглощающее воспоминание</a>.<br>\n4 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1667\" href=\"https://pf2.ru/spells/shape stone\">преображение камня</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2294\" href=\"https://pf2.ru/spells/bridge of vines\">мост из лоз</a>.<br>\n5 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1601\" href=\"https://pf2.ru/spells/mind probe\">зондирование памяти</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1661\" href=\"https://pf2.ru/spells/scouting eye\">глаз-разведчик</a>.<br>\n6 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1727\" href=\"https://pf2.ru/spells/truesight\">истинное зрение</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1749\" href=\"https://pf2.ru/spells/wall of force\">силовая стена</a>.<br>\n7 круг.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1652\" href=\"https://pf2.ru/spells/retrocognition\">ретрокогниция</a>, <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2297\" href=\"https://pf2.ru/spells/restore ground\">восстановление земли</a>.<br>\n8 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1633\" href=\"https://pf2.ru/spells/pinpoint\">выявление местоположения</a>,\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1734\" href=\"https://pf2.ru/spells/unrelenting observation\">неусыпное наблюдение</a>.<br>\n9 круг: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1599\" href=\"https://pf2.ru/spells/metamorphosis\">метаморфоза</a>.<br>\n<b>Заклинания школы</b>.<br>\nНачальное.\n<a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2292\" href=\"https://pf2.ru/spells/grasping vine\">хватающая лоза</a>.<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/2293\" href=\"https://pf2.ru/spells/unsettling knowledge\">тревожащее знание</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=26",
+  "source": "Rival Academies",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "school-unified-magical-theory": {
+  "name": "Учение единой магической теории",
+  "short": "Учение единой магической теории",
+  "html": "Вам претит идея о том, что магию можно удобно распределить  по отдельным школам, и вы изучаете её самостоятельно, стремясь  получить лучшее от различных школ. Таким образом, вам  открываются истины на пересечении знаний разных школ, и вы  всё ближе к истинному пониманию мистической магии. Быть  может, однажды вам удастся выстроить безукоризненную единую  теорию магии (назовут ли её в вашу честь?), но до тех пор  вы продолжаете свои изыскания.<br>\n<b>Нет учебного плана:</b> так как у вас нет устоявшегося учебного плана, вы  не получаете заклинания учебного плана и преимуществ от способностей,  которые действуют на них. Вместо этого вы получаете дополнительную  классовую черту волшебника 1 уровня и добавляете  одно заклинание 1 круга по вашему выбору в книгу заклинаний —  таким образом отображается широта вашего образования.<br>\nВаши исследования природы магии позволяют вам применять  её эффективнее: вы можете использовать Опустошение  предмета силы по одному разу в день для каждого круга, на котором  у вас есть ячейки заклинаний волшебника (а не один раз  в день, как обычно), чтобы повторно сотворить заклинание этого  круга.\n <br>\n<b>Заклинания Школы</b>.<br>\nНачальное: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1906\" href=\"https://pf2.ru/spells/hand of the apprentice\">рука-помощник</a>.\n<br>\nПродвинутое: <a class=\"item-link quicklink link--popup item-link--spell\" data-key=\"spell/1907\" href=\"https://pf2.ru/spells/interdisciplinary incantation\">междисциплинарное волшебство</a>.",
+  "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=21",
+  "source": "Player Core",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "group-thesis": {
+  "name": "Диссертация",
+  "html": "<p>During your studies to become a full-fledged wizard, you produced a thesis of unique magical research. You gain a special benefit depending on the topic of your thesis research. The arcane thesis topics presented in this book are below; your specific thesis probably has a much longer and more technical title like “_On the Methods of Spell Interpolation and the Genesis of a New Understanding of the Building Blocks of Magic_.”</p>",
+  "hint": "Выберите одну диссертацию.",
+  "note": "Описание есть только в оригинале Archives of Nethys."
+ },
+ "thesis-experimental-spellshaping": {
+  "name": "Экспериментальные формы заклинаний",
+  "html": "В вашей диссертации написано, что метамагические практики  можно сделать эффективнее, меняя параметры во время сотворения,  как поступали волшебники древности, которым приходилось  разрабатывать собственные чары и заклинания. Подобное  открытие позволяет вам более эффективно использовать  метамагические эффекты.<br>\nВы получаете черту волшебника 1 уровня с дескриптором  <a class=\"item-link quicklink link--popup item-link--trait\" data-key=\"trait/513\" href=\"https://pf2.ru/traits/spellshape\">«метамагия»</a> на ваш выбор. Начиная с 4 уровня вы во время  ежедневной подготовки можете получить любую черту волшебника  с дескриптором «метамагия», если требуемый для  неё уровень не превышает половины вашего уровня. Полученную  черту вы можете использовать до следующей вашей ежедневной  подготовки.",
+  "url": "https://2e.aonprd.com/ArcaneThesis.aspx?ID=6",
+  "source": "Player Core",
+  "short": "Экспериментальные формы заклинаний",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "thesis-improved-familiar-attunement": {
+  "name": "Улучшенная связь с фамильяром",
+  "html": "Вы всегда считали, что более точная настройка магических  связей между волшебником и фамильяром позволит сделать  их крепче по сравнению с безопасными, но безыскусными узами,  использующимися большинством волшебников. Следуя своей  теории, вы установили со своим фамильяром более прочную  связь и получаете больше преимуществ. Вы получаете черту волшебника  <a class=\"item-link quicklink link--popup item-link--feat\" data-key=\"feat/5024\" href=\"https://pf2.ru/feats/familiar\">Фамильяр</a>. Ваш фамильяр получает дополнительную  способность, а также ещё по одной дополнительной способности  по достижении вами 6, 12 и 18 уровней.<br>\nВаша связь с фамильяром изменяет действие классовой особенности  мистическая связь: вы помещаете магическую силу  в фамильяра, а не в предмет и заменяете свободное действие  Опустошение предмета силы новым — Опустошением фамильяра.  Новое действие полностью аналогично, за тем лишь исключением,  что вы берёте магическую силу не из предмета,  а из фамильяра.\n    </div>\n</div>\n    </div>\n    <div class=\"tab-content\" id=\"pregens\">\n      <h1 class=\"h1-header\">Прегены</h1>\n      <p>\n        Готовые бланки культовых персонажей 1, 3 и 5 уровней (переведены российским отделением Pathfinder Society при\n        поддержке Hobby World).\n      </p>\n      <div class=\"file-container\">\n        <div class=\"file-container--item\">\n          <a class=\"download-link\" href=\"https://pf2.ru/media/pregens/Эзрен/Эзрен-1++.pdf\"\n            download>1 уровень</a>\n        </div>\n        <div class=\"file-container--item\">\n          <a class=\"download-link\" href=\"https://pf2.ru/media/pregens/Эзрен/Эзрен-3++.pdf\"\n            download>3 уровень</a>\n        </div>\n        <div class=\"file-container--item\">\n          <a class=\"download-link\" href=\"https://pf2.ru/media/pregens/Эзрен/Эзрен-5++.pdf\"\n            download>5 уровень</a>\n        </div>\n      </div>\n    </div>\n  </div>\n                        </div>\n                    </div>\n                    <footer class=\"footer\">\n                        <!--                    <div class=\"link footer__link\">-->\n                        <!--                        <a class=\"footer__textlink textlink\" href=\"\">About</a> -->\n                        <!--                    </div>-->\n                        <!--                    <div class=\"link footer__link\">-->\n                        <!--                        <a class=\"footer__textlink textlink\" href=\"\">Feedback</a> -->\n                        <!--                    </div>-->\n                        <div class=\"footer__telegram\">\n                            <a class=\"footer__textlink textlink\" href=\"https://t.me/pf2ru\"><img\n                                    src=\"https://pf2.ru/static/icons/telegram.webp\" alt=\"Telegram\"> </a>\n                        </div>\n                        <div class=\"footer__telegram\">\n                            <a class=\"footer__textlink textlink\" href=\"https://pay.cloudtips.ru/p/eb046b55\"><img\n                                    src=\"https://pf2.ru/static/icons/cloudtips.png\"\n                                    alt=\"Cloud Tips\"> </a>\n                        </div>\n                        <div class=\"footer__telegram\">\n                            <a class=\"footer__textlink textlink\" href=\"https://boosty.to/pf2.ru\"><img\n                                    src=\"https://pf2.ru/static/icons/boosty.png\"\n                                    alt=\"Boosty\"> </a>\n                        </div>\n                        <div class=\"link footer__link\">\n                            <a class=\"footer__textlink textlink\" href=\"https://pf2.ru/cooperation\">Сотрудничество</a>\n                            <a class=\"footer__textlink textlink\" href=\"https://pf2.ru/partnership\">Партнёрство</a>\n                            <a class=\"footer__textlink textlink\" href=\"https://pf2.ru/about\">О Проекте</a>\n                            <a class=\"footer__textlink textlink\" href=\"https://pf2.ru/feedback\">Обратная связь</a>\n                            <a class=\"footer__textlink textlink\" href=\"https://pf2.ru/update-history\">История изменений</a>\n                            <a class=\"footer__textlink textlink\" href=\"https://pf2.ru/licenses\">Лицензии</a>\n                        </div>\n                    </footer>\n                </div>",
+  "url": "https://2e.aonprd.com/ArcaneThesis.aspx?ID=7",
+  "source": "Player Core",
+  "short": "Улучшенная связь с фамильяром",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "thesis-spell-blending": {
+  "name": "Смешивание заклинаний",
+  "html": "Согласно вашей теории, ячейки заклинаний служат своеобразным  резервуаром для питающей все заклинания магической  энергии, и вам удалось найти способ объединять их друг с другом,  чтобы питать более могущественные заклинания.<br>\nВо время вашей ежедневной подготовки вы можете обменять  две ячейки заклинаний одного круга на дополнительную ячейку  более высокого круга. Её круг может превышать круг обменянных  ячеек не более чем на 2. Вы можете обменять любое число  доступных ячеек, но для каждого круга так можно получить  не более 1 дополнительной ячейки. Круг дополнительных ячеек  должен быть вам доступен для сотворения. Кроме того, вы  можете обменять любую ячейку на два дополнительных фокуса,  но так можно обменять не более одной ячейки.",
+  "url": "https://2e.aonprd.com/ArcaneThesis.aspx?ID=8",
+  "source": "Player Core",
+  "short": "Смешивание заклинаний",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "thesis-spell-substitution": {
+  "name": "Подмена заклинаний",
+  "html": "Вас не устраивает, что подготовленные заклинания можно поменять  только во время следующей ежедневной подготовки,  и вы нашли лазейку, позволяющую заменить уже подготовленные  заклинания новыми.<br>\nВы можете потратить 10 минут, чтобы опустошить одну из занятых  ячеек и подготовить в неё другое заклинание из своей  книги заклинаний. Если в процессе замены вас прервут, в ячейке  сохраняется изначально подготовленное заклинание, которое  можно сотворить. Вы можете попытаться повторно заменить  его позднее, но начать процесс придётся заново.",
+  "url": "https://2e.aonprd.com/ArcaneThesis.aspx?ID=9",
+  "source": "Player Core",
+  "short": "Подмена заклинаний",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "thesis-staff-nexus": {
+  "name": "Узы посоха",
+  "html": "В вашей диссертации утверждается, что если заклинатель как  можно раньше начнёт использовать посох, то между ними образуется симбиотическая связь, способная даровать обоим  выдающуюся магию. Вы и сами сформировали такую связь с самодельным  посохом и способны наполнить любой найденный  посох ещё большей силой.<br>\nВы начинаете игру с самодельным посохом, который создали  для себя. Посох получает дескриптор «магический». В нём содержатся  один фокус и одно заклинание 1 круга, оба из вашей  книги заклинаний. Во время вашей ежедневной подготовки вы  можете потратить ячейку заклинания, чтобы добавить посоху заряды  в количестве, равном кругу ячейки. Заряды исчезнут через  24 часа. Для сотворения заклинания из посоха нужно держать  его и активировать занятием Сотворение заклинания, потратив  обычное для заклинания количество действий. Заклинание  1 круга тратит 1 заряд посоха, а фокус не тратит заряды.<br>\nС помощью <a class=\"item-link quicklink link--popup item-link--action\" data-key=\"action/2385\" href=\"https://pf2.ru/actions/craft\">Создания</a> предмета вы можете переделать ваш  самодельный посох в любой другой магический посох за обычную  стоимость нового посоха, а также добавить в новый посох  два заклинания, которые выбрали изначально. Такой посох будет  восстанавливать заряды во время вашей ежедневной подготовки  по обычным правилам (магические посохи описаны в «Основной  книге ведущего»).<br>\nНа 8 уровне при подготовке посоха вы можете потратить две  ячейки заклинания вместо одной, чтобы добавить посоху число  зарядов, равное сумме кругов этих ячеек. На 16 уровне вы можете  потратить до трёх ячеек заклинаний, чтобы добавить посоху  число зарядов, равное сумме кругов этих ячеек.",
+  "url": "https://2e.aonprd.com/ArcaneThesis.aspx?ID=10",
+  "source": "Player Core",
+  "short": "Узы посоха",
+  "note": "В переводе Дока и Юры есть только название — описание из pf2.ru."
+ },
+ "theme-metamagic": {
+  "name": "Формы заклинаний",
+  "html": "Feats with the spellshape trait: they alter the next spell you cast — its range, area, damage or how noticeable it is."
+ },
+ "theme-battle": {
+  "name": "Контрзаклинания и защита",
+  "html": "Counterspelling, protective arrays and the senses and reflexes a wizard relies on in a fight."
+ },
+ "theme-book": {
+  "name": "Книга и слоты",
+  "html": "Your spellbook, cantrips, scrolls and the way you prepare and recover spell slots."
+ },
+ "theme-bond": {
+  "name": "Арканная связь и школа",
+  "html": "Your bonded item, school spells and focus points. Every wizard has an arcane bond from 1st level."
+ },
+ "theme-mind": {
+  "name": "Иллюзии и влияние",
+  "html": "Illusions, words and performances that bend the minds of others."
+ },
+ "theme-necro": {
+  "name": "Нежить",
+  "html": "Uncommon feats for those who create or control undead (Book of the Dead)."
+ },
+ "theme-familiar": {
+  "name": "Фамильяр",
+  "html": "Your familiar and its growth. The Improved Familiar Attunement thesis also grants the Familiar feat."
+ },
+ "feat-4994": {
+  "name": "Контрзаклинание (Подготавливающий)",
+  "html": "<p>Когда враг использует «Сотворение заклинания» и вы можете видеть как оно проявляется, то можете использовать свою магию, чтобы противостоять ему. Вы расходуете подготовленное заклинание, чтобы противостоять существу, колдующему это же заклинание. Вы теряете свой слот заклинания, как если бы сотворили спровоцировавшее заклинание. Потом вы пытаетесь совершить <i>Противодействие</i> спровоцировавшему заклинанию.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Триггер": "Существо <i>Сотворяет</i> подготовленное вами заклинание"
+  },
+  "traits": [
+   {
+    "slug": "witch",
+    "name": "Ведьма"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4994",
+  "source": "Player Core pg. 186"
+ },
+ "feat-5024": {
+  "name": "Фамильяр",
+  "html": "<p><b>Волшебник:</b> Вы заключаете договор с существом, которое служит вам и помогает вашему колдовству.</p><p><b>Магус, Чародей:</b> Животное служит вам и помогает вашему колдовству.</p><p><b>Тауматург:</b> Будь то следуя оккультным ритуалам, собирая воедино обрывки арканной теории или каким-то иным способом, вы вызвали существо, которое теперь служит вам постоянным компаньоном в изучении сверхъестественного.</p><hr><p>Вы получаете фамильяра (см. <i>Фамильяры</i>).</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5024",
+  "source": "Player Core pg. 201"
+ },
+ "feat-4577": {
+  "name": "Досягаемое заклинание",
+  "html": "<p>Вы можете увеличить дистанцию своих заклинаний. Если вашим следующим действием будет <i>Сотворение заклинания</i>, у которого есть дистанция, увеличьте дистанцию заклинания на 30 футов. Как обычно при увеличении дистанций заклинания, если оно имеет дистанцию касания, то вы увеличиваете его дистанцию до 30 футов.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "bard",
+    "name": "Бард"
+   },
+   {
+    "slug": "witch",
+    "name": "Ведьма"
+   },
+   {
+    "slug": "druid",
+    "name": "Друид"
+   },
+   {
+    "slug": "cleric",
+    "name": "Жрец"
+   },
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   },
+   {
+    "slug": "oracle",
+    "name": "Оракул"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4577",
+  "source": "Player Core pg. 101"
+ },
+ "feat-5025": {
+  "name": "Одаренный с книгой заклинаний",
+  "html": "<p>Вы особенно хорошо разбираетесь в том, как пополнять свою книгу заклинаний. Вы получаете способность <i>Магическая скоропись</i> без необходимости выполнять предварительные условия. Кроме того, когда вы получаете критический провал при проверке <i>Выучить заклинание</i>, результат считается провалом.</p>",
+  "prereqText": "обучен Аркане",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5025",
+  "source": "Player Core pg. 201"
+ },
+ "feat-4715": {
+  "name": "Расширенное заклинание",
+  "html": "<p>Вы управляете энергией заклинания, заставляя его воздействовать на область шире обычного. Если вашим следующим действием будет <i>Сотворение заклинания</i>, у которого есть область взрыва, конуса или линии, и оно не имеет продолжительности, то увеличьте область этого заклинания. Добавьте 5 футов к радиусу взрыва, обычно имеющего радиус хотя бы 10 футов (не изменяет взрыв с меньшим радиусом). Добавьте 5 футов к длине конуса или линии, обычно имеющих длину 15 футов или меньше, и добавьте 10 футов к длине бо́льшего конуса или линии.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "witch",
+    "name": "Ведьма"
+   },
+   {
+    "slug": "druid",
+    "name": "Друид"
+   },
+   {
+    "slug": "manipulate",
+    "name": "Манипуляция"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   },
+   {
+    "slug": "oracle",
+    "name": "Оракул"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4715",
+  "source": "Player Core pg. 128"
+ },
+ "feat-4580": {
+  "name": "Расширение чар",
+  "html": "<p><b>Бард, Оракул, Чародей:</b> Обучение расширило ваш арсенал простых заклинаний.</p><p><b>Ведьма:</b> Ваш покровитель понимает вашу нужду в гибкости и выразительности, и даёт вам силу подготавливать большее количество простых заклинаний.</p><p><b>Жрец:</b> Вы изучаете более широкий диапазон простых заклинаний.</p><p><b>Волшебник, Магус:</b> Специализированное обучение позволяет вам подготавливать более широкий диапазон простых заклинаний для любой ситуации.</p><p><b>Экстрасенс:</b> Вы расширяете возможности своего ума.</p><hr><p><b>Подготовленные:</b> Вы можете приготавливать 2 дополнительных чар каждый день.</p><p><b>Спонтанные:</b> Вы добавляете 2 дополнительных чар в свой репертуар заклинаний.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "bard",
+    "name": "Бард"
+   },
+   {
+    "slug": "witch",
+    "name": "Ведьма"
+   },
+   {
+    "slug": "cleric",
+    "name": "Жрец"
+   },
+   {
+    "slug": "oracle",
+    "name": "Оракул"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4580",
+  "source": "Player Core pg. 101"
+ },
+ "feat-4997": {
+  "name": "Скрыть заклинание",
+  "html": "<p><b>Анимист:</b> Вы говорите неслышным голосом духов.</p><p><b>Ведьма:</b> Усилием мысли вы можете упростить заговоры и жесты, необходимые для сотворения заклинания, сделав их едва заметными.</p><p><b>Волшебник:</b> Придавая форму магическим энергиям и изменяя параметры своих заклинаний у себя в голове лишь путем концентрации, вы можете упростить заклинания и жесты, необходимые для произнесения заклинаний, делая их едва заметными.</p><p><b>Некромант:</b> Придавая форму магическим энергиям и изменяя параметры своих заклинаний лишь путём концентрации, вы можете упростить заклинания и жесты, необходимые для сотворения заклинаний, делая их едва заметными.</p><hr><p>Если вашим следующим действием будет <i>Сотворение заклинания</i>, то это заклинание приобретает признак <u>незаметный</u>, скрывающее сияющие руны, искры магии и другие проявления, которые обычно выдают ваше заклинание. Этот признак скрывает только действия и проявления заклинания, но не его эффекты, так что наблюдатель всё равно может заметить исходящий от вас луч или увидеть, как вы растворяетесь в воздухе.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "animist",
+    "name": "Анимист"
+   },
+   {
+    "slug": "witch",
+    "name": "Ведьма"
+   },
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   },
+   {
+    "slug": "necromancer",
+    "name": "Некромант"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4997",
+  "source": "Player Core pg. 187"
+ },
+ "feat-9388": {
+  "name": "Стихийные защиты",
+  "html": "<p>Вы настраиваетесь на силу стихий, получая всплеск защиты при обращении к ней. Если вашим следующим действием будет <i>Сотворение заклинания</i>, обладающего хотя бы одним признаком стихии (<u>вода</u>, <u>воздух</u>, <u>дерево</u>, <u>земля</u>, <u>металл</u> или <u>огонь</u>), вы получаете сопротивление эффектам, имеющим признаки стихий вашего заклинания, равное удвоенному рангу заклинания. Это сопротивление длится до начала вашего следующего хода.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9388",
+  "source": "Impossible Magic pg. 108"
+ },
+ "feat-5026": {
+  "name": "Энергетическая абляция",
+  "html": "<p>Направляя разрушительную энергию на противника, вы можете перераспределить часть её силы в защитный барьер, ограждающий вас от вреда. Если вашим следующим действием будет <i>Сотворение заклинания</i>, наносящего хотя бы один тип энергетического урона (урон жизненностью, звуком, кислотой, огнём, пустотой, силой, холодом или электричеством), вы получаете сопротивление выбранному вами типу энергетического урона, равное рангу заклинания. Это сопротивление длится до конца вашего следующего хода. Вы получаете сопротивление независимо от того, нанесло ваше заклинание урон или нет.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5026",
+  "source": "Player Core pg. 201"
+ },
+ "feat-4717": {
+  "name": "Усиленный фамильяр",
+  "html": "<p><b>Анимист:</b> Вы способны материализовать больше сущности своего гармонизируемого явления, создавая более мощное вместилище, в которое он может вселиться и использовать для помощи вам.</p><p><b>Ведьма, Волшебник, Чародей:</b> Вы наполняете своего фамильяра дополнительной магической энергией.</p><p><b>Друид:</b> Вы наполняете своего фамильяра дополнительной природной энергией, усиливая его возможности.</p><p><b>Магус:</b> Вы наполняете своего фамильяра дополнительной магической энергией.</p><p><b>Тауматург:</b> Применяя лучшие из многочисленных магических обычаев, вы нашли более эффективный способ хранения энергии для вашего фамильяра.</p><hr><p>Каждый день вы можете выбирать суммарно 4 способности фамильяра или хозяина вместо 2.</p>",
+  "prereqText": "фамильяр",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "animist",
+    "name": "Анимист"
+   },
+   {
+    "slug": "witch",
+    "name": "Ведьма"
+   },
+   {
+    "slug": "druid",
+    "name": "Друид"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4717",
+  "source": "Player Core pg. 129"
+ },
+ "feat-5027": {
+  "name": "Несмертельное заклинание",
+  "html": "<p>Вы можете изменять заклинания, чтобы они были менее смертельными. Если вашим следующим действием будет <i>Сотворение заклинания</i>, которое наносит урон и не имеет признаков <u>пустота</u> или <u>смерть</u>, это заклинание получает признак <u>несмертельное</u>.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "manipulate",
+    "name": "Манипуляция"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5027",
+  "source": "Player Core pg. 201"
+ },
+ "feat-5028": {
+  "name": "Околдованные удары",
+  "html": "<p><b>Волшебник:</b> Вы наполняете энергией заклинания одно оружие, которым владеете, или одну свою безоружную атаку — такую, как кулак. До конца вашего хода это оружие или безоружная атака наносит дополнительные 1d6 урона силой и получает признак <u>арканный</u>, если ещё его не имеет. Если заклинание нанесло урон другого типа, «Удар» вместо этого наносит урон этого типа (или один из типов урона на ваш выбор, если заклинание могло нанести урон нескольких типов).</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Частота": "Раз в ход",
+   "Требования": "Вашим последним действием было сотворение заклинания, не являющегося чарами."
+  },
+  "traits": [
+   {
+    "slug": "oracle",
+    "name": "Оракул"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5028",
+  "source": "Player Core pg. 202",
+  "note": "Текст на скриншоте Foundry обрезан — полностью он есть в модуле перевода Foundry."
+ },
+ "feat-5029": {
+  "name": "Призыв инструментов волшебника",
+  "html": "<p>Вы мистически связаны со своими инструментами волшебника, поэтому всегда можете найти их, если потеряли. Вы телепортируете к себе предмет силы или книгу заклинаний. Он оказывается у вас в руке, если у вас есть свободная рука, или у ваших ног, если нет. Предмет должен находиться в радиусе 1 мили и иметь Массу 1 или меньше.</p>",
+  "prereqText": "арканная связь",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "teleportation",
+    "name": "Телепортация"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5029",
+  "source": "Player Core pg. 202"
+ },
+ "feat-9389": {
+  "name": "Обвиняющее заклинание",
+  "html": "<p>Вы можете попытаться обвинить кого-то ещё в вашей попытке изменить разум цели. Если вашим следующим действием будет <i>Сотворение заклинания</i> с признаком <u>ментальный</u>, выберите существо в радиусе 60 футов, которое цель может почувствовать. Цель будет думать, что именно это существо, а не вы, попыталось воздействовать на его разум, если оно преуспеет в своём спасброске. Если цель пытается <i>Понять</i> ваши намерения или обвинённого существа, оно должно сравнить результат с вашим КС заклинания вместо КС Обмана цели. Если очевидно, что обвинённое существо неспособно использовать магию, цель получает бонус обстоятельства +2 к своей проверке Восприятия, чтобы «Понять намерение».</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9389",
+  "source": "Impossible Magic pg. 108"
+ },
+ "feat-3421": {
+  "name": "Irezoko Tattoo",
+  "html": "<p>Your face bears an intricate magical tattoo known as the <i>irezoko</i>, a badge of your understanding of your chosen field of magic and a recognition of your advancement within Absalom's College of Mysteries. Choose a class that you are a member of that grants you access to a focus pool. When you take this feat, it gains the trait that applies to your chosen class. Once per day, you may concentrate upon the pattern of your <i>irezoko</i> to recover 1 Focus Point as a three-action activity.</p>",
+  "prereqText": "Expert in Arcana or Expert in Occultism",
+  "prereqHtml": "Expert in <a href=\"https://2e.aonprd.com/Skills.aspx?ID=2\">Arcana</a> or Expert in <a href=\"https://2e.aonprd.com/Skills.aspx?ID=11\">Occultism</a>",
+  "fields": {
+   "Access": "You are a member of the College of Mysteries"
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "bard",
+    "name": "Bard"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "cleric",
+    "name": "Cleric"
+   },
+   {
+    "slug": "druid",
+    "name": "Druid"
+   },
+   {
+    "slug": "magus",
+    "name": "Magus"
+   },
+   {
+    "slug": "monk",
+    "name": "Monk"
+   },
+   {
+    "slug": "oracle",
+    "name": "Oracle"
+   },
+   {
+    "slug": "psychic",
+    "name": "Psychic"
+   },
+   {
+    "slug": "ranger",
+    "name": "Ranger"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Sorcerer"
+   },
+   {
+    "slug": "summoner",
+    "name": "Summoner"
+   },
+   {
+    "slug": "witch",
+    "name": "Witch"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3421",
+  "source": "Absalom, City of Lost Omens pg. 185",
+  "note": "Этой способности нет в переводе Дока и Юры — показан оригинал Archives of Nethys."
+ },
+ "feat-5030": {
+  "name": "Связанный фокус",
+  "html": "<p>Вы связали ваш предмет силы с колодцем энергии, который питает ваши заклинания школы. Когда вы используете <i>Истощить предмет силы</i>, чтобы сотворить заклинание факультета своей арканной школы, то также можете восстановить 1 Очко Фокусировки.</p>",
+  "prereqText": "арканная связь; заклинания факультета",
+  "prereqHtml": "",
+  "fields": {
+   "Частота": "Раз в день"
+  },
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5030",
+  "source": "Player Core pg. 202"
+ },
+ "feat-5031": {
+  "name": "Матрица защиты от заклинаний",
+  "html": "<p>Вы очерчиваете круг арканных рун, которые ослабляют магию врагов. Вы создаете светящийся магический круг как <i>5-футовый взрыв</i> в радиусе 30 футов. Существа в круге получают бонус состояния +1 к спасброскам против магии. Круг действует до конца вашего следующего хода, и вы можете <i>Поддерживать</i> его до максимальной продолжительности в 1 минуту.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "manipulate",
+    "name": "Манипуляция"
+   },
+   {
+    "slug": "arcane",
+    "name": "Мистический"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5031",
+  "source": "Player Core pg. 202"
+ },
+ "feat-3483": {
+  "name": "Бессмертная уверенность",
+  "html": "<p>Ваше присутствие оказывает укрепляющее воздействие на ваших <u>миньонов</u>-нежить. Существа-<u>нежить</u> под вашим контролем и в <i>30-футовой эманации</i> от вас получают бонус состояния +2 к спасброскам против урона жизненности и к спасброскам Воли, чтобы сопротивляться эффектам, которые сделают их <i>Под контролем</i>.</p><p><b>Особенность:</b> Эта способность обладает признаком, соответствующим вашему магическому обучаю.</p>",
+  "prereqText": "жрец с наносящей раны божественной силой, оракул костей или волшебник-некромант; умение создавать или контролировать нежить",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "aura",
+    "name": "Аура"
+   },
+   {
+    "slug": "cleric",
+    "name": "Жрец"
+   },
+   {
+    "slug": "necromancy",
+    "name": "Некромантия"
+   },
+   {
+    "slug": "oracle",
+    "name": "Оракул"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3483",
+  "source": "Book of the Dead pg. 33"
+ },
+ "feat-5032": {
+  "name": "Убедительная иллюзия",
+  "html": "<p>Вы используете свои вводящие в заблуждение навыки, чтобы ваши иллюзии казались более реальными. Совершите проверку <i>Обмана</i> против КС Восприятия цели. В случае успеха, цели не удаётся не поверить в иллюзию.</p>",
+  "prereqText": "эксперт Обмана",
+  "prereqHtml": "",
+  "fields": {
+   "Триггер": "Существо совершило успешную, но не критически успешную проверку Восприятия или спасбросок Воли, чтобы не поверить в иллюзию сотворённого вами заклинания.",
+   "Требования": "Вы в радиусе 30 футов от наблюдателя и иллюзии."
+  },
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5032",
+  "source": "Player Core pg. 202"
+ },
+ "feat-3632": {
+  "name": "Взрывное заклинание",
+  "html": "<p>Ваше заклинание становится нестабильным и взрывоопасным. Если вашим следующим действием будет «Сотворение» заклинания, наносящего урон одной цели, и это заклинание успешно наносит урон этой цели, то оно взрывается, нанося соседним существам урон <u>брызгами</u>, равный рангу сотворённого заклинания. В отличие от обычного урона брызгами, этот урон не наносится самой цели. Тип урона брызгами соответствует типу урону самого заклинания.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "cleric",
+    "name": "Cleric"
+   },
+   {
+    "slug": "concentrate",
+    "name": "Concentrate"
+   },
+   {
+    "slug": "metamagic",
+    "name": "Metamagic"
+   },
+   {
+    "slug": "oracle",
+    "name": "Oracle"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Sorcerer"
+   },
+   {
+    "slug": "witch",
+    "name": "Witch"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3632",
+  "source": "Knights of Lastwall pg. 83"
+ },
+ "feat-5033": {
+  "name": "Взрывное прибытие",
+  "html": "<p>Вызванное вами существо появляется во взрыве арканных рун. Если вашим следующим действием будет <i>Сотворение заклинания</i> с признаком <u>призыв</u> в <i>10-футовой эманации</i> вокруг вызванного вами существа получат 1d4 урона огнём за ранг заклинания. Если призванное существо имеет признак <u>дух</u>, <u>звук</u>, <u>кислота</u>, <u>холод</u> или <u>электричество</u>, вместо этого вы можете нанести урон соответствующего типа.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "manipulate",
+    "name": "Манипуляция"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5033",
+  "source": "Player Core pg. 203"
+ },
+ "feat-5034": {
+  "name": "Проникающее заклинание",
+  "html": "<p>Вы изучали способы преодоления врожденного магического сопротивления, которым обладают драконы, потусторонние сущности и некоторые другие могущественные существа. Любое существо, которое имеет бонус состояния к спасброскам против магии, снижает этот бонус на 1 против ваших заклинаний.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5034",
+  "source": "Player Core pg. 203"
+ },
+ "feat-9393": {
+  "name": "Сузить заклинание",
+  "html": "<p>Вы научились управлять пространством, чтобы сужать воздействие других заклинаний. Когда вы используете <i>Контрзаклинание</i>, чтобы противодействовать заклинанию, имеющему область взрыва, конуса или линии, и не имеющего продолжительности, вы уменьшаете его область, если вам не удаётся ему противодействовать. Уменьшите радиус взрыва или эманации на 5 футов, или длину конуса и линии на 10 футов.</p>",
+  "prereqText": "Контрзаклинание",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9393",
+  "source": "Impossible Magic pg. 109"
+ },
+ "feat-5035": {
+  "name": "Разделённый слот",
+  "html": "<p>Вы можете подготавливать 2 заклинания в одном слоте, давая себе свободу выбора заклинания в момент его сотворения. Когда вы подготавливаете свои заклинания на день, то можете выбрать один слот заклинания как минимум на 1 ранг ниже, чем наивысший слот заклинания, который вы можете колдовать, и подготовить в этом слоте 2 заклинания. Когда вы <i>Сотворяете заклинания</i> из этого слота, выберите какое заклинание сотворить. Как только вы выбрали, неиспользованное заклинание рассеивается, как если бы вы вовсе не готовили его — например, оно недоступно для использования с <i>Истощить предмет силы</i>.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5035",
+  "source": "Player Core pg. 203"
+ },
+ "feat-4602": {
+  "name": "Стойкое колдовство",
+  "html": "<p>Вы уверены в своих колдовских приёмах и не теряете заклинания так просто. Если реакция должна прервать ваше колдовское действие, совершите <i>DC 15 Чистую проверку</i>. При успехе ваше действие не прерывается.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "bard",
+    "name": "Бард"
+   },
+   {
+    "slug": "witch",
+    "name": "Ведьма"
+   },
+   {
+    "slug": "druid",
+    "name": "Друид"
+   },
+   {
+    "slug": "cleric",
+    "name": "Жрец"
+   },
+   {
+    "slug": "necromancer",
+    "name": "Некромант"
+   },
+   {
+    "slug": "oracle",
+    "name": "Оракул"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4602",
+  "source": "Player Core pg. 103"
+ },
+ "feat-5036": {
+  "name": "Продвинутое заклинание школы",
+  "html": "<p>Вы получаете доступ к новому продвинутым учениям вашего арканного института, изучая новое мощное заклинание школы. Вы получаете продвинутое заклинание своей арканной школы.</p>",
+  "prereqText": "арканная школа",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5036",
+  "source": "Player Core pg. 203"
+ },
+ "feat-5037": {
+  "name": "Экономное истощение",
+  "html": "<p>Осторожно и эффективно управляя арканными энергиями, сохраненными в вашем предмете силы, по мере его истощения, вы можете сберечь достаточно силы, чтобы сотворить другое заклинание, которое чуть слабее.</p><p>Вы получаете дополнительное использование умения <i>«Истощить предмет силы»</i>. Вы можете использовать его на сотворение заклинания на 2 или более ранга ниже, чем предыдущее заклинание, и должны использовать его до конца своего следующего хода, иначе потеряете его.</p>",
+  "prereqText": "арканная связь",
+  "prereqHtml": "",
+  "fields": {
+   "Требования": "Последнее использованное действие <i>Истощить предмет силы</i>."
+  },
+  "traits": [
+   {
+    "slug": "manipulate",
+    "name": "Манипуляция"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5037",
+  "source": "Player Core pg. 203"
+ },
+ "feat-4386": {
+  "name": "Хаотическое заклинание",
+  "html": "<p>В этом и заключается секрет хаотической магии — ваш противник вряд ли сможет предсказать и парировать ваши действия, если вы сами не знаете что произойдёт. Если следующим вашим действием будет <i>Сотворение заклинания</i>, наносящего урон звуком, кислотой, огнём, холодом или электричеством, бросьте <i>d6</i>. Тип урона меняется на тип, указанный ниже, в соответствие с результатом броска, и каждое существо, получившее урон от заклинания, получает перечисленный дополнительный эффект.</p><p><b>1 (Кислота):</b> <i>Тошнота 1</i></p><p><b>2 (Холод):</b> Штраф −10 футов ко всем Скоростям до конца вашего следующего хода</p><p><b>3 (Электричество):</b> <i>Застигнут врасплох</i> до конца вашего следующего хода</p><p><b>4 (Огонь):</b> Продолжительный урон огнём, равный рангу заклинания</p><p><b>5 (Сила):</b> Без дополнительного эффекта</p><p><b>6 (Звук):</b> <i>Глухота</i> на 2 раунда</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "bard",
+    "name": "Bard"
+   },
+   {
+    "slug": "manipulate",
+    "name": "Manipulate"
+   },
+   {
+    "slug": "metamagic",
+    "name": "Metamagic"
+   },
+   {
+    "slug": "oracle",
+    "name": "Oracle"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Sorcerer"
+   },
+   {
+    "slug": "witch",
+    "name": "Witch"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4386",
+  "source": "Wake the Dead #3 pg. 25"
+ },
+ "feat-5038": {
+  "name": "Сохранение формы",
+  "html": "<p>Вы приучили свой разум и тело переносить магию полиморфа в течение более длительных периодов времени, пока вы должным образом готовитесь к изменению. Когда вы готовите заклинание <u>полиморфа</u>, которое длится 1 минуту и дает вам боевую форму, вы можете подготовить это заклинание в слоте на 2 ранга выше обычного. Это не дает никаких обычных преимуществ усиления заклинания, но это заклинание длится вплоть до 10 минут. Например, если вы подготовили <i>Форму животного</i> в слоте 4-го ранга с <i>«Сохранением формы»</i>, то вы будете сотворять <i>форму животного</i> 2-го ранга, которая длится вплоть до 10 минут. Если заклинание можно <i>Развеять</i>, то это остаётся неизменным.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5038",
+  "source": "Player Core pg. 203"
+ },
+ "feat-4130": {
+  "name": "Танец заклинаний Хельта",
+  "html": "<p>Раник Хельт знает особую технику, позволяющую скрывать свои заклинания во время выступления, и вы научились этой технике. Демонстративно выступая, вы перемещаетесь по полю боя, заставая врагов врасплох и создавая брешь для своего заклинания. Совершите проверку <i>Выступления</i> против КС Восприятия всех наблюдателей. Затем совершите <i>Перемещение</i> один или два раза. Во время этого движения вы не провоцируете реакций, которые провоцируются вашим движением у существ, против которых вы преуспели в проверке Выступления.</p><p>Если вы использовали одно «Перемещение», вы можете <i>Сотворить заклинание</i> за 1 или 2 действия; если вы использовали два «Перемещения» вы можете «Сотворить заклинание» только за 1 действие. Если вы получили критический успех в проверке против существа, оно получает штраф обстоятельства −1 к любому спасброску против любого заклинания, сотворенного в рамках <i>«Танца заклинания Хельта»</i>, из-за вашего…</p>",
+  "prereqText": "эксперт Выступления",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "bard",
+    "name": "Bard"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Sorcerer"
+   },
+   {
+    "slug": "witch",
+    "name": "Witch"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4130",
+  "source": "Firebrands pg. 77",
+  "note": "Текст на скриншоте Foundry обрезан — полностью он есть в модуле перевода Foundry."
+ },
+ "feat-9390": {
+  "name": "Отбрасывающее заклинание",
+  "html": "<p>Вы наполняете свои заклинания магической силой, отталкивающей существ назад. Если вашим следующим действием будет <i>Сотворение заклинания</i>, имеющего область взрыва, конуса, линии или эманации, не имеющего продолжительности, и требующего существ совершить спасбросок Рефлекса или Стойкости, это заклинание выпускает мощный взрыв, отталкивающий существ назад, в дополнение к другим своим эффектам. Каждое существо, провалившее свой спасбросок против этого заклинания, отталкивается на 5 футов, а критически провалившее — на 10 футов. Если область является конусом, линией или эманацией, вы отталкиваете существо от себя. Если область — взрыв, вы отталкиваете существо от центра этого взрыва.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "manipulate",
+    "name": "Манипуляция"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9390",
+  "source": "Impossible Magic pg. 109"
+ },
+ "feat-5039": {
+  "name": "Знания — сила (Волшебник)",
+  "html": "<p>Ваши академические знания о существе позволяют вам слегка изменять свою магию, чтобы победить его. Когда вы получаете критический успех при проверке <i>Вспомнить информацию</i> о существе, вы можете использовать свои знания, чтобы заставить существо получить штраф −1 к КБ и спасброскам против следующей вашей атаки или следующего сотворенного вами заклинания, от которого ему нужно защититься. Существо получает такой же штраф к своей атаке или КС в следующий раз, когда атакует вас или заставляет совершить спасбросок против одного из своих эффектов.</p><p>Если вы поделитесь этой информацией со своими союзниками, они также получают эти преимущества. Если бонусы не используются, они истекают через 1 минуту.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5039",
+  "source": "Player Core pg. 203"
+ },
+ "feat-9395": {
+  "name": "Очаровывающая речь",
+  "html": "<p>Всё то время, что вы провели, обсуждая эзотерические трактаты и сотворяя заклинания, сделало ваши слова магическими, даже когда вы не сотворяете полноценное заклинание. Выберите существо в радиусе 30 футов, которое может слышать и понимать вас, и совершите проверку Арканы против его КС Воли. При успехе ваша казалось бы обыденная речь пропитывается чарующей магией, на дающей вашей цели использовать реакции до начала вашего следующего хода. Независимо от результата, существо становится временно иммунным к вашей <i>«Очаровывающей речи»</i> на 24 часа.</p>",
+  "prereqText": "эксперт Выступления",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "mental",
+    "name": "Ментальный"
+   },
+   {
+    "slug": "auditory",
+    "name": "Слух"
+   },
+   {
+    "slug": "linguistic",
+    "name": "Язык"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9395",
+  "source": "Impossible Magic pg. 109"
+ },
+ "feat-4743": {
+  "name": "Непреодолимая энергия",
+  "html": "<p><b>Друид:</b> С помощью сложных жестов вы взываете к природной мощи вашего заклинания, чтобы преодолеть сопротивление врага.</p><p><b>Чародей:</b> Вы меняете свои заклинания, чтобы преодолеть сопротивления.</p><p><b>Волшебник:</b> Несколько кругов рун вращаются вокруг вашей руки, когда вы перегружаете ваше заклинание, чтобы преодолеть защиту вашего противника.</p><hr><p>Если вашим следующим действием будет <i>Сотворение заклинания</i>, то заклинание игнорирует у цели сопротивление урону звуком, кислотой, огнём, холодом или электричеством, равное вашему уровню. Это применяется ко всему наносимому заклинанием урону, включая продолжительный урон, и урон, вызванный длящимися эффектами заклинания, такими как стена, созданная заклинанием <i>Огненная стена</i>. Иммунитеты существа не затрагиваются.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "druid",
+    "name": "Друид"
+   },
+   {
+    "slug": "manipulate",
+    "name": "Манипуляция"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4743",
+  "source": "Player Core pg. 133"
+ },
+ "feat-4614": {
+  "name": "Ускоренное колдовство",
+  "html": "<p><b>Бард:</b> Если вашим следующим действием будет сотворение чар барда или заклинания барда, которое хотя бы на 2 ранга ниже, чем наивысший слот заклинания барда, который вам доступен, снизьте количество действий, необходимых для его сотворения, на 1 (до минимума в 1 действие).</p><p><b>Ведьма:</b> Вы ускоряете своё колдовство. Если вашим следующим действием будет сотворение чар ведьмы или заклинания ведьмы, которое хотя бы на 2 ранга ниже, чем наивысший слот заклинания ведьмы, который вам доступен, снизьте количество действий, необходимых для его сотворения, на 1 (до минимума в 1 действие).</p><p><b>Волшебник:</b> Напрягая разум, вы сокращаете формулы заклинаний, как только можете, в результате чего получается более короткое, но гораздо более сложное заклинание. Если вашим следующим действием будет сотворение чар волшебника или заклинания волшебника, которое хотя бы на 2 ранга ниже, чем наивысший слот заклинания волшебника, который вам доступен, снизьте количество действий, необходимых для его сотворения, на 1 (до минимума в 1 действие).</p><p><b>Остальные:</b> Если вашим следующим действием будет сотворение чар класса или заклинания класса, которое хотя бы на 2 ранга ниже, чем наивысший слот заклинания класса, который вам доступен, снизьте количество действий, необходимых для его сотворения, на 1 (до минимума в 1 действие).</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Частота": "Раз в день"
+  },
+  "traits": [
+   {
+    "slug": "bard",
+    "name": "Бард"
+   },
+   {
+    "slug": "witch",
+    "name": "Ведьма"
+   },
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   },
+   {
+    "slug": "necromancer",
+    "name": "Некромант"
+   },
+   {
+    "slug": "oracle",
+    "name": "Оракул"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4614",
+  "source": "Player Core pg. 105"
+ },
+ "feat-5040": {
+  "name": "Адепт свитков",
+  "html": "<p>Во время своих дневных приготовлений вы можете создать 2 временных свитка, содержащих арканные заклинания из вашей книги заклинаний. Все свитки должны быть разных рангов заклинаний, и оба заклинания должны быть на 2 или более ранга ниже, чем ваш наивысший ранг заклинаний. Любые свитки, которые вы создаете таким способом становятся немагическими во время следующих дневных приготовлений. Временный свиток не имеет стоимости. Как обычно для свитков, эти являются расходуемыми предметами легкой Массы, и кто-то держащий их в 1 руке может <i>Сотворение заклинания</i> из него, если оно есть в их списке заклинаний, используя собственный модификатор атаки заклинаниями и КС заклинаний.</p><p>Если вы являетесь мастером КС заклинаний, то во время дневных приготовлений можете создать 3 временных свитка, а если являетесь легендой, то можете создать 4 временных свитка.</p>",
+  "prereqText": "эксперт Ремесла",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5040",
+  "source": "Player Core pg. 203"
+ },
+ "feat-9392": {
+  "name": "Общая фокусировка",
+  "html": "<p>Ваше магическое мастерство позволяет вам совершить метафорический трюк для воплощения Очка Фокусировки. Выберите согласного союзника в радиусе 30 футов, у которого тоже есть запас Очков Фокусировки. Цель получает 1 временное ОФ до начала вашего следующего хода, после чего исчезает, даже если не было использовано. Это временное ОФ считается отдельно от Очков Фокусировке в запасе цели, позволяя иметь его даже если у цели максимальное количество своих ОФ. Существо становится временно иммунным к <i>«Общей фокусировке»</i> до своих следующих ежедневных приготовлений.</p>",
+  "prereqText": "запас Очков Фокусировки",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9392",
+  "source": "Impossible Magic pg. 109"
+ },
+ "feat-9394": {
+  "name": "Пространственная осведомлённость",
+  "html": "<p>Ваше познание других планов бытия сделало вас более чувствительным к эффектам телепортации. Вы получаете бонус обстоятельства +1 к попыткам <i>Противодействовать</i> эффектам <u>телепортации</u>.</p><p>Когда в радиусе 60 футов от вас происходит эффект телепортации, вы определяете местоположение этого эффекта точным чувством. Если эффектом является телепортация существа из этого пространства, вы знаете примерное направление, куда оно телепортировалось, но не дистанцию. Однако, вы можете попытаться <i>Идентифицировать магию</i> в течение часа после телепортации, чтобы узнать место, в которое существо телепортировалось с точностью <u>10 миль</u> при успехе и до <u>1 мили</u> при критическом успехе.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9394",
+  "source": "Impossible Magic pg. 109"
+ },
+ "feat-5041": {
+  "name": "Умное контрзаклинание",
+  "html": "<p>Вы творчески подходите к подготовке заклинаний, чтобы использовать <i>Контрзаклинание (Подготавливающий)</i> на более широкий спектр магии ваших противников. Вместо того, чтобы использовать <i>«Контрзаклинание»</i> только когда у вас приготовлено такое же, вы можете использовать <i>«Контрзаклинание»</i> если сотворяемое противником заклинание есть в вашей книге заклинаний.</p><p>Когда вы используете <i>«Контрзаклинание»</i> таким способом, вы должны потратить подготовленное заклинание; подготовленное заклинание должно иметь общий со спровоцировавшим заклинанием признак, не являющийся признаком <u>воздействие</u>, <u>концентрация</u> или признаком колдовского обычая. На усмотрение Мастера, вместо этого вы можете использовать заклинание, которое имеет противоположный признак или которое другим логичным образом противодействовало бы спровоцировавшему заклинанию (такое как использование холода или воды для нейтрализации <i>Огненного шара</i>, или использовать <i>Ясный ум</i> против <i>Страха</i>).</p>",
+  "prereqText": "Быстрое распознавание; Контрзаклинание",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5041",
+  "source": "Player Core pg. 204"
+ },
+ "feat-5042": {
+  "name": "Усиленная энергия",
+  "html": "<p>Вы выполняете сложные манипуляции, чтобы сделать энергию своих заклинаний настолько мощной, что после этого, ваши враги остаются уязвимыми для нее. Если вашим следующим действием будет <i>Сотворение заклинания</i>, наносящего урон звуком, кислотой, огнём или электричеством, то вы можете выбрать одну получившую урон цель, чтобы до конца вашего следующего хода дать ей слабость 5 этому типу урона. Если заклинание наносит несколько типов энергетического урона, выберите один, к которому цель получит слабость. Это не имеет эффекта на существ с сопротивлением или иммунитетом к выбранному типу энергии.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "manipulate",
+    "name": "Манипуляция"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5042",
+  "source": "Player Core pg. 204"
+ },
+ "feat-5043": {
+  "name": "Чуткое магическое обнаружение",
+  "html": "<p>Вы чувствуете магические опасности. Когда используете активность исследования <i>Обнаружение магии</i>, то можете делать бросок инициативы дважды и использовать лучший результат, пока хотя бы один оппонент имеет магический эффект или магический предмет, и находится в радиусе вашего <i>Обнаружения магии</i>.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "fortune",
+    "name": "Удача"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5043",
+  "source": "Player Core pg. 204"
+ },
+ "feat-5044": {
+  "name": "Ощущение магии",
+  "html": "<p>У вас буквально есть шестое чувство на магию в вашем окружении. Вы можете ощущать присутствие магических аур, как если бы вы постоянно использовали <i>Обнаружение магии</i> 1-го ранга. Это обнаруживает магию только в вашем поле зрения. Когда вы <i>Ищете</i>, то получаете преимущества <i>обнаружения магии</i> 3-го ранга для того, что вы видите (в дополнение к обычным преимуществам «Поиска»). Вы можете отключить или включить это чувство свободным действием (◇) в начале или конце своего хода.</p><hr><p><b>Особенность:</b> Эта способность обладает признаком, соответствующим обычаю сотворяемых вами заклинаний (<u>аркана</u>, <u>оккультный</u>, <u>природный</u>, <u>сакральный</u>).</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "arcane",
+    "name": "Мистический"
+   },
+   {
+    "slug": "detection",
+    "name": "Обнаружение"
+   },
+   {
+    "slug": "oracle",
+    "name": "Оракул"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5044",
+  "source": "Player Core pg. 204"
+ },
+ "feat-3484": {
+  "name": "Облик некроманта",
+  "html": "<p>Некромантическая энергия демонстрирует вашу власть над нежитью, создавая образ, вызывающий у них страх и уважение. Существа-<u>нежить</u> могут мгновенно почувствовать ваш <i>«Облик некроманта»</i> и склонны действовать соответственно. Если вы совершаете враждебное действие против существа-<u>нежити</u>, оно становится навсегда иммунным к вашему <i>«Облику некроманта»</i>, и действие вашего <i>«Облика некроманта»</i> заканчивается. Вы можете потратить 10 минут, чтобы восстановить свой <i>«Облик некроманта»</i>, но любые существа, ставшие навсегда иммунными, остаются таковыми.</p><p>Каждый раз, когда вас атакует существо-нежить на 2 или более уровней ниже вас, оно должно совершить спасбросок <i>Воли</i> против вашего КС заклинаний. Если на вас еще действует <i>Убежище</i> или аналогичный эффект, то на атакующего подействует только 1 из них (вы выбираете, какой).</p><hr><p><b>Критический успех:</b> Существо навсегда иммунно к вашему <i>«Облику некроманта»</i>.</p><p><b>Успех:</b> Существо может совершить свою атаку и любые другие атаки по вам в этом ходу.</p><p><b>Провал:</b> Существо не может атаковать вас и впустую тратит свое действие. Оно не может пытаться наносить вам дальнейшие атаки в этом ходу.</p><p><b>Критический провал:</b> Существо впустую расходует это действие и не может атаковать вас пока действует ваш <i>«Облик некроманта»</i>.</p><p><b>Особенность:</b> Эта способность обладает признаком, соответствующим вашему магическому обучаю.</p>",
+  "prereqText": "жрец с наносящей раны божественной силой, оракул костей или волшебник-некромант; умение создавать или контролировать нежить",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "cleric",
+    "name": "Жрец"
+   },
+   {
+    "slug": "necromancy",
+    "name": "Некромантия"
+   },
+   {
+    "slug": "oracle",
+    "name": "Оракул"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3484",
+  "source": "Book of the Dead pg. 33"
+ },
+ "feat-9391": {
+  "name": "Перенаправить телепортацию",
+  "html": "<p>Вы способны перехватывать эффекты <u>телепортации</u> и изменять место возникновения существа. Вы расходуете подготовленное заклинание с признаком <u>телепортация</u>. Вы теряете этот слот заклинаний, как если бы сотворили это заклинание. Затем вы пытаетесь <i>Противодействовать</i> спровоцировавшему заклинанию. Ваш ранг противодействия равен рангу израсходованного заклинания. Если вы преуспеваете в проверке противодействия, вы не прерываете это заклинание. Вместо этого вы выбираете свободное пространство в радиусе 60 футов от себя, в которое телепортируется это существо. Вы не можете выбрать очевидно опасное пространство (такое как <i>Стену огня</i> или <i>Опасную местность</i>) или которое приведёт к падению цели.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Триггер": "Существо телепортируется в пространство в радиусе 60 футов от вас."
+  },
+  "traits": [
+   {
+    "slug": "teleportation",
+    "name": "Телепортация"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9391",
+  "source": "Impossible Magic pg. 109"
+ },
+ "feat-5045": {
+  "name": "Фокусирующий предмет силы",
+  "html": "<p>Ваша связь с предметом силы увеличивает ваш запас очков фокусировки. Каждый раз, когда вы <i>Фокусируетесь</i> и владеете предметом своей силы, вы полностью восстанавливаете Запас Фокусировки.</p>",
+  "prereqText": "арканная связь",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5045",
+  "source": "Player Core pg. 204"
+ },
+ "feat-9387": {
+  "name": "Головокружительное заклинание",
+  "html": "<p>Ваше заклинание заставляет голову врага кружиться и делает его неспособным сконцентрироваться. Если вашим следующим действием будет <i>Сотворение заклинания</i>, требующего спасброска Воли и выбирающего целью одно существо, цель становится <i>Одурманенной 2</i> на 1 раунд, если она провалит свой спасбросок (или <i>Одурманена 3</i> при критическом провале).</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9387",
+  "source": "Impossible Magic pg. 108"
+ },
+ "feat-5016": {
+  "name": "Отражение заклинания",
+  "html": "<p>Когда вы успешно используете <i>Контрзаклинание</i>, чтобы <i>Противодействовать</i> заклинанию, которое действует на существ или область, вы можете обратить эффект этого заклинания на изначального заклинателя. Будучи отражённым, заклинание действует только на изначального колдуна, даже если это заклинание, действующее на область или более чем на 1 существо. Изначальный заклинатель, как обычно, может совершить спасбросок и использовать другие защиты против отражённого заклинания.</p>",
+  "prereqText": "Контрзаклинание",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "witch",
+    "name": "Ведьма"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5016",
+  "source": "Player Core pg. 190"
+ },
+ "feat-5046": {
+  "name": "Матрица вторичной детонации",
+  "html": "<p>Вы направляете часть энергии заклинания в нестабильную руническую матрицу. Если вашим следующим действием будет <i>Сотворение заклинания</i>, наносящего урон, не имеющее продолжительности, и воздействующее на область, сияющий магический круг возникает в <i>5-футовом взрыве</i> в этой области. В начале следующего хода круг взрывается, нанося <i>1d6 урона силой</i> за ранг заклинания всем существам в пределах круга с простым спасброском <i>Рефлекса</i> против вашего КС заклинаний. Если заклинание нанесло урон другого типа, круг вместо этого наносит урон этого типа (или один из типов урона на ваш выбор, если заклинание могло нанести урон нескольких типов).</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "manipulate",
+    "name": "Манипуляция"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5046",
+  "source": "Player Core pg. 204"
+ },
+ "feat-3485": {
+  "name": "Замогильное очищение",
+  "html": "<p>Вы в мгновение ока перерабатываете энергию пустоты, протекающую через ваших миньонов. Мгновенно уничтожьте 1 <u>миньона</u>-<u>нежить</u> в радиусе 60 футов, который постоянно находится под вашим контролем. Если ваше следующее действие — сотворение заклинания некромантии из слота заклинания, то вы не тратите этот слот. Уровень этого заклинания должен быть хотя бы в 2 раза ниже уровня уничтоженного миньона, и заклинание не может иметь продолжительности.</p><p><b>Особенность:</b> Эта способность обладает признаком, соответствующим вашему магическому обучаю.</p>",
+  "prereqText": "жрец с наносящей раны божественной силой, оракул костей или волшебник-некромант; умение навсегда создавать или контролировать нежить",
+  "prereqHtml": "",
+  "fields": {
+   "Требования": "У вас есть хотя бы 1 <u>миньон</u>-<u>нежить</u> которого вы постоянно контролируете"
+  },
+  "traits": [
+   {
+    "slug": "cleric",
+    "name": "Жрец"
+   },
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   },
+   {
+    "slug": "necromancy",
+    "name": "Некромантия"
+   },
+   {
+    "slug": "oracle",
+    "name": "Оракул"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3485",
+  "source": "Book of the Dead pg. 33"
+ },
+ "feat-2731": {
+  "name": "Сдвинуть заклинание",
+  "html": "<p>Вы перемещаете область заклинания в новое место в радиусе 120 футов. Оставшаяся продолжительность заклинания сокращается вдвое. Заклинание больше не действует в прежней области.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Доступ": "член Магаамбии",
+   "Требования": "У вас есть активное заклинание, воздействующее на область, и вы находитесь в зоне действия заклинания."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=2731",
+  "source": "Pathfinder #167: Ready? Fight! pg. 75"
+ },
+ "feat-5047": {
+  "name": "Превосходный предмет силы",
+  "html": "<p>Когда вы истощаете предмет силы, то можете оставить внутри немного энергии, чтобы использовать её потом. Вы можете <i>Истощить предмет силы</i> 1 дополнительный раз в день, но только чтобы сотворять заклинание на 2 или более ранга ниже, чем ваш максимальный ранг слота волшебника.</p>",
+  "prereqText": "арканная связь",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5047",
+  "source": "Player Core pg. 204"
+ },
+ "feat-4629": {
+  "name": "Непринуждённая концентрация",
+  "html": "<p>Вы можете поддерживать заклинание, едва подумав об этом. Вы мгновенно получаете эффекты действия <i>Поддержание</i>, что позволяет вам продлить длительность одного из ваших активных заклинаний класса.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Триггер": "Начинается ваш ход."
+  },
+  "traits": [
+   {
+    "slug": "bard",
+    "name": "Бард"
+   },
+   {
+    "slug": "witch",
+    "name": "Ведьма"
+   },
+   {
+    "slug": "druid",
+    "name": "Друид"
+   },
+   {
+    "slug": "necromancer",
+    "name": "Некромант"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=4629",
+  "source": "Player Core pg. 106"
+ },
+ "feat-5048": {
+  "name": "Сверкающее заклинание",
+  "html": "<p>Ваши заклинания становятся ярким проявлением света и цвета. Если вашим следующим действием будет <i>Сотворение заклинания</i> у которого нет признака <u>тьма</u>, нет продолжительности, и которое требует от существ совершить спасбросок Рефлекса, то в дополнение к своим другим эффектам, заклинание взрывается брызгами мерцающих огней. Каждое существо, провалившее свой спасбросок Рефлекса против заклинания, получает состояние <i>Ослеплен</i> на 1 раунд, а те, кто критически провалили — <i>Слепоту</i> на 1 раунд.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "spellshape",
+    "name": "Метамагия"
+   },
+   {
+    "slug": "light",
+    "name": "Свет"
+   },
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5048",
+  "source": "Player Core pg. 204"
+ },
+ "feat-5049": {
+  "name": "Переделать заклинание",
+  "html": "<p>Вы научились изменять сделанный выбор, после использования заклинания на себя. После сотворения на себя заклинания, которое предлагает несколько вариантов выбора эффектов (такое как <i>Сопротивление энергии</i> или заклинание <u>полиморфа</u> которое предлагает несколько потенциальных форм), вы можете изменить выбор, сделанный во время <i>Сотворение заклинания</i> (например, выбрать другой тип урона для сопротивления энергии). Однако, ваше изменение ослабляет целостность заклинания, уменьшая его оставшуюся продолжительность на половину.</p><p>Вы не можете использовать эту способность, если преимущества заклинания уже были использованы или, если после замены эффекты первого выбора останутся в любом виде (например, если один из выборов был создать расходуемый предмет, который вы уже использовали или исцелили себя), или если способность создала бы эффект сильнее, чем это предлагается основным заклинанием. За Мастером остаётся окончательное решение о том для чего может быть применена способность <i>«Переделать заклинание»</i>.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5049",
+  "source": "Player Core pg. 205"
+ },
+ "feat-5050": {
+  "name": "Бесконечные возможности",
+  "html": "<p>Вы находите способ подготавливать слот заклинания в вашем разуме, где он находится в виде различных вероятностей. Раз во время ваших дневных приготовлений, вы можете использовать слот заклинания, чтобы хранить этот бесконечный потенциал, а не использовать его для подготовки заклинания. Вы можете использовать этот слот, чтобы сотворять заклинание из своей книги заклинаний, которое на 2 или более ранга ниже, чем слот, который вы обозначили; заклинание во всех смыслах действует как будто оно на 2 ранга ниже. Вам не нужно готовить какое-либо конкретное заклинание в этом слоте до использования.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5050",
+  "source": "Player Core pg. 205"
+ },
+ "feat-5051": {
+  "name": "Переподготовить заклинание",
+  "html": "<p>Вы открыли способ повторного использования слотов заклинаний раз за разом. Вы можете потратить 10 минут, чтобы подготовить заклинание, которое вы уже сегодня колдовали, восстанавливая доступ к этому слоту заклинания. Заклинание должно быть 4-го ранга или ниже и из тех, которое не имеет продолжительности. Таким способом вы можете подготовить заклинание, даже если вы уже переподготовили его ранее в этот же день.</p><p>Если у вас есть диссертация <i>Подмена заклинаний</i> то можете подготавливать в израсходованном слоте другое заклинание, если у нового заклинания нет продолжительности. Как только вы переподготовили заклинание в этом слоте хоть раз, то можете использовать свою диссертацию, чтобы подменить в этом слоте только заклинания без продолжительности.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5051",
+  "source": "Player Core pg. 205"
+ },
+ "feat-5052": {
+  "name": "Переосмысление",
+  "html": "<p>Если цель оказывается устойчивой к вашим магическим уловкам, вы можете повторить их на ком-то другом. Вы можете <i>Сотворить</i> спровоцировавшее заклинание во второй раз, выбрав целью другое существо, без использования дополнительного слота заклинаний. Вы можете сделать это только до конца вашего следующего хода, и после второго сотворения заклинания вы не можете применить к нему «Переосмысление».</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Триггер": "Вы сотворяете <u>ментальное</u> заклинание, целью которого является одно существо, и оно критически преуспевает в своем спасброске Воли"
+  },
+  "traits": [
+   {
+    "slug": "concentrate",
+    "name": "Концентрация"
+   },
+   {
+    "slug": "mental",
+    "name": "Ментальный"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5052",
+  "source": "Player Core pg. 205"
+ },
+ "feat-5053": {
+  "name": "Могущество архимага",
+  "html": "<p>Вы в совершенстве постигли секреты арканной магии. Вы получаете дополнительный слот заклинания 10-го ранга.</p>",
+  "prereqText": "колдовство архимага",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5053",
+  "source": "Player Core pg. 205"
+ },
+ "feat-1246": {
+  "name": "Восстановить заклинание",
+  "html": "<p>Вы научились манипулировать отражениями магии, подобно резонансным отражениям. Вы возвращаете себе магию текущего заклинания, используя её для восстановления заклинания с продолжительностью. Вы <i>Развеять</i> заклинание 4-го ранга или ниже, сотворенное сегодня из слота заклинаний, у которого осталась хотя бы половина продолжительности, даже если это заклинание не может быть «Развеяно» обычным способом. Затем вы можете потратить 10 минут на восстановление заклинания в этом слоте заклинания, как в <i>Переподготовить заклинание</i>.</p>",
+  "prereqText": "Переподготовить заклинание",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1246",
+  "source": "Pathfinder #156: The Apocalypse Prophet pg. 72"
+ },
+ "feat-5054": {
+  "name": "Комбинация заклинаний",
+  "html": "<p>Вы можете объединять заклинания, за одно использование создавая несколько эффектов. Один слот каждого ранга заклинаний, которые вы можете колдовать, кроме 1-го и 2-го рангов, становится слотом комбинированного заклинания (это не применяется к чарам). Когда вы подготавливаете свои заклинания, то можете заполнить комбинированный слот, сочетанием двух заклинаний. Каждое заклинание в комбинации должно быть на 2 или более ранга ниже ранга слота, и оба должны выбирать целью только одно существо или объект, или иметь выбор цели в виде одного существа или объекта. Каждое заклинание в комбинации еще должно иметь одинаковое средство определения эффекта — оба заклинания должны либо требовать атаку заклинанием, либо одинаковый вид спасброска, или автоматически воздействовать на цель.</p><p>Когда вы сотворяете комбинированное заклинание, оно воздействует только на одну цель, даже если заклинания-части обычно действуют на более чем одну цель. Если какое-либо заклинание в комбинации имеет дополнительные ограничения (например, целью могут быть только живые существа), вы должны соблюдать все ограничения. Комбинированное заклинание использует самую короткую из дистанций использованных заклинаний. Определяйте результат комбинированного заклинания как если бы оно было одним заклинанием, но применяйте эффекты обоих заклинаний-компонент. Например, если цель заклинания успешно прошла спасбросок комбинированного заклинания, она применяет эффекты успеха каждого заклинания, а если критически провалила, то применяет эффекты критического провала обоих заклинаний.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5054",
+  "source": "Player Core pg. 205"
+ },
+ "feat-5055": {
+  "name": "Усвоенные заклинания",
+  "html": "<p>Вы овладели несколькими заклинаниями до такой степени, что можете колдовать их, даже если заранее не подготовили их. Выберите любые 4 заклинания 9-го ранга или ниже, к которым у вас есть доступ; все выбранные заклинания должны быть разного ранга. Эти заклинания автоматически приготовлены, когда вы делаете свои ежедневные приготовления и они имеют свои собственные слоты заклинаний. Вы можете выбрать другой набор заклинаний, потратив 1 неделю отдыха на перетренировку своих усвоенных заклинаний.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5055",
+  "source": "Player Core pg. 205"
+ },
+ "feat-5056": {
+  "name": "Мастерство формы заклинаний",
+  "html": "<p>Изменение заклинаний не занимает больше времени, чем их обычное сотворение. Вы можете использовать одиночные действия <u>формы заклинания</u> как свободные действия (◇).</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "sorcerer",
+    "name": "Чародей"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=5056",
+  "source": "Player Core pg. 205"
+ },
+ "feat-2759": {
+  "name": "Гравитация мировой сферы",
+  "html": "<p>Хотя создание демипланов обычно требует длительных ритуалов, вы умеете создавать небольшие планарные эффекты в подражание шедеврам Синдары. Если вашим следующим действием будет <i>Сотворение заклинания</i> не ниже 5-го ранга с помощью вашего слота заклинаний, воздействующее на область, вы можете применить один из следующих планарных эффектов к <i>20-футовым взрывом</i> сосредоточенным в пространстве, находящимся в области заклинания. Эффект сохраняется в течение 1 минуты.</p><p><b>Гравитационный морок:</b> Притяжение гравитации здесь усиливается, создавая <i>Очень сложная местность</i>. Летающие существа, пролетающие через эту область, должны совершить спасбросок <i>Рефлекса</i> против вашего КС заклинаний или упасть на землю, получив дробящий урон, равный половине дистанции падения.</p><p><b>Текучее время:</b> В этом пространстве вам помогают эрратические временные потоки. Существо, которое начинает свой ход в этом потоке, получает эффект <i>Ускорение</i> на этот ход.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Частота": "Раз в час"
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "metamagic",
+    "name": "Metamagic"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=2759",
+  "source": "Pathfinder #168: King of the Mountain pg. 77"
+ }
+};

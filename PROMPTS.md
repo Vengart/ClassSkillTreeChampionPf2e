@@ -14,9 +14,11 @@
 Оно показывает дерево классовых черт Поборника (Champion, PF2e Remaster) в духе пассивного дерева PoE2.
 
 Устройство:
-- tools/fetch-pf2.mjs  — скачивает данные с pf2.ru → data/pf2-raw.json (кеш в data/cache/, он в .gitignore)
-- tools/build-graph.mjs — сырые данные → граф data/champion-data.js; здесь лежат ручные правила
-- tools/layout.mjs      — раскладка узлов (имитация отжига), координаты пишутся в data/champion-data.js
+- tools/fetch-pf2.mjs  — скачивает данные с pf2.ru → data/champion/source/pf2ru.json (кеш в data/cache/, он в .gitignore)
+- tools/build-graph.mjs — source + manual → data/champion/build/ (graph.js без текстов, text-<перевод>.js)
+- data/<класс>/manual/  — ручные правила (rules.json), иконки (images.json), подписи и переводы (labels.json);
+                          схемы в data/schema/, проверка: node tools/check-data.mjs
+- tools/tree-layout.mjs — раскладка дерева, координаты пишутся в data/<класс>/build/graph.js
 - tools/serve.mjs       — локальный сервер: node tools/serve.mjs → http://localhost:5173
 - legacy/               — старая версия, не трогать
 
@@ -93,10 +95,10 @@ sed -i со сложными шаблонами в этой среде зави�
 - кеширует ответы в data/cache/ (флаг --force — перекачать);
 - делает паузу ~350 мс между запросами и повторяет попытку при 429/5xx;
 - чистит HTML: вырезает script/style, «ромбики», on*-атрибуты и мягкие переносы; относительные ссылки делает абсолютными на pf2.ru;
-- сохраняет data/pf2-raw.json и вызывает buildGraph.
+- сохраняет data/champion/source/pf2ru.json и собирает data/champion/build/.
 ```
 
-**Готово, когда:** `node tools/fetch-pf2.mjs` проходит, в `pf2-raw.json` 71 черта с непустым `html`.
+**Готово, когда:** `node tools/fetch-pf2.mjs` проходит, в `data/champion/source/pf2ru.json` 71 черта с непустым `html`.
 **Грабли:**
 - `sliceSection` оставлял висящий `</a>` в начале раздела — срезать;
 - в описании призвания остаётся заглушка вложенного вьюбокса `<h2>…<div class="viewbox">` — отрезать от `<h2`.
@@ -290,14 +292,17 @@ Undeath, Familiar (THEME_BY_NAME; остальное со spellshape → Spellsh
 В сообществе PF2e три набора терминов: оригинал (Archives of Nethys), перевод pf2.ru и перевод Дока и Юры
 (pf2e.ru; им пользуются в Foundry VTT, у них feat = «способность»). Переключатель в шапке меняет только текст
 узлов — граф, раскладка и сборка те же (одинаковые id узлов).
-- data/wizard-doc-raw.json — перевод Дока и Юры, расшифрованный со скриншотов Foundry (images/foundryDocTranslation/,
+- data/wizard/manual/doc-yura.json — перевод Дока и Юры, расшифрованный со скриншотов Foundry (images/foundryDocTranslation/,
   в .gitignore): для черты — name, html, prereq, fields (Триггер / Частота / Требования / Доступ), partial —
   если на скриншоте текст обрезан; у школ и диссертаций — только названия. Новые скриншоты: обрезать по
   карточке (System.Drawing), прочитать, дописать запись по английскому названию черты.
-- tools/fetch-wizard-pf2ru.mjs → data/wizard-pf2ru.json (черты по id = id AoN, школы/диссертации по названию).
-- tools/build-wizard-i18n.mjs → data/wizard-i18n.js (window.CLASS_I18N: langs с терминами + nodes[lang][id]);
-  нет в переводе → другой русский перевод или AoN, с note. Свои подписи (темы, группы) — OWN в скрипте.
-- app.js: applyLang() пишет поля перевода в узлы (оригинал в n._base), refreshTexts() обновляет DOM,
+- tools/fetch-wizard-pf2ru.mjs → data/wizard/source/pf2ru.json (черты по id = id AoN, школы/диссертации по названию).
+- tools/build-wizard.mjs (+ build-wizard-i18n.mjs) → data/wizard/build/text-{aon,pf2ru,doc}.js
+  (window.CLASS_TEXT[перевод][id узла] — полный текст узла); список переводов с терминами — meta.langs в graph.js.
+  Нет в переводе → другой русский перевод или AoN, с note. Свои подписи (темы, группы) и пометки —
+  data/wizard/manual/labels.json (texts, notes).
+- index.html грузит graph.js, затем text-<перевод>.js по meta.langs, затем app.js.
+- app.js: applyLang() целиком заменяет текстовые поля узлов текстом перевода, refreshTexts() обновляет DOM,
   measureLabels() пересчитывает подписи. Термины T.feat/T.Feats/T.prereq — «черта/способность»,
   «Требования/Критерии/Предварительные условия».
 ```

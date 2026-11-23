@@ -1,22 +1,22 @@
 // ============================================================
-// Перевод pf2.ru для волшебника — тексты к тем же узлам, что в data/wizard-raw.json (Archives of Nethys).
+// Перевод pf2.ru для волшебника — тексты к тем же узлам, что в data/wizard/source/aon.json (Archives of Nethys).
 //
 //   node tools/fetch-wizard-pf2ru.mjs          — скачать (с кешем в data/cache/wizard-ru)
 //   node tools/fetch-wizard-pf2ru.mjs --force  — перекачать
 //
 // Граф не меняется: черты сопоставляются по id (на pf2.ru и AoN они совпадают), при расхождении —
 // по английскому названию; школы и диссертации — по названию карточки.
-// Результат: data/wizard-pf2ru.json; затем tools/build-wizard-i18n.mjs собирает data/wizard-i18n.js.
+// Результат: data/wizard/source/pf2ru.json; затем node tools/build-wizard.mjs пересобирает data/wizard/build/.
 // ============================================================
 
-import fs from 'node:fs/promises';
 import path from 'node:path';
+import { readSource, writeSource } from './class-build.mjs';
 import { DATA_DIR, BASE, get, readTables, parseViewbox, parseItemCards, parseTraits, cleanHtml, stripTags } from './pf2-common.mjs';
 
 const CACHE = path.join(DATA_DIR, 'cache', 'wizard-ru');
 const cached = (url, file) => get(url, path.join(CACHE, file));
 
-const aon = JSON.parse(await fs.readFile(path.join(DATA_DIR, 'wizard-raw.json'), 'utf8'));
+const aon = await readSource('wizard', 'aon');
 
 // ---------- черты ----------
 const rows = readTables(await cached(`${BASE}/classes/wizard?tab=feats`, 'class-feats.html'))
@@ -66,7 +66,7 @@ const out = {
     fetchedAt: new Date().toISOString(),
     feats, schools, theses,
 };
-await fs.writeFile(path.join(DATA_DIR, 'wizard-pf2ru.json'), JSON.stringify(out, null, 1), 'utf8');
+await writeSource('wizard', 'pf2ru', out);
 console.log(`черт ${Object.keys(feats).length}/${aon.feats.length}, школ ${Object.keys(schools).length}/${aon.schools.length}, ` +
     `диссертаций ${Object.keys(theses).length}/${aon.theses.length}`);
 if (missing.length) console.log('  ! нет на pf2.ru:', missing.join(', '));

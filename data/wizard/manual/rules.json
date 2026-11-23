@@ -1,0 +1,130 @@
+{
+  "$schema": "../../schema/rules.schema.json",
+  "class": {
+    "id": "wizard",
+    "gen": "волшебника",
+    "featLevels": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20
+    ],
+    "maxLevel": 20
+  },
+  "schoolUnified": "school-unified-magical-theory",
+  "thesisFamiliar": "thesis-improved-familiar-attunement",
+  "themes": [
+    "theme-metamagic",
+    "theme-battle",
+    "theme-book",
+    "theme-bond",
+    "theme-mind",
+    "theme-necro",
+    "theme-familiar"
+  ],
+  "themeByName": {
+    "Counterspell": "theme-battle",
+    "Energy Ablation": "theme-battle",
+    "Elemental Defense": "theme-battle",
+    "Spell Protection Array": "theme-battle",
+    "Bespell Strikes": "theme-battle",
+    "Steady Spellcasting": "theme-battle",
+    "Irresistible Magic": "theme-battle",
+    "Keen Magical Detection": "theme-battle",
+    "Magic Sense": "theme-battle",
+    "Spatial Awareness": "theme-battle",
+    "Redirect Teleportation": "theme-battle",
+    "Shift Spell": "theme-battle",
+    "Spellbook Prodigy": "theme-book",
+    "Cantrip Expansion": "theme-book",
+    "Split Slot": "theme-book",
+    "Knowledge is Power (Wizard)": "theme-book",
+    "Scroll Adept": "theme-book",
+    "Form Retention": "theme-book",
+    "Effortless Concentration": "theme-book",
+    "Spell Tinker": "theme-book",
+    "Infinite Possibilities": "theme-book",
+    "Reprepare Spell": "theme-book",
+    "Spell Combination": "theme-book",
+    "Spell Mastery": "theme-book",
+    "Archwizard's Might": "theme-book",
+    "Spellshape Mastery": "theme-metamagic",
+    "Call Wizardly Tools": "theme-bond",
+    "Linked Focus": "theme-bond",
+    "Advanced School Spell": "theme-bond",
+    "Bond Conservation": "theme-bond",
+    "Shared Focus": "theme-bond",
+    "Bonded Focus": "theme-bond",
+    "Superior Bond": "theme-bond",
+    "Irezoko Tattoo": "theme-bond",
+    "Convincing Illusion": "theme-mind",
+    "Spellbinding Speech": "theme-mind",
+    "Helt's Spelldance": "theme-mind",
+    "Second Thoughts": "theme-mind",
+    "Undying Conviction": "theme-necro",
+    "Necromancer's Visage": "theme-necro",
+    "Sepulchral Sublimation": "theme-necro",
+    "Familiar": "theme-familiar"
+  },
+  "overrides": {
+    "Enhanced Familiar": {
+      "requires": [
+        [
+          "@Familiar",
+          "thesis-improved-familiar-attunement"
+        ]
+      ]
+    },
+    "Linked Focus": {
+      "requires": [
+        [
+          "group-school"
+        ]
+      ],
+      "forbids": [
+        "school-unified-magical-theory"
+      ]
+    }
+  },
+  "passivePrereq": [
+    "^(trained|expert|master|legendary) in ",
+    "^arcane bond$",
+    "^focus pool$",
+    "^archwizard'?s spellcraft$",
+    "create or control undead",
+    "necromancer wizard"
+  ],
+  "outsideFeats": [
+    "Quick Recognition"
+  ],
+  "bonusSlots": [
+    {
+      "id": "school-unified-magical-theory",
+      "level": 1
+    }
+  ],
+  "cardGroups": [
+    {
+      "id": "group-school",
+      "compact": true,
+      "noImages": true
+    },
+    {
+      "id": "group-thesis",
+      "compact": true,
+      "noImages": true
+    }
+  ],
+  "filters": [
+    "uncommon"
+  ],
+  "legend": [
+    "card"
+  ]
+}

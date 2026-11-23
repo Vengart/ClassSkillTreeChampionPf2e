@@ -1,4 +1,5 @@
 {
+  "$schema": "../../schema/translation.schema.json",
   "source": "Перевод Дока и Юры (pf2e.ru), модуль перевода Foundry VTT — расшифровка скриншотов images/foundryDocTranslation (в репозиторий не входят)",
   "feats": {
     "Reach Spell": {

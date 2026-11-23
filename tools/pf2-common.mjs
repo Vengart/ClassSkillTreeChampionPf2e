@@ -173,16 +173,3 @@ export function parseItemCards(html, anchorPrefix) {
     }
     return out;
 }
-
-/** Записывает граф класса в data/<cls>-data.js. */
-export async function writeClassData(cls, graph, raw, by) {
-    await fs.writeFile(
-        path.join(DATA_DIR, `${cls}-data.js`),
-        `// Сгенерировано ${by} — не редактируйте вручную.\n` +
-        `// Источник: ${raw.source} (${raw.fetchedAt})\n` +
-        `window.CLASS_DATA = ${JSON.stringify(graph, null, 1)};\n`,
-        'utf8',
-    );
-    console.log(`✓ data/${cls}-data.js — узлов: ${graph.nodes.length}, связей: ${graph.edges.length}`);
-    for (const w of graph.warnings) console.warn('  ! ' + w);
-}
