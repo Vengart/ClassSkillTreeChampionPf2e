@@ -221,7 +221,7 @@ export function buildGraph(raw) {
             filters: rules.filters,
             legend: rules.legend,
             updateCmd: 'node tools/fetch-pf2.mjs',
-            geometry: GEOMETRY, layout: layout.stats, bounds: layout.bounds,
+            geometry: GEOMETRY, layout: layout.stats, bounds: layout.bounds, grid: layout.grid,
         },
         nodes,
         edges,

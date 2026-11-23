@@ -157,7 +157,7 @@ export function buildWizardGraph(raw) {
             filters: rules.filters,
             legend: rules.legend,
             updateCmd: 'node tools/fetch-wizard-aon.mjs',
-            geometry: GEOMETRY, layout: layout.stats, bounds: layout.bounds,
+            geometry: GEOMETRY, layout: layout.stats, bounds: layout.bounds, grid: layout.grid,
         },
         nodes,
         edges,

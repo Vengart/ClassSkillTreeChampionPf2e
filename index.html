@@ -12,10 +12,14 @@
     <div id="viewport" tabindex="0" aria-label="Дерево черт">
         <div id="world">
             <svg id="rings-layer" width="1" height="1" aria-hidden="true"></svg>
+            <!-- линия «Текущий уровень» (позицию ставит app.js) -->
+            <div id="level-line" aria-hidden="true"></div>
             <svg id="edges-layer" width="1" height="1" aria-hidden="true"></svg>
             <div id="nodes-layer"></div>
         </div>
     </div>
+    <!-- Ось уровней слева: подписи строк сетки (прилипает к краю, двигается вместе с деревом по вертикали) -->
+    <div id="level-axis" aria-hidden="true"></div>
 
     <!-- Шапка: класс, очки, действия со сборкой -->
     <header id="app-header" class="frame">
@@ -25,14 +29,25 @@
             <h1 id="class-name">Поборник</h1>
             <div class="hdr-sub">дерево классовых черт · PF2e <span id="class-note" class="class-note"></span></div>
         </div>
-        <!-- Перевод текстов: AoN / pf2.ru / Док и Юра (кнопки строит app.js, если у класса есть переводы) -->
-        <div id="lang-switch" class="lang-switch" role="radiogroup" aria-label="Перевод" hidden></div>
         <div class="hdr-points" role="status" aria-live="polite">Очки: <b id="hdr-used">0</b> / <b id="hdr-total">0</b></div>
         <div class="hdr-actions">
-            <button type="button" class="btn" data-undo title="Отменить последнее изменение (Ctrl+Z)">Отменить</button>
-            <button type="button" id="btn-share" class="btn" title="Скопировать ссылку на эту сборку">Ссылка на сборку</button>
-            <button type="button" id="btn-reset" class="btn btn-danger" data-reset title="Сбросить сборку (можно отменить)">Сброс</button>
-            <button type="button" id="btn-fit" class="btn" title="Показать всё дерево (клавиша 0)">Уместить на экран</button>
+            <button type="button" class="icon-btn" data-undo title="Отменить последнее изменение (Ctrl+Z)" aria-label="Отменить">↶</button>
+            <button type="button" id="btn-share" class="btn btn-accent" title="Скопировать ссылку на эту сборку">Ссылка на сборку</button>
+            <div class="menu-wrap">
+                <button type="button" id="btn-menu" class="icon-btn" title="Настройки" aria-label="Настройки" aria-haspopup="true" aria-expanded="false" aria-controls="app-menu">⚙</button>
+                <div id="app-menu" class="menu frame" hidden>
+                    <!-- Перевод текстов: AoN / pf2.ru / Док и Юра (кнопки строит app.js, если переводов больше одного) -->
+                    <div id="lang-switch" class="menu-sec" role="radiogroup" aria-label="Перевод" hidden></div>
+                    <div class="menu-sec" id="reset-box">
+                        <button type="button" id="btn-reset" class="menu-item danger">Сбросить сборку…</button>
+                        <div id="reset-confirm" class="reset-confirm" hidden>
+                            <span>Сбросить все выборы и уровень?</span>
+                            <button type="button" class="btn btn-danger" data-reset>Сбросить</button>
+                            <button type="button" class="btn" id="reset-cancel">Отмена</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -46,11 +61,7 @@
                     <label for="level">Уровень</label>
                     <span><output id="level-out">1</output> <small id="level-max" class="muted"></small></span>
                 </div>
-                <input id="level" type="range" min="1" max="20" value="1">
-                <div class="points">
-                    <div class="points-bar"><div id="points-fill"></div></div>
-                    <div class="points-text">Черты класса: <b id="points-used">0</b> / <b id="points-total">1</b></div>
-                </div>
+                <input id="level" type="range" min="1" max="20" value="1" aria-label="Уровень персонажа">
             </section>
 
             <!-- Группы выбора класса (школа и диссертация волшебника, освящение и призвание поборника…) -->
@@ -90,7 +101,10 @@
             </section>
         </div>
 
-        <footer class="panel-foot small muted" id="data-source"></footer>
+        <footer class="panel-foot small muted">
+            <span id="data-source"></span>
+            <details class="update-note"><summary>Обновление данных</summary><span id="data-update"></span></details>
+        </footer>
     </aside>
 
     <!-- Правая панель: подробности -->
@@ -103,20 +117,21 @@
     <div id="tooltip" class="tooltip hidden" role="tooltip"></div>
     <div id="toast" class="toast hidden"></div>
     <!-- Компактная легенда: состояния узлов и виды связей -->
-    <details id="map-legend" class="frame" open>
+    <details id="map-legend" class="frame">
         <summary>Легенда</summary>
         <ul>
             <li><span class="lg-node lg-on"></span>взято</li>
-            <li><span class="lg-node lg-avail"></span>можно взять</li>
+            <li><span class="lg-node lg-avail"></span>можно взять сейчас</li>
             <li><span class="lg-node lg-locked"><span class="lock-badge"></span></span>закрыто</li>
             <li><span class="lg lg-req"></span>обязательное условие</li>
             <li><span class="lg lg-or"></span>одно из условий (или)</li>
             <li><span class="lg lg-taken"></span>путь к взятым</li>
         </ul>
     </details>
-    <div id="zoom-ctl">
-        <button class="icon-btn" data-zoom="1.25" aria-label="Приблизить">+</button>
-        <button class="icon-btn" data-zoom="0.8" aria-label="Отдалить">−</button>
+    <div id="zoom-ctl" class="frame">
+        <button type="button" class="icon-btn" data-zoom="1.25" title="Приблизить" aria-label="Приблизить">+</button>
+        <button type="button" class="icon-btn" data-zoom="0.8" title="Отдалить" aria-label="Отдалить">−</button>
+        <button type="button" id="btn-fit" class="icon-btn" title="Уместить на экран (клавиша 0)" aria-label="Уместить на экран">⤢</button>
     </div>
     <script>
         // класс из адреса (?class=wizard): сначала граф класса (data/<класс>/build/graph.js),

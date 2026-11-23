@@ -53,47 +53,32 @@ window.CLASS_DATA = {
   "updateCmd": "node tools/fetch-pf2.mjs",
   "geometry": {
    "SIZE": {
-    "root": 120,
-    "hub": 84,
-    "feat": 62,
-    "group": 78,
-    "option": 64
+    "root": 0,
+    "hub": 32,
+    "feat": 36,
+    "group": 36,
+    "option": 36
    },
    "CAPTION": {
-    "root": {
-     "fs": 28,
-     "maxW": 260,
-     "lines": 1
-    },
-    "hub": {
-     "fs": 19,
-     "maxW": 170,
-     "lines": 2
-    },
     "feat": {
-     "fs": 15,
-     "maxW": 150,
-     "lines": 2
-    },
-    "group": {
-     "fs": 19,
-     "maxW": 170,
+     "fs": 13,
+     "maxW": 116,
      "lines": 2
     },
     "option": {
-     "fs": 17,
-     "maxW": 170,
+     "fs": 13,
+     "maxW": 116,
      "lines": 2
     }
    },
-   "CAPTION_GAP": 8,
-   "CHAR_W": 0.7,
-   "STEP": 200,
-   "ROW": 130,
-   "RAIL": 40,
-   "HUB_Y": 300,
-   "BUS_GAP": 110,
-   "COL_GAP": 90
+   "CAPTION_GAP": 6,
+   "CHAR_W": 0.58,
+   "STEP": 140,
+   "ROW": 104,
+   "RAIL": 29,
+   "FIRST": 110,
+   "COL_GAP": 36,
+   "AXIS_W": 64
   },
   "layout": {
    "overlaps": 0,
@@ -101,10 +86,106 @@ window.CLASS_DATA = {
    "crossings": 0
   },
   "bounds": {
-   "minX": -2510,
-   "maxX": 2510,
-   "minY": -1690,
-   "maxY": 1580
+   "minX": 0,
+   "maxX": 4844,
+   "minY": -40,
+   "maxY": 1234
+  },
+  "grid": {
+   "rows": [
+    {
+     "level": 1,
+     "y": 110
+    },
+    {
+     "level": 2,
+     "y": 214
+    },
+    {
+     "level": 4,
+     "y": 318
+    },
+    {
+     "level": 6,
+     "y": 422
+    },
+    {
+     "level": 8,
+     "y": 526
+    },
+    {
+     "level": 10,
+     "y": 630
+    },
+    {
+     "level": 12,
+     "y": 734
+    },
+    {
+     "level": 14,
+     "y": 838
+    },
+    {
+     "level": 16,
+     "y": 942
+    },
+    {
+     "level": 18,
+     "y": 1046
+    },
+    {
+     "level": 20,
+     "y": 1150
+    }
+   ],
+   "columns": [
+    {
+     "id": "theme-cause",
+     "x": 64,
+     "w": 980
+    },
+    {
+     "id": "theme-sanct",
+     "x": 1080,
+     "w": 280
+    },
+    {
+     "id": "theme-aura",
+     "x": 1396,
+     "w": 420
+    },
+    {
+     "id": "theme-combat",
+     "x": 1852,
+     "w": 280
+    },
+    {
+     "id": "theme-shield",
+     "x": 2168,
+     "w": 140
+    },
+    {
+     "id": "theme-blessing",
+     "x": 2344,
+     "w": 420
+    },
+    {
+     "id": "theme-devotion",
+     "x": 2800,
+     "w": 420
+    },
+    {
+     "id": "theme-faith",
+     "x": 3256,
+     "w": 980
+    },
+    {
+     "id": "theme-steed",
+     "x": 4272,
+     "w": 560
+    }
+   ],
+   "rowH": 104
   },
   "defaultLang": "pf2ru",
   "langs": [
@@ -129,9 +210,7 @@ window.CLASS_DATA = {
    "id": "root",
    "kind": "root",
    "nameEn": "Champion",
-   "level": 0,
-   "x": 0,
-   "y": 0
+   "level": 0
   },
   {
    "image": "Holy.webp",
@@ -345,10 +424,9 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -1400,
-   "y": -300,
-   "captionSide": "right",
-   "captionW": 120
+   "x": 64,
+   "y": 0,
+   "plateW": 968
   },
   {
    "image": "SpellLayOfHands.webp",
@@ -356,10 +434,9 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -1890,
-   "y": 300,
-   "captionSide": "right",
-   "captionW": 147
+   "x": 2800,
+   "y": 0,
+   "plateW": 408
   },
   {
    "image": "oath-of-defender.webp",
@@ -367,10 +444,9 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 1400,
-   "y": -300,
-   "captionSide": "right",
-   "captionW": 170
+   "x": 2344,
+   "y": 0,
+   "plateW": 408
   },
   {
    "image": "300px-Hunger_of_Hadar.webp",
@@ -378,10 +454,9 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -120,
-   "y": -300,
-   "captionSide": "right",
-   "captionW": 54
+   "x": 1396,
+   "y": 0,
+   "plateW": 408
   },
   {
    "image": "shieldfeatsprotection.webp",
@@ -389,10 +464,9 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 960,
-   "y": -300,
-   "captionSide": "right",
-   "captionW": 40
+   "x": 2168,
+   "y": 0,
+   "plateW": 128
   },
   {
    "image": "Horse.webp",
@@ -400,10 +474,9 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 1290,
-   "y": 300,
-   "captionSide": "right",
-   "captionW": 80
+   "x": 4272,
+   "y": 0,
+   "plateW": 548
   },
   {
    "image": "prayer.webp",
@@ -411,10 +484,9 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -50,
-   "y": 300,
-   "captionSide": "right",
-   "captionW": 170
+   "x": 3256,
+   "y": 0,
+   "plateW": 968
   },
   {
    "image": "Holy.webp",
@@ -422,10 +494,9 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -560,
-   "y": -300,
-   "captionSide": "right",
-   "captionW": 120
+   "x": 1080,
+   "y": 0,
+   "plateW": 268
   },
   {
    "image": "fight.webp",
@@ -433,10 +504,9 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 520,
-   "y": -300,
-   "captionSide": "right",
-   "captionW": 40
+   "x": 1852,
+   "y": 0,
+   "plateW": 268
   },
   {
    "image": "Horse.webp",
@@ -451,10 +521,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-steed",
    "theme": "theme-steed",
-   "x": 1390,
-   "y": 430,
+   "x": 4342,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 137
+   "captionW": 99
   },
   {
    "image": "SubClassLiberation.webp",
@@ -473,10 +543,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1500,
-   "y": -430,
+   "x": 134,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 83
   },
   {
    "image": "SubClassRedemption.webp",
@@ -495,10 +565,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1300,
-   "y": -430,
+   "x": 274,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 95
+   "captionW": 68
   },
   {
    "image": "prayer.webp",
@@ -513,10 +583,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": -550,
-   "y": 430,
+   "x": 4026,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 147
+   "captionW": 106
   },
   {
    "image": "SubClassObedience.webp",
@@ -535,10 +605,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1700,
-   "y": -430,
+   "x": 414,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "SubClassInequality.webp",
@@ -557,10 +627,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1100,
-   "y": -430,
+   "x": 554,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 147
+   "captionW": 106
   },
   {
    "image": "shieldfeatsprotection.webp",
@@ -575,10 +645,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-shield",
    "theme": "theme-shield",
-   "x": 1060,
-   "y": -430,
+   "x": 2238,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "SubClassVelichie.webp",
@@ -597,10 +667,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1900,
-   "y": -430,
+   "x": 694,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "prayer.webp",
@@ -615,10 +685,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": 850,
-   "y": 430,
+   "x": 4166,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "SubClassDesecration.webp",
@@ -637,10 +707,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -900,
-   "y": -430,
+   "x": 834,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "SubClassJustice.webp",
@@ -659,10 +729,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -2100,
-   "y": -430,
+   "x": 974,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "prayer.webp",
@@ -677,10 +747,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": -150,
-   "y": 430,
+   "x": 3326,
+   "y": 110,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 114
   },
   {
    "image": "prayer.webp",
@@ -695,10 +765,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": 50,
-   "y": 560,
+   "x": 3466,
+   "y": 214,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "health.webp",
@@ -713,10 +783,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": -150,
-   "y": 560,
+   "x": 3606,
+   "y": 214,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "oath-of-defender.webp",
@@ -731,10 +801,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": 450,
-   "y": 560,
+   "x": 3326,
+   "y": 214,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "oath-of-avenger.webp",
@@ -749,10 +819,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": 250,
-   "y": 560,
+   "x": 3746,
+   "y": 214,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 114
   },
   {
    "image": "oath-of-assassin.webp",
@@ -767,10 +837,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": -350,
-   "y": 560,
+   "x": 3886,
+   "y": 214,
    "captionSide": "below",
-   "captionW": 137
+   "captionW": 99
   },
   {
    "image": "300px-Dethrone.webp",
@@ -789,10 +859,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -20,
-   "y": -560,
+   "x": 1466,
+   "y": 318,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 83
   },
   {
    "image": "Unholy.webp",
@@ -811,10 +881,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -220,
-   "y": -560,
+   "x": 1606,
+   "y": 318,
    "captionSide": "below",
-   "captionW": 137
+   "captionW": 99
   },
   {
    "image": "SpellShieldsOfTheSpirit.webp",
@@ -833,10 +903,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-devotion",
    "theme": "theme-devotion",
-   "x": -1590,
-   "y": 690,
+   "x": 2870,
+   "y": 318,
    "captionSide": "below",
-   "captionW": 126
+   "captionW": 91
   },
   {
    "image": "SpellTouchOfCorruption.webp",
@@ -855,10 +925,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-devotion",
    "theme": "theme-devotion",
-   "x": -2190,
-   "y": 690,
+   "x": 3150,
+   "y": 318,
    "captionSide": "below",
-   "captionW": 137
+   "captionW": 99
   },
   {
    "image": "SpellLayOfHands.webp",
@@ -877,10 +947,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-devotion",
    "theme": "theme-devotion",
-   "x": -1190,
-   "y": 690,
+   "x": 3010,
+   "y": 318,
    "captionSide": "below",
-   "captionW": 105
+   "captionW": 76
   },
   {
    "image": "Horse.webp",
@@ -899,10 +969,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1590,
-   "y": 690,
+   "x": 4342,
+   "y": 318,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "Horse.webp",
@@ -921,10 +991,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1990,
-   "y": 820,
+   "x": 4622,
+   "y": 422,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "fight.webp",
@@ -939,10 +1009,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-combat",
    "theme": "theme-combat",
-   "x": 620,
-   "y": -690,
+   "x": 1922,
+   "y": 422,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "300px-Hunger_of_Hadar.webp",
@@ -957,10 +1027,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -20,
-   "y": -690,
+   "x": 1466,
+   "y": 422,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 114
   },
   {
    "image": "smite.webp",
@@ -975,10 +1045,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-combat",
    "theme": "theme-combat",
-   "x": 420,
-   "y": -690,
+   "x": 2062,
+   "y": 422,
    "captionSide": "below",
-   "captionW": 105
+   "captionW": 76
   },
   {
    "image": "shieldfeatsprotection.webp",
@@ -997,10 +1067,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1900,
-   "y": -690,
+   "x": 2694,
+   "y": 422,
    "captionSide": "below",
-   "captionW": 95
+   "captionW": 68
   },
   {
    "image": "shieldfeatsprotection.webp",
@@ -1015,10 +1085,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-shield",
    "theme": "theme-shield",
-   "x": 860,
-   "y": -820,
+   "x": 2238,
+   "y": 526,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "oath-of-defender.webp",
@@ -1037,10 +1107,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1300,
-   "y": -820,
+   "x": 2414,
+   "y": 526,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "SpellLayOfHands.webp",
@@ -1062,10 +1132,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1590,
-   "y": 950,
+   "x": 4342,
+   "y": 526,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "prayer.webp",
@@ -1084,10 +1154,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5883",
    "theme": "theme-faith",
-   "x": -750,
-   "y": 950,
+   "x": 4026,
+   "y": 526,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "SpellShieldsOfTheSpirit.webp",
@@ -1106,10 +1176,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5898",
    "theme": "theme-devotion",
-   "x": -1390,
-   "y": 950,
+   "x": 2870,
+   "y": 526,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "SpellTouchOfCorruption.webp",
@@ -1128,10 +1198,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5896",
    "theme": "theme-devotion",
-   "x": -2390,
-   "y": 950,
+   "x": 3150,
+   "y": 526,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "SpellLayOfHands.webp",
@@ -1150,10 +1220,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5897",
    "theme": "theme-devotion",
-   "x": -990,
-   "y": 950,
+   "x": 3010,
+   "y": 526,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "sight.webp",
@@ -1168,10 +1238,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-sanct",
    "theme": "theme-sanct",
-   "x": -460,
-   "y": -820,
+   "x": 1150,
+   "y": 526,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "sight.webp",
@@ -1186,10 +1256,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-sanct",
    "theme": "theme-sanct",
-   "x": -660,
-   "y": -820,
+   "x": 1290,
+   "y": 526,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "Horse.webp",
@@ -1208,10 +1278,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1790,
-   "y": 950,
+   "x": 4482,
+   "y": 526,
    "captionSide": "below",
-   "captionW": 84
+   "captionW": 61
   },
   {
    "image": "Horse.webp",
@@ -1230,10 +1300,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5900",
    "theme": "theme-steed",
-   "x": 2190,
-   "y": 1080,
+   "x": 4762,
+   "y": 630,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "DevProvornost.webp",
@@ -1252,10 +1322,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1500,
-   "y": -950,
+   "x": 2414,
+   "y": 630,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "DevWeapon.webp",
@@ -1274,10 +1344,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1300,
-   "y": -950,
+   "x": 2554,
+   "y": 630,
    "captionSide": "below",
-   "captionW": 147
+   "captionW": 106
   },
   {
    "image": "DevShield.webp",
@@ -1299,10 +1369,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4807",
    "theme": "theme-blessing",
-   "x": 2100,
-   "y": -950,
+   "x": 2694,
+   "y": 630,
    "captionSide": "below",
-   "captionW": 126
+   "captionW": 91
   },
   {
    "image": "300px-Calm_Emotions.webp",
@@ -1322,10 +1392,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -220,
-   "y": -1080,
+   "x": 1466,
+   "y": 734,
    "captionSide": "below",
-   "captionW": 95
+   "captionW": 68
   },
   {
    "image": "fight.webp",
@@ -1347,10 +1417,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1100,
-   "y": -1080,
+   "x": 274,
+   "y": 734,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "Unholy.webp",
@@ -1369,10 +1439,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1590,
-   "y": 1210,
+   "x": 4342,
+   "y": 734,
    "captionSide": "below",
-   "captionW": 147
+   "captionW": 106
   },
   {
    "image": "shieldfeatsprotection.webp",
@@ -1387,10 +1457,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-shield",
    "theme": "theme-shield",
-   "x": 1060,
-   "y": -1080,
+   "x": 2238,
+   "y": 734,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "SpellLayOfHands.webp",
@@ -1409,10 +1479,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5897",
    "theme": "theme-devotion",
-   "x": -990,
-   "y": 1210,
+   "x": 3010,
+   "y": 734,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "Horse.webp",
@@ -1431,10 +1501,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1790,
-   "y": 1210,
+   "x": 4482,
+   "y": 734,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "oath-of-avenger.webp",
@@ -1455,10 +1525,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-7518",
    "theme": "theme-faith",
-   "x": 650,
-   "y": 1210,
+   "x": 3326,
+   "y": 734,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "smite.webp",
@@ -1475,10 +1545,10 @@ window.CLASS_DATA = {
    ],
    "parentId": "theme-combat",
    "theme": "theme-combat",
-   "x": 620,
-   "y": -1080,
+   "x": 1922,
+   "y": 734,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "prayer.webp",
@@ -1497,10 +1567,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-devotion",
    "theme": "theme-devotion",
-   "x": -1990,
-   "y": 1210,
+   "x": 2870,
+   "y": 734,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "Unholy.webp",
@@ -1521,10 +1591,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1300,
-   "y": -1080,
+   "x": 134,
+   "y": 734,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 114
   },
   {
    "image": "300px-Cure_Wounds.webp",
@@ -1539,10 +1609,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -20,
-   "y": -1210,
+   "x": 1466,
+   "y": 838,
    "captionSide": "below",
-   "captionW": 105
+   "captionW": 76
   },
   {
    "image": "Holy.webp",
@@ -1561,10 +1631,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -220,
-   "y": -1210,
+   "x": 1606,
+   "y": 838,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "brave.webp",
@@ -1579,10 +1649,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": 180,
-   "y": -1210,
+   "x": 1746,
+   "y": 838,
    "captionSide": "below",
-   "captionW": 147
+   "captionW": 106
   },
   {
    "image": "300px-Longstrider.webp",
@@ -1597,10 +1667,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-combat",
    "theme": "theme-combat",
-   "x": 420,
-   "y": -1210,
+   "x": 1922,
+   "y": 838,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "300px-Conjure_Barrage.webp",
@@ -1615,10 +1685,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-combat",
    "theme": "theme-combat",
-   "x": 620,
-   "y": -1210,
+   "x": 2062,
+   "y": 838,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "fight.webp",
@@ -1637,10 +1707,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5914",
    "theme": "theme-cause",
-   "x": -900,
-   "y": -1340,
+   "x": 274,
+   "y": 942,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 83
   },
   {
    "image": "Unholy.webp",
@@ -1661,10 +1731,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1500,
-   "y": -1340,
+   "x": 134,
+   "y": 942,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 114
   },
   {
    "image": "Horse.webp",
@@ -1683,10 +1753,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5908",
    "theme": "theme-steed",
-   "x": 2390,
-   "y": 1340,
+   "x": 4762,
+   "y": 942,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "shieldfeatsprotection.webp",
@@ -1705,10 +1775,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4807",
    "theme": "theme-blessing",
-   "x": 2100,
-   "y": -1340,
+   "x": 2694,
+   "y": 942,
    "captionSide": "below",
-   "captionW": 147
+   "captionW": 106
   },
   {
    "image": "SpellLayOfHands.webp",
@@ -1727,10 +1797,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-devotion",
    "theme": "theme-devotion",
-   "x": -1790,
-   "y": 1470,
+   "x": 2870,
+   "y": 1046,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "fight.webp",
@@ -1749,10 +1819,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1300,
-   "y": -1470,
+   "x": 134,
+   "y": 1046,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "SpellLayOfHands.webp",
@@ -1771,10 +1841,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5897",
    "theme": "theme-devotion",
-   "x": -990,
-   "y": 1470,
+   "x": 3010,
+   "y": 1046,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "prayer.webp",
@@ -1793,10 +1863,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5884",
    "theme": "theme-faith",
-   "x": 1050,
-   "y": 1470,
+   "x": 4166,
+   "y": 1046,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "300px-Planar_Binding.webp",
@@ -1811,10 +1881,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-sanct",
    "theme": "theme-sanct",
-   "x": -460,
-   "y": -1470,
+   "x": 1150,
+   "y": 1046,
    "captionSide": "below",
-   "captionW": 126
+   "captionW": 91
   },
   {
    "image": "Holy.webp",
@@ -1829,10 +1899,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-sanct",
    "theme": "theme-sanct",
-   "x": -660,
-   "y": -1470,
+   "x": 1290,
+   "y": 1046,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "Holy.webp",
@@ -1847,10 +1917,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-sanct",
    "theme": "theme-sanct",
-   "x": -460,
-   "y": -1600,
+   "x": 1150,
+   "y": 1150,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 116
   },
   {
    "image": "DevWeapon.webp",
@@ -1869,10 +1939,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1500,
-   "y": -1600,
+   "x": 2414,
+   "y": 1150,
    "captionSide": "below",
-   "captionW": 137
+   "captionW": 99
   },
   {
    "image": "DevProvornost.webp",
@@ -1891,10 +1961,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1300,
-   "y": -1600,
+   "x": 2554,
+   "y": 1150,
    "captionSide": "below",
-   "captionW": 150
+   "captionW": 114
   },
   {
    "image": "DevShield.webp",
@@ -1913,229 +1983,13 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1700,
-   "y": -1600,
+   "x": 2694,
+   "y": 1150,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 83
   }
  ],
  "edges": [
-  {
-   "from": "root",
-   "to": "theme-cause",
-   "kind": "struct",
-   "primary": true,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     0,
-     -190
-    ],
-    [
-     -1400,
-     -190
-    ],
-    [
-     -1400,
-     -300
-    ]
-   ]
-  },
-  {
-   "from": "root",
-   "to": "theme-devotion",
-   "kind": "struct",
-   "primary": true,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     0,
-     190
-    ],
-    [
-     -1890,
-     190
-    ],
-    [
-     -1890,
-     300
-    ]
-   ]
-  },
-  {
-   "from": "root",
-   "to": "theme-blessing",
-   "kind": "struct",
-   "primary": true,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     0,
-     -190
-    ],
-    [
-     1400,
-     -190
-    ],
-    [
-     1400,
-     -300
-    ]
-   ]
-  },
-  {
-   "from": "root",
-   "to": "theme-aura",
-   "kind": "struct",
-   "primary": true,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     0,
-     -190
-    ],
-    [
-     -120,
-     -190
-    ],
-    [
-     -120,
-     -300
-    ]
-   ]
-  },
-  {
-   "from": "root",
-   "to": "theme-shield",
-   "kind": "struct",
-   "primary": true,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     0,
-     -190
-    ],
-    [
-     960,
-     -190
-    ],
-    [
-     960,
-     -300
-    ]
-   ]
-  },
-  {
-   "from": "root",
-   "to": "theme-steed",
-   "kind": "struct",
-   "primary": true,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     0,
-     190
-    ],
-    [
-     1290,
-     190
-    ],
-    [
-     1290,
-     300
-    ]
-   ]
-  },
-  {
-   "from": "root",
-   "to": "theme-faith",
-   "kind": "struct",
-   "primary": true,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     0,
-     190
-    ],
-    [
-     -50,
-     190
-    ],
-    [
-     -50,
-     300
-    ]
-   ]
-  },
-  {
-   "from": "root",
-   "to": "theme-sanct",
-   "kind": "struct",
-   "primary": true,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     0,
-     -190
-    ],
-    [
-     -560,
-     -190
-    ],
-    [
-     -560,
-     -300
-    ]
-   ]
-  },
-  {
-   "from": "root",
-   "to": "theme-combat",
-   "kind": "struct",
-   "primary": true,
-   "points": [
-    [
-     0,
-     0
-    ],
-    [
-     0,
-     -190
-    ],
-    [
-     520,
-     -190
-    ],
-    [
-     520,
-     -300
-    ]
-   ]
-  },
   {
    "from": "theme-steed",
    "to": "feat-5885",
@@ -2143,16 +1997,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1290,
-     300
+     4272,
+     0
     ],
     [
-     1290,
-     430
+     4272,
+     110
     ],
     [
-     1390,
-     430
+     4342,
+     110
     ]
    ]
   },
@@ -2163,16 +2017,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -430
+     64,
+     110
     ],
     [
-     -1500,
-     -430
+     134,
+     110
     ]
    ]
   },
@@ -2183,16 +2037,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -430
+     64,
+     81
     ],
     [
-     -1300,
-     -430
+     204,
+     81
+    ],
+    [
+     204,
+     110
+    ],
+    [
+     274,
+     110
     ]
    ]
   },
@@ -2203,24 +2065,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
-     300
+     3256,
+     0
     ],
     [
-     -50,
-     390
+     3256,
+     81
     ],
     [
-     -450,
-     390
+     3956,
+     81
     ],
     [
-     -450,
-     430
+     3956,
+     110
     ],
     [
-     -550,
-     430
+     4026,
+     110
     ]
    ]
   },
@@ -2231,24 +2093,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -470
+     64,
+     81
     ],
     [
-     -1600,
-     -470
+     344,
+     81
     ],
     [
-     -1600,
-     -430
+     344,
+     110
     ],
     [
-     -1700,
-     -430
+     414,
+     110
     ]
    ]
   },
@@ -2259,24 +2121,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -470
+     64,
+     81
     ],
     [
-     -1200,
-     -470
+     484,
+     81
     ],
     [
-     -1200,
-     -430
+     484,
+     110
     ],
     [
-     -1100,
-     -430
+     554,
+     110
     ]
    ]
   },
@@ -2287,16 +2149,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     960,
-     -300
+     2168,
+     0
     ],
     [
-     960,
-     -430
+     2168,
+     110
     ],
     [
-     1060,
-     -430
+     2238,
+     110
     ]
    ]
   },
@@ -2307,24 +2169,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -470
+     64,
+     81
     ],
     [
-     -1800,
-     -470
+     624,
+     81
     ],
     [
-     -1800,
-     -430
+     624,
+     110
     ],
     [
-     -1900,
-     -430
+     694,
+     110
     ]
    ]
   },
@@ -2335,24 +2197,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
-     300
+     3256,
+     0
     ],
     [
-     -50,
-     390
+     3256,
+     81
     ],
     [
-     750,
-     390
+     4096,
+     81
     ],
     [
-     750,
-     430
+     4096,
+     110
     ],
     [
-     850,
-     430
+     4166,
+     110
     ]
    ]
   },
@@ -2363,24 +2225,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -470
+     64,
+     81
     ],
     [
-     -1000,
-     -470
+     764,
+     81
     ],
     [
-     -1000,
-     -430
+     764,
+     110
     ],
     [
-     -900,
-     -430
+     834,
+     110
     ]
    ]
   },
@@ -2391,24 +2253,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -470
+     64,
+     81
     ],
     [
-     -2000,
-     -470
+     904,
+     81
     ],
     [
-     -2000,
-     -430
+     904,
+     110
     ],
     [
-     -2100,
-     -430
+     974,
+     110
     ]
    ]
   },
@@ -2419,16 +2281,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
-     300
+     3256,
+     0
     ],
     [
-     -50,
-     430
+     3256,
+     110
     ],
     [
-     -150,
-     430
+     3326,
+     110
     ]
    ]
   },
@@ -2439,16 +2301,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
-     300
+     3256,
+     0
     ],
     [
-     -50,
-     560
+     3256,
+     185
     ],
     [
-     50,
-     560
+     3396,
+     185
+    ],
+    [
+     3396,
+     214
+    ],
+    [
+     3466,
+     214
     ]
    ]
   },
@@ -2459,16 +2329,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
-     300
+     3256,
+     0
     ],
     [
-     -50,
-     560
+     3256,
+     185
     ],
     [
-     -150,
-     560
+     3536,
+     185
+    ],
+    [
+     3536,
+     214
+    ],
+    [
+     3606,
+     214
     ]
    ]
   },
@@ -2479,24 +2357,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
-     300
+     3256,
+     0
     ],
     [
-     -50,
-     520
+     3256,
+     214
     ],
     [
-     350,
-     520
-    ],
-    [
-     350,
-     560
-    ],
-    [
-     450,
-     560
+     3326,
+     214
     ]
    ]
   },
@@ -2507,24 +2377,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
-     300
+     3256,
+     0
     ],
     [
-     -50,
-     520
+     3256,
+     185
     ],
     [
-     150,
-     520
+     3676,
+     185
     ],
     [
-     150,
-     560
+     3676,
+     214
     ],
     [
-     250,
-     560
+     3746,
+     214
     ]
    ]
   },
@@ -2535,24 +2405,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
-     300
+     3256,
+     0
     ],
     [
-     -50,
-     520
+     3256,
+     185
     ],
     [
-     -250,
-     520
+     3816,
+     185
     ],
     [
-     -250,
-     560
+     3816,
+     214
     ],
     [
-     -350,
-     560
+     3886,
+     214
     ]
    ]
   },
@@ -2563,16 +2433,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
-     -300
+     1396,
+     0
     ],
     [
-     -120,
-     -560
+     1396,
+     318
     ],
     [
-     -20,
-     -560
+     1466,
+     318
     ]
    ]
   },
@@ -2583,16 +2453,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
-     -300
+     1396,
+     0
     ],
     [
-     -120,
-     -560
+     1396,
+     289
     ],
     [
-     -220,
-     -560
+     1536,
+     289
+    ],
+    [
+     1536,
+     318
+    ],
+    [
+     1606,
+     318
     ]
    ]
   },
@@ -2603,24 +2481,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1890,
-     300
+     2800,
+     0
     ],
     [
-     -1890,
-     650
+     2800,
+     318
     ],
     [
-     -1690,
-     650
-    ],
-    [
-     -1690,
-     690
-    ],
-    [
-     -1590,
-     690
+     2870,
+     318
     ]
    ]
   },
@@ -2631,24 +2501,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1890,
-     300
+     2800,
+     0
     ],
     [
-     -1890,
-     650
+     2800,
+     289
     ],
     [
-     -2090,
-     650
+     3080,
+     289
     ],
     [
-     -2090,
-     690
+     3080,
+     318
     ],
     [
-     -2190,
-     690
+     3150,
+     318
     ]
    ]
   },
@@ -2659,24 +2529,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1890,
-     300
+     2800,
+     0
     ],
     [
-     -1890,
-     520
+     2800,
+     289
     ],
     [
-     -1290,
-     520
+     2940,
+     289
     ],
     [
-     -1290,
-     690
+     2940,
+     318
     ],
     [
-     -1190,
-     690
+     3010,
+     318
     ]
    ]
   },
@@ -2687,20 +2557,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
-     430
+     4342,
+     110
     ],
     [
-     1490,
-     430
+     4412,
+     110
     ],
     [
-     1490,
-     690
+     4412,
+     318
     ],
     [
-     1590,
-     690
+     4342,
+     318
     ]
    ]
   },
@@ -2711,28 +2581,28 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
-     430
+     4342,
+     110
     ],
     [
-     1490,
-     430
+     4412,
+     110
     ],
     [
-     1490,
-     780
+     4412,
+     393
     ],
     [
-     1890,
-     780
+     4552,
+     393
     ],
     [
-     1890,
-     820
+     4552,
+     422
     ],
     [
-     1990,
-     820
+     4622,
+     422
     ]
    ]
   },
@@ -2743,16 +2613,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     520,
-     -300
+     1852,
+     0
     ],
     [
-     520,
-     -690
+     1852,
+     422
     ],
     [
-     620,
-     -690
+     1922,
+     422
     ]
    ]
   },
@@ -2763,16 +2633,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
-     -300
+     1396,
+     0
     ],
     [
-     -120,
-     -690
+     1396,
+     422
     ],
     [
-     -20,
-     -690
+     1466,
+     422
     ]
    ]
   },
@@ -2783,16 +2653,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     520,
-     -300
+     1852,
+     0
     ],
     [
-     520,
-     -690
+     1852,
+     393
     ],
     [
-     420,
-     -690
+     1992,
+     393
+    ],
+    [
+     1992,
+     422
+    ],
+    [
+     2062,
+     422
     ]
    ]
   },
@@ -2803,24 +2681,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
-     -300
+     2344,
+     0
     ],
     [
-     1400,
-     -730
+     2344,
+     393
     ],
     [
-     1800,
-     -730
+     2624,
+     393
     ],
     [
-     1800,
-     -690
+     2624,
+     422
     ],
     [
-     1900,
-     -690
+     2694,
+     422
     ]
    ]
   },
@@ -2831,16 +2709,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     960,
-     -300
+     2168,
+     0
     ],
     [
-     960,
-     -820
+     2168,
+     526
     ],
     [
-     860,
-     -820
+     2238,
+     526
     ]
    ]
   },
@@ -2851,16 +2729,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
-     -300
+     2344,
+     0
     ],
     [
-     1400,
-     -820
+     2344,
+     526
     ],
     [
-     1300,
-     -820
+     2414,
+     526
     ]
    ]
   },
@@ -2871,20 +2749,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
-     430
+     4342,
+     110
     ],
     [
-     1490,
-     430
+     4412,
+     110
     ],
     [
-     1490,
-     950
+     4412,
+     526
     ],
     [
-     1590,
-     950
+     4342,
+     526
     ]
    ]
   },
@@ -2895,20 +2773,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -550,
-     430
+     4026,
+     110
     ],
     [
-     -650,
-     430
+     4096,
+     110
     ],
     [
-     -650,
-     950
+     4096,
+     526
     ],
     [
-     -750,
-     950
+     4026,
+     526
     ]
    ]
   },
@@ -2919,20 +2797,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1590,
-     690
+     2870,
+     318
     ],
     [
-     -1490,
-     690
+     2940,
+     318
     ],
     [
-     -1490,
-     950
+     2940,
+     526
     ],
     [
-     -1390,
-     950
+     2870,
+     526
     ]
    ]
   },
@@ -2943,20 +2821,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2190,
-     690
+     3150,
+     318
     ],
     [
-     -2290,
-     690
+     3220,
+     318
     ],
     [
-     -2290,
-     950
+     3220,
+     526
     ],
     [
-     -2390,
-     950
+     3150,
+     526
     ]
    ]
   },
@@ -2967,20 +2845,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1190,
-     690
+     3010,
+     318
     ],
     [
-     -1090,
-     690
+     3080,
+     318
     ],
     [
-     -1090,
-     950
+     3080,
+     526
     ],
     [
-     -990,
-     950
+     3010,
+     526
     ]
    ]
   },
@@ -2991,16 +2869,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -560,
-     -300
+     1080,
+     0
     ],
     [
-     -560,
-     -820
+     1080,
+     526
     ],
     [
-     -460,
-     -820
+     1150,
+     526
     ]
    ]
   },
@@ -3011,16 +2889,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -560,
-     -300
+     1080,
+     0
     ],
     [
-     -560,
-     -820
+     1080,
+     497
     ],
     [
-     -660,
-     -820
+     1220,
+     497
+    ],
+    [
+     1220,
+     526
+    ],
+    [
+     1290,
+     526
     ]
    ]
   },
@@ -3031,28 +2917,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
-     430
+     4342,
+     110
     ],
     [
-     1490,
-     430
+     4412,
+     110
     ],
     [
-     1490,
-     910
+     4412,
+     526
     ],
     [
-     1690,
-     910
-    ],
-    [
-     1690,
-     950
-    ],
-    [
-     1790,
-     950
+     4482,
+     526
     ]
    ]
   },
@@ -3063,20 +2941,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1990,
-     820
+     4622,
+     422
     ],
     [
-     2090,
-     820
+     4692,
+     422
     ],
     [
-     2090,
-     1080
+     4692,
+     630
     ],
     [
-     2190,
-     1080
+     4762,
+     630
     ]
    ]
   },
@@ -3087,16 +2965,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
-     -300
+     2344,
+     0
     ],
     [
-     1400,
-     -950
+     2344,
+     630
     ],
     [
-     1500,
-     -950
+     2414,
+     630
     ]
    ]
   },
@@ -3107,16 +2985,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
-     -300
+     2344,
+     0
     ],
     [
-     1400,
-     -950
+     2344,
+     601
     ],
     [
-     1300,
-     -950
+     2484,
+     601
+    ],
+    [
+     2484,
+     630
+    ],
+    [
+     2554,
+     630
     ]
    ]
   },
@@ -3127,20 +3013,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1900,
-     -690
+     2694,
+     422
     ],
     [
-     2000,
-     -690
+     2764,
+     422
     ],
     [
-     2000,
-     -950
+     2764,
+     630
     ],
     [
-     2100,
-     -950
+     2694,
+     630
     ]
    ]
   },
@@ -3151,16 +3037,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
-     -300
+     1396,
+     0
     ],
     [
-     -120,
-     -1080
+     1396,
+     734
     ],
     [
-     -220,
-     -1080
+     1466,
+     734
     ]
    ]
   },
@@ -3171,24 +3057,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -1120
+     64,
+     705
     ],
     [
-     -1200,
-     -1120
+     204,
+     705
     ],
     [
-     -1200,
-     -1080
+     204,
+     734
     ],
     [
-     -1100,
-     -1080
+     274,
+     734
     ]
    ]
   },
@@ -3199,20 +3085,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
-     430
+     4342,
+     110
     ],
     [
-     1490,
-     430
+     4412,
+     110
     ],
     [
-     1490,
-     1210
+     4412,
+     734
     ],
     [
-     1590,
-     1210
+     4342,
+     734
     ]
    ]
   },
@@ -3223,16 +3109,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     960,
-     -300
+     2168,
+     0
     ],
     [
-     960,
-     -1080
+     2168,
+     734
     ],
     [
-     1060,
-     -1080
+     2238,
+     734
     ]
    ]
   },
@@ -3243,20 +3129,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1190,
-     690
+     3010,
+     318
     ],
     [
-     -1090,
-     690
+     3080,
+     318
     ],
     [
-     -1090,
-     1210
+     3080,
+     734
     ],
     [
-     -990,
-     1210
+     3010,
+     734
     ]
    ]
   },
@@ -3267,28 +3153,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
-     430
+     4342,
+     110
     ],
     [
-     1490,
-     430
+     4412,
+     110
     ],
     [
-     1490,
-     1170
+     4412,
+     734
     ],
     [
-     1690,
-     1170
-    ],
-    [
-     1690,
-     1210
-    ],
-    [
-     1790,
-     1210
+     4482,
+     734
     ]
    ]
   },
@@ -3299,20 +3177,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     450,
-     560
+     3326,
+     214
     ],
     [
-     550,
-     560
+     3396,
+     214
     ],
     [
-     550,
-     1210
+     3396,
+     734
     ],
     [
-     650,
-     1210
+     3326,
+     734
     ]
    ]
   },
@@ -3323,16 +3201,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     520,
-     -300
+     1852,
+     0
     ],
     [
-     520,
-     -1080
+     1852,
+     734
     ],
     [
-     620,
-     -1080
+     1922,
+     734
     ]
    ]
   },
@@ -3343,16 +3221,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1890,
-     300
+     2800,
+     0
     ],
     [
-     -1890,
-     1210
+     2800,
+     734
     ],
     [
-     -1990,
-     1210
+     2870,
+     734
     ]
    ]
   },
@@ -3363,16 +3241,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -1080
+     64,
+     734
     ],
     [
-     -1300,
-     -1080
+     134,
+     734
     ]
    ]
   },
@@ -3383,16 +3261,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
-     -300
+     1396,
+     0
     ],
     [
-     -120,
-     -1210
+     1396,
+     838
     ],
     [
-     -20,
-     -1210
+     1466,
+     838
     ]
    ]
   },
@@ -3403,16 +3281,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
-     -300
+     1396,
+     0
     ],
     [
-     -120,
-     -1210
+     1396,
+     809
     ],
     [
-     -220,
-     -1210
+     1536,
+     809
+    ],
+    [
+     1536,
+     838
+    ],
+    [
+     1606,
+     838
     ]
    ]
   },
@@ -3423,24 +3309,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
-     -300
+     1396,
+     0
     ],
     [
-     -120,
-     -1250
+     1396,
+     809
     ],
     [
-     80,
-     -1250
+     1676,
+     809
     ],
     [
-     80,
-     -1210
+     1676,
+     838
     ],
     [
-     180,
-     -1210
+     1746,
+     838
     ]
    ]
   },
@@ -3451,16 +3337,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     520,
-     -300
+     1852,
+     0
     ],
     [
-     520,
-     -1210
+     1852,
+     838
     ],
     [
-     420,
-     -1210
+     1922,
+     838
     ]
    ]
   },
@@ -3471,16 +3357,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     520,
-     -300
+     1852,
+     0
     ],
     [
-     520,
-     -1210
+     1852,
+     809
     ],
     [
-     620,
-     -1210
+     1992,
+     809
+    ],
+    [
+     1992,
+     838
+    ],
+    [
+     2062,
+     838
     ]
    ]
   },
@@ -3491,20 +3385,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1100,
-     -1080
+     274,
+     734
     ],
     [
-     -1000,
-     -1080
+     344,
+     734
     ],
     [
-     -1000,
-     -1340
+     344,
+     942
     ],
     [
-     -900,
-     -1340
+     274,
+     942
     ]
    ]
   },
@@ -3515,16 +3409,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -1340
+     64,
+     942
     ],
     [
-     -1500,
-     -1340
+     134,
+     942
     ]
    ]
   },
@@ -3535,20 +3429,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2190,
-     1080
+     4762,
+     630
     ],
     [
-     2290,
-     1080
+     4832,
+     630
     ],
     [
-     2290,
-     1340
+     4832,
+     942
     ],
     [
-     2390,
-     1340
+     4762,
+     942
     ]
    ]
   },
@@ -3559,20 +3453,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1900,
-     -690
+     2694,
+     422
     ],
     [
-     2000,
-     -690
+     2764,
+     422
     ],
     [
-     2000,
-     -1340
+     2764,
+     942
     ],
     [
-     2100,
-     -1340
+     2694,
+     942
     ]
    ]
   },
@@ -3583,16 +3477,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1890,
-     300
+     2800,
+     0
     ],
     [
-     -1890,
-     1470
+     2800,
+     1046
     ],
     [
-     -1790,
-     1470
+     2870,
+     1046
     ]
    ]
   },
@@ -3603,16 +3497,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
-     -300
+     64,
+     0
     ],
     [
-     -1400,
-     -1470
+     64,
+     1046
     ],
     [
-     -1300,
-     -1470
+     134,
+     1046
     ]
    ]
   },
@@ -3623,20 +3517,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1190,
-     690
+     3010,
+     318
     ],
     [
-     -1090,
-     690
+     3080,
+     318
     ],
     [
-     -1090,
-     1470
+     3080,
+     1046
     ],
     [
-     -990,
-     1470
+     3010,
+     1046
     ]
    ]
   },
@@ -3647,20 +3541,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     850,
-     430
+     4166,
+     110
     ],
     [
-     950,
-     430
+     4236,
+     110
     ],
     [
-     950,
-     1470
+     4236,
+     1046
     ],
     [
-     1050,
-     1470
+     4166,
+     1046
     ]
    ]
   },
@@ -3671,16 +3565,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -560,
-     -300
+     1080,
+     0
     ],
     [
-     -560,
-     -1470
+     1080,
+     1046
     ],
     [
-     -460,
-     -1470
+     1150,
+     1046
     ]
    ]
   },
@@ -3691,16 +3585,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -560,
-     -300
+     1080,
+     0
     ],
     [
-     -560,
-     -1470
+     1080,
+     1017
     ],
     [
-     -660,
-     -1470
+     1220,
+     1017
+    ],
+    [
+     1220,
+     1046
+    ],
+    [
+     1290,
+     1046
     ]
    ]
   },
@@ -3711,16 +3613,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -560,
-     -300
+     1080,
+     0
     ],
     [
-     -560,
-     -1600
+     1080,
+     1150
     ],
     [
-     -460,
-     -1600
+     1150,
+     1150
     ]
    ]
   },
@@ -3731,16 +3633,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
-     -300
+     2344,
+     0
     ],
     [
-     1400,
-     -1600
+     2344,
+     1150
     ],
     [
-     1500,
-     -1600
+     2414,
+     1150
     ]
    ]
   },
@@ -3751,16 +3653,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
-     -300
+     2344,
+     0
     ],
     [
-     1400,
-     -1600
+     2344,
+     1121
     ],
     [
-     1300,
-     -1600
+     2484,
+     1121
+    ],
+    [
+     2484,
+     1150
+    ],
+    [
+     2554,
+     1150
     ]
    ]
   },
@@ -3771,24 +3681,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
-     -300
+     2344,
+     0
     ],
     [
-     1400,
-     -1640
+     2344,
+     1121
     ],
     [
-     1600,
-     -1640
+     2624,
+     1121
     ],
     [
-     1600,
-     -1600
+     2624,
+     1150
     ],
     [
-     1700,
-     -1600
+     2694,
+     1150
     ]
    ]
   }
