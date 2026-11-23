@@ -25,6 +25,8 @@
             <h1 id="class-name">Поборник</h1>
             <div class="hdr-sub">дерево классовых черт · PF2e <span id="class-note" class="class-note"></span></div>
         </div>
+        <!-- Перевод текстов: AoN / pf2.ru / Док и Юра (кнопки строит app.js, если у класса есть переводы) -->
+        <div id="lang-switch" class="lang-switch" role="radiogroup" aria-label="Перевод" hidden></div>
         <div class="hdr-points" role="status" aria-live="polite">Очки: <b id="hdr-used">0</b> / <b id="hdr-total">0</b></div>
         <div class="hdr-actions">
             <button type="button" class="btn" data-undo title="Отменить последнее изменение (Ctrl+Z)">Отменить</button>
@@ -117,12 +119,15 @@
         <button class="icon-btn" data-zoom="0.8" aria-label="Отдалить">−</button>
     </div>
     <script>
-        // класс из адреса (?class=wizard): сначала его данные, затем приложение
+        // класс из адреса (?class=wizard): сначала его данные и переводы текстов (если есть), затем приложение
         (function () {
             var known = ['champion', 'wizard'];
+            var withI18n = ['wizard'];   // у этих классов есть data/<класс>-i18n.js
             var cls = new URLSearchParams(location.search).get('class');
             if (known.indexOf(cls) < 0) cls = 'champion';
-            ['data/' + cls + '-data.js', 'app.js'].forEach(function (src) {
+            var files = ['data/' + cls + '-data.js'];
+            if (withI18n.indexOf(cls) >= 0) files.push('data/' + cls + '-i18n.js');
+            files.concat(['app.js']).forEach(function (src) {
                 var s = document.createElement('script');
                 s.src = src;
                 s.async = false;

@@ -591,6 +591,26 @@ code { font-size: 0.92em; color: var(--text-dim); }
 #app-header.over .hdr-points b { color: var(--c-danger); }
 .hdr-actions { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
 
+/* переключатель перевода: сегменты, активный — акцентом */
+.lang-switch { display: flex; align-items: center; gap: 2px; margin-left: auto; }
+.lang-switch[hidden] { display: none; }
+.lang-switch + .hdr-points { margin-left: var(--sp-2); }
+.lang-label { margin-right: var(--sp-2); font-size: var(--fs-sm); color: var(--c-text-2); }
+.lang-btn {
+    padding: 5px var(--sp-3);
+    background: var(--c-bg-deep);
+    border: 1px solid var(--c-border-hi);
+    color: var(--c-text-2);
+    font: 600 var(--fs-sm) / 1.4 var(--font-body);
+    cursor: pointer;
+}
+.lang-btn:first-of-type { border-radius: var(--r-sm) 0 0 var(--r-sm); }
+.lang-btn:last-of-type { border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.lang-btn + .lang-btn { margin-left: -1px; }
+.lang-btn:hover { color: var(--c-text); }
+.lang-btn.active { position: relative; background: var(--c-accent-bg); border-color: var(--c-accent); color: var(--c-accent); }
+.lang-btn:focus-visible { outline: 2px solid var(--c-text); outline-offset: 2px; }
+
 /* ---------- левая панель ---------- */
 
 #panel {
@@ -975,7 +995,7 @@ input[type=search]:focus { outline: none; border-color: var(--bronze-hi); box-sh
 /* блок «Метка: значение» */
 .card-meta {
     display: grid;
-    grid-template-columns: max-content 1fr;
+    grid-template-columns: fit-content(40%) 1fr;
     gap: var(--sp-1) var(--sp-3);
     margin: var(--sp-3) 0 0;
     font-size: var(--fs-md);
@@ -993,6 +1013,10 @@ input[type=search]:focus { outline: none; border-color: var(--bronze-hi); box-sh
 .desc td, .desc th { border: 1px solid var(--c-border); padding: 2px var(--sp-2); }
 .sub-ability { margin: var(--sp-3) 0 var(--sp-1); padding-top: var(--sp-2); border-top: 1px solid var(--c-border); font-family: var(--font-head); font-size: var(--fs-lg); font-weight: 600; color: var(--c-text); }
 .hint { margin: var(--sp-2) 0 0; color: var(--c-text-2); font-style: italic; }
+/* названия в других переводах и пометка о подмене текста */
+.card-alt { display: flex; flex-wrap: wrap; gap: 2px var(--sp-3); margin-top: var(--sp-2); font-size: var(--fs-sm); color: var(--c-text-2); }
+.card-alt b { font-weight: 600; color: var(--c-text); }
+.tr-note { margin: var(--sp-3) 0 0; padding-left: var(--sp-2); border-left: 2px solid var(--c-border-hi); font-size: var(--fs-sm); font-style: italic; color: var(--c-text-2); }
 
 /* почему нельзя взять / откуда берётся */
 .status { margin: var(--sp-3) 0 0; font-size: var(--fs-sm); }
@@ -1039,6 +1063,42 @@ input[type=search]:focus { outline: none; border-color: var(--bronze-hi); box-sh
 .btn:disabled { opacity: 0.55; cursor: not-allowed; box-shadow: none; border-color: var(--c-border); color: var(--c-text-2); }
 .btn:focus-visible { outline: 2px solid var(--c-text); outline-offset: 2px; }
 
+/* ---------- правая панель (подробности) и уведомления ---------- */
+
+#details {
+    position: fixed;
+    top: calc(var(--header-h, 64px) + var(--sp-5));
+    right: var(--sp-3);
+    bottom: var(--sp-3);
+    width: 400px;
+    max-width: calc(100vw - 24px);
+    z-index: 20;
+    overflow-y: auto;
+    padding: var(--sp-5);
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-border-hi) transparent;
+}
+#details.hidden { display: none; }
+#details-close { position: sticky; top: 0; float: right; margin: -8px -8px 0 var(--sp-2); z-index: 2; }
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: var(--sp-5);
+    transform: translateX(-50%);
+    z-index: 40;
+    max-width: min(640px, calc(100vw - 32px));
+    padding: var(--sp-2) var(--sp-4);
+    background: var(--c-surface);
+    border: 1px solid var(--c-border-hi);
+    border-radius: var(--r-md);
+    color: var(--c-text);
+    font-size: var(--fs-md);
+    transition: opacity 0.3s;
+}
+.toast.warn { border-color: var(--c-danger); color: var(--c-danger); }
+.toast.hidden { opacity: 0; pointer-events: none; }
+
 /* ---------- узкие экраны ---------- */
 
 @media (max-width: 720px) {
@@ -1046,6 +1106,7 @@ input[type=search]:focus { outline: none; border-color: var(--bronze-hi); box-sh
     #panel { bottom: auto; max-height: 62vh; }
     .hdr-sub, #app-header .crest { display: none; }
     .hdr-points { margin-left: 0; }
+    .lang-switch { margin-left: 0; width: 100%; }
     #details { top: auto; height: 60vh; width: auto; left: 12px; }
     .tooltip { display: none !important; }
 }

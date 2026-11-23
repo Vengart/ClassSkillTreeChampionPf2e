@@ -48,6 +48,8 @@ node tools/fetch-pf2.mjs          # поборник: скачать (с кеш�
 node tools/fetch-pf2.mjs --force  # перекачать всё заново
 node tools/build-graph.mjs        # только пересобрать граф из data/pf2-raw.json
 node tools/fetch-wizard-aon.mjs   # волшебник с AoN → data/wizard-raw.json, data/wizard-data.js
+node tools/fetch-wizard-pf2ru.mjs # перевод pf2.ru для волшебника → data/wizard-pf2ru.json
+node tools/build-wizard-i18n.mjs  # все переводы волшебника → data/wizard-i18n.js
 node tools/build-wizard.mjs       # пересобрать волшебника без скачивания
 ```
 
@@ -55,6 +57,12 @@ node tools/build-wizard.mjs       # пересобрать волшебника 
 - `tools/fetch-wizard-aon.mjs` — волшебник с Archives of Nethys: открытый поисковый индекс сайта
   (`elasticsearch.aonprd.com/aon`, без ключей), только версии Remaster; разметку AoN переводит в HTML.
 - `tools/build-wizard.mjs` — темы, иконки и ручные правила волшебника.
+- **Переводы волшебника** (переключатель «Перевод: AoN · pf2.ru · Док и Юра» в шапке). Граф один — меняется
+  только текст узлов. `data/wizard-doc-raw.json` — перевод Дока и Юры (pf2e.ru), переписанный вручную со
+  скриншотов модуля перевода Foundry VTT (`images/foundryDocTranslation/`, в git не входят): названия,
+  описания, критерии, триггеры, требования; у школ и диссертаций — только названия. Чего нет в переводе,
+  берётся из другого русского перевода или из AoN, с пометкой в карточке. В карточке видно, как узел
+  называется в других переводах; поиск ищет по всем.
 
 - `tools/fetch-pf2.mjs` — скачивает страницу класса и описания каждой черты (`/viewbox/...`), сохраняет `data/pf2-raw.json`.
 - `tools/build-graph.mjs` — превращает сырые данные в граф `data/champion-data.js`. Здесь лежат ручные правила:
@@ -83,6 +91,8 @@ node tools/build-wizard.mjs       # пересобрать волшебника 
 index.html, style.css, app.js   приложение
 data/<класс>-data.js            сгенерированный граф класса (узлы, связи, описания)
 data/pf2-raw.json, wizard-raw.json  сырые данные (pf2.ru / AoN)
+data/wizard-pf2ru.json, wizard-doc-raw.json  тексты переводов волшебника → data/wizard-i18n.js
+fonts/                          шрифты Oswald и Inter (OFL)
 images/                         иконки узлов
 tools/                          загрузчик, сборщик графа, локальный сервер
 legacy/                         предыдущая версия приложения

@@ -284,6 +284,24 @@ Undeath, Familiar (THEME_BY_NAME; остальное со spellshape → Spellsh
    история «Отменить» (undoStack, Ctrl+Z), «Сброс» без confirm — его можно отменить.
 ```
 
+## Блок 12. Переводы: AoN · pf2.ru · Док и Юра
+
+```text
+В сообществе PF2e три набора терминов: оригинал (Archives of Nethys), перевод pf2.ru и перевод Дока и Юры
+(pf2e.ru; им пользуются в Foundry VTT, у них feat = «способность»). Переключатель в шапке меняет только текст
+узлов — граф, раскладка и сборка те же (одинаковые id узлов).
+- data/wizard-doc-raw.json — перевод Дока и Юры, расшифрованный со скриншотов Foundry (images/foundryDocTranslation/,
+  в .gitignore): для черты — name, html, prereq, fields (Триггер / Частота / Требования / Доступ), partial —
+  если на скриншоте текст обрезан; у школ и диссертаций — только названия. Новые скриншоты: обрезать по
+  карточке (System.Drawing), прочитать, дописать запись по английскому названию черты.
+- tools/fetch-wizard-pf2ru.mjs → data/wizard-pf2ru.json (черты по id = id AoN, школы/диссертации по названию).
+- tools/build-wizard-i18n.mjs → data/wizard-i18n.js (window.CLASS_I18N: langs с терминами + nodes[lang][id]);
+  нет в переводе → другой русский перевод или AoN, с note. Свои подписи (темы, группы) — OWN в скрипте.
+- app.js: applyLang() пишет поля перевода в узлы (оригинал в n._base), refreshTexts() обновляет DOM,
+  measureLabels() пересчитывает подписи. Термины T.feat/T.Feats/T.prereq — «черта/способность»,
+  «Требования/Критерии/Предварительные условия».
+```
+
 ---
 
 ## Бэклог: готовые промпты на будущее

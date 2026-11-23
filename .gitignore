@@ -1,2 +1,5 @@
 data/cache/
 node_modules/
+
+# скриншоты Foundry с переводом Дока и Юры — исходник для data/wizard-i18n (в репозиторий не кладём)
+images/foundryDocTranslation/

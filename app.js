@@ -295,9 +295,42 @@ function actionsHtml(a) {
 
 const RARITY_LABEL = { common: '', uncommon: 'Необычный', rare: 'Редкий', unique: 'Уникальный' };
 
+// ---------- переводы текстов (data/<класс>-i18n.js) ----------
+// Граф один на все переводы: при переключении меняются только поля текста узлов (название, описание,
+// критерии, поля, дескрипторы, ссылка). Оригинал (AoN) хранится в n._base и возвращается при выборе «AoN».
+const I18N = window.CLASS_I18N || null;
+const TEXT_FIELDS = ['name', 'short', 'html', 'prereqText', 'prereqHtml', 'fields', 'traits', 'url', 'source', 'hint', 'note'];
+const LANG_KEY = `pf2e-${CLASS_ID}-lang`;
+const DEFAULT_TERMS = { feat: 'черта', feats: 'черты', Feat: 'Черта', Feats: 'Черты', prereq: 'Требования' };
+let lang = 'aon';
+/** Термины текущего перевода: «черта» (AoN, pf2.ru) или «способность» (Док и Юра). */
+let T = DEFAULT_TERMS;
+const langInfo = (id = lang) => I18N?.langs.find((l) => l.id === id);
+function applyLang(id) {
+    if (!I18N || !langInfo(id)) id = 'aon';
+    lang = id;
+    T = langInfo()?.terms || DEFAULT_TERMS;
+    for (const n of DATA.nodes) {
+        if (!n._base) { n._base = {}; for (const k of TEXT_FIELDS) n._base[k] = n[k]; }
+        for (const k of TEXT_FIELDS) n[k] = n._base[k];
+        const tr = I18N?.nodes[id]?.[n.id];
+        // поле перевода перекрывает оригинал, даже пустое (нет критериев — значит нет)
+        if (tr) for (const [k, v] of Object.entries(tr)) if (v !== undefined) n[k] = v;
+    }
+}
+/** Названия узла во всех переводах (для карточки: «как это называется у других»). */
+function otherNames(n) {
+    if (!I18N) return [];
+    return I18N.langs.filter((l) => l.id !== lang).map((l) => {
+        const name = l.id === 'aon' ? n._base?.name : I18N.nodes[l.id]?.[n.id]?.name;
+        return name ? [l.label, name] : null;
+    }).filter((x) => x && x[1] !== n.name);
+}
+try { applyLang(localStorage.getItem(LANG_KEY) || 'aon'); } catch { applyLang('aon'); }
+
 /** Подзаголовок карточки: что это за узел. */
 function cardSubtitle(n) {
-    if (n.kind === 'feat') return `Классовая черта ${META.classGen}`;
+    if (n.kind === 'feat') return `Классовая ${T.feat} ${META.classGen}`;
     if (n.kind === 'option') return NODES.get(n.group)?.name || 'Вариант выбора';
     if (n.kind === 'group') return 'Группа выбора';
     if (n.kind === 'hub') return 'Ветка дерева';
@@ -309,9 +342,9 @@ function costText(n) {
     if (grantedBy(n)) return `бесплатно — даёт «${esc(grantedBy(n).name)}»`;
     if (n.kind === 'feat') {
         const used = chosenFeats().length, total = slotsTotal(state.level);
-        return `1 ячейка черты класса · свободно ${Math.max(0, total - used)} из ${total}`;
+        return `1 ячейка (${T.feat} класса) · свободно ${Math.max(0, total - used)} из ${total}`;
     }
-    return 'выбор при создании, ячейку черты не тратит';
+    return `выбор при создании, ячейку (${T.feat}) не тратит`;
 }
 /** Широкая кнопка «Взять» / «Убрать» (в подсказке и в правой панели). */
 function takeButton(n) {
@@ -336,7 +369,7 @@ function cardHtml(n, full) {
     const prereq = n.prereqHtml ? sanitize(n.prereqHtml) : esc(n.prereqText || '');
     const meta = [];
     if ((n.kind === 'feat' || n.kind === 'option') && n.level) meta.push(['Уровень', String(n.level)]);
-    if (isChoice(n)) meta.push(['Требования', prereq || 'нет']);
+    if (isChoice(n)) meta.push([esc(T.prereq), prereq || 'нет']);
     for (const [k, v] of Object.entries(n.fields || {})) {
         if (!['Источник', 'Критерии'].includes(k)) meta.push([esc(k), sanitize(v)]);
     }
@@ -352,7 +385,8 @@ function cardHtml(n, full) {
         <header class="card-head">
             <h3 class="card-title">${esc(n.name)} ${actionsHtml(n.actions)}</h3>
             ${n.source ? `<div class="card-source">${esc(n.source)}</div>` : ''}
-            <div class="card-sub">${esc(cardSubtitle(n))}${n.nameEn && n.nameEn !== n.name ? ` · ${esc(n.nameEn)}` : ''}</div>
+            <div class="card-sub">${esc(cardSubtitle(n))}</div>
+            ${full && otherNames(n).length ? `<div class="card-alt">${otherNames(n).map(([l, v]) => `<span><b>${esc(l)}:</b> ${esc(v)}</span>`).join('')}</div>` : ''}
         </header>
         ${traits ? `<div class="traits">${traits}</div>` : ''}
         ${meta.length ? `<dl class="card-meta">${meta.map(([k, v]) => `<dt>${k}:</dt><dd>${v}</dd>`).join('')}</dl>` : ''}
@@ -360,9 +394,10 @@ function cardHtml(n, full) {
             <div class="desc">${sanitize(n.html)}</div>
             ${n.hint ? `<p class="hint">${esc(n.hint)}</p>` : ''}
         </div>
+        ${n.note ? `<p class="tr-note">${esc(n.note)}</p>` : ''}
         ${status}
         ${takeButton(n)}
-        ${full && n.url ? `<a class="src" href="${esc(n.url)}" target="_blank" rel="noopener noreferrer">Открыть на ${esc(SOURCE_NAME)} ↗</a>` : ''}
+        ${full && n.url ? `<a class="src" href="${esc(n.url)}" target="_blank" rel="noopener noreferrer">Открыть на ${esc(/pf2\.ru/.test(n.url) ? 'pf2.ru' : /aonprd/.test(n.url) ? 'Archives of Nethys' : SOURCE_NAME)} ↗</a>` : ''}
         ${!full && isChoice(n) ? `<p class="tip-keys">Enter — ${state.chosen.has(n.id) ? 'убрать' : 'взять'} · i / ПКМ — подробнее · Esc — закрыть</p>` : ''}
         ${!full && !isChoice(n) ? '<p class="tip-keys">ПКМ — подробнее</p>' : ''}`;
 }
@@ -463,7 +498,7 @@ function buildScene() {
             const lv = document.createElement('span');
             lv.className = 'lvl-badge';
             lv.textContent = n.level;
-            lv.title = `Черта ${n.level} уровня`;
+            lv.title = `${T.Feat} ${n.level} уровня`;
             el.appendChild(lv);
         }
         if (n.kind === 'feat' || n.kind === 'option') {
@@ -619,7 +654,8 @@ function render() {
         const avail = !on && isChoice(n) && blockers(n).length === 0;
         const hiddenByFilter = (!state.showUncommon && n.rarity === 'uncommon' && !on)
             || (!state.showUnholy && isUnholy(n) && !on);
-        const match = searchQ && (n.name.toLowerCase().includes(searchQ) || (n.nameEn || '').toLowerCase().includes(searchQ));
+        const match = searchQ && [n.name, n.nameEn, ...otherNames(n).map((x) => x[1])]
+            .some((v) => (v || '').toLowerCase().includes(searchQ));
         const dim = (searchQ && !match) || (state.onlyAvailable && isChoice(n) && !on && !avail);
         el.classList.toggle('on', on);
         el.classList.toggle('avail', avail);
@@ -1141,6 +1177,86 @@ if ('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe($('
 
 // ---------- класс: заголовки, вкладки, фильтры ----------
 
+/** Кнопки перевода в шапке (только у классов с data/<класс>-i18n.js). */
+function buildLangSwitch() {
+    const box = $('#lang-switch');
+    if (!I18N) return;
+    box.hidden = false;
+    box.innerHTML = '<span class="lang-label">Перевод:</span>' + I18N.langs.map((l) =>
+        `<button type="button" class="lang-btn" role="radio" data-lang="${esc(l.id)}" title="${esc(l.title)}">${esc(l.label)}</button>`).join('');
+    box.addEventListener('click', (ev) => {
+        const b = ev.target.closest('[data-lang]');
+        if (b && b.dataset.lang !== lang) setLang(b.dataset.lang);
+    });
+    markLang();
+}
+function markLang() {
+    for (const b of document.querySelectorAll('.lang-btn')) {
+        const on = b.dataset.lang === lang;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-checked', String(on));
+    }
+}
+/** Переключить перевод: меняется текст в узлах, сайдбаре и карточках; граф и раскладка — те же. */
+function setLang(id) {
+    applyLang(id);
+    try { localStorage.setItem(LANG_KEY, lang); } catch { /* нет доступа */ }
+    markLang();
+    refreshTexts();
+    render();
+    refreshDetails();
+    refreshTooltip();
+    measureLabels();   // ширина подписей изменилась — пересчитать, какие помещаются
+    toast(`Перевод: ${langInfo().title}`);
+}
+/** Переписать тексты, которые были вставлены в DOM при построении. */
+function refreshTexts() {
+    for (const [id, el] of nodeEls) {
+        const n = NODES.get(id);
+        el.setAttribute('aria-label', `${n.name}${n.level ? `, уровень ${n.level}` : ''}`);
+        const cap = el.querySelector('.caption:not(.root-caption)');
+        if (cap) cap.textContent = n.name;
+        const rn = el.querySelector('.root-name');
+        if (rn) rn.textContent = n.name;
+        const lv = el.querySelector('.lvl-badge');
+        if (lv) lv.title = `${T.Feat} ${n.level} уровня`;
+    }
+    for (const [id, el] of cardEls) {
+        const n = NODES.get(id);
+        const title = el.querySelector('.nav-title');
+        if (title) title.textContent = n.name;
+        const name = el.querySelector('.nav-name');
+        if (name) name.textContent = n.name;
+    }
+    for (const b of document.querySelectorAll('#choice-groups [data-more]')) {
+        const n = NODES.get(b.dataset.more);
+        b.title = `Описание: ${n.name}`;
+        b.setAttribute('aria-label', b.title);
+    }
+    setTermLabels();
+}
+/** Подписи интерфейса, где встречается слово «черта» / «способность». */
+function setTermLabels() {
+    const featsHead = document.querySelector('[data-sec="feats"] span');
+    if (featsHead) featsHead.textContent = T.Feats;
+    const pts = $('.points-text');
+    if (pts) pts.firstChild.textContent = `${T.Feats} класса: `;
+    const search = $('#search');
+    if (search) search.placeholder = `Название (${T.feat === 'черта' ? 'черты' : 'способности'})…`;
+    const src = langInfo();
+    // шапка: название класса и пометка о текстах — по выбранному переводу
+    const root = NODES.get('root');
+    $('#class-name').textContent = lang === 'aon' ? META.className : root.name;
+    document.title = `${$('#class-name').textContent} — дерево ${T.feats === 'черты' ? 'черт' : 'способностей'}`;
+    $('#class-note').textContent = src && src.id !== 'aon' ? `Тексты: ${src.label}` : (META.note || '');
+    const cardNames = CARD_GROUPS.map((g) => NODES.get(g.id).name.toLowerCase());
+    $('#legend-cards').textContent = `Слева — группы выбора: ${cardNames.join(', ')}`;
+    $('#legend-card-req').textContent = `нужна карточка (${cardNames.join(', ')})`;
+    $('#data-source').innerHTML = `Данные: <a href="${esc(META.source)}" target="_blank" rel="noopener noreferrer">${esc(SOURCE_NAME)}</a>` +
+        (src && src.id !== 'aon' ? `, тексты: ${esc(src.source)}` : '') +
+        `, обновлено ${new Date(META.fetchedAt).toLocaleDateString('ru-RU')}. Обновить: <code>${esc(META.updateCmd || 'node tools/fetch-pf2.mjs')}</code>`;
+}
+
 function setupClass() {
     const root = NODES.get('root');
     document.title = `${META.className} — дерево черт`;
@@ -1179,9 +1295,8 @@ document.fonts?.ready.then(measureLabels);   // ширина подписей м
 syncHeaderHeight();
 load();
 initNavSections();
-const dt = new Date(META.fetchedAt);
-$('#data-source').innerHTML = `Данные: <a href="${esc(META.source)}" target="_blank" rel="noopener noreferrer">${esc(SOURCE_NAME)}</a>, ` +
-    `обновлено ${dt.toLocaleDateString('ru-RU')}. Обновить: <code>${esc(META.updateCmd || 'node tools/fetch-pf2.mjs')}</code>`;
+buildLangSwitch();
+setTermLabels();
 render();
 updateUndo();
 fitAll(false);
