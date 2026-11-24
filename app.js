@@ -655,7 +655,7 @@ $('#panel').addEventListener('click', (ev) => {
     const key = t.dataset.sec;
     setSectionOpen(key, document.querySelector(`[data-sec-block="${key}"]`).classList.contains('collapsed'));
 });
-for (const key of ['feats', 'search', 'help']) {
+for (const key of ['feats', 'search']) {
     const open = readNav()[key];
     if (open !== undefined) setSectionOpen(key, open, false);
 }
@@ -782,17 +782,10 @@ function renderLevelLines() {
 function renderPanel() {
     renderLevelLines();
     $('#level').value = state.level;
-    $('#level-out').textContent = state.level;
     const used = chosenFeats().length, total = slotsTotal(state.level);
-    $('#points-used').textContent = used;
-    $('#points-total').textContent = total;
-    $('#hdr-used').textContent = used;
-    $('#hdr-total').textContent = total;
-    $('#app-header').classList.toggle('over', used > total);
     $('#root-used').textContent = used;
     $('#root-total').textContent = total;
     nodeEls.get('root')?.querySelector('.root-points').classList.toggle('over', used > total);
-    $('#points-fill').style.width = `${Math.min(100, used / total * 100)}%`;
 
     const feats = DATA.nodes.filter((n) => n.kind === 'feat' && (state.chosen.has(n.id) || grantedBy(n)))
         .sort((a, b) => a.level - b.level || a.name.localeCompare(b.name, 'ru'));
@@ -1139,20 +1132,30 @@ nodesLayer.addEventListener('focusout', (ev) => {
 
 // ---------- элементы панели ----------
 
-let levelBefore = null;   // сборка до начала движения ползунка — для «Отменить»
-$('#level').addEventListener('input', (ev) => {
-    if (levelBefore === null) levelBefore = encodeBuild();
-    state.level = Number(ev.target.value);
+// уровень в шапке: число 1–MAX_LEVEL. Набранное с клавиатуры применяется по Enter или при уходе
+// из поля (иначе на «2» по пути к «20» снялись бы черты выше 2-го), стрелки — сразу.
+const levelInput = $('#level');
+function setLevel(v) {
+    v = Math.max(1, Math.min(MAX_LEVEL, Math.round(Number(v)) || state.level));
+    levelInput.value = v;
+    if (v === state.level) return;
+    const before = encodeBuild();
+    state.level = v;
     const removed = prune();
     if (removed.length) toast(`Снято из-за уровня: ${removed.map((r) => r.name).join(', ')}`, true);
+    pushUndo(before);
     save();
     render();
     refreshDetails();
+}
+levelInput.addEventListener('change', () => setLevel(levelInput.value));
+levelInput.addEventListener('keydown', (ev) => {
+    if (ev.key === 'ArrowUp' || ev.key === 'ArrowDown') { ev.preventDefault(); setLevel(state.level + (ev.key === 'ArrowUp' ? 1 : -1)); }
+    else if (ev.key === 'Enter') setLevel(levelInput.value);
+    else if (ev.key === 'Escape') levelInput.value = state.level;
 });
-$('#level').addEventListener('change', () => {
-    if (levelBefore !== null) pushUndo(levelBefore);
-    levelBefore = null;
-});
+levelInput.addEventListener('wheel', (ev) => ev.preventDefault(), { passive: false });   // без случайной прокрутки
+for (const b of document.querySelectorAll('[data-step]')) b.addEventListener('click', () => setLevel(state.level + Number(b.dataset.step)));
 $('#search').addEventListener('input', (ev) => {
     state.search = ev.target.value;
     render();
@@ -1178,7 +1181,6 @@ function resetBuild() {
 }
 // подтверждение больше не нужно: сброс можно отменить
 for (const b of document.querySelectorAll('[data-reset]')) b.addEventListener('click', resetBuild);
-for (const b of document.querySelectorAll('[data-undo]')) b.addEventListener('click', undo);
 $('#btn-share').addEventListener('click', async () => {
     const url = `${location.origin}${location.pathname}?class=${CLASS_ID}#b=${encodeURIComponent(encodeBuild())}`;
     history.replaceState(null, '', url);
@@ -1296,9 +1298,6 @@ function setTermLabels() {
     $('#class-name').textContent = root.name || META.className;
     document.title = `${$('#class-name').textContent} — дерево ${T.feats === 'черты' ? 'черт' : 'способностей'}`;
     $('#class-note').textContent = src && src.id !== DEFAULT_LANG ? `Тексты: ${src.label}` : (META.note || '');
-    const cardNames = CARD_GROUPS.map((g) => NODES.get(g.id).name.toLowerCase());
-    $('#legend-cards').textContent = `Слева — группы выбора: ${cardNames.join(', ')}`;
-    $('#legend-card-req').textContent = `нужна карточка (${cardNames.join(', ')})`;
     $('#data-source').innerHTML = `Данные: <a href="${esc(META.source)}" target="_blank" rel="noopener noreferrer">${esc(SOURCE_NAME)}</a>` +
         (src && src.id !== DEFAULT_LANG ? `, тексты: ${esc(src.source)}` : '') +
         `, обновлено ${new Date(META.fetchedAt).toLocaleDateString('ru-RU')}. Обновить: <code>${esc(META.updateCmd || 'node tools/fetch-pf2.mjs')}</code>`;
@@ -1311,24 +1310,26 @@ function setupClass() {
     if (META.note) $('#class-note').textContent = META.note;
     if (root.image) $('.crest').style.backgroundImage = `url("images/${root.image}")`;
     $('#level').max = MAX_LEVEL;
-    $('#level-max').textContent = MAX_LEVEL < 20 ? `из ${MAX_LEVEL}` : '';
-    const tabs = $('#class-tabs');
-    tabs.innerHTML = CLASSES.map((c) => `<a class="class-tab${c.id === CLASS_ID ? ' active' : ''}" href="?class=${c.id}"` +
-        `${c.id === CLASS_ID ? ' aria-current="page"' : ''}>${esc(c.name)}${c.note ? `<small>${esc(c.note)}</small>` : ''}</a>`).join('');
+    // выбор класса — выпадающий список у названия в шапке
+    $('#class-menu').innerHTML = CLASSES.map((c) => `<a class="class-item${c.id === CLASS_ID ? ' active' : ''}" href="?class=${c.id}"` +
+        `${c.id === CLASS_ID ? ' aria-current="page"' : ''}>${esc(c.name)}</a>`).join('');
     // фильтры и легенда, относящиеся к другим классам, прячем
     for (const el of document.querySelectorAll('[data-filter]')) el.hidden = !(META.filters || []).includes(el.dataset.filter);
     for (const el of document.querySelectorAll('[data-legend]')) el.hidden = !(META.legend || []).includes(el.dataset.legend);
-    const cardNames = CARD_GROUPS.map((g) => NODES.get(g.id).name.toLowerCase());
-    $('#legend-cards').textContent = `Слева — группы выбора: ${cardNames.join(', ')}`;
-    $('#legend-card-req').textContent = `нужна карточка (${cardNames.join(', ')})`;
-    // значок в легенде — как на узлах: иконка первой карточки или ромб, если иконок у карточек нет
-    const sample = DATA.nodes.find((x) => x.group === CARD_GROUPS[0]?.id && x.image);
-    const lg = $('.legend-req');
-    if (lg) {
-        lg.style.backgroundImage = sample ? `url("images/${sample.image}")` : '';
-        lg.classList.toggle('no-art', !sample);
-    }
 }
+const classBtn = $('#class-btn'), classMenu = $('#class-menu');
+function setClassMenu(open) {
+    classMenu.hidden = !open;
+    classBtn.setAttribute('aria-expanded', String(open));
+    if (open) classMenu.querySelector('.active, a')?.focus();
+}
+classBtn.addEventListener('click', () => setClassMenu(classMenu.hidden));
+document.addEventListener('pointerdown', (ev) => { if (!classMenu.hidden && !ev.target.closest('.class-pick')) setClassMenu(false); });
+classMenu.addEventListener('keydown', (ev) => {
+    const items = [...classMenu.querySelectorAll('a')], i = items.indexOf(document.activeElement);
+    if (ev.key === 'ArrowDown' || ev.key === 'ArrowUp') { ev.preventDefault(); items[(i + (ev.key === 'ArrowDown' ? 1 : items.length - 1)) % items.length].focus(); }
+    if (ev.key === 'Escape') { setClassMenu(false); classBtn.focus(); }
+});
 
 // ---------- старт ----------
 

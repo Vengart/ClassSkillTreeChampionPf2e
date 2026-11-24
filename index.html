@@ -19,42 +19,40 @@
         </div>
     </div>
 
-    <!-- Шапка: класс, очки, действия со сборкой -->
-    <header id="app-header" class="frame">
+    <!-- Шапка (закреплена сверху): класс (выпадающий список), перевод, уровень, действия со сборкой -->
+    <header id="app-header">
         <button id="panel-toggle" class="icon-btn" title="Свернуть панель" aria-label="Свернуть панель">‹</button>
         <div class="crest" aria-hidden="true"></div>
         <div class="hdr-title">
-            <h1 id="class-name">Поборник</h1>
+            <div class="class-pick">
+                <button type="button" id="class-btn" class="class-btn" aria-haspopup="true" aria-expanded="false" aria-controls="class-menu" title="Выбрать класс">
+                    <h1 id="class-name">Поборник</h1><span class="class-caret" aria-hidden="true"></span>
+                </button>
+                <nav id="class-menu" class="class-menu frame" aria-label="Класс" hidden></nav>
+            </div>
             <div class="hdr-sub">дерево классовых черт · PF2e <span id="class-note" class="class-note"></span></div>
         </div>
         <!-- Перевод текстов: AoN / pf2.ru / Док и Юра (кнопки строит app.js, если у класса есть переводы) -->
         <div id="lang-switch" class="lang-switch" role="radiogroup" aria-label="Перевод" hidden></div>
-        <div class="hdr-points" role="status" aria-live="polite">Очки: <b id="hdr-used">0</b> / <b id="hdr-total">0</b></div>
+        <!-- уровень персонажа: число 1–20, стрелки рядом и ↑/↓ на клавиатуре -->
+        <div class="hdr-level">
+            <label for="level">Уровень</label>
+            <div class="stepper">
+                <button type="button" class="step-btn" data-step="-1" title="Уровень ниже" aria-label="Уровень ниже">▼</button>
+                <input id="level" type="number" min="1" max="20" step="1" value="1" inputmode="numeric" aria-label="Уровень персонажа">
+                <button type="button" class="step-btn" data-step="1" title="Уровень выше" aria-label="Уровень выше">▲</button>
+            </div>
+        </div>
         <div class="hdr-actions">
-            <button type="button" class="btn" data-undo title="Отменить последнее изменение (Ctrl+Z)">Отменить</button>
-            <button type="button" id="btn-share" class="btn" title="Скопировать ссылку на эту сборку">Ссылка на сборку</button>
-            <button type="button" id="btn-reset" class="btn btn-danger" data-reset title="Сбросить сборку (можно отменить)">Сброс</button>
-            <button type="button" id="btn-fit" class="btn" title="Показать всё дерево (клавиша 0)">Уместить на экран</button>
+            <button type="button" id="btn-share" class="btn" title="Скопировать ссылку на эту сборку">Экспорт</button>
+            <button type="button" id="btn-reset" class="btn btn-danger" data-reset title="Сбросить сборку (Ctrl+Z — отменить)">Сброс</button>
+            <button type="button" id="btn-fit" class="btn" title="Показать всё дерево (клавиша 0)">Центрировать</button>
         </div>
     </header>
 
     <!-- Левая панель: сборка -->
-    <aside id="panel" class="frame">
-        <nav id="class-tabs" class="class-tabs" aria-label="Класс"></nav>
-
+    <aside id="panel">
         <div class="panel-body">
-            <section class="block">
-                <div class="level-row">
-                    <label for="level">Уровень</label>
-                    <span><output id="level-out">1</output> <small id="level-max" class="muted"></small></span>
-                </div>
-                <input id="level" type="range" min="1" max="20" value="1">
-                <div class="points">
-                    <div class="points-bar"><div id="points-fill"></div></div>
-                    <div class="points-text">Черты класса: <b id="points-used">0</b> / <b id="points-total">1</b></div>
-                </div>
-            </section>
-
             <!-- Группы выбора класса (школа и диссертация волшебника, освящение и призвание поборника…) -->
             <div id="choice-groups" aria-label="Выбор при создании персонажа"></div>
 
@@ -72,24 +70,6 @@
                     <label data-filter="unholy"><input type="checkbox" id="f-unholy" checked> нечестивые</label>
                     <label><input type="checkbox" id="f-avail"> только доступные</label>
                 </div>
-            </section>
-
-
-            <section class="block legend" data-sec-block="help">
-                <h2 class="sec-head"><button type="button" class="sec-toggle" data-sec="help" aria-expanded="true"><span>Как пользоваться</span><span class="nav-sign" aria-hidden="true"></span></button></h2>
-                <ul class="small">
-                    <li id="legend-cards">Слева — группы выбора</li>
-                    <li><b>ЛКМ</b> по узлу — подробности в панели справа</li>
-                    <li><b>Двойной клик</b> или <b>Enter</b> по узлу — взять / снять</li>
-                    <li><b>ЛКМ</b> по карточке слева — взять / снять, <b>i</b> — описание</li>
-                    <li>Перетаскивание — перемещение, колесо — масштаб</li>
-                    <li><span class="lg lg-req"></span> обязательное условие</li>
-                    <li><span class="lg lg-or"></span> одно из условий</li>
-                    <li data-legend="sanct"><span class="badge b-holy"></span>нужно освящение «священный»</li>
-                    <li data-legend="sanct"><span class="badge b-unholy"></span>нужно освящение «нечестивый»</li>
-                    <li data-legend="card"><span class="req-badge legend-req" style="background-image:url('images/brave.webp')"></span><span id="legend-card-req">нужна карточка</span></li>
-                    <li>Наведение на узел подсвечивает всю цепочку требований</li>
-                </ul>
             </section>
         </div>
 
