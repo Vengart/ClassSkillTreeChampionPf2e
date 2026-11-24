@@ -53,7 +53,7 @@
   "html": "<p>The Corentyn armada is well-known for their fierceness in battle, a reputation owed in large part to their naval wizards, each an expert in both tactics and torrential magic. Many such wizards are assigned to a ship in the armada, and they often take an apprentice along with them for the sea voyage.</p><p><b>Curriculum</b></p><ul><li>Cantrips:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1598\">Message</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2031\">Spout</a></p><ul><li>1st:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1550\">Gust of Wind</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1561\">Hydraulic Push</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2934\">Rude Awakening</a></p><ul><li>2nd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1755\">Water Breathing</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1756\">Water Walk</a></p><ul><li>3rd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1984\">Crashing Wave</a></p><ul><li>4th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2001\">Ice Storm</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1719\">Telepathy</a></p><ul><li>5th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1473\">Control Water</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2936\">Searing Rain</a></p><ul><li>6th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1462\">Chain Lightning</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1727\">Truesight</a></p><ul><li>7th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1512\">Energy Aegis</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1640\">Project Image</a></p><ul><li>8th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1444\">Arctic Rift</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1484\">Desiccate</a></p><ul><li>9th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1759\">Wrathful Storm</a></p><p><b>School Spells</b></p><ul><li>Initial: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2938\">Control Currents</a></li><li>Advanced: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2939\">Choking Fog</a></li></ul>",
   "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=35",
   "source": "Cheliax, Infernal Inheritance",
-  "note": "Описание есть только в оригинале Archives of Nethys."
+  "note": "На pf2.ru этого варианта нет — показан оригинал Archives of Nethys."
  },
  "school-gates": {
   "name": "School of Gates",
@@ -61,7 +61,7 @@
   "html": "<p><i><a href=\"https://2e.aonprd.com/pathfinder-society\"><b>PFS Note</b></a> Characters from Kyonin have access to this option.</i></p><p>Some are content to stay in place and let the world shape them, but you prefer to move at your own pace. You’ve studied the ancient aiudara and other structures to learn the magic of transposition, using your knowledge to move across great distances and even planes. With knowledge as your path and magic as your key, there’s no door you can’t open, and no world you won’t explore.</p><p><b>Curriculum</b></p><ul><li>Cantrips:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1598\">Message</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1715\">Telekinetic Hand</a></p><ul><li>1st:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1531\">Fleet Step</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1589\">Lock</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2037\">Thoughtful Gift</a></p><ul><li>2nd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1581\">Knock</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2486\">Warping Pull</a></p><ul><li>3rd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2481\">Echo Jump</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2485\">Trade Items</a></p><ul><li>4th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1532\">Flicker</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1724\">Translocate</a></p><ul><li>5th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2483\">King's Castle</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1591\">Magic Passage</a></p><ul><li>6th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1978\">Collective Transposition</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1720\">Teleport</a></p><ul><li>7th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1576\">Interplanar Teleport</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1635\">Planar Seal</a></p><ul><li>8th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1644\">Quandary</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2484\">Sudden Transposition</a></p><ul><li>9th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2482\">Forest of Gates</a></p><p><b>School Spells</b></p><ul><li>Initial: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2479\">Friendly Push</a></li><li>Advanced: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2480\">Rapid Retreat</a></li></ul>",
   "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=28",
   "source": "Shining Kingdoms",
-  "note": "Описание есть только в оригинале Archives of Nethys."
+  "note": "На pf2.ru этого варианта нет — показан оригинал Archives of Nethys."
  },
  "school-kalistrade": {
   "name": "School of Kalistrade",
@@ -69,7 +69,7 @@
   "html": "<p>Power and money are closely intertwined, and you recognize the potential for magic to assist in your pursuit of wealth and influence. Though you might study this school without joining the <a href=\"https://2e.aonprd.com/Deities.aspx?ID=23\">Prophets of Kalistrade</a>, most who do so are either a part of the organization or local to Kerse and therefore used to the customs and culture of the Kalistocrats. You deploy magic to help you see through the illusions and trickery of others. At the same time, you push boundaries and exploit loopholes to get ahead of your competitors.</p><p><b>Curriculum</b></p><ul><li>Cantrips:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1639\">Prestidigitation</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1646\">Read Aura</a></p><ul><li>1st:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1439\">Alarm</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1463\">Charm</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1579\">Item Facade</a></p><ul><li>2nd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1543\">Ghostly Carrier</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1577\">Invisibility</a></p><ul><li>3rd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1465\">Clairaudience</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1739\">Veil of Privacy</a></p><ul><li>4th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1620\">Outcast's Curse</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1693\">Suggestion</a></p><ul><li>5th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2002\">Imaginary Lockbox</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1692\">Subconscious Suggestion</a></p><ul><li>6th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1650\">Repulsion</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1662\">Scrying</a></p><ul><li>7th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1640\">Project Image</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1652\">Retrocognition</a></p><ul><li>8th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1490\">Disappearance</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1556\">Hidden Mind</a></p><ul><li>9th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2018\">Resplendent Mansion</a></p><p><b>School Spells</b></p><ul><li>Initial: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2465\">Unexpected Windfall</a></li><li>Advanced: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2466\">Capital Dividend</a></li></ul>",
   "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=27",
   "source": "Shining Kingdoms",
-  "note": "Описание есть только в оригинале Archives of Nethys."
+  "note": "На pf2.ru этого варианта нет — показан оригинал Archives of Nethys."
  },
  "school-keen-inquiry": {
   "name": "Школа острого исследования",
@@ -84,7 +84,7 @@
   "html": "<p>At the height of ancient Azlant, the study of magical technologies—better known as magitech—was considered among the most prestigious of arcane specializations, and practitioners were both well regarded and well paid. While some magitech specialists trained in academies or as apprentices, others studied at religious cloisters dedicated to the worship of <a href=\"https://2e.aonprd.com/Deities.aspx?ID=404\">Amaznen</a>, a now-dead god of invention and <a href=\"https://2e.aonprd.com/Domains.aspx?ID=82\">magic</a>. Today, practitioners are more likely to learn from scraps of ancient spellbooks, forgotten lore unearthed in Azlanti ruins, or from a time‑displaced graduate like Anoreth Zorillen. Modern magitech schools exist today, divorced from their ancient Azlanti origins but no less prestigious, including the famed Clockwork Cathedral in Absalom and temples of <a href=\"https://2e.aonprd.com/Deities.aspx?ID=333\">Brigh</a>, goddess of clockwork and invention.</p><p>As a student of magical technologies, you’ve learned the art of fusing magic with mundane technology to create something truly unique.</p><p><b>Curriculum</b></p><ul><li>Cantrips:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1375\">Needle Darts</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1671\">Shield</a></p><ul><li>1st:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1597\">Mending</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1658\">Runic Weapon</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1696\">Summon Construct</a></p><ul><li>2nd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1964\">Animated Assault</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1987\">Dismantle</a></p><ul><li>3rd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2026\">Shrink Item</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1416\">Wooden Double</a></p><ul><li>4th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1477\">Creation</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1758\">Weapon Storm</a></p><ul><li>5th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1571\">Impaling Spike</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1751\">Wall of Stone</a></p><ul><li>6th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1370\">Field of Razors</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1628\">Petrify</a></p><ul><li>7th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1365\">Beheading Buzz Saw</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2006\">Lifewood Cage</a></p><ul><li>8th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1369\">Ferrous Form</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1644\">Quandary</a></p><ul><li>9th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2018\">Resplendent Mansion</a></p><p><b>School Spells</b></p><ul><li>Initial: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2488\">Augmented Body</a></li><li>Advanced: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2487\">Conjured Clockwork</a></li></ul>",
   "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=29",
   "source": "Pathfinder #215: To Blot Out the Sun",
-  "note": "Описание есть только в оригинале Archives of Nethys."
+  "note": "На pf2.ru этого варианта нет — показан оригинал Archives of Nethys."
  },
  "school-mentalism": {
   "name": "Школа ментализма",
@@ -127,7 +127,7 @@
   "html": "<p>You’ve received brutal instruction in shadow and illusion magic from the shadowcallers of the Duskhall.</p><p><b>Curriculum</b></p><ul><li>Cantrips:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1528\">Figment</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1539\">Frostbite</a></p><ul><li>1st:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1491\">Disguise Magic</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2948\">Gloom Mantle</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1569\">Illusory Object</a></p><ul><li>2nd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1480\">Darkness</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1567\">Illusory Creature</a></p><ul><li>3rd:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=2812\">Shadow Projectile</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2025\">Shared Invisibility</a></p><ul><li>4th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1587\">Liminal Doorway</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1604\">Mirage</a></p><ul><li>5th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1666\">Shadow Blast</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1676\">Slither</a></p><ul><li>6th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1605\">Mislead</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1630\">Phantasmal Calamity</a></p><ul><li>7th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1595\">Mask of Terror</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2949\">Shadow Form</a></p><ul><li>8th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1490\">Disappearance</a></p><ul><li>9th:</li></ul><p><a href=\"https://2e.aonprd.com/Spells.aspx?ID=1629\">Phantasmagoria</a></p><p><b>School Spells</b></p><ul><li>Initial: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2950\">The Night Is Mine</a></li><li>Advanced: <a href=\"https://2e.aonprd.com/Spells.aspx?ID=2951\">Tenebrous Freedom</a></li></ul>",
   "url": "https://2e.aonprd.com/ArcaneSchools.aspx?ID=36",
   "source": "Cheliax, Infernal Inheritance",
-  "note": "Описание есть только в оригинале Archives of Nethys."
+  "note": "На pf2.ru этого варианта нет — показан оригинал Archives of Nethys."
  },
  "school-thassilonian-rune-magic": {
   "name": "Школа Тассилонской рунной магии",
@@ -690,11 +690,13 @@
   "source": "Основная книга игрока"
  },
  "feat-3632": {
-  "name": "Взрывное заклинание",
-  "html": "<p>Ваше заклинание становится нестабильным и взрывоопасным. Если вашим следующим действием будет «Сотворение» заклинания, наносящего урон одной цели, и это заклинание успешно наносит урон этой цели, то оно взрывается, нанося соседним существам урон <u>брызгами</u>, равный рангу сотворённого заклинания. В отличие от обычного урона брызгами, этот урон не наносится самой цели. Тип урона брызгами соответствует типу урону самого заклинания.</p>",
+  "name": "Detonating Spell",
+  "html": "<p>Your spell becomes volatile and explosive. If the next action you use is to Cast a Spell that deals damage to a single target and the spell successfully damages that target, the spell explodes, dealing <a href=\"https://2e.aonprd.com/Traits.aspx?ID=150\">splash</a> damage equal to the level of the spell cast to adjacent creatures. Unlike normally, this splash damage doesn't apply to the target. The splash damage dealt is of the same type the spell deals.</p>",
   "prereqText": "",
   "prereqHtml": "",
-  "fields": {},
+  "fields": {
+   "Access": "Knights of Lastwall have access to this feat."
+  },
   "traits": [
    {
     "slug": "uncommon",
@@ -727,7 +729,7 @@
   ],
   "url": "https://2e.aonprd.com/Feats.aspx?ID=3632",
   "source": "Knights of Lastwall pg. 83",
-  "note": "На pf2.ru этой черты нет — показан перевод Дока и Юры."
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
  },
  "feat-5033": {
   "name": "Взрывное прибытие",
@@ -853,8 +855,8 @@
   "source": "Основная книга игрока"
  },
  "feat-4386": {
-  "name": "Хаотическое заклинание",
-  "html": "<p>В этом и заключается секрет хаотической магии — ваш противник вряд ли сможет предсказать и парировать ваши действия, если вы сами не знаете что произойдёт. Если следующим вашим действием будет <i>Сотворение заклинания</i>, наносящего урон звуком, кислотой, огнём, холодом или электричеством, бросьте <i>d6</i>. Тип урона меняется на тип, указанный ниже, в соответствие с результатом броска, и каждое существо, получившее урон от заклинания, получает перечисленный дополнительный эффект.</p><p><b>1 (Кислота):</b> <i>Тошнота 1</i></p><p><b>2 (Холод):</b> Штраф −10 футов ко всем Скоростям до конца вашего следующего хода</p><p><b>3 (Электричество):</b> <i>Застигнут врасплох</i> до конца вашего следующего хода</p><p><b>4 (Огонь):</b> Продолжительный урон огнём, равный рангу заклинания</p><p><b>5 (Сила):</b> Без дополнительного эффекта</p><p><b>6 (Звук):</b> <i>Глухота</i> на 2 раунда</p>",
+  "name": "Chaotic Spell",
+  "html": "<p>This is the secret of chaotic magic — your foe can hardly predict and counter your moves if you yourself have no idea what will happen. If the next action you use is to Cast a Spell that deals acid, cold, electricity, fire, or sonic damage, roll a d6. The spell's damage type changes to the type below associated with the result of the roll, and each creature who is damaged by the spell takes the listed additional effect. <b>1 (Acid):</b> <a href=\"https://2e.aonprd.com/Conditions.aspx?ID=34\">Sickened</a> 1 <b>2 (Cold):</b> -10 ft. penalty to all Speeds until the end of your next turn. <b>3 (Electricity):</b> <a href=\"https://2e.aonprd.com/Conditions.aspx?ID=16\">Flat-footed</a> until the end of your next turn. <b>4 (Fire):</b> <a href=\"https://2e.aonprd.com/Conditions.aspx?ID=29\">Persistent fire damage</a> equal to the spell's level <b>5 (Force):</b> No added effect <b>6 (Sonic):</b> <a href=\"https://2e.aonprd.com/Conditions.aspx?ID=8\">Deafened</a> for 2 rounds</p>",
   "prereqText": "",
   "prereqHtml": "",
   "fields": {},
@@ -890,7 +892,7 @@
   ],
   "url": "https://2e.aonprd.com/Feats.aspx?ID=4386",
   "source": "Wake the Dead #3 pg. 25",
-  "note": "На pf2.ru этой черты нет — показан перевод Дока и Юры."
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
  },
  "feat-5038": {
   "name": "Удержание формы",
@@ -903,11 +905,13 @@
   "source": "Основная книга игрока"
  },
  "feat-4130": {
-  "name": "Танец заклинаний Хельта",
-  "html": "<p>Раник Хельт знает особую технику, позволяющую скрывать свои заклинания во время выступления, и вы научились этой технике. Демонстративно выступая, вы перемещаетесь по полю боя, заставая врагов врасплох и создавая брешь для своего заклинания. Совершите проверку <i>Выступления</i> против КС Восприятия всех наблюдателей. Затем совершите <i>Перемещение</i> один или два раза. Во время этого движения вы не провоцируете реакций, которые провоцируются вашим движением у существ, против которых вы преуспели в проверке Выступления.</p><p>Если вы использовали одно «Перемещение», вы можете <i>Сотворить заклинание</i> за 1 или 2 действия; если вы использовали два «Перемещения» вы можете «Сотворить заклинание» только за 1 действие. Если вы получили критический успех в проверке против существа, оно получает штраф обстоятельства −1 к любому спасброску против любого заклинания, сотворенного в рамках <i>«Танца заклинания Хельта»</i>, из-за вашего…</p>",
-  "prereqText": "эксперт Выступления",
-  "prereqHtml": "",
-  "fields": {},
+  "name": "Helt's Spelldance",
+  "html": "<p>Ranik Helt knows a special technique to hide his spells as part of a performance, and you've learned this technique. Ostentatiously performing, you move across the battlefield, taking foes aback and creating an opening for your spell. Attempt a Performance check against all observers' Perception DCs. Then, Stride once or twice. During this movement, you don't trigger reactions that are triggered by your movement from the creatures against which you succeeded on your Performance check. After your movement, you can Cast a Spell. If you used one Stride, you can cast either a 1-action or a 2-action spell; if you used two Strides, you can only cast a 1-action spell. If you critically succeed on your check against any creature, they take a –1 circumstance penalty to their saving throws against any spell you cast as part of your Helt's Spelldance due to your distracting performance. All creatures that observed you become temporarily immune to your Helt's Spelldance for 10 minutes.</p>",
+  "prereqText": "Expert in Performance",
+  "prereqHtml": "Expert in <a href=\"https://2e.aonprd.com/Skills.aspx?ID=12\">Performance</a>",
+  "fields": {
+   "Access": "Members of the Firebrands at the rank of second mark or higher have access to this feat."
+  },
   "traits": [
    {
     "slug": "uncommon",
@@ -928,7 +932,7 @@
   ],
   "url": "https://2e.aonprd.com/Feats.aspx?ID=4130",
   "source": "Firebrands pg. 77",
-  "note": "На pf2.ru этой черты нет — показан перевод Дока и Юры."
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
  },
  "feat-9390": {
   "name": "Отбрасывающее заклинание",
@@ -1307,13 +1311,13 @@
   "source": "Книга мёртвых"
  },
  "feat-2731": {
-  "name": "Сдвинуть заклинание",
-  "html": "<p>Вы перемещаете область заклинания в новое место в радиусе 120 футов. Оставшаяся продолжительность заклинания сокращается вдвое. Заклинание больше не действует в прежней области.</p>",
+  "name": "Shift Spell",
+  "html": "<p>You move the spell's area to a new location within 120 feet. The spell's remaining duration is reduced by half. The spell no longer affects its previous area.</p>",
   "prereqText": "",
   "prereqHtml": "",
   "fields": {
-   "Доступ": "член Магаамбии",
-   "Требования": "У вас есть активное заклинание, воздействующее на область, и вы находитесь в зоне действия заклинания."
+   "Requirements": "You have an active spell that affects an area and you are within the spell's range.",
+   "Access": "member of the Magaambya"
   },
   "traits": [
    {
@@ -1323,7 +1327,7 @@
   ],
   "url": "https://2e.aonprd.com/Feats.aspx?ID=2731",
   "source": "Pathfinder #167: Ready? Fight! pg. 75",
-  "note": "На pf2.ru этой черты нет — показан перевод Дока и Юры."
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
  },
  "feat-5047": {
   "name": "Превосходная связь",
@@ -1464,10 +1468,10 @@
   "source": "Основная книга игрока"
  },
  "feat-1246": {
-  "name": "Восстановить заклинание",
-  "html": "<p>Вы научились манипулировать отражениями магии, подобно резонансным отражениям. Вы возвращаете себе магию текущего заклинания, используя её для восстановления заклинания с продолжительностью. Вы <i>Развеять</i> заклинание 4-го ранга или ниже, сотворенное сегодня из слота заклинаний, у которого осталась хотя бы половина продолжительности, даже если это заклинание не может быть «Развеяно» обычным способом. Затем вы можете потратить 10 минут на восстановление заклинания в этом слоте заклинания, как в <i>Переподготовить заклинание</i>.</p>",
-  "prereqText": "Переподготовить заклинание",
-  "prereqHtml": "",
+  "name": "Reclaim Spell",
+  "html": "<p>You have learned to manipulate reflections of magic, similar to the <i>resonant reflections</i>. You reclaim the magic of an ongoing spell, using it reprepare a spell with a duration. You Dismiss a Spell of 4th level or lower that you cast today from a spell slot with at least half its duration remaining, even if that spell can't normally be Dismissed. You can then spend 10 minutes to reprepare the spell in that spell slot, as <a href=\"https://2e.aonprd.com/Feats.aspx?ID=661\">Reprepare Spell</a>.</p><p><b>Source</b> <a href=\"https://2e.aonprd.com/Sources.aspx?ID=36\">Pathfinder #156: The Apocalypse Prophet</a> pg. 72</p><p>Characters who have reached 20th level can choose from the following feats, representing the pinnacle of mortal power influenced by their triumphs.</p><p><b>Related Feats</b>: <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1240\">Annihilating Swing</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1241\">Astonishing Explosion</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1242\">Banishing Blow</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1243\">Denier of Destruction</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1244\">Endurance of the Rooted Tree</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1245\">Mimic Protections</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1247\">Reflecting Riposte</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1248\">Ringmaster's Introduction</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1249\">Steal Essence</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1250\">Tenacious Blood Magic</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1251\">Verdant Presence</a></p>",
+  "prereqText": "Reprepare Spell",
+  "prereqHtml": "<a href=\"https://2e.aonprd.com/Feats.aspx?ID=661\">Reprepare Spell</a>",
   "fields": {},
   "traits": [
    {
@@ -1477,7 +1481,7 @@
   ],
   "url": "https://2e.aonprd.com/Feats.aspx?ID=1246",
   "source": "Pathfinder #156: The Apocalypse Prophet pg. 72",
-  "note": "На pf2.ru этой черты нет — показан перевод Дока и Юры."
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
  },
  "feat-5054": {
   "name": "Объединение заклинаний",
@@ -1515,12 +1519,12 @@
   "source": "Основная книга игрока"
  },
  "feat-2759": {
-  "name": "Гравитация мировой сферы",
-  "html": "<p>Хотя создание демипланов обычно требует длительных ритуалов, вы умеете создавать небольшие планарные эффекты в подражание шедеврам Синдары. Если вашим следующим действием будет <i>Сотворение заклинания</i> не ниже 5-го ранга с помощью вашего слота заклинаний, воздействующее на область, вы можете применить один из следующих планарных эффектов к <i>20-футовым взрывом</i> сосредоточенным в пространстве, находящимся в области заклинания. Эффект сохраняется в течение 1 минуты.</p><p><b>Гравитационный морок:</b> Притяжение гравитации здесь усиливается, создавая <i>Очень сложная местность</i>. Летающие существа, пролетающие через эту область, должны совершить спасбросок <i>Рефлекса</i> против вашего КС заклинаний или упасть на землю, получив дробящий урон, равный половине дистанции падения.</p><p><b>Текучее время:</b> В этом пространстве вам помогают эрратические временные потоки. Существо, которое начинает свой ход в этом потоке, получает эффект <i>Ускорение</i> на этот ход.</p>",
+  "name": "Worldsphere Gravity",
+  "html": "<p>Though creating demiplanes usually requires lengthy rituals, you know how to establish minor planar effects in imitation of Syndara's masterpieces. If your next action is to Cast a Spell of at least 5th level from your spell slots that affects an area, you can apply one of the following planar effects to a 20-foot burst centered within the spell's area. The effect persists for 1 minute. <ul><li><b>Gravitational Morass</b> The pull of gravity is amplified here, creating greater difficult terrain. <a href=\"https://2e.aonprd.com/Actions.aspx?ID=94\">Flying</a> creatures that pass through the area must succeed at a Reflex save against your spell DC or fall to the ground, taking bludgeoning damage equal to half the distance fallen.</li><li><b>Flowing Time</b> Erratic timestreams aid you within this space. A creature that starts its turn in the burst is affected by <a href=\"https://2e.aonprd.com/Spells.aspx?ID=147\">_haste_</a> on that turn.</li></ul></p><p><b>Source</b> <a href=\"https://2e.aonprd.com/Sources.aspx?ID=87\">Pathfinder #168: King of the Mountain</a> pg. 75</p><p>Player characters can select one of the following new class feats for their 20th-level class feat upon entering the <i>Glass Lighthouse</i> or by meditating on the cushion in area H4.</p><p><b>Related Feats</b>: <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2744\">All the Time in the World</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2745\">Dance of Intercession</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2746\">Demon's Hair</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2747\">Everdistant Defense</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2748\">Extradimensional Stash</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2749\">Head of the Night Parade</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2750\">Heart of the Kaiju</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2751\">Plum Deluge</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2752\">Ruby Resurrection</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2753\">Scapegoat Parallel Self</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2754\">Sever Space</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2755\">Time Dilation Cascade</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2756\">Vitality-Manipulating Stance</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2757\">Vivacious Afterimage</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2758\">Whirlwind Toss</a></p>",
   "prereqText": "",
   "prereqHtml": "",
   "fields": {
-   "Частота": "Раз в час"
+   "Frequency": "once per hour"
   },
   "traits": [
    {
@@ -1534,6 +1538,6 @@
   ],
   "url": "https://2e.aonprd.com/Feats.aspx?ID=2759",
   "source": "Pathfinder #168: King of the Mountain pg. 77",
-  "note": "На pf2.ru этой черты нет — показан перевод Дока и Юры."
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
  }
 };

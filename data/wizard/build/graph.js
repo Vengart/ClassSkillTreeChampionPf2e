@@ -48,32 +48,47 @@ window.CLASS_DATA = {
   "updateCmd": "node tools/fetch-wizard-aon.mjs",
   "geometry": {
    "SIZE": {
-    "root": 0,
-    "hub": 32,
-    "feat": 36,
-    "group": 36,
-    "option": 36
+    "root": 120,
+    "hub": 84,
+    "feat": 62,
+    "group": 78,
+    "option": 64
    },
    "CAPTION": {
+    "root": {
+     "fs": 28,
+     "maxW": 260,
+     "lines": 1
+    },
+    "hub": {
+     "fs": 19,
+     "maxW": 170,
+     "lines": 2
+    },
     "feat": {
-     "fs": 13,
-     "maxW": 116,
+     "fs": 15,
+     "maxW": 150,
+     "lines": 2
+    },
+    "group": {
+     "fs": 19,
+     "maxW": 170,
      "lines": 2
     },
     "option": {
-     "fs": 13,
-     "maxW": 116,
+     "fs": 17,
+     "maxW": 170,
      "lines": 2
     }
    },
-   "CAPTION_GAP": 6,
-   "CHAR_W": 0.58,
-   "STEP": 140,
-   "ROW": 104,
-   "RAIL": 29,
-   "FIRST": 110,
-   "COL_GAP": 36,
-   "AXIS_W": 64
+   "CAPTION_GAP": 8,
+   "CHAR_W": 0.7,
+   "STEP": 200,
+   "ROW": 130,
+   "RAIL": 40,
+   "HUB_Y": 300,
+   "BUS_GAP": 110,
+   "COL_GAP": 90
   },
   "layout": {
    "overlaps": 0,
@@ -81,103 +96,119 @@ window.CLASS_DATA = {
    "crossings": 0
   },
   "bounds": {
-   "minX": 0,
-   "maxX": 2672,
-   "minY": -40,
-   "maxY": 1234
+   "minX": -1260,
+   "maxX": 1260,
+   "minY": -1820,
+   "maxY": 1580
   },
   "grid": {
-   "rows": [
+   "halves": [
     {
-     "level": 1,
-     "y": 110
+     "v": -1,
+     "after": -44,
+     "start": -365,
+     "minX": -1240,
+     "maxX": 1240,
+     "rows": [
+      {
+       "level": 1,
+       "y": -430
+      },
+      {
+       "level": 2,
+       "y": -560
+      },
+      {
+       "level": 4,
+       "y": -690
+      },
+      {
+       "level": 6,
+       "y": -820
+      },
+      {
+       "level": 8,
+       "y": -950
+      },
+      {
+       "level": 10,
+       "y": -1080
+      },
+      {
+       "level": 12,
+       "y": -1210
+      },
+      {
+       "level": 14,
+       "y": -1340
+      },
+      {
+       "level": 16,
+       "y": -1470
+      },
+      {
+       "level": 18,
+       "y": -1600
+      },
+      {
+       "level": 20,
+       "y": -1730
+      }
+     ]
     },
     {
-     "level": 2,
-     "y": 214
-    },
-    {
-     "level": 4,
-     "y": 318
-    },
-    {
-     "level": 6,
-     "y": 422
-    },
-    {
-     "level": 8,
-     "y": 526
-    },
-    {
-     "level": 10,
-     "y": 630
-    },
-    {
-     "level": 12,
-     "y": 734
-    },
-    {
-     "level": 14,
-     "y": 838
-    },
-    {
-     "level": 16,
-     "y": 942
-    },
-    {
-     "level": 18,
-     "y": 1046
-    },
-    {
-     "level": 20,
-     "y": 1150
+     "v": 1,
+     "after": 86,
+     "start": 365,
+     "minX": -1010,
+     "maxX": 1010,
+     "rows": [
+      {
+       "level": 1,
+       "y": 430
+      },
+      {
+       "level": 2,
+       "y": 560
+      },
+      {
+       "level": 4,
+       "y": 690
+      },
+      {
+       "level": 6,
+       "y": 820
+      },
+      {
+       "level": 8,
+       "y": 950
+      },
+      {
+       "level": 10,
+       "y": 1080
+      },
+      {
+       "level": 12,
+       "y": 1210
+      },
+      {
+       "level": 14,
+       "y": 1340
+      },
+      {
+       "level": 18,
+       "y": 1470
+      }
+     ]
     }
-   ],
-   "columns": [
-    {
-     "id": "theme-metamagic",
-     "x": 64,
-     "w": 280
-    },
-    {
-     "id": "theme-battle",
-     "x": 380,
-     "w": 560
-    },
-    {
-     "id": "theme-book",
-     "x": 976,
-     "w": 560
-    },
-    {
-     "id": "theme-bond",
-     "x": 1572,
-     "w": 420
-    },
-    {
-     "id": "theme-mind",
-     "x": 2028,
-     "w": 280
-    },
-    {
-     "id": "theme-necro",
-     "x": 2344,
-     "w": 140
-    },
-    {
-     "id": "theme-familiar",
-     "x": 2520,
-     "w": 140
-    }
-   ],
-   "rowH": 104
+   ]
   },
   "defaultLang": "aon",
   "langs": [
    {
     "id": "aon",
-    "label": "AoN",
-    "title": "Archives of Nethys — оригинал на английском",
+    "label": "оригинал",
+    "title": "Оригинал (Archives of Nethys)",
     "source": "Archives of Nethys",
     "terms": {
      "feat": "черта",
@@ -190,7 +221,7 @@ window.CLASS_DATA = {
    {
     "id": "pf2ru",
     "label": "pf2.ru",
-    "title": "Перевод сайта pf2.ru",
+    "title": "Офф. перевод Hobby Games (pf2.ru)",
     "source": "pf2.ru",
     "terms": {
      "feat": "черта",
@@ -202,8 +233,8 @@ window.CLASS_DATA = {
    },
    {
     "id": "doc",
-    "label": "Док и Юра",
-    "title": "Перевод Дока и Юры (pf2e.ru) — как в модуле перевода Foundry VTT",
+    "label": "pf2e.ru",
+    "title": "Фан. перевод Юры и Дока (pf2e.ru)",
     "source": "перевод Дока и Юры (Foundry)",
     "terms": {
      "feat": "способность",
@@ -221,7 +252,9 @@ window.CLASS_DATA = {
    "id": "root",
    "kind": "root",
    "nameEn": "Wizard",
-   "level": 0
+   "level": 0,
+   "x": 0,
+   "y": 0
   },
   {
    "image": null,
@@ -441,9 +474,10 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 64,
-   "y": 0,
-   "plateW": 268
+   "x": -1040,
+   "y": -300,
+   "captionSide": "right",
+   "captionW": 133
   },
   {
    "image": "wizard/Class_Wizard_Abjuration_Badge_Icon.png",
@@ -451,9 +485,10 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 380,
-   "y": 0,
-   "plateW": 548
+   "x": -600,
+   "y": -300,
+   "captionSide": "right",
+   "captionW": 170
   },
   {
    "image": "wizard/Oghma_Icon.webp",
@@ -461,9 +496,10 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 976,
-   "y": 0,
-   "plateW": 548
+   "x": 440,
+   "y": -300,
+   "captionSide": "right",
+   "captionW": 170
   },
   {
    "image": "wizard/Transmuters_Stone_passive_feature_Icon.webp",
@@ -471,9 +507,10 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 1572,
-   "y": 0,
-   "plateW": 408
+   "x": -810,
+   "y": 300,
+   "captionSide": "right",
+   "captionW": 170
   },
   {
    "image": "wizard/Class_Wizard_Illusion_Badge_Icon.png",
@@ -481,9 +518,10 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 2028,
-   "y": 0,
-   "plateW": 268
+   "x": -170,
+   "y": 300,
+   "captionSide": "right",
+   "captionW": 170
   },
   {
    "image": "wizard/Class_Wizard_Necromancy_Badge_Icon.png",
@@ -491,9 +529,10 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 2344,
-   "y": 0,
-   "plateW": 128
+   "x": 270,
+   "y": 300,
+   "captionSide": "right",
+   "captionW": 94
   },
   {
    "image": "wizard/Find_Familiar_Cat_Icon.webp",
@@ -501,9 +540,10 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 2520,
-   "y": 0,
-   "plateW": 128
+   "x": 610,
+   "y": 300,
+   "captionSide": "right",
+   "captionW": 107
   },
   {
    "image": "wizard/Counterspell_Icon.webp",
@@ -518,10 +558,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 870,
-   "y": 110,
+   "x": -100,
+   "y": -430,
    "captionSide": "below",
-   "captionW": 91
+   "captionW": 126
   },
   {
    "image": "wizard/Benign_Transposition_Teleport_Icon.webp",
@@ -537,10 +577,10 @@ window.CLASS_DATA = {
    "grantedBy": "thesis-improved-familiar-attunement",
    "parentId": "theme-familiar",
    "theme": "theme-familiar",
-   "x": 2590,
-   "y": 110,
+   "x": 710,
+   "y": 430,
    "captionSide": "below",
-   "captionW": 61
+   "captionW": 84
   },
   {
    "image": "wizard/Witch_Bolt_Icon.webp",
@@ -555,10 +595,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 134,
-   "y": 110,
+   "x": -940,
+   "y": -430,
    "captionSide": "below",
-   "captionW": 83
+   "captionW": 116
   },
   {
    "image": "wizard/Oghma_Icon.webp",
@@ -573,10 +613,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1046,
-   "y": 110,
+   "x": 340,
+   "y": -430,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Thunderwave_Icon.webp",
@@ -591,10 +631,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 274,
-   "y": 110,
+   "x": -1140,
+   "y": -430,
    "captionSide": "below",
-   "captionW": 83
+   "captionW": 116
   },
   {
    "image": "wizard/Potent_Cantrip_Icon.webp",
@@ -609,10 +649,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1046,
-   "y": 214,
+   "x": 540,
+   "y": -560,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Invisibility_spell_Icon.webp",
@@ -627,10 +667,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 134,
-   "y": 214,
+   "x": -940,
+   "y": -560,
    "captionSide": "below",
-   "captionW": 99
+   "captionW": 137
   },
   {
    "image": "wizard/Fire_Shield_Icon.webp",
@@ -645,10 +685,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 450,
-   "y": 214,
+   "x": -700,
+   "y": -560,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Protection_from_Energy_Icon.webp",
@@ -663,10 +703,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 590,
-   "y": 214,
+   "x": -500,
+   "y": -560,
    "captionSide": "below",
-   "captionW": 114
+   "captionW": 150
   },
   {
    "image": "wizard/Conjure_Minor_Elemental_Azer_Icon.webp",
@@ -686,10 +726,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5024",
    "theme": "theme-familiar",
-   "x": 2590,
-   "y": 214,
+   "x": 910,
+   "y": 560,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Sleep_Icon.webp",
@@ -704,10 +744,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 274,
-   "y": 214,
+   "x": -1140,
+   "y": -560,
    "captionSide": "below",
-   "captionW": 114
+   "captionW": 150
   },
   {
    "image": "wizard/Magic_Weapon_Icon.webp",
@@ -722,10 +762,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 450,
-   "y": 318,
+   "x": -700,
+   "y": -690,
    "captionSide": "below",
-   "captionW": 114
+   "captionW": 150
   },
   {
    "image": "wizard/Mage_Hand_Icon.webp",
@@ -740,10 +780,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 1642,
-   "y": 318,
+   "x": -710,
+   "y": 690,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Disguise_Self_Icon.webp",
@@ -758,10 +798,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 134,
-   "y": 318,
+   "x": -940,
+   "y": -690,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Seeming_Icon.webp",
@@ -776,10 +816,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 1782,
-   "y": 318,
+   "x": -910,
+   "y": 690,
    "captionSide": "below",
-   "captionW": 106
+   "captionW": 147
   },
   {
    "image": "wizard/Empowered_Evocation_Icon.webp",
@@ -800,10 +840,10 @@ window.CLASS_DATA = {
    ],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 1922,
-   "y": 318,
+   "x": -510,
+   "y": 690,
    "captionSide": "below",
-   "captionW": 91
+   "captionW": 126
   },
   {
    "image": "wizard/Arcane_Ward_Icon.webp",
@@ -818,10 +858,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 590,
-   "y": 318,
+   "x": -500,
+   "y": -690,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Inured_to_Undeath_Icon.webp",
@@ -836,10 +876,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 2414,
-   "y": 318,
+   "x": 370,
+   "y": 690,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Improved_Minor_Illusion_Icon.webp",
@@ -854,10 +894,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": 2098,
-   "y": 422,
+   "x": -70,
+   "y": 820,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Fireball_Icon.webp",
@@ -872,10 +912,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 134,
-   "y": 422,
+   "x": -1140,
+   "y": -820,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Conjure_Elemental_Icon.webp",
@@ -890,10 +930,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 274,
-   "y": 422,
+   "x": -940,
+   "y": -820,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Ottos_Irresistible_Dance_Icon.webp",
@@ -908,10 +948,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 450,
-   "y": 422,
+   "x": -700,
+   "y": -820,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Enlarge_Reduce_Icon.webp",
@@ -930,10 +970,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4994",
    "theme": "theme-battle",
-   "x": 870,
-   "y": 422,
+   "x": 100,
+   "y": -820,
    "captionSide": "below",
-   "captionW": 91
+   "captionW": 126
   },
   {
    "image": "wizard/Mirror_Image_Icon.webp",
@@ -948,10 +988,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1046,
-   "y": 422,
+   "x": 340,
+   "y": -820,
    "captionSide": "below",
-   "captionW": 76
+   "captionW": 105
   },
   {
    "image": "wizard/Stoneskin_Icon.webp",
@@ -966,10 +1006,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 590,
-   "y": 422,
+   "x": -500,
+   "y": -820,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Expert_Divination_Icon.webp",
@@ -984,10 +1024,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 1642,
-   "y": 526,
+   "x": -910,
+   "y": 950,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Arcane_Recovery_Icon.webp",
@@ -1002,10 +1042,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 1782,
-   "y": 526,
+   "x": -710,
+   "y": 950,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Confusion_Icon.webp",
@@ -1020,10 +1060,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 134,
-   "y": 526,
+   "x": -1140,
+   "y": -950,
    "captionSide": "below",
-   "captionW": 99
+   "captionW": 137
   },
   {
    "image": "wizard/Polymorph_Icon.webp",
@@ -1038,10 +1078,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1046,
-   "y": 526,
+   "x": 540,
+   "y": -950,
    "captionSide": "below",
-   "captionW": 106
+   "captionW": 147
   },
   {
    "image": "wizard/Bladesong_Icon.webp",
@@ -1056,10 +1096,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": 2098,
-   "y": 526,
+   "x": -270,
+   "y": 950,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Gust_of_Wind_Icon.webp",
@@ -1074,10 +1114,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 274,
-   "y": 526,
+   "x": -940,
+   "y": -950,
    "captionSide": "below",
-   "captionW": 114
+   "captionW": 150
   },
   {
    "image": "wizard/Portent_Icon.webp",
@@ -1092,10 +1132,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1186,
-   "y": 526,
+   "x": 340,
+   "y": -950,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Charm_Person_Icon.webp",
@@ -1110,10 +1150,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": 2238,
-   "y": 526,
+   "x": -70,
+   "y": 950,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Lightning_Bolt_Icon.webp",
@@ -1128,10 +1168,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 134,
-   "y": 630,
+   "x": -1140,
+   "y": -1080,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Haste_Icon.webp",
@@ -1146,10 +1186,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 274,
-   "y": 630,
+   "x": -940,
+   "y": -1080,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Glyph_of_Warding_Icon.webp",
@@ -1164,10 +1204,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1046,
-   "y": 630,
+   "x": 540,
+   "y": -1080,
    "captionSide": "below",
-   "captionW": 91
+   "captionW": 126
   },
   {
    "image": "wizard/Focused_Conjuration_Icon.webp",
@@ -1182,10 +1222,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 1642,
-   "y": 630,
+   "x": -910,
+   "y": 1080,
    "captionSide": "below",
-   "captionW": 91
+   "captionW": 126
   },
   {
    "image": "wizard/Third_Eye_See_Invisibility_Icon.webp",
@@ -1200,10 +1240,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 450,
-   "y": 630,
+   "x": -700,
+   "y": -1080,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Remove_Curse_Icon.webp",
@@ -1222,10 +1262,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4994",
    "theme": "theme-battle",
-   "x": 870,
-   "y": 734,
+   "x": 100,
+   "y": -1210,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Scorching_Ray_Icon.webp",
@@ -1240,10 +1280,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 134,
-   "y": 734,
+   "x": -1140,
+   "y": -1210,
    "captionSide": "below",
-   "captionW": 114
+   "captionW": 150
   },
   {
    "image": "wizard/See_Invisibility_Icon.webp",
@@ -1258,10 +1298,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 450,
-   "y": 734,
+   "x": -500,
+   "y": -1210,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Third_Eye_Darkvision_Icon.webp",
@@ -1276,10 +1316,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 590,
-   "y": 734,
+   "x": -700,
+   "y": -1210,
    "captionSide": "below",
-   "captionW": 83
+   "captionW": 116
   },
   {
    "image": "wizard/Create_Undead_Icon.webp",
@@ -1294,10 +1334,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 2414,
-   "y": 734,
+   "x": 170,
+   "y": 1210,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Misty_Step_Icon.webp",
@@ -1312,10 +1352,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 730,
-   "y": 734,
+   "x": -300,
+   "y": -1210,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Transmuters_Stone_Constitution_Icon.webp",
@@ -1330,10 +1370,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 1642,
-   "y": 838,
+   "x": -710,
+   "y": 1340,
    "captionSide": "below",
-   "captionW": 91
+   "captionW": 126
   },
   {
    "image": "wizard/Colour_Spray_Icon.webp",
@@ -1348,10 +1388,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 134,
-   "y": 838,
+   "x": -940,
+   "y": -1340,
    "captionSide": "below",
-   "captionW": 106
+   "captionW": 147
   },
   {
    "image": "wizard/Projected_Ward_Icon.webp",
@@ -1370,10 +1410,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4994",
    "theme": "theme-battle",
-   "x": 870,
-   "y": 838,
+   "x": 100,
+   "y": -1340,
    "captionSide": "below",
-   "captionW": 99
+   "captionW": 137
   },
   {
    "image": "wizard/Ice_Storm_Icon.webp",
@@ -1388,10 +1428,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 274,
-   "y": 838,
+   "x": -1140,
+   "y": -1340,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Animate_Dead_Icon.webp",
@@ -1406,10 +1446,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 2414,
-   "y": 838,
+   "x": 370,
+   "y": 1340,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Blink_Icon.webp",
@@ -1424,10 +1464,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-battle",
    "theme": "theme-battle",
-   "x": 450,
-   "y": 838,
+   "x": -700,
+   "y": -1340,
    "captionSide": "below",
-   "captionW": 83
+   "captionW": 116
   },
   {
    "image": "wizard/Arcane_Lock_Icon.webp",
@@ -1442,10 +1482,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": 1782,
-   "y": 838,
+   "x": -910,
+   "y": 1340,
    "captionSide": "below",
-   "captionW": 99
+   "captionW": 137
   },
   {
    "image": "wizard/Flaming_Sphere_Icon.webp",
@@ -1460,10 +1500,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1046,
-   "y": 942,
+   "x": 340,
+   "y": -1470,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Sunbeam_Icon.webp",
@@ -1478,10 +1518,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 134,
-   "y": 942,
+   "x": -940,
+   "y": -1470,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Experimental_Alchemy_Icon.webp",
@@ -1496,10 +1536,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1186,
-   "y": 942,
+   "x": 540,
+   "y": -1470,
    "captionSide": "below",
-   "captionW": 91
+   "captionW": 126
   },
   {
    "image": "wizard/Arcane_Gate_Icon.webp",
@@ -1514,10 +1554,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1046,
-   "y": 1046,
+   "x": 340,
+   "y": -1600,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Split_Enchantment_Icon.webp",
@@ -1532,10 +1572,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1466,
-   "y": 1046,
+   "x": 940,
+   "y": -1600,
    "captionSide": "below",
-   "captionW": 114
+   "captionW": 150
   },
   {
    "image": "wizard/Detect_Thoughts_Icon.webp",
@@ -1550,10 +1590,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": 2098,
-   "y": 1046,
+   "x": -270,
+   "y": 1470,
    "captionSide": "below",
-   "captionW": 114
+   "captionW": 150
   },
   {
    "image": "wizard/Mystra_Icon.webp",
@@ -1568,10 +1608,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1046,
-   "y": 1150,
+   "x": 540,
+   "y": -1730,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Telekinesis_Icon.webp",
@@ -1590,10 +1630,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5051",
    "theme": "theme-book",
-   "x": 1466,
-   "y": 1150,
+   "x": 1140,
+   "y": -1730,
    "captionSide": "below",
-   "captionW": 99
+   "captionW": 137
   },
   {
    "image": "wizard/Chromatic_Orb_Icon.webp",
@@ -1608,10 +1648,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1186,
-   "y": 1150,
+   "x": 340,
+   "y": -1730,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Magic_Missile_Icon.webp",
@@ -1626,10 +1666,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-book",
    "theme": "theme-book",
-   "x": 1326,
-   "y": 1150,
+   "x": 740,
+   "y": -1730,
    "captionSide": "below",
-   "captionW": 99
+   "captionW": 137
   },
   {
    "image": "wizard/Chain_Lightning_Icon.webp",
@@ -1644,10 +1684,10 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 134,
-   "y": 1150,
+   "x": -1140,
+   "y": -1730,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   },
   {
    "image": "wizard/Otilukes_Resilient_Sphere_Icon.webp",
@@ -1662,13 +1702,181 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-metamagic",
    "theme": "theme-metamagic",
-   "x": 274,
-   "y": 1150,
+   "x": -940,
+   "y": -1730,
    "captionSide": "below",
-   "captionW": 116
+   "captionW": 150
   }
  ],
  "edges": [
+  {
+   "from": "root",
+   "to": "theme-metamagic",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     -190
+    ],
+    [
+     -1040,
+     -190
+    ],
+    [
+     -1040,
+     -300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-battle",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     -190
+    ],
+    [
+     -600,
+     -190
+    ],
+    [
+     -600,
+     -300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-book",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     -190
+    ],
+    [
+     440,
+     -190
+    ],
+    [
+     440,
+     -300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-bond",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     190
+    ],
+    [
+     -810,
+     190
+    ],
+    [
+     -810,
+     300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-mind",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     190
+    ],
+    [
+     -170,
+     190
+    ],
+    [
+     -170,
+     300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-necro",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     190
+    ],
+    [
+     270,
+     190
+    ],
+    [
+     270,
+     300
+    ]
+   ]
+  },
+  {
+   "from": "root",
+   "to": "theme-familiar",
+   "kind": "struct",
+   "primary": true,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     190
+    ],
+    [
+     610,
+     190
+    ],
+    [
+     610,
+     300
+    ]
+   ]
+  },
   {
    "from": "theme-battle",
    "to": "feat-4994",
@@ -1676,24 +1884,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     81
+     -600,
+     -470
     ],
     [
-     800,
-     81
+     -200,
+     -470
     ],
     [
-     800,
-     110
+     -200,
+     -430
     ],
     [
-     870,
-     110
+     -100,
+     -430
     ]
    ]
   },
@@ -1704,16 +1912,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2520,
-     0
+     610,
+     300
     ],
     [
-     2520,
-     110
+     610,
+     430
     ],
     [
-     2590,
-     110
+     710,
+     430
     ]
    ]
   },
@@ -1724,16 +1932,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     110
+     -1040,
+     -430
     ],
     [
-     134,
-     110
+     -940,
+     -430
     ]
    ]
   },
@@ -1744,16 +1952,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     110
+     440,
+     -430
     ],
     [
-     1046,
-     110
+     340,
+     -430
     ]
    ]
   },
@@ -1764,24 +1972,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     81
+     -1040,
+     -430
     ],
     [
-     204,
-     81
-    ],
-    [
-     204,
-     110
-    ],
-    [
-     274,
-     110
+     -1140,
+     -430
     ]
    ]
   },
@@ -1792,16 +1992,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     214
+     440,
+     -560
     ],
     [
-     1046,
-     214
+     540,
+     -560
     ]
    ]
   },
@@ -1812,16 +2012,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     214
+     -1040,
+     -560
     ],
     [
-     134,
-     214
+     -940,
+     -560
     ]
    ]
   },
@@ -1832,16 +2032,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     214
+     -600,
+     -560
     ],
     [
-     450,
-     214
+     -700,
+     -560
     ]
    ]
   },
@@ -1852,24 +2052,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     185
+     -600,
+     -560
     ],
     [
-     520,
-     185
-    ],
-    [
-     520,
-     214
-    ],
-    [
-     590,
-     214
+     -500,
+     -560
     ]
    ]
   },
@@ -1880,20 +2072,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2590,
-     110
+     710,
+     430
     ],
     [
-     2660,
-     110
+     810,
+     430
     ],
     [
-     2660,
-     214
+     810,
+     560
     ],
     [
-     2590,
-     214
+     910,
+     560
     ]
    ]
   },
@@ -1904,24 +2096,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     185
+     -1040,
+     -560
     ],
     [
-     204,
-     185
-    ],
-    [
-     204,
-     214
-    ],
-    [
-     274,
-     214
+     -1140,
+     -560
     ]
    ]
   },
@@ -1932,16 +2116,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     318
+     -600,
+     -690
     ],
     [
-     450,
-     318
+     -700,
+     -690
     ]
    ]
   },
@@ -1952,16 +2136,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1572,
-     0
+     -810,
+     300
     ],
     [
-     1572,
-     318
+     -810,
+     690
     ],
     [
-     1642,
-     318
+     -710,
+     690
     ]
    ]
   },
@@ -1972,16 +2156,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     318
+     -1040,
+     -690
     ],
     [
-     134,
-     318
+     -940,
+     -690
     ]
    ]
   },
@@ -1992,24 +2176,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1572,
-     0
+     -810,
+     300
     ],
     [
-     1572,
-     289
+     -810,
+     690
     ],
     [
-     1712,
-     289
-    ],
-    [
-     1712,
-     318
-    ],
-    [
-     1782,
-     318
+     -910,
+     690
     ]
    ]
   },
@@ -2020,24 +2196,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1572,
-     0
+     -810,
+     300
     ],
     [
-     1572,
-     289
+     -810,
+     650
     ],
     [
-     1852,
-     289
+     -610,
+     650
     ],
     [
-     1852,
-     318
+     -610,
+     690
     ],
     [
-     1922,
-     318
+     -510,
+     690
     ]
    ]
   },
@@ -2048,24 +2224,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     289
+     -600,
+     -690
     ],
     [
-     520,
-     289
-    ],
-    [
-     520,
-     318
-    ],
-    [
-     590,
-     318
+     -500,
+     -690
     ]
    ]
   },
@@ -2076,16 +2244,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2344,
-     0
+     270,
+     300
     ],
     [
-     2344,
-     318
+     270,
+     690
     ],
     [
-     2414,
-     318
+     370,
+     690
     ]
    ]
   },
@@ -2096,16 +2264,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2028,
-     0
+     -170,
+     300
     ],
     [
-     2028,
-     422
+     -170,
+     820
     ],
     [
-     2098,
-     422
+     -70,
+     820
     ]
    ]
   },
@@ -2116,16 +2284,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     422
+     -1040,
+     -820
     ],
     [
-     134,
-     422
+     -1140,
+     -820
     ]
    ]
   },
@@ -2136,24 +2304,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     393
+     -1040,
+     -820
     ],
     [
-     204,
-     393
-    ],
-    [
-     204,
-     422
-    ],
-    [
-     274,
-     422
+     -940,
+     -820
     ]
    ]
   },
@@ -2164,16 +2324,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     422
+     -600,
+     -820
     ],
     [
-     450,
-     422
+     -700,
+     -820
     ]
    ]
   },
@@ -2184,20 +2344,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     870,
-     110
+     -100,
+     -430
     ],
     [
-     940,
-     110
+     0,
+     -430
     ],
     [
-     940,
-     422
+     0,
+     -820
     ],
     [
-     870,
-     422
+     100,
+     -820
     ]
    ]
   },
@@ -2208,16 +2368,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     422
+     440,
+     -820
     ],
     [
-     1046,
-     422
+     340,
+     -820
     ]
    ]
   },
@@ -2228,24 +2388,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     393
+     -600,
+     -820
     ],
     [
-     520,
-     393
-    ],
-    [
-     520,
-     422
-    ],
-    [
-     590,
-     422
+     -500,
+     -820
     ]
    ]
   },
@@ -2256,16 +2408,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1572,
-     0
+     -810,
+     300
     ],
     [
-     1572,
-     526
+     -810,
+     950
     ],
     [
-     1642,
-     526
+     -910,
+     950
     ]
    ]
   },
@@ -2276,24 +2428,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1572,
-     0
+     -810,
+     300
     ],
     [
-     1572,
-     497
+     -810,
+     950
     ],
     [
-     1712,
-     497
-    ],
-    [
-     1712,
-     526
-    ],
-    [
-     1782,
-     526
+     -710,
+     950
     ]
    ]
   },
@@ -2304,16 +2448,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     526
+     -1040,
+     -950
     ],
     [
-     134,
-     526
+     -1140,
+     -950
     ]
    ]
   },
@@ -2324,16 +2468,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     526
+     440,
+     -950
     ],
     [
-     1046,
-     526
+     540,
+     -950
     ]
    ]
   },
@@ -2344,16 +2488,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2028,
-     0
+     -170,
+     300
     ],
     [
-     2028,
-     526
+     -170,
+     950
     ],
     [
-     2098,
-     526
+     -270,
+     950
     ]
    ]
   },
@@ -2364,24 +2508,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     497
+     -1040,
+     -950
     ],
     [
-     204,
-     497
-    ],
-    [
-     204,
-     526
-    ],
-    [
-     274,
-     526
+     -940,
+     -950
     ]
    ]
   },
@@ -2392,24 +2528,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     497
+     440,
+     -950
     ],
     [
-     1116,
-     497
-    ],
-    [
-     1116,
-     526
-    ],
-    [
-     1186,
-     526
+     340,
+     -950
     ]
    ]
   },
@@ -2420,24 +2548,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2028,
-     0
+     -170,
+     300
     ],
     [
-     2028,
-     497
+     -170,
+     950
     ],
     [
-     2168,
-     497
-    ],
-    [
-     2168,
-     526
-    ],
-    [
-     2238,
-     526
+     -70,
+     950
     ]
    ]
   },
@@ -2448,16 +2568,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     630
+     -1040,
+     -1080
     ],
     [
-     134,
-     630
+     -1140,
+     -1080
     ]
    ]
   },
@@ -2468,24 +2588,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     601
+     -1040,
+     -1080
     ],
     [
-     204,
-     601
-    ],
-    [
-     204,
-     630
-    ],
-    [
-     274,
-     630
+     -940,
+     -1080
     ]
    ]
   },
@@ -2496,16 +2608,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     630
+     440,
+     -1080
     ],
     [
-     1046,
-     630
+     540,
+     -1080
     ]
    ]
   },
@@ -2516,16 +2628,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1572,
-     0
+     -810,
+     300
     ],
     [
-     1572,
-     630
+     -810,
+     1080
     ],
     [
-     1642,
-     630
+     -910,
+     1080
     ]
    ]
   },
@@ -2536,16 +2648,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     630
+     -600,
+     -1080
     ],
     [
-     450,
-     630
+     -700,
+     -1080
     ]
    ]
   },
@@ -2556,20 +2668,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     870,
-     110
+     -100,
+     -430
     ],
     [
-     940,
-     110
+     0,
+     -430
     ],
     [
-     940,
-     734
+     0,
+     -1210
     ],
     [
-     870,
-     734
+     100,
+     -1210
     ]
    ]
   },
@@ -2580,16 +2692,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     734
+     -1040,
+     -1210
     ],
     [
-     134,
-     734
+     -1140,
+     -1210
     ]
    ]
   },
@@ -2600,16 +2712,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     734
+     -600,
+     -1210
     ],
     [
-     450,
-     734
+     -500,
+     -1210
     ]
    ]
   },
@@ -2620,24 +2732,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     705
+     -600,
+     -1210
     ],
     [
-     520,
-     705
-    ],
-    [
-     520,
-     734
-    ],
-    [
-     590,
-     734
+     -700,
+     -1210
     ]
    ]
   },
@@ -2648,16 +2752,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2344,
-     0
+     270,
+     300
     ],
     [
-     2344,
-     734
+     270,
+     1210
     ],
     [
-     2414,
-     734
+     170,
+     1210
     ]
    ]
   },
@@ -2668,24 +2772,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     705
+     -600,
+     -1250
     ],
     [
-     660,
-     705
+     -400,
+     -1250
     ],
     [
-     660,
-     734
+     -400,
+     -1210
     ],
     [
-     730,
-     734
+     -300,
+     -1210
     ]
    ]
   },
@@ -2696,16 +2800,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1572,
-     0
+     -810,
+     300
     ],
     [
-     1572,
-     838
+     -810,
+     1340
     ],
     [
-     1642,
-     838
+     -710,
+     1340
     ]
    ]
   },
@@ -2716,16 +2820,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     838
+     -1040,
+     -1340
     ],
     [
-     134,
-     838
+     -940,
+     -1340
     ]
    ]
   },
@@ -2736,20 +2840,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     870,
-     110
+     -100,
+     -430
     ],
     [
-     940,
-     110
+     0,
+     -430
     ],
     [
-     940,
-     838
+     0,
+     -1340
     ],
     [
-     870,
-     838
+     100,
+     -1340
     ]
    ]
   },
@@ -2760,24 +2864,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     809
+     -1040,
+     -1340
     ],
     [
-     204,
-     809
-    ],
-    [
-     204,
-     838
-    ],
-    [
-     274,
-     838
+     -1140,
+     -1340
     ]
    ]
   },
@@ -2788,16 +2884,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2344,
-     0
+     270,
+     300
     ],
     [
-     2344,
-     838
+     270,
+     1340
     ],
     [
-     2414,
-     838
+     370,
+     1340
     ]
    ]
   },
@@ -2808,16 +2904,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     380,
-     0
+     -600,
+     -300
     ],
     [
-     380,
-     838
+     -600,
+     -1340
     ],
     [
-     450,
-     838
+     -700,
+     -1340
     ]
    ]
   },
@@ -2828,24 +2924,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1572,
-     0
+     -810,
+     300
     ],
     [
-     1572,
-     809
+     -810,
+     1340
     ],
     [
-     1712,
-     809
-    ],
-    [
-     1712,
-     838
-    ],
-    [
-     1782,
-     838
+     -910,
+     1340
     ]
    ]
   },
@@ -2856,16 +2944,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     942
+     440,
+     -1470
     ],
     [
-     1046,
-     942
+     340,
+     -1470
     ]
    ]
   },
@@ -2876,16 +2964,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     942
+     -1040,
+     -1470
     ],
     [
-     134,
-     942
+     -940,
+     -1470
     ]
    ]
   },
@@ -2896,24 +2984,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     913
+     440,
+     -1470
     ],
     [
-     1116,
-     913
-    ],
-    [
-     1116,
-     942
-    ],
-    [
-     1186,
-     942
+     540,
+     -1470
     ]
    ]
   },
@@ -2924,16 +3004,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     1046
+     440,
+     -1600
     ],
     [
-     1046,
-     1046
+     340,
+     -1600
     ]
    ]
   },
@@ -2944,24 +3024,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     1017
+     440,
+     -1640
     ],
     [
-     1396,
-     1017
+     840,
+     -1640
     ],
     [
-     1396,
-     1046
+     840,
+     -1600
     ],
     [
-     1466,
-     1046
+     940,
+     -1600
     ]
    ]
   },
@@ -2972,16 +3052,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2028,
-     0
+     -170,
+     300
     ],
     [
-     2028,
-     1046
+     -170,
+     1470
     ],
     [
-     2098,
-     1046
+     -270,
+     1470
     ]
    ]
   },
@@ -2992,16 +3072,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     1150
+     440,
+     -1730
     ],
     [
-     1046,
-     1150
+     540,
+     -1730
     ]
    ]
   },
@@ -3012,20 +3092,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1466,
-     1046
+     940,
+     -1600
     ],
     [
-     1536,
-     1046
+     1040,
+     -1600
     ],
     [
-     1536,
-     1150
+     1040,
+     -1730
     ],
     [
-     1466,
-     1150
+     1140,
+     -1730
     ]
    ]
   },
@@ -3036,24 +3116,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     1121
+     440,
+     -1730
     ],
     [
-     1116,
-     1121
-    ],
-    [
-     1116,
-     1150
-    ],
-    [
-     1186,
-     1150
+     340,
+     -1730
     ]
    ]
   },
@@ -3064,24 +3136,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     976,
-     0
+     440,
+     -300
     ],
     [
-     976,
-     1121
+     440,
+     -1770
     ],
     [
-     1256,
-     1121
+     640,
+     -1770
     ],
     [
-     1256,
-     1150
+     640,
+     -1730
     ],
     [
-     1326,
-     1150
+     740,
+     -1730
     ]
    ]
   },
@@ -3092,16 +3164,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     1150
+     -1040,
+     -1730
     ],
     [
-     134,
-     1150
+     -1140,
+     -1730
     ]
    ]
   },
@@ -3112,24 +3184,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     64,
-     0
+     -1040,
+     -300
     ],
     [
-     64,
-     1121
+     -1040,
+     -1730
     ],
     [
-     204,
-     1121
-    ],
-    [
-     204,
-     1150
-    ],
-    [
-     274,
-     1150
+     -940,
+     -1730
     ]
    ]
   }

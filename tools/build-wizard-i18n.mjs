@@ -6,7 +6,8 @@
 //   • data/wizard/manual/doc-yura.json — перевод Дока и Юры (pf2e.ru), переписанный со скриншотов
 //                                       Foundry VTT (images/foundryDocTranslation, в git не входят);
 //   • data/wizard/manual/labels.json   — подписи тем, групп и корня (texts) и пометки (notes).
-// Чего нет в переводе, берётся из соседнего русского перевода, иначе — оригинал AoN, с пометкой.
+// Чего нет в переводе, остаётся оригиналом AoN на английском (с пометкой): сами не переводим
+// и из соседнего перевода не берём — так видно, какой контент в переводе ещё не добавлен.
 // Возвращает { pf2ru: {<id узла>: поля}, doc: {...} } — поля перекрывают оригинал AoN.
 // ============================================================
 
@@ -39,26 +40,24 @@ export async function wizardTranslations(graph, labels) {
             const r = ru.feats[n.nameEn], d = doc.feats[n.nameEn];
             // pf2.ru
             if (r) { out.pf2ru[n.id] = fromRu(r); stats.pf2ru.own++; }
-            else if (d) { out.pf2ru[n.id] = { ...fromDoc(d), note: NOTE.noRu }; stats.pf2ru.fallback++; }
             else { out.pf2ru[n.id] = { note: NOTE.noRuText }; stats.pf2ru.fallback++; }
-            // Док и Юра (дескрипторы в Foundry английские — берём русские из pf2.ru, если есть)
-            if (d) { out.doc[n.id] = { ...fromDoc(d), ...(r ? { traits: fromRu(r).traits } : {}) }; stats.doc.own++; }
-            else if (r) { out.doc[n.id] = { ...fromRu(r), note: NOTE.noDoc }; stats.doc.fallback++; }
+            // Док и Юра (дескрипторы в Foundry английские — остаются как в оригинале AoN)
+            if (d) { out.doc[n.id] = fromDoc(d); stats.doc.own++; }
             else { out.doc[n.id] = { note: NOTE.noDocText }; stats.doc.fallback++; }
         } else if (n.kind === 'option') {
             const list = n.group === 'group-school' ? 'schools' : 'theses';
             const r = ru[list][n.name];
             const dName = doc[list]?.[n.name];
             if (r) out.pf2ru[n.id] = { name: r.name, short: r.name.replace(/^Школа\s+(магии\s+)?/, '').replace(/^./, (c) => c.toUpperCase()), html: r.html, url: r.url };
-            else out.pf2ru[n.id] = { note: NOTE.ownEn };
+            else out.pf2ru[n.id] = { note: NOTE.noRuText.replace('этой черты', 'этого варианта') };
             if (dName) {
+                // в переводе Дока и Юры есть только название — описание остаётся оригиналом AoN
                 out.doc[n.id] = {
                     name: dName,
                     short: dName.replace(/^Школа\s+/, '').replace(/^./, (c) => c.toUpperCase()),
-                    ...(r ? { html: r.html, note: NOTE.docNameOnly } : { note: NOTE.docNameOnlyAon }),
+                    note: NOTE.docNameOnlyAon,
                 };
-            } else if (r) out.doc[n.id] = { name: r.name, html: r.html, note: NOTE.noDoc.replace('способности', 'школы') };
-            else out.doc[n.id] = { note: NOTE.ownEn };
+            } else out.doc[n.id] = { note: NOTE.noDocText.replace('Этой способности', 'Этого варианта') };
         } else {
             for (const lang of ['pf2ru', 'doc']) {
                 const own = OWN[lang][n.id];
@@ -66,7 +65,7 @@ export async function wizardTranslations(graph, labels) {
             }
         }
     }
-    console.log(`  переводы — pf2.ru: своих ${stats.pf2ru.own}, из другого перевода ${stats.pf2ru.fallback}; ` +
-        `Док и Юра: своих ${stats.doc.own}, из другого перевода ${stats.doc.fallback}`);
+    console.log(`  переводы — pf2.ru: своих ${stats.pf2ru.own}, оригиналом AoN ${stats.pf2ru.fallback}; ` +
+        `Док и Юра: своих ${stats.doc.own}, оригиналом AoN ${stats.doc.fallback}`);
     return out;
 }

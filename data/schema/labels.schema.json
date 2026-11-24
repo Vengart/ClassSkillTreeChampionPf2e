@@ -42,7 +42,7 @@
         "additionalProperties": { "$ref": "#/definitions/text" }
       }
     },
-    "notes": { "type": "object", "description": "пометки к узлам, текст которых взят из другого перевода", "additionalProperties": { "type": "string" } }
+    "notes": { "type": "object", "description": "пометки к узлам, текста которых нет в переводе (показан оригинал AoN)", "additionalProperties": { "type": "string" } }
   },
   "definitions": {
     "text": {

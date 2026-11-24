@@ -3,8 +3,8 @@
   "langs": [
     {
       "id": "aon",
-      "label": "AoN",
-      "title": "Archives of Nethys — оригинал на английском",
+      "label": "оригинал",
+      "title": "Оригинал (Archives of Nethys)",
       "source": "Archives of Nethys",
       "terms": {
         "feat": "черта",
@@ -17,7 +17,7 @@
     {
       "id": "pf2ru",
       "label": "pf2.ru",
-      "title": "Перевод сайта pf2.ru",
+      "title": "Офф. перевод Hobby Games (pf2.ru)",
       "source": "pf2.ru",
       "terms": {
         "feat": "черта",
@@ -29,8 +29,8 @@
     },
     {
       "id": "doc",
-      "label": "Док и Юра",
-      "title": "Перевод Дока и Юры (pf2e.ru) — как в модуле перевода Foundry VTT",
+      "label": "pf2e.ru",
+      "title": "Фан. перевод Юры и Дока (pf2e.ru)",
       "source": "перевод Дока и Юры (Foundry)",
       "terms": {
         "feat": "способность",
@@ -154,11 +154,8 @@
     }
   },
   "notes": {
-    "noRu": "На pf2.ru этой черты нет — показан перевод Дока и Юры.",
     "noRuText": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys.",
-    "noDoc": "Этой способности нет на скриншотах перевода Дока и Юры — показан перевод pf2.ru.",
     "noDocText": "Этой способности нет в переводе Дока и Юры — показан оригинал Archives of Nethys.",
-    "docNameOnly": "В переводе Дока и Юры есть только название — описание из pf2.ru.",
     "docNameOnlyAon": "В переводе Дока и Юры есть только название — описание из оригинала Archives of Nethys.",
     "partial": "Текст на скриншоте Foundry обрезан — полностью он есть в модуле перевода Foundry.",
     "ownEn": "Описание есть только в оригинале Archives of Nethys."
