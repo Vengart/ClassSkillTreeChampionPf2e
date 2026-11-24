@@ -160,8 +160,8 @@ window.CLASS_DATA = {
      "v": 1,
      "after": 86,
      "start": 365,
-     "minX": -1010,
-     "maxX": 1010,
+     "minX": -910,
+     "maxX": 910,
      "rows": [
       {
        "level": 1,
@@ -203,6 +203,7 @@ window.CLASS_DATA = {
     }
    ]
   },
+  "foundry": "foundry.js",
   "defaultLang": "aon",
   "langs": [
    {
@@ -507,7 +508,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -810,
+   "x": -710,
    "y": 300,
    "captionSide": "right",
    "captionW": 170
@@ -518,7 +519,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -170,
+   "x": -270,
    "y": 300,
    "captionSide": "right",
    "captionW": 170
@@ -529,7 +530,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 270,
+   "x": 170,
    "y": 300,
    "captionSide": "right",
    "captionW": 94
@@ -540,7 +541,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 610,
+   "x": 510,
    "y": 300,
    "captionSide": "right",
    "captionW": 107
@@ -577,7 +578,7 @@ window.CLASS_DATA = {
    "grantedBy": "thesis-improved-familiar-attunement",
    "parentId": "theme-familiar",
    "theme": "theme-familiar",
-   "x": 710,
+   "x": 610,
    "y": 430,
    "captionSide": "below",
    "captionW": 84
@@ -726,7 +727,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5024",
    "theme": "theme-familiar",
-   "x": 910,
+   "x": 810,
    "y": 560,
    "captionSide": "below",
    "captionW": 150
@@ -780,7 +781,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -710,
+   "x": -610,
    "y": 690,
    "captionSide": "below",
    "captionW": 150
@@ -804,24 +805,6 @@ window.CLASS_DATA = {
    "captionW": 150
   },
   {
-   "image": "wizard/Seeming_Icon.webp",
-   "id": "feat-3421",
-   "kind": "feat",
-   "nameEn": "Irezoko Tattoo",
-   "level": 4,
-   "actions": "",
-   "rarity": "uncommon",
-   "legacy": true,
-   "requires": [],
-   "forbids": [],
-   "parentId": "theme-bond",
-   "theme": "theme-bond",
-   "x": -910,
-   "y": 690,
-   "captionSide": "below",
-   "captionW": 147
-  },
-  {
    "image": "wizard/Empowered_Evocation_Icon.webp",
    "id": "feat-5030",
    "kind": "feat",
@@ -840,7 +823,7 @@ window.CLASS_DATA = {
    ],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -510,
+   "x": -810,
    "y": 690,
    "captionSide": "below",
    "captionW": 126
@@ -876,7 +859,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 370,
+   "x": 270,
    "y": 690,
    "captionSide": "below",
    "captionW": 150
@@ -894,7 +877,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": -70,
+   "x": -170,
    "y": 820,
    "captionSide": "below",
    "captionW": 150
@@ -1024,7 +1007,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -910,
+   "x": -610,
    "y": 950,
    "captionSide": "below",
    "captionW": 150
@@ -1042,7 +1025,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -710,
+   "x": -810,
    "y": 950,
    "captionSide": "below",
    "captionW": 150
@@ -1096,7 +1079,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": -270,
+   "x": -370,
    "y": 950,
    "captionSide": "below",
    "captionW": 150
@@ -1150,7 +1133,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": -70,
+   "x": -170,
    "y": 950,
    "captionSide": "below",
    "captionW": 150
@@ -1222,7 +1205,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -910,
+   "x": -610,
    "y": 1080,
    "captionSide": "below",
    "captionW": 126
@@ -1334,7 +1317,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 170,
+   "x": 70,
    "y": 1210,
    "captionSide": "below",
    "captionW": 150
@@ -1370,7 +1353,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -710,
+   "x": -810,
    "y": 1340,
    "captionSide": "below",
    "captionW": 126
@@ -1446,7 +1429,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-necro",
    "theme": "theme-necro",
-   "x": 370,
+   "x": 270,
    "y": 1340,
    "captionSide": "below",
    "captionW": 150
@@ -1482,7 +1465,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-bond",
    "theme": "theme-bond",
-   "x": -910,
+   "x": -610,
    "y": 1340,
    "captionSide": "below",
    "captionW": 137
@@ -1590,7 +1573,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-mind",
    "theme": "theme-mind",
-   "x": -270,
+   "x": -370,
    "y": 1470,
    "captionSide": "below",
    "captionW": 150
@@ -1796,11 +1779,11 @@ window.CLASS_DATA = {
      190
     ],
     [
-     -810,
+     -710,
      190
     ],
     [
-     -810,
+     -710,
      300
     ]
    ]
@@ -1820,11 +1803,11 @@ window.CLASS_DATA = {
      190
     ],
     [
-     -170,
+     -270,
      190
     ],
     [
-     -170,
+     -270,
      300
     ]
    ]
@@ -1844,11 +1827,11 @@ window.CLASS_DATA = {
      190
     ],
     [
-     270,
+     170,
      190
     ],
     [
-     270,
+     170,
      300
     ]
    ]
@@ -1868,11 +1851,11 @@ window.CLASS_DATA = {
      190
     ],
     [
-     610,
+     510,
      190
     ],
     [
-     610,
+     510,
      300
     ]
    ]
@@ -1912,15 +1895,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     610,
+     510,
      300
     ],
     [
-     610,
+     510,
      430
     ],
     [
-     710,
+     610,
      430
     ]
    ]
@@ -2072,19 +2055,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
+     610,
+     430
+    ],
+    [
      710,
      430
     ],
     [
-     810,
-     430
-    ],
-    [
-     810,
+     710,
      560
     ],
     [
-     910,
+     810,
      560
     ]
    ]
@@ -2136,15 +2119,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -810,
+     -710,
      300
     ],
     [
-     -810,
+     -710,
      690
     ],
     [
-     -710,
+     -610,
      690
     ]
    ]
@@ -2171,48 +2154,20 @@ window.CLASS_DATA = {
   },
   {
    "from": "theme-bond",
-   "to": "feat-3421",
-   "kind": "theme",
-   "primary": true,
-   "points": [
-    [
-     -810,
-     300
-    ],
-    [
-     -810,
-     690
-    ],
-    [
-     -910,
-     690
-    ]
-   ]
-  },
-  {
-   "from": "theme-bond",
    "to": "feat-5030",
    "kind": "theme",
    "primary": true,
    "points": [
     [
-     -810,
+     -710,
      300
     ],
     [
-     -810,
-     650
-    ],
-    [
-     -610,
-     650
-    ],
-    [
-     -610,
+     -710,
      690
     ],
     [
-     -510,
+     -810,
      690
     ]
    ]
@@ -2244,15 +2199,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     270,
+     170,
      300
     ],
     [
-     270,
+     170,
      690
     ],
     [
-     370,
+     270,
      690
     ]
    ]
@@ -2264,15 +2219,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -170,
+     -270,
      300
     ],
     [
-     -170,
+     -270,
      820
     ],
     [
-     -70,
+     -170,
      820
     ]
    ]
@@ -2408,15 +2363,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -810,
+     -710,
      300
     ],
     [
-     -810,
+     -710,
      950
     ],
     [
-     -910,
+     -610,
      950
     ]
    ]
@@ -2428,15 +2383,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -810,
+     -710,
      300
     ],
     [
-     -810,
+     -710,
      950
     ],
     [
-     -710,
+     -810,
      950
     ]
    ]
@@ -2488,15 +2443,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -170,
+     -270,
      300
     ],
     [
-     -170,
+     -270,
      950
     ],
     [
-     -270,
+     -370,
      950
     ]
    ]
@@ -2548,15 +2503,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -170,
+     -270,
      300
     ],
     [
-     -170,
+     -270,
      950
     ],
     [
-     -70,
+     -170,
      950
     ]
    ]
@@ -2628,15 +2583,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -810,
+     -710,
      300
     ],
     [
-     -810,
+     -710,
      1080
     ],
     [
-     -910,
+     -610,
      1080
     ]
    ]
@@ -2752,15 +2707,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     270,
+     170,
      300
     ],
     [
-     270,
+     170,
      1210
     ],
     [
-     170,
+     70,
      1210
     ]
    ]
@@ -2800,15 +2755,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -810,
+     -710,
      300
     ],
     [
-     -810,
+     -710,
      1340
     ],
     [
-     -710,
+     -810,
      1340
     ]
    ]
@@ -2884,15 +2839,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     270,
+     170,
      300
     ],
     [
-     270,
+     170,
      1340
     ],
     [
-     370,
+     270,
      1340
     ]
    ]
@@ -2924,15 +2879,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -810,
+     -710,
      300
     ],
     [
-     -810,
+     -710,
      1340
     ],
     [
-     -910,
+     -610,
      1340
     ]
    ]
@@ -3052,15 +3007,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -170,
+     -270,
      300
     ],
     [
-     -170,
+     -270,
      1470
     ],
     [
-     -270,
+     -370,
      1470
     ]
    ]

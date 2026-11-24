@@ -1,0 +1,5218 @@
+{
+ "Wizard Spellcasting": {
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "name": "Колдовство волшебника",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Благодаря целенаправленному изучению и практике, вы можете использовать арканную силу для сотворения заклинаний. Вы являетесь заклинателем и можете колдовать арканные заклинания используя активность @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]. Как волшебник, во время сотворения заклинаний скорее всего вы называете конкретные силы, к которым обращаетесь, и в какую форму желаете их облечь, а ваши движения точно формируют и направляют вашу магию, пока круги арканных рун начинают вспыхивать.</p><p>На 1-м уровне вы можете каждое утро подготовить вплоть до 2 заклинаний 1-го ранга и 5 чар из числа заклинаний в вашей книге заклинаний (см. ниже), а также 1 дополнительные чары факультета и заклинание факультета выбранной школы каждого ранга заклинаний, который можете сотворять. Подготовленные заклинания остаются доступными, пока вы не используете их или до следующих приготовлений. Количество заклинаний, которое вы можете подготовить, называется слотами заклинаний.</p><p>По мере того, как вы повышаетесь в уровне как волшебник, увеличивается количество слотов заклинаний, а также высший ранг заклинаний, которые вы можете сотворять из слотов, как показано в @UUID[Compendium.pf2e.journals.JournalEntry.kzxu2dI7tFxv6Ix6.JournalEntryPage.wDukeO3euLEGn6FA#tablica-zaklinanij-volshebnika-v-denь]{Таблице заклинаний волшебника в день}.</p><p>Чтобы узнать насколько ваши заклинания эффективны, некоторые из них требуют совершить атаку заклинанием, или заставить вашего врага совершать бросок против вашего КС заклинаний (обычно совершая спасбросок). Так как ваша ключевой атрибут это Интеллект, то атаки заклинаниями и КС заклинаний используют модификатор Интеллекта.</p><h3>Усиление заклинаний</h3><p>Когда вы получаете слоты заклинаний 2-го ранга и выше, то можете заполнить их усиленными версиями заклинаний низкого ранга. Это увеличивает ранг заклинания, усиливая его, чтобы он соответствовал рангу слота. Многие заклинания имеют определённые улучшения, когда усиливаются до определённого ранга.</p><h3>Чары</h3><p>Некоторые из ваших заклинаний — чары. Чары — это особый вид заклинаний, которые не используют слоты. Вы можете сотворять чары по желанию, сколько угодно раз в день. Чары автоматически усиливаются до половины вашего уровня, округлённой в большую сторону, что обычно равняется самому высокому имеющемуся рангу слота заклинания волшебника. Например, как у волшебника 1-го уровня, ваши чары имеют 1-й ранг, а как волшебник 5-го уровня, вы обладаете чарами 3-го ранга.</p><h3>Книга заклинаний</h3><p>Каждое арканное заклинание имеет письменную версию, обычно записанную в книге заклинаний. Вы начинаете с книгой заклинаний, стоящей 10 см или менее, которую вы получаете бесплатно, и которую должны изучать, чтобы подготавливать заклинания каждый день. Внешний вид и название вашей книги заклинаний остаются полностью на ваше усмотрение. Это может быть затхлый том в кожаном переплете или набор тонких металлических дисков, соединённых с латунным кольцом. Название может быть эзотерическим, например <em>\"Том безмолвных теней\"</em>, или же более академическое — например, <em>\"Продвинутые пиромантические применения Джалмерэйской стихийной теории\"</em>.</p><p>Книга содержит выбранные вами 8 арканных чар и 5 арканных заклинаний 1-го ранга. Вы выбираете их из @Trait[Common]{обычных} заклинаний арканного списка и из других арканных заклинаний, к которым у вас есть доступ.</p><p>При получении нового уровня вы добавляете в свою книгу ещё 2 арканных заклинания любого ранга, для которого у вас есть слоты, выбирая из @Trait[Common]{обычных} заклинаний вашего обычая и других заклинаний, к которым у вас есть доступ. Вы также можете добавлять заклинания в свою книгу с помощью активности @UUID[Compendium.pf2e.actionspf2e.Item.Q5iIYCFdqJFM31GW]. Когда вы получаете слоты нового ранга, вы также добавляете дополнительное заклинание факультета своей школы (если только это не школа единой магической теории).</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "key": "GrantItem",
+     "uuid": "Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz",
+     "flag": "castASpell"
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "wizard-spellcasting",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.S6WW4Yyg4XonXGHD",
+   "createdTime": 1795415241872,
+   "modifiedTime": 1795415241884,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Wizard Spellcasting",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Arcane School": {
+  "img": "icons/magic/symbols/question-stone-yellow.webp",
+  "name": "Арканная школа",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Большинство волшебников получают знания о заклинаниях в формальных учебных заведениях, таких как Арканамириум или Магаамбия. На 1-м уровне вы выбираете свою арканную школу, научившую вас магическим способностям.</p><p>Вы получаете дополнительные заклинания и слоты заклинаний из их программы, преподаваемой в школе, где вы учились. Некоторые волшебники следуют учению единой магической теории, пытающейся создать новое учение, изучая самостоятельно и черпая информацию из множества текстов и наставников. Хотя волшебникам с таким подходом не хватает целенаправленности формального обучения, они обладают большей гибкостью.</p><ul><li>@UUID[Compendium.pf2e.classfeatures.Item.5rFzX6JK6CXLFxUP] (требует взять классовый архетип @UUID[Compendium.pf2e.journals.JournalEntry.vx5FGEG34AxI2dow.JournalEntryPage.oMIA3aFKvpuV9f2H]{Элементалист})</li><li>@UUID[Compendium.pf2e.classfeatures.Item.xYYhJtGhFSWNifcO]</li><li>@UUID[Compendium.pf2e.classfeatures.Item.E4GZDMn4DYk6qSEV]</li><li>@UUID[Compendium.pf2e.classfeatures.Item.XXnGHBxNZvRsdkKM]</li><li>@UUID[Compendium.pf2e.classfeatures.Item.YZ2XPmx1WHyWtM0g]</li><li>@UUID[Compendium.pf2e.classfeatures.Item.ZBFICTkzUjE4BDGJ]</li><li>@UUID[Compendium.pf2e.classfeatures.Item.wObrT6PytPdS5aUi]</li><li>@UUID[Compendium.pf2e.classfeatures.Item.jtAqb5rnhQblZuM8]</li><li>@UUID[Compendium.pf2e.classfeatures.Item.srcPBNjhq7FBSmi3] (требует членства в организации \"Убийцы Красного Богомола\")</li><li>@UUID[Compendium.pf2e.classfeatures.Item.dPAwM9IdabdH68mW]</li><li>@UUID[Compendium.pf2e.classfeatures.Item.L5FiuXsfW6Sa31gO]</li><li>@UUID[Compendium.pf2e.classfeatures.Item.ZpFCZnVzIfZLfNii]</li><li>@UUID[Compendium.pf2e.classfeatures.Item.aYWPtW5T4Lx07Occ] (требует взять классовый архетип @UUID[Compendium.pf2e.journals.JournalEntry.vx5FGEG34AxI2dow.JournalEntryPage.09VwtSsYldMkVzU1]{Рунный лорд})</li></ul>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "adjustName": false,
+     "choices": {
+      "filter": [
+       "item:tag:wizard-arcane-school"
+      ]
+     },
+     "flag": "arcaneSchool",
+     "key": "ChoiceSet",
+     "prompt": "PF2E.SpecificRule.Wizard.ArcaneSchool.Prompt"
+    },
+    {
+     "key": "GrantItem",
+     "uuid": "{item|flags.system.rulesSelections.arcaneSchool}",
+     "flag": "schoolOfProteanForm"
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "arcane-school",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.7nbKDBGvwSx9T27G",
+   "createdTime": 1795415241874,
+   "modifiedTime": 1795415241884,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Arcane School",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Arcane Bond": {
+  "img": "icons/weapons/wands/wand-carved-pink.webp",
+  "name": "Арканная связь",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Вы помещаете часть вашей магической силы в предмет силы. Каждый день, когда вы подготавливаете свои заклинания, вы можете назначить один предмет, который у вас есть, как ваш предмет силы. Обычно, это предмет ассоциируемый с колдовством, такой как палочка, кольцо или посох, но вы можете назначить оружие или другой предмет. Вы получаете свободное действие @UUID[Compendium.pf2e.actionspf2e.Item.v82XtjAVN4ffgVVR].</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "key": "GrantItem",
+     "uuid": "Compendium.pf2e.actionspf2e.Item.v82XtjAVN4ffgVVR",
+     "flag": "drainBondedItem"
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "arcane-bond",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.au0lwQ1nAcNQwcGh",
+   "createdTime": 1795415241875,
+   "modifiedTime": 1795415241884,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Arcane Bond",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Arcane Thesis": {
+  "img": "icons/sundries/scrolls/scroll-writing-tan-grey.webp",
+  "name": "Арканная диссертация",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Во время учёбы, чтобы стать полноценным волшебником, вы написали диссертацию уникального магического исследования. Вы получаете особое преимущество в зависимости от темы вашего исследования. Темы арканных диссертаций, приведены ниже; ваша же конкретная диссертация, вероятно, имеет гораздо более длинное и техническое название, например <em>\"О методах интерполяции заклинаний и происхождении нового понимания магических элементарных частиц\"</em></p><p>@UUID[Compendium.pf2e.classfeatures.Item.89zWKD2CN7nRu2xp]</p><p>@UUID[Compendium.pf2e.classfeatures.Item.SNZ46g3u7U6x0XJj]</p><p>@UUID[Compendium.pf2e.classfeatures.Item.OAcxS625AXSGrQIC]</p><p>@UUID[Compendium.pf2e.classfeatures.Item.QzWXMCSGNfvvpYgF]</p><p>@UUID[Compendium.pf2e.classfeatures.Item.Klb35AwlkNrq1gpB]</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "adjustName": false,
+     "choices": {
+      "filter": [
+       "item:tag:wizard-arcane-thesis"
+      ]
+     },
+     "flag": "arcaneThesis",
+     "key": "ChoiceSet",
+     "prompt": "PF2E.SpecificRule.Wizard.ArcaneThesis.Prompt"
+    },
+    {
+     "key": "GrantItem",
+     "uuid": "{item|flags.system.rulesSelections.arcaneThesis}",
+     "flag": "staffNexus"
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "arcane-thesis",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.M89l9FOnjHe63wD7",
+   "createdTime": 1795415241876,
+   "modifiedTime": 1795415241884,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Arcane Thesis",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "School of Protean Form": {
+  "folder": null,
+  "img": "icons/sundries/books/book-embossed-jewel-silver-green.webp",
+  "name": "Школа изменчивой формы",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Непосвященные часто считают волшебников мозговитыми личностями, сосредоточенными на учебе больше, чем на своем теле, но в вашей школе магии преподавали взаимосвязь между ними. Ваша магия, изучаемая в таких известных учебных заведениях, как Алебастровая академия Кинтарго, или в более зловещих местах — например в Кузнецах плоти Некса, сосредоточена на том, как живую материю можно заставить на время принять другую форму, что позволяет превращать семя в лозу, человека в зверя или безобидный микроб в смертельный токсин.</p><p><strong>Заклинания факультета</strong></p><ul><li><strong>Чары:</strong> @UUID[Compendium.pf2e.spells-srd.Item.uZK2BYzPnxUBnDjr], @UUID[Compendium.pf2e.spells-srd.Item.MPxbKoR54gkYkqLO]</li><li><strong>1-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw], @UUID[Compendium.pf2e.spells-srd.Item.Q7QQ91vQtyi1Ux36], @UUID[Compendium.pf2e.spells-srd.Item.gfPjmG6Fe6D3MFjl]</li><li><strong>2-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV], @UUID[Compendium.pf2e.spells-srd.Item.2qGqa33E4GPUCbMV]</li><li><strong>3-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.N1Z1oLPdBxaSgrEE], @UUID[Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9]</li><li><strong>4-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.2BV2yYPfVJ5zirZt], @UUID[Compendium.pf2e.spells-srd.Item.V8wXOsoejQhe6CyG]</li><li><strong>5-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.MlpbeZ61Euhl0d60], @UUID[Compendium.pf2e.spells-srd.Item.1K6AYGisvo9gqdhs]</li><li><strong>6-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.znv4ECL7ZtuiagtA], @UUID[Compendium.pf2e.spells-srd.Item.dN8QBNuTiaBHCKUe]</li><li><strong>7-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.73rToy0v5Ra9NvL6], @UUID[Compendium.pf2e.spells-srd.Item.XS7Wyh5YC0NWeWyB]</li><li><strong>8-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.M0jQlpQYUr0pp2Sv], @UUID[Compendium.pf2e.spells-srd.Item.8AMvNVOUEtxBCDvJ]</li><li><strong>9-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.pswdik31kuHEvdno]</li></ul><p><strong>Заклинания школы:</strong></p><ul><li><strong>Начальное:</strong> @UUID[Compendium.pf2e.spells-srd.Item.XcMObj2p9nIBp53b]</li><li><strong>Продвинутое:</strong> @UUID[Compendium.pf2e.spells-srd.Item.SDkIFrrO1PsE02Kd]</li></ul>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "otherTags": [
+     "wizard-arcane-school"
+    ],
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ]
+   },
+   "slug": "school-of-protean-form",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.ZBFICTkzUjE4BDGJ",
+   "createdTime": 1795415241880,
+   "modifiedTime": 1795415241885,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "School of Protean Form",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Staff Nexus": {
+  "img": "icons/weapons/staves/staff-ornate-jeweled-blue.webp",
+  "name": "Узы посоха",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Ваша диссертация утверждает, что раннее и интенсивное использование посохов, с первых дней обучения может создать симбиотическую связь между заклинателем и посохом, позволяя им вместе создавать замечательную магию. Вы образовали такую связь с созданными вами импровизированным посохом, и готовы наполнить большей силой любой посох, с которым вы сталкиваетесь.</p><p>Вы начинаете игру с импровизированным посохом собственной разработки. Он содержит 1 чары и 1 заклинание 1-го ранга, оба из вашей книги заклинаний, но он не получает заряды как обычно во время ваших ежедневных приготовлений; вы можете потратить слот заклинания, чтобы дать ему заряды таким же образом, как вы бы добавили дополнительные заряды в обычный посох (см. <a href=\"https://clck.ru/eSCcQ\">Подготовка посоха</a>). Пока вы держите посох, вы можете @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]{Сотворять} находящиеся в нём заклинания. Заклинание 1-го ранга расходует 1 заряд, но чары не требуют зарядов. Если ваш посох уничтожен, вы можете создать новый в течение 1 часа, но он не будет содержать зарядов.</p><p>Во время своих ежедневных приготовлений вы можете объединить свой импровизированный посох с другим имеющимся у вас посохом, добавляя к нему 2 выбранных заклинания. Этот посох получает заряды от подготовки и от расходования заклинаний.</p><p>На 8-м уровне, при подготовке посоха, вы можете израсходовать 2 заклинания, вместо одного, добавляя дополнительные заряды, в количестве общего ранга израсходованных заклинаний. На 16-м уровне, вы можете израсходовать вплоть до 3 заклинаний, добавляя дополнительные заряды, в количестве общего ранга всех 3 заклинаний израсходованных при подготовке.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "otherTags": [
+     "wizard-arcane-thesis"
+    ],
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ]
+   },
+   "slug": "staff-nexus",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.Klb35AwlkNrq1gpB",
+   "createdTime": 1795415241882,
+   "modifiedTime": 1795415241886,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Staff Nexus",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Reflex Expertise": {
+  "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+  "name": "Эксперт рефлекса",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Вы научились уклоняться от опасности. Ваше мастерство спасбросков Рефлекса улучшается до эксперта.</p><p><strong>Защитник:</strong> Даже в самых тяжёлых доспехах вы можете защититься от распространённых эффектов. Ваше мастерство спасбросков Рефлекса улучшается до эксперта.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 5
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core 2",
+    "authors": ""
+   },
+   "rules": [],
+   "subfeatures": {
+    "proficiencies": {
+     "reflex": {
+      "rank": 2,
+      "attribute": null
+     }
+    },
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "barbarian",
+     "bard",
+     "champion",
+     "cleric",
+     "druid",
+     "guardian",
+     "sorcerer",
+     "thaumaturge",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "reflex-expertise",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.TUOeATt52P43r5W0",
+   "createdTime": 1795514117732,
+   "modifiedTime": 1795514117737,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Reflex Expertise",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Expert Spellcaster": {
+  "img": "icons/sundries/books/book-backed-silver-gold.webp",
+  "name": "Заклинатель эксперт",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p><strong>Анимист:</strong> Магия духов свободно течёт сквозь вас. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до эксперта.</p><p><strong>Бард:</strong> Ваши магические приемы становятся сильнее. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до эксперта.</p><p><strong>Ведьма:</strong> Вы научились лучше контролировать дарованную вам силу вашего покровителя. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до эксперта.</p><p><strong>Волшебник:</strong> Продолжительная практика в арканной магии улучшила ваши возможности. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до эксперта.</p><p><strong>Друид:</strong> Ваша способность управлять природными силами углубилась, усиливая ваши заклинания. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до эксперта.</p><p><strong>Магус:</strong> Ваше фундаментальное понимание магии улучшается, благодаря чему вашим заклинаниям сложнее противостоять. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до эксперта.</p><p><strong>Оракул:</strong> Запутанность вашей божественной силы со временем прояснилась. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до эксперта.</p><p><strong>Призыватель:</strong> По мере укрепления связи между вами и вашим эйдолоном, сила ваших заклинаний растёт. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до эксперта.</p><p><strong>Чародей:</strong> Ваша врождённая магия легко и мощно подчиняется вашим командам. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до эксперта.</p><p><strong>Экстрасенс:</strong> Саморефлексия расширила ваши знания о себе и, как следствие, психическую силу. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до эксперта.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 7
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "itemId": "{item|id}",
+     "key": "ItemAlteration",
+     "mode": "override",
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.ClassFeatures.Spellcaster.{actor|class.slug}.Expert"
+      }
+     ]
+    },
+    {
+     "itemId": "{item|id}",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "property": "traits",
+     "value": "{actor|class.slug}"
+    }
+   ],
+   "subfeatures": {
+    "proficiencies": {
+     "spellcasting": {
+      "rank": 2,
+      "attribute": null
+     }
+    },
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "animist",
+     "bard",
+     "druid",
+     "magus",
+     "oracle",
+     "psychic",
+     "sorcerer",
+     "summoner",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "expert-spellcaster",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.cD3nSupdCvONuHiE",
+   "createdTime": 1795514117735,
+   "modifiedTime": 1795514117738,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Expert Spellcaster",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Magical Fortitude": {
+  "img": "systems/pf2e/icons/features/classes/magical-fortitude.webp",
+  "name": "Магическая стойкость",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p><strong>Ведьма:</strong> Сила вашего покровителя укрепляет вашу физическую стойкость. Ваше мастерство спасбросков Стойкости улучшается до эксперта.</p><p><strong>Волшебник, Оракул, Чародей:</strong> Магическая сила улучшила стойкость вашего тела. Ваше мастерство спасбросков Стойкости улучшается до эксперта.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 9
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "itemId": "{item|id}",
+     "key": "ItemAlteration",
+     "mode": "override",
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.ClassFeatures.MagicalFortitude.{actor|class.slug}.Description"
+      }
+     ]
+    },
+    {
+     "itemId": "{item|id}",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "property": "traits",
+     "value": "{actor|class.slug}"
+    }
+   ],
+   "subfeatures": {
+    "proficiencies": {
+     "fortitude": {
+      "rank": 2,
+      "attribute": null
+     }
+    },
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "oracle",
+     "sorcerer",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "magical-fortitude",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.70jqXP2eS4tRZ0Ok",
+   "createdTime": 1795514117736,
+   "modifiedTime": 1795514117738,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Magical Fortitude",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Perception Expertise": {
+  "img": "icons/creatures/eyes/human-single-blue.webp",
+  "name": "Эксперт восприятия",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Вы остаётесь бдительными к угрозам вокруг вас. Ваше мастерство Восприятия улучшается до эксперта.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 11
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "OGL",
+    "remaster": true,
+    "title": "Pathfinder Rage of Elements",
+    "authors": ""
+   },
+   "rules": [],
+   "subfeatures": {
+    "proficiencies": {
+     "perception": {
+      "rank": 2,
+      "attribute": null
+     }
+    },
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "alchemist",
+     "animist",
+     "champion",
+     "cleric",
+     "druid",
+     "exemplar",
+     "kineticist",
+     "magus",
+     "monk",
+     "sorcerer",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "perception-expertise",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.JCqACxgrm5ixX0Jy",
+   "createdTime": 1795514154937,
+   "modifiedTime": 1795514154945,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Perception Expertise",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Weapon Expertise": {
+  "img": "icons/skills/melee/hand-grip-sword-red.webp",
+  "name": "Опыт с оружием",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p><strong>Ведьма, Волшебник:</strong> Получая опыт, вы улучшили свои приёмы владения оружием. Ваше мастерство безоружных атак и обращения с простым оружием улучшается до эксперта.</p><p><strong>Герой, Магус, Рунотворец, Сыщик, Чемпион:</strong> Вы посвятили себя изучению тонкостей своего оружия. Ваше мастерство безоружных атак, а также обращения с простым и воинским оружием, улучшается до эксперта.</p><p><strong>Друид, Кинетик:</strong> Вы улучшили свои боевые умения. Ваше мастерство безоружных атак и обращения с простым оружием улучшается до эксперта.</p><p><strong>Защитник:</strong> Иногда лучшая защита — это нападение. Ваше мастерство безоружных атак, а также обращения с простым и воинским оружием, улучшается до эксперта.</p><p><strong>Некромант, Оракул:</strong> Вы посвятили себя изучению тонкостей своего оружия. Ваше мастерство безоружных атак и обращения с простым оружием улучшается до эксперта.</p><p><strong>Сорвиголова:</strong> Вы посвятили себя изучению тонкостей своего оружия. Ваше мастерство безоружных атак, а также обращения с простым и воинским оружием, улучшается до эксперта. Вы получаете доступ к эффектам критической специализации всего оружия, экспертом обращения с которым вы являетесь.</p><p><strong>Тауматург:</strong> Вы узнали тайные способы наиболее эффективно использовать ваше оружие. Ваше мастерство безоружных атак, а также обращения с простым и воинским оружием, улучшается до эксперта.</p><p><strong>Чародей:</strong> Вы улучшили свои боевые умения. Ваше мастерство безоружных атак и обращения с простым оружием улучшается до эксперта.</p><p><strong>Экстрасенс:</strong> Тренировки улучшили вашу технику владения оружием, возможно, с помощью вашей оккультной магии. Ваше мастерство безоружных атак и обращения с простым оружием улучшается до эксперта.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 11
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "key": "ActiveEffectLike",
+     "mode": "upgrade",
+     "path": "system.proficiencies.attacks.martial.rank",
+     "predicate": [
+      {
+       "or": [
+        "class:champion",
+        "class:exemplar",
+        "class:guardian",
+        "class:investigator",
+        "class:magus",
+        "class:runesmith",
+        "class:swashbuckler",
+        "class:thaumaturge"
+       ]
+      }
+     ],
+     "value": 2
+    },
+    {
+     "key": "CriticalSpecialization",
+     "predicate": [
+      {
+       "gte": [
+        "item:proficiency:rank",
+        2
+       ]
+      },
+      "class:swashbuckler",
+      {
+       "not": "item:category:unarmed"
+      }
+     ]
+    },
+    {
+     "itemId": "{item|id}",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "property": "traits",
+     "value": "{actor|class.slug}"
+    },
+    {
+     "itemId": "{item|id}",
+     "key": "ItemAlteration",
+     "mode": "override",
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.ClassFeatures.WeaponExpertise.{actor|class.slug}.Description"
+      }
+     ]
+    }
+   ],
+   "subfeatures": {
+    "proficiencies": {
+     "simple": {
+      "rank": 2,
+      "attribute": null
+     },
+     "unarmed": {
+      "rank": 2,
+      "attribute": null
+     }
+    },
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "champion",
+     "druid",
+     "exemplar",
+     "guardian",
+     "investigator",
+     "kineticist",
+     "magus",
+     "necromancer",
+     "oracle",
+     "psychic",
+     "runesmith",
+     "sorcerer",
+     "swashbuckler",
+     "thaumaturge",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "weapon-expertise",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.9XLUh9iMepZesdmc",
+   "createdTime": 1795514154939,
+   "modifiedTime": 1795514154945,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Weapon Expertise",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Weapon Specialization": {
+  "img": "systems/pf2e/icons/features/classes/weapon-specialization.webp",
+  "name": "Специализация в оружии",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Вы научились наносить более серьёзные ранения оружием, которое знаете лучше всего. Вы наносите дополнительные 2 урона оружием и безоружными атаками, экспертом обращения с которыми вы являетесь. Этот урон увеличивается до 3 если для ранга мастера, и до 4 для ранга легенды.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 13
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Guns & Gears",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "hideIfDisabled": true,
+     "key": "FlatModifier",
+     "label": "PF2E.WeaponSpecialization",
+     "predicate": [
+      {
+       "gte": [
+        "item:proficiency:rank",
+        2
+       ]
+      }
+     ],
+     "selector": [
+      "unarmed-damage",
+      "weapon-damage"
+     ],
+     "slug": "weapon-specialization",
+     "value": 2
+    },
+    {
+     "key": "AdjustModifier",
+     "mode": "upgrade",
+     "predicate": [
+      "item:proficiency:rank:3"
+     ],
+     "priority": 0,
+     "selectors": [
+      "unarmed-damage",
+      "weapon-damage"
+     ],
+     "slug": "weapon-specialization",
+     "value": 3
+    },
+    {
+     "key": "AdjustModifier",
+     "mode": "upgrade",
+     "predicate": [
+      "item:proficiency:rank:4"
+     ],
+     "priority": 0,
+     "selectors": [
+      "unarmed-damage",
+      "weapon-damage"
+     ],
+     "slug": "weapon-specialization",
+     "value": 4
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "alchemist",
+     "animist",
+     "bard",
+     "champion",
+     "cleric",
+     "commander",
+     "druid",
+     "fighter",
+     "gunslinger",
+     "inventor",
+     "investigator",
+     "kineticist",
+     "necromancer",
+     "ranger",
+     "rogue",
+     "sorcerer",
+     "summoner",
+     "swashbuckler",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "weapon-specialization",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.9EqIasqfI8YIM3Pt",
+   "createdTime": 1795514154939,
+   "modifiedTime": 1795514154946,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Weapon Specialization",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Defensive Robes": {
+  "img": "icons/equipment/back/cloak-collared-pink-gold.webp",
+  "name": "Защитные мантии",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Потоки магии вокруг вас улучшают вашу способность избегать атак. Ваше мастерство защиты без доспехов улучшается до эксперта.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 13
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "subfeatures": {
+    "proficiencies": {
+     "unarmored": {
+      "rank": 2,
+      "attribute": null
+     }
+    },
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "sorcerer",
+     "summoner",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "defensive-robes",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.gU7epgcPSm0TD1UK",
+   "createdTime": 1795514154940,
+   "modifiedTime": 1795514154946,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Defensive Robes",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Master Spellcaster": {
+  "img": "icons/skills/trades/academics-book-study-purple.webp",
+  "name": "Заклинатель мастер",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p><strong>Анимист:</strong> Ваше сродство с гармонизирующими с вами явлениями ещё больше усилило силу вашей магии. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до мастера.</p><p><strong>Бард:</strong> Вы перебираете нити магии, как струны арфы. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до мастера.</p><p><strong>Ведьма:</strong> Вы превосходно овладели магией своего покровителя. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до мастера.</p><p><strong>Волшебник:</strong> Вы превосходно овладели умением колдовать. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до мастера.</p><p><strong>Друид:</strong> Природная магия отвечает на ваш приказ. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до мастера.</p><p><strong>Магус:</strong> Вы укрепляете свои заклинания виртуозным мастерством. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до мастера.</p><p><strong>Оракул:</strong> Вы действительно понимаете глубину и сложность божественной силы вашего таинства. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до мастера.</p><p><strong>Призыватель:</strong> Ваша связь с эйдолоном так сильна, что делает вас мастером соответствующих заклинаний. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до мастера.</p><p><strong>Чародей:</strong> Вы достигли мастерства над магией в своей крови. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до мастера.</p><p><strong>Экстрасенс:</strong> Вы получили доступ к глубочайшим уголкам своего разума. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до мастера.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 15
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "itemId": "{item|id}",
+     "key": "ItemAlteration",
+     "mode": "override",
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.ClassFeatures.Spellcaster.{actor|class.slug}.Master"
+      }
+     ]
+    },
+    {
+     "itemId": "{item|id}",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "property": "traits",
+     "value": "{actor|class.slug}"
+    }
+   ],
+   "subfeatures": {
+    "proficiencies": {
+     "spellcasting": {
+      "rank": 3,
+      "attribute": null
+     }
+    },
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "animist",
+     "bard",
+     "druid",
+     "magus",
+     "oracle",
+     "psychic",
+     "sorcerer",
+     "summoner",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "master-spellcaster",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.l1InYvhnQSz6Ucxc",
+   "createdTime": 1795514154942,
+   "modifiedTime": 1795514154946,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Master Spellcaster",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Prodigious Will": {
+  "img": "icons/creatures/mammals/bull-horns-eyes-glowin-orange.webp",
+  "name": "Старательная воля",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Ваш разум слишком сложен и изощрён, чтобы его можно было испортить. Ваше мастерство спасбросков Воли улучшается до мастера. Когда при спасброске Воли вы получаете успех, результат считается критическим успехом.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 17
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "adjustment": {
+      "success": "one-degree-better"
+     },
+     "key": "AdjustDegreeOfSuccess",
+     "selector": "will"
+    }
+   ],
+   "subfeatures": {
+    "proficiencies": {
+     "will": {
+      "rank": 3,
+      "attribute": null
+     }
+    },
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "prodigious-will",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.j5TZw3xoIo6Lz0Re",
+   "createdTime": 1795514154943,
+   "modifiedTime": 1795514154947,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Prodigious Will",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Legendary Spellcaster": {
+  "img": "icons/sundries/books/book-open-purple.webp",
+  "name": "Легендарный заклинатель",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p><strong>Анимист:</strong> Вы — почти идеальный проводник магических энергий потусторонних миров. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до легенды.</p><p><strong>Бард:</strong> Ваше владение оккультной магией достойно легенд. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до легенды.</p><p><strong>Ведьма:</strong> Вы отточили до совершенства способность управлять дарованной вам магией покровителя. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до легенды.</p><p><strong>Волшебник:</strong> Вы непревзойденный заклинатель, с полным пониманием как арканной теории, так и практического колдовства. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до легенды.</p><p><strong>Друид:</strong> Вы достигли беспрецедентного взаимопонимания с магией природы. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до легенды.</p><p><strong>Оракул:</strong> Вы можете овладевать божественной силой на уровне, с которым могут сравниться немногие. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до легенды.</p><p><strong>Чародей:</strong> Вы демонстрируете невероятный талант к колдовству. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до легенды.</p><p><strong>Экстрасенс:</strong> Когда ваше обучение достигает своего пика, вы понимаете не просто свой собственный разум, но коллективное бессознательное, от которого идёт вся психическая сила. Ваше мастерство атак заклинаниями и КС заклинаний улучшается до легенды.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 19
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "itemId": "{item|id}",
+     "key": "ItemAlteration",
+     "mode": "override",
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.ClassFeatures.Spellcaster.{actor|class.slug}.Legendary"
+      }
+     ]
+    },
+    {
+     "itemId": "{item|id}",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "property": "traits",
+     "value": "{actor|class.slug}"
+    }
+   ],
+   "subfeatures": {
+    "proficiencies": {
+     "spellcasting": {
+      "rank": 4,
+      "attribute": null
+     }
+    },
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "animist",
+     "bard",
+     "druid",
+     "oracle",
+     "psychic",
+     "sorcerer",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "legendary-spellcaster",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.Hfaa7TuLn3nE8lr3",
+   "createdTime": 1795514154944,
+   "modifiedTime": 1795514154947,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Legendary Spellcaster",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Archwizard's Spellcraft": {
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "name": "Колдовство архимага",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Вы владеете самой мощной арканной магией и можете сотворить заклинание поистине невероятной силы. Вы получаете один слот заклинания 10-го ранга и можете приготовить в нём заклинание, используя колдовство волшебника. Вы не можете использовать этот слот заклинаний для умений, которые позволяют вам сотворять заклинания без траты слотов, или тех, которые дают вам больше слотов заклинаний. В отличие от других слотов заклинаний, вы не получаете больше слотов 10-го ранга по мере получения новых уровней, однако вы можете взять способность @UUID[Compendium.pf2e.feats-srd.Item.tP26mgaFPpr6df1i]{Могущество архимага}, чтобы получить второй слот.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 19
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "archwizards-spellcraft",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.ZjwJHmjPrSs6VDez",
+   "createdTime": 1795514154945,
+   "modifiedTime": 1795514154947,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Archwizard's Spellcraft",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Spell Mastery": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Усвоенные заклинания",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы овладели несколькими заклинаниями до такой степени, что можете колдовать их, даже если заранее не подготовили их. Выберите любые 4 заклинания 9-го ранга или ниже, к которым у вас есть доступ; все выбранные заклинания должны быть разного ранга. Эти заклинания автоматически приготовлены, когда вы делаете свои ежедневные приготовления и они имеют свои собственные слоты заклинаний. Вы можете выбрать другой набор заклинаний, потратив 1 неделю отдыха на перетренировку своих усвоенных заклинаний.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 20
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "spell-mastery",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.xhiwito5kneP4sjV",
+   "createdTime": 1795514218919,
+   "modifiedTime": 1795514218919,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Spell Mastery",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Counterspell (Prepared)": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Контрзаклинание (Подготавливающий)",
+  "system": {
+   "actionType": {
+    "value": "reaction"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p><strong>Триггер:</strong> Существо @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]{Сотворяет} подготовленное вами заклинание</p><hr><p>Когда враг использует <em>\"Сотворение заклинания\"</em> и вы можете видеть как оно проявляется, то можете использовать свою магию, чтобы противостоять ему. Вы расходуете подготовленное заклинание, чтобы противостоять существу, колдующему это же заклинание. Вы теряете свой слот заклинания, как если бы сотворили спровоцировавшее заклинание. Потом вы пытаетесь совершить @UUID[Compendium.pf2e.journals.JournalEntry.S55aqwWIzpQRFhcq.JournalEntryPage.E4Q7EiSG18sIvFwg]{Противодействие} спровоцировавшему заклинанию.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "counterspell-prepared",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.EpBG4CFMNSZQx7vI",
+   "createdTime": 1795514306210,
+   "modifiedTime": 1795514306211,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Counterspell (Prepared)",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Spellbook Prodigy": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Одаренный с книгой заклинаний",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы особенно хорошо разбираетесь в том, как пополнять свою книгу заклинаний. Вы получаете способность @UUID[Compendium.pf2e.feats-srd.Item.v7Bt6hjmzYnLFLeG] без необходимости выполнять предварительные условия. Кроме того, когда вы получаете критический провал при проверке @UUID[Compendium.pf2e.actionspf2e.Item.Q5iIYCFdqJFM31GW], результат считается провалом.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Обучен Аркане"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "key": "GrantItem",
+     "uuid": "Compendium.pf2e.feats-srd.Item.v7Bt6hjmzYnLFLeG",
+     "flag": "magicalShorthand"
+    },
+    {
+     "adjustment": {
+      "criticalFailure": "one-degree-better"
+     },
+     "key": "AdjustDegreeOfSuccess",
+     "predicate": [
+      "action:learn-a-spell"
+     ],
+     "selector": "skill-check"
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "spellbook-prodigy",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.FCzfh8QHMo7QJpAM",
+   "createdTime": 1795514324070,
+   "modifiedTime": 1795514324072,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Spellbook Prodigy",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Magical Shorthand": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Магическая скоропись",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "skill",
+   "description": {
+    "value": "<p>Вам легко дается изучение заклинаний. При успешной попытке @UUID[Compendium.pf2e.actionspf2e.Item.Q5iIYCFdqJFM31GW]{Выучить заклинание} вы тратите на это 10 минут вне зависимости от ранга заклинания. Если вы получаете успех, результат считается критическим успехом. Если вы получаете провал, то можете попытаться снова через 1 неделю или после получения уровня, в зависимости от того, что произойдёт раньше.</p><p>Вы можете использовать время режима отдыха, чтобы выучить и записать новые заклинания. Это работает так, как если бы вы выполняли @UUID[Compendium.pf2e.actionspf2e.Item.QyzlsLrqM0EEwd7j]{Заработок денег} используя навык относящийся к колдовскому обычаю, но вместо получения денег вы выбираете доступное вам для изучения заклинание и получаете скидку на его изучение, либо изучаете бесплатно, если ваш доход больше или равен стоимости заклинания.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 2
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Эксперт Арканы, Оккультизма, Природы или Религии"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "adjustment": {
+      "success": "one-degree-better"
+     },
+     "key": "AdjustDegreeOfSuccess",
+     "predicate": [
+      "action:learn-a-spell"
+     ],
+     "selector": "skill-check"
+    },
+    {
+     "key": "Note",
+     "outcome": [
+      "criticalFailure",
+      "failure"
+     ],
+     "predicate": [
+      "action:learn-a-spell"
+     ],
+     "selector": "skill-check",
+     "text": "PF2E.SpecificRule.MagicalShorthand.Note",
+     "title": "{item|name}"
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "general",
+     "skill"
+    ],
+    "otherTags": []
+   },
+   "slug": "magical-shorthand",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.v7Bt6hjmzYnLFLeG",
+   "createdTime": 1795514324071,
+   "modifiedTime": 1795514324072,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Magical Shorthand",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Cantrip Expansion": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Расширение чар",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p><strong>Бард, Оракул, Чародей:</strong> Обучение расширило ваш арсенал простых заклинаний.</p><p><strong>Ведьма:</strong> Ваш покровитель понимает вашу нужду в гибкости и выразительности, и даёт вам силу подготавливать большее количество простых заклинаний.</p><p><strong>Жрец:</strong> Вы изучаете более широкий диапазон простых заклинаний.</p><p><strong>Волшебник, Магус:</strong> Специализированное обучение позволяет вам подготавливать более широкий диапазон простых заклинаний для любой ситуации.</p><p><strong>Экстрасенс:</strong> Вы расширяете возможности своего ума.</p><hr><p><strong>Подготовленные:</strong> Вы можете приготавливать 2 дополнительных чар каждый день.</p><p><strong>Спонтанные:</strong> Вы добавляете 2 дополнительных чар в свой репертуар заклинаний.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 2
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "bard",
+     "cleric",
+     "magus",
+     "oracle",
+     "psychic",
+     "sorcerer",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "cantrip-expansion",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.A7ofsoPva0UtjqrX",
+   "createdTime": 1795514337052,
+   "modifiedTime": 1795514337052,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Cantrip Expansion",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Shrink Spell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Сузить заклинание",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы научились управлять пространством, чтобы сужать воздействие других заклинаний. Когда вы используете @UUID[Compendium.pf2e.feats-srd.Item.EpBG4CFMNSZQx7vI]{Контрзаклинание}, чтобы противодействовать заклинанию, имеющему область взрыва, конуса или линии, и не имеющего продолжительности, вы уменьшаете его область, если вам не удаётся ему противодействовать. Уменьшите радиус взрыва или эманации на 5 футов, или длину конуса и линии на 10 футов.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 6
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Контрзаклинание"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Impossible Magic",
+    "authors": ""
+   },
+   "rules": [],
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "shrink-spell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.8RkH5VBLBIoXSFE9",
+   "createdTime": 1795514356363,
+   "modifiedTime": 1795514356364,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Shrink Spell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Scroll Adept": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Адепт свитков",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Во время своих дневных приготовлений вы можете создать 2 временных свитка, содержащих арканные заклинания из вашей книги заклинаний. Все свитки должны быть разных рангов заклинаний, и оба заклинания должны быть на 2 или более ранга ниже, чем ваш наивысший ранг заклинаний. Любые свитки, которые вы создаете таким способом становятся немагическими во время следующих дневных приготовлений. Временный свиток не имеет стоимости. Как обычно для свитков, эти являются расходуемыми предметами легкой Массы, и кто-то держащий их в 1 руке может @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz] из него, если оно есть в их списке заклинаний, используя собственный модификатор атаки заклинаниями и КС заклинаний.</p><p>Если вы являетесь мастером КС заклинаний, то во время дневных приготовлений можете создать 3 временных свитка, а если являетесь легендой, то можете создать 4 временных свитка.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 10
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Эксперт Ремесла"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "scroll-adept",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.u5DBg0LrBUKP0JsJ",
+   "createdTime": 1795514365395,
+   "modifiedTime": 1795514365395,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Scroll Adept",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Clever Counterspell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Умное контрзаклинание",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы творчески подходите к подготовке заклинаний, чтобы использовать @UUID[Compendium.pf2e.feats-srd.Item.EpBG4CFMNSZQx7vI] на более широкий спектр магии ваших противников. Вместо того, чтобы использовать <em>\"Контрзаклинание\"</em> только когда у вас приготовлено такое же, вы можете использовать <em>\"Контрзаклинание\"</em> если сотворяемое противником заклинание есть в вашей книге заклинаний.</p><p>Когда вы используете <em>\"Контрзаклинание\"</em> таким способом, вы должны потратить подготовленное заклинание; подготовленное заклинание должно иметь общий со спровоцировавшим заклинанием признак, не являющийся признаком @Trait[Manipulate]{воздействие}, @Trait[Concentrate]{концентрация} или признаком колдовского обычая. На усмотрение Мастера, вместо этого вы можете использовать заклинание, которое имеет противоположный признак или которое другим логичным образом противодействовало бы спровоцировавшему заклинанию (такое как использование холода или воды для нейтрализации @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Огненного шара}, или использовать @UUID[Compendium.pf2e.spells-srd.Item.EfFMLVbmkBWmzoLF] против @UUID[Compendium.pf2e.spells-srd.Item.4koZzrnMXhhosn0D]{Страха}).</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 12
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Быстрое распознавание"
+     },
+     {
+      "value": "Контрзаклинание"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "clever-counterspell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.IMPP5pa8AmvCby4W",
+   "createdTime": 1795514376659,
+   "modifiedTime": 1795514376660,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Clever Counterspell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Reflect Spell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Отражение заклинания",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Когда вы успешно используете @UUID[Compendium.pf2e.feats-srd.Item.deoHKUzpzT7iwWhL]{Контрзаклинание}, чтобы @UUID[Compendium.pf2e.journals.JournalEntry.S55aqwWIzpQRFhcq.JournalEntryPage.E4Q7EiSG18sIvFwg]{Противодействовать} заклинанию, которое действует на существ или область, вы можете обратить эффект этого заклинания на изначального заклинателя. Будучи отражённым, заклинание действует только на изначального колдуна, даже если это заклинание, действующее на область или более чем на 1 существо. Изначальный заклинатель, как обычно, может совершить спасбросок и использовать другие защиты против отражённого заклинания.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 14
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Контрзаклинание"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "sorcerer",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "reflect-spell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.k72W0qMXsX5ekJTF",
+   "createdTime": 1795514387014,
+   "modifiedTime": 1795514387014,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Reflect Spell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Effortless Concentration": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Непринуждённая концентрация",
+  "system": {
+   "actionType": {
+    "value": "free"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p><strong>Триггер:</strong> Начинается ваш ход.</p><hr><p>Вы можете поддерживать заклинание, едва подумав об этом. Вы мгновенно получаете эффекты действия @UUID[Compendium.pf2e.actionspf2e.Item.3f5DMFu8fPiqHpRg]{Поддержание}, что позволяет вам продлить длительность одного из ваших активных заклинаний класса.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 16
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "bard",
+     "druid",
+     "necromancer",
+     "sorcerer",
+     "summoner",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "effortless-concentration",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.rgs6OZJYCgi5At8J",
+   "createdTime": 1795514396300,
+   "modifiedTime": 1795514396300,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Effortless Concentration",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Second Thoughts": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Переосмысление",
+  "system": {
+   "actionType": {
+    "value": "reaction"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p><strong>Триггер:</strong> Вы сотворяете @Trait[Mental]{ментальное} заклинание, целью которого является одно существо, и оно критически преуспевает в своем спасброске Воли</p><hr><p>Если цель оказывается устойчивой к вашим магическим уловкам, вы можете повторить их на ком-то другом. Вы можете @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]{Сотворить} спровоцировавшее заклинание во второй раз, выбрав целью другое существо, без использования дополнительного слота заклинаний. Вы можете сделать это только до конца вашего следующего хода, и после второго сотворения заклинания вы не можете применить к нему \"Переосмысление\".</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 18
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "concentrate",
+     "mental",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "second-thoughts",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.XafnXTx9Bn0kN1RG",
+   "createdTime": 1795514405811,
+   "modifiedTime": 1795514405812,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Second Thoughts",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "School of Magical Technologies": {
+  "folder": null,
+  "img": "icons/commodities/tech/cog-brass.webp",
+  "name": "Школа магической технологии",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>В эпоху расцвета Ацланта изучение магических технологий — более известной как техномагия — считалось одной из самых престижных арканных специализаций, а практикующие специалисты пользовались заслуженным уважением и хорошо оплачивались. Некоторые специалисты по магической технологии обучались в академиях или подмастерьями, другие — в религиозных монастырях, посвященных поклонению Амазнену, ныне почившему богу изобретений и магии. Сегодня практикующие маги чаще всего учатся по обрывкам древних книг заклинаний, забытым преданиям, найденным в руинах Ацланта, или у перемещенных во времени выпускников, вроде Анорета Зориллена. Сегодня существуют современные школы магической технологии, оторванные от своих древних ацлантийских истоков, но не менее престижные, включая знаменитый Заводной Собор (Clockwork Cathedral) в Абсаломе и храмы Брай, богини заводных механизмов и изобретений.</p><p>Изучая магические технологии, вы научились искусству соединять магию с обыденными технологиями, чтобы создать нечто поистине уникальное.</p><p><strong>Заклинания факультета</strong></p><p><strong>Чары:</strong> @UUID[Compendium.pf2e.spells-srd.Item.iYRDFxeVpJ5KIjmr], @UUID[Compendium.pf2e.spells-srd.Item.TVKNbcgTee19PXZR]</p><p><strong>1-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.dINQzhqGmIsqGMUY], @UUID[Compendium.pf2e.spells-srd.Item.lKcsmeOrgHtK4xQa], @UUID[Compendium.pf2e.spells-srd.Item.TFitdEOpQC4SzKQQ]</p><p><strong>2-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.WqPhJNzLa8vSjrH6], @UUID[Compendium.pf2e.spells-srd.Item.jW2asKFchuoxniSH]</p><p><strong>3-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.aUMmmtPmBdCdVDed], @UUID[Compendium.pf2e.spells-srd.Item.kWh8sJH7yawidMyW]</p><p><strong>4-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.8M03UxGXjYyDFAoy], @UUID[Compendium.pf2e.spells-srd.Item.TUj8eugNqAvB1vVR]</p><p><strong>5-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.oXeEbcUdgJGWHGEJ], @UUID[Compendium.pf2e.spells-srd.Item.kOa055FIrO9Smnya]</p><p><strong>6-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.znv4ECL7ZtuiagtA], @UUID[Compendium.pf2e.spells-srd.Item.MLYTWHfewOpI3Cz7]</p><p><strong>7-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.HES5jvGiNZZnJycK], @UUID[Compendium.pf2e.spells-srd.Item.dKWc83KKiXoIJkhp]</p><p><strong>8-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.89Hj5QuqvcwVXcqj], @UUID[Compendium.pf2e.spells-srd.Item.Oj1PJBMQD9vuwCv7]</p><p><strong>9-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.KPDHmmjJiw7PhTYF]</p><p><strong>Заклинания школы</strong></p><ul><li><strong>Начальное:</strong> @UUID[Compendium.pf2e.spells-srd.Item.pSepsfCrrAKuwA0N]</li><li><strong>Продвинутое:</strong> @UUID[Compendium.pf2e.spells-srd.Item.eob29LrDMH2IoeAj]</li></ul>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder #215: To Blot Out the Sun",
+    "authors": ""
+   },
+   "rules": [],
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "otherTags": [
+     "wizard-arcane-school"
+    ],
+    "rarity": "uncommon",
+    "value": [
+     "wizard"
+    ]
+   },
+   "slug": "school-of-magical-technologies",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.dPAwM9IdabdH68mW",
+   "createdTime": 1795514764436,
+   "modifiedTime": 1795514764440,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "School of Magical Technologies",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Spell Blending": {
+  "img": "icons/sundries/documents/blueprint-recipe-alchemical.webp",
+  "name": "Смешивание заклинаний",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Вы теоретизируете, что слоты заклинаний — сложная базовая энергия, которая питает все заклинания, и вы нашли способ обращаться с иерархией слотов заклинаний, объединяя их, чтобы подпитывать более мощные заклинания.</p><p>Во время дневных приготовлений, вы можете обменять 2 слота одного ранга на бонусный слот вплоть до 2 рангов выше обмененных слотов. Вы можете обменять столько слотов, сколько у вас доступно. Бонусные слоты должны быть тех рангов, которые вы можете колдовать с помощью своих слотов, и каждый бонусный слот должен быть разного ранга. Также вы можете обменять любой слот заклинания на 2 дополнительных чары, однако вы таким способом не можете обменять более одного слота заклинаний, чтобы получить больше чар.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "otherTags": [
+     "wizard-arcane-thesis"
+    ],
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ]
+   },
+   "slug": "spell-blending",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.OAcxS625AXSGrQIC",
+   "createdTime": 1795514764437,
+   "modifiedTime": 1795514764440,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Spell Blending",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Reach Spell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Досягаемое заклинание",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы можете увеличить дистанцию своих заклинаний. Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz], у которого есть дистанция, увеличьте дистанцию заклинания на 30 футов. Как обычно при увеличении дистанций заклинания, если оно имеет дистанцию касания, то вы увеличиваете его дистанцию до 30 футов.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "spellshape:reach-spell"
+     ],
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.Spellshape.ReachSpell"
+      }
+     ]
+    },
+    {
+     "key": "RollOption",
+     "label": "PF2E.TraitSpellshape",
+     "mergeable": true,
+     "option": "spellshape",
+     "placement": "spellcasting",
+     "suboptions": [
+      {
+       "label": "{item|name}",
+       "value": "reach-spell"
+      }
+     ],
+     "toggleable": true
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "bard",
+     "cleric",
+     "concentrate",
+     "druid",
+     "oracle",
+     "sorcerer",
+     "spellshape",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "reach-spell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.BWomK7EVY0WXxWgh",
+   "createdTime": 1795514824151,
+   "modifiedTime": 1795514824151,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Reach Spell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Conceal Spell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Скрыть заклинание",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p><strong>Анимист:</strong> Вы говорите неслышным голосом духов.</p><p><strong>Ведьма:</strong> Усилием мысли вы можете упростить заговоры и жесты, необходимые для сотворения заклинания, сделав их едва заметными.</p><p><strong>Волшебник:</strong> Придавая форму магическим энергиям и изменяя параметры своих заклинаний у себя в голове лишь путем концентрации, вы можете упростить заклинания и жесты, необходимые для произнесения заклинаний, делая их едва заметными.</p><p><strong>Некромант:</strong> Придавая форму магическим энергиям и изменяя параметры своих заклинаний лишь путём концентрации, вы можете упростить заклинания и жесты, необходимые для сотворения заклинаний, делая их едва заметными.</p><hr><p>Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]{Сотворение заклинания}, то это заклинание приобретает признак @Trait[Subtle]{незаметный}, скрывающее сияющие руны, искры магии и другие проявления, которые обычно выдают ваше заклинание. Этот признак скрывает только действия и проявления заклинания, но не его эффекты, так что наблюдатель всё равно может заметить исходящий от вас луч или увидеть, как вы растворяетесь в воздухе.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 2
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "key": "RollOption",
+     "label": "PF2E.TraitSpellshape",
+     "mergeable": true,
+     "option": "spellshape",
+     "placement": "spellcasting",
+     "suboptions": [
+      {
+       "label": "{item|name}",
+       "value": "conceal-spell"
+      }
+     ],
+     "toggleable": true
+    },
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "spellshape:conceal-spell"
+     ],
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.Spellshape.ConcealSpell"
+      }
+     ]
+    },
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "spellshape:conceal-spell"
+     ],
+     "property": "traits",
+     "value": "subtle"
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "animist",
+     "concentrate",
+     "necromancer",
+     "spellshape",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "conceal-spell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.sIeuPW0j39fTZm08",
+   "createdTime": 1795514830331,
+   "modifiedTime": 1795514830331,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Conceal Spell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Incriminating Spell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Обвиняющее заклинание",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы можете попытаться обвинить кого-то ещё в вашей попытке изменить разум цели. Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]{Сотворение заклинания} с признаком @Trait[Mental]{ментальный}, выберите существо в радиусе 60 футов, которое цель может почувствовать. Цель будет думать, что именно это существо, а не вы, попыталось воздействовать на его разум, если оно преуспеет в своём спасброске. Если цель пытается @UUID[Compendium.pf2e.actionspf2e.Item.1xRFPTFtWtGJ9ELw]{Понять} ваши намерения или обвинённого существа, оно должно сравнить результат с вашим КС заклинания вместо КС Обмана цели. Если очевидно, что обвинённое существо неспособно использовать магию, цель получает бонус обстоятельства +2 к своей проверке Восприятия, чтобы \"Понять намерение\".</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 4
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Impossible Magic",
+    "authors": ""
+   },
+   "rules": [],
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "concentrate",
+     "spellshape",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "incriminating-spell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.pBm5vej9divuL6dG",
+   "createdTime": 1795514842286,
+   "modifiedTime": 1795514842287,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Incriminating Spell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Explosive Arrival": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Взрывное прибытие",
+  "system": {
+   "actionType": {
+    "value": "free"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вызванное вами существо появляется во взрыве арканных рун. Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz] с признаком @Trait[Summon]{призыв} в @Template[emanation|distance:10]{10-футовой эманации} вокруг вызванного вами существа получат 1d4 урона огнём за ранг заклинания. Если призванное существо имеет признак @Trait[Spirit]{дух}, @Trait[Sonic]{звук}, @Trait[Acid]{кислота}, @Trait[Cold]{холод} или @Trait[Electricity]{электричество}, вместо этого вы можете нанести урон соответствующего типа.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 6
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "item:trait:summon",
+      "spellshape:explosive-arrival"
+     ],
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.Spellshape.ExplosiveArrival"
+      }
+     ]
+    },
+    {
+     "key": "RollOption",
+     "label": "PF2E.TraitSpellshape",
+     "mergeable": true,
+     "option": "spellshape",
+     "placement": "spellcasting",
+     "suboptions": [
+      {
+       "label": "{item|name}",
+       "value": "explosive-arrival"
+      }
+     ],
+     "toggleable": true
+    },
+    {
+     "alwaysActive": true,
+     "key": "RollOption",
+     "label": "PF2E.SpecificRule.Wizard.ExplosiveArrival.Label",
+     "option": "arrival-damage",
+     "placement": "spellcasting",
+     "predicate": [
+      "spellshape:explosive-arrival"
+     ],
+     "suboptions": [
+      {
+       "label": "PF2E.TraitFire",
+       "value": "fire"
+      },
+      {
+       "label": "PF2E.TraitAcid",
+       "value": "acid"
+      },
+      {
+       "label": "PF2E.TraitCold",
+       "value": "cold"
+      },
+      {
+       "label": "PF2E.TraitElectricity",
+       "value": "electricity"
+      },
+      {
+       "label": "PF2E.TraitSonic",
+       "value": "sonic"
+      },
+      {
+       "label": "PF2E.TraitSpirit",
+       "value": "spirit"
+      }
+     ],
+     "toggleable": true
+    },
+    {
+     "key": "ActiveEffectLike",
+     "mode": "override",
+     "path": "flags.system.spellshape.explosiveArrivalDamage",
+     "value": "{item|flags.system.rulesSelections.arrivalDamage}"
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "concentrate",
+     "manipulate",
+     "spellshape",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "explosive-arrival",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.y9lH4EqTGTHvqbNr",
+   "createdTime": 1795514852029,
+   "modifiedTime": 1795514852029,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Explosive Arrival",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Knockback Spell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Отбрасывающее заклинание",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы наполняете свои заклинания магической силой, отталкивающей существ назад. Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]{Сотворение заклинания}, имеющего область взрыва, конуса, линии или эманации, не имеющего продолжительности, и требующего существ совершить спасбросок Рефлекса или Стойкости, это заклинание выпускает мощный взрыв, отталкивающий существ назад, в дополнение к другим своим эффектам. Каждое существо, провалившее свой спасбросок против этого заклинания, отталкивается на 5 футов, а критически провалившее — на 10 футов. Если область является конусом, линией или эманацией, вы отталкиваете существо от себя. Если область — взрыв, вы отталкиваете существо от центра этого взрыва.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 8
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Impossible Magic",
+    "authors": ""
+   },
+   "rules": [],
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "manipulate",
+     "spellshape",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "knockback-spell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.ezFFYqOgmxzo8zKU",
+   "createdTime": 1795514861936,
+   "modifiedTime": 1795514861936,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Knockback Spell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Quickened Casting": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Ускоренное колдовство",
+  "system": {
+   "actionType": {
+    "value": "free"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p><strong>Частота:</strong> Раз в день</p><hr><p><strong>Бард:</strong> Если вашим следующим действием будет сотворение чар барда или заклинания барда, которое хотя бы на 2 ранга ниже, чем наивысший слот заклинания барда, который вам доступен, снизьте количество действий, необходимых для его сотворения, на 1 (до минимума в 1 действие).</p><p><strong>Ведьма:</strong> Вы ускоряете своё колдовство. Если вашим следующим действием будет сотворение чар ведьмы или заклинания ведьмы, которое хотя бы на 2 ранга ниже, чем наивысший слот заклинания ведьмы, который вам доступен, снизьте количество действий, необходимых для его сотворения, на 1 (до минимума в 1 действие).</p><p><strong>Волшебник:</strong> Напрягая разум, вы сокращаете формулы заклинаний, как только можете, в результате чего получается более короткое, но гораздо более сложное заклинание. Если вашим следующим действием будет сотворение чар волшебника или заклинания волшебника, которое хотя бы на 2 ранга ниже, чем наивысший слот заклинания волшебника, который вам доступен, снизьте количество действий, необходимых для его сотворения, на 1 (до минимума в 1 действие).</p><p><strong>Остальные:</strong> Если вашим следующим действием будет сотворение чар класса или заклинания класса, которое хотя бы на 2 ранга ниже, чем наивысший слот заклинания класса, который вам доступен, снизьте количество действий, необходимых для его сотворения, на 1 (до минимума в 1 действие).</p>",
+    "gm": ""
+   },
+   "frequency": {
+    "max": 1,
+    "per": "day"
+   },
+   "level": {
+    "value": 10
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "spellshape:quickened-casting",
+      {
+       "or": [
+        "item:cast:actions:1",
+        "item:cast:actions:2",
+        "item:cast:actions:3"
+       ]
+      }
+     ],
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.Spellshape.QuickenedCasting"
+      }
+     ]
+    },
+    {
+     "key": "RollOption",
+     "label": "PF2E.TraitSpellshape",
+     "mergeable": true,
+     "option": "spellshape",
+     "placement": "spellcasting",
+     "suboptions": [
+      {
+       "label": "{item|name}",
+       "value": "quickened-casting"
+      }
+     ],
+     "toggleable": true
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "bard",
+     "concentrate",
+     "necromancer",
+     "oracle",
+     "sorcerer",
+     "spellshape",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "quickened-casting",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.z2ptq23nNBOeEI7H",
+   "createdTime": 1795514871174,
+   "modifiedTime": 1795514871174,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Quickened Casting",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Forcible Energy": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Усиленная энергия",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы выполняете сложные манипуляции, чтобы сделать энергию своих заклинаний настолько мощной, что после этого, ваши враги остаются уязвимыми для нее. Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]{Сотворение заклинания}, наносящего урон звуком, кислотой, огнём или электричеством, то вы можете выбрать одну получившую урон цель, чтобы до конца вашего следующего хода дать ей слабость 5 этому типу урона. Если заклинание наносит несколько типов энергетического урона, выберите один, к которому цель получит слабость. Это не имеет эффекта на существ с сопротивлением или иммунитетом к выбранному типу энергии.</p><p>@UUID[Compendium.pf2e.feat-effects.Item.0Ai0u9kNJrEudPnN]</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 12
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "spellshape:forcible-energy",
+      {
+       "or": [
+        "item:damage:acid",
+        "item:damage:cold",
+        "item:damage:electricity",
+        "item:damage:fire",
+        "item:damage:sonic"
+       ]
+      }
+     ],
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.Spellshape.ForcibleEnergy"
+      }
+     ]
+    },
+    {
+     "key": "RollOption",
+     "label": "PF2E.TraitSpellshape",
+     "mergeable": true,
+     "option": "spellshape",
+     "placement": "spellcasting",
+     "suboptions": [
+      {
+       "label": "{item|name}",
+       "value": "forcible-energy"
+      }
+     ],
+     "toggleable": true,
+     "value": true
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "manipulate",
+     "spellshape",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "forcible-energy",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.UJafwv306v75Syy7",
+   "createdTime": 1795514894472,
+   "modifiedTime": 1795514894472,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Forcible Energy",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Dizzying Spell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Головокружительное заклинание",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Ваше заклинание заставляет голову врага кружиться и делает его неспособным сконцентрироваться. Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]{Сотворение заклинания}, требующего спасброска Воли и выбирающего целью одно существо, цель становится @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Одурманенной 2} на 1 раунд, если она провалит свой спасбросок (или @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Одурманена 3} при критическом провале).</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 14
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Impossible Magic",
+    "authors": ""
+   },
+   "rules": [],
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "concentrate",
+     "spellshape",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "dizzying-spell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.VVPPPT8kJRmeJ4sR",
+   "createdTime": 1795514905080,
+   "modifiedTime": 1795514905081,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Dizzying Spell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Scintillating Spell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Сверкающее заклинание",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Ваши заклинания становятся ярким проявлением света и цвета. Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz] у которого нет признака @Trait[Darkness]{тьма}, нет продолжительности, и которое требует от существ совершить спасбросок Рефлекса, то в дополнение к своим другим эффектам, заклинание взрывается брызгами мерцающих огней. Каждое существо, провалившее свой спасбросок Рефлекса против заклинания, получает состояние @UUID[Compendium.pf2e.conditionitems.Item.TkIyaNPgTZFBCCuh]{Ослеплен} на 1 раунд, а те, кто критически провалили — @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Слепоту} на 1 раунд.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 16
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "spellshape:scintillating-spell",
+      "item:duration:0",
+      {
+       "not": "item:trait:darkness"
+      }
+     ],
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.Spellshape.ScintillatingSpell"
+      }
+     ]
+    },
+    {
+     "key": "RollOption",
+     "label": "PF2E.TraitSpellshape",
+     "mergeable": true,
+     "option": "spellshape",
+     "placement": "spellcasting",
+     "suboptions": [
+      {
+       "label": "{item|name}",
+       "value": "scintillating-spell"
+      }
+     ],
+     "toggleable": true
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "concentrate",
+     "light",
+     "sorcerer",
+     "spellshape",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "scintillating-spell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.DSmYJvCHMvZCP0aD",
+   "createdTime": 1795514915072,
+   "modifiedTime": 1795514915072,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Scintillating Spell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Worldsphere Gravity": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Гравитация мировой сферы",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p><strong>Частота:</strong> Раз в час</p><p>Хотя создание демипланов обычно требует длительных ритуалов, вы умеете создавать небольшие планарные эффекты в подражание шедеврам Синдары. Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz] не ниже 5-го ранга с помощью вашего слота заклинаний, воздействующее на область, вы можете применить один из следующих планарных эффектов к @Template[burst|distance:20]{20-футовым взрывом} сосредоточенным в пространстве, находящимся в области заклинания. Эффект сохраняется в течение 1 минуты.</p><p><strong>Гравитационный морок:</strong> Притяжение гравитации здесь усиливается, создавая @UUID[Compendium.pf2e.journals.JournalEntry.S55aqwWIzpQRFhcq.JournalEntryPage.z68vgV2XWhi1KYEP#mestnostь]{Очень сложная местность}. Летающие существа, пролетающие через эту область, должны совершить спасбросок @Check[reflex|against:spell]{Рефлекса} против вашего КС заклинаний или упасть на землю, получив дробящий урон, равный половине дистанции падения.</p><p><strong>Текучее время:</strong> В этом пространстве вам помогают эрратические временные потоки. Существо, которое начинает свой ход в этом потоке, получает эффект @UUID[Compendium.pf2e.spells-srd.Item.o6YCGx4lycsYpww4] на этот ход.</p>",
+    "gm": ""
+   },
+   "frequency": {
+    "max": 1,
+    "per": "PT1H"
+   },
+   "level": {
+    "value": 20
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "OGL",
+    "remaster": false,
+    "title": "Pathfinder #168: King of the Mountain",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "key": "RollOption",
+     "label": "PF2E.TraitSpellshape",
+     "mergeable": true,
+     "option": "spellshape",
+     "placement": "spellcasting",
+     "suboptions": [
+      {
+       "label": "{item|name}",
+       "value": "worldsphere-gravity"
+      }
+     ],
+     "toggleable": true
+    },
+    {
+     "alwaysActive": true,
+     "key": "RollOption",
+     "label": "PF2E.SpecificRule.Spellshape.CodexofDestructionAndRenewal.Prompt",
+     "option": "worldsphere-type",
+     "placement": "spellcasting",
+     "predicate": [
+      "spellshape:worldsphere-gravity"
+     ],
+     "suboptions": [
+      {
+       "label": "PF2E.SpecificRule.Spellshape.WorldsphereGravity.GravitationalMorass.RollOptionLabel",
+       "value": "gravitational-morass"
+      },
+      {
+       "label": "PF2E.SpecificRule.Spellshape.WorldsphereGravity.FlowingTime.RollOptionLabel",
+       "value": "flowing-time"
+      }
+     ],
+     "toggleable": true
+    },
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "area-effect",
+      "spellshape:worldsphere-gravity",
+      "worldsphere-type:gravitational-morass",
+      {
+       "gte": [
+        "item:rank",
+        5
+       ]
+      },
+      {
+       "not": "item:trait:cantrip"
+      }
+     ],
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.Spellshape.WorldsphereGravity.GravitationalMorass.Note"
+      }
+     ]
+    },
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "area-effect",
+      "spellshape:worldsphere-gravity",
+      "worldsphere-type:flowing-time",
+      {
+       "gte": [
+        "item:rank",
+        5
+       ]
+      },
+      {
+       "not": "item:trait:cantrip"
+      }
+     ],
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.Spellshape.WorldsphereGravity.FlowingTime.Note"
+      }
+     ]
+    }
+   ],
+   "traits": {
+    "rarity": "uncommon",
+    "value": [
+     "spellshape",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "worldsphere-gravity",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.xqjPVZezw1a73JAO",
+   "createdTime": 1795514924299,
+   "modifiedTime": 1795514924299,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Worldsphere Gravity",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "School of Ars Grammatica": {
+  "folder": null,
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "name": "Школа искусства языкознания",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Руны и заклятия, цифры и буквы — они лежат в основе любой магии, что делает их закономерным предметом исследования для мага, изучающего фундаментальные силы. Возможно, вы учились в \"Школе Заклинаний\" Общества Искателей или в другом подобном учебном заведении, но вне зависимости от того, подкрепляете ли вы свои слова магией, чтобы подчинять окружающих, занимаетесь ли возведением защитных оберегов вокруг своей мастерской или дестабилизируете саму структуру заклинаний противника, вы знаете, что эта непритязательная школа обладает элегантной силой.</p><p><strong>Заклинания факультета</strong></p><ul><li><strong>Чары:</strong> @UUID[Compendium.pf2e.spells-srd.Item.AUctDF2fqPZN2w4W], @UUID[Compendium.pf2e.spells-srd.Item.vLzFcIaSXs7YTIqJ]</li><li><strong>1-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.PRrZ7anETWPm90YY], @UUID[Compendium.pf2e.spells-srd.Item.aIHY2DArKFweIrpf], @UUID[Compendium.pf2e.spells-srd.Item.TFitdEOpQC4SzKQQ], @UUID[Compendium.pf2e.spells-srd.Item.EE7Q5BHIrfWNCPtT]</li><li><strong>2-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.vTQvfYu2llKQedmY], @UUID[Compendium.pf2e.spells-srd.Item.9HpwDN4MYQJnW0LG]</li><li><strong>3-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.EoKBlgf6Smt8opaU], @UUID[Compendium.pf2e.spells-srd.Item.IihxWhRfpsBgQ5jS]</li><li><strong>4-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.qwlh6aDgi86U3Q7H], @UUID[Compendium.pf2e.spells-srd.Item.JOdOpbPDl7nqvJUm]</li><li><strong>5-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.SwUiVavHKMWG7t5K], @UUID[Compendium.pf2e.spells-srd.Item.R9xqCBblkS5KE4y7]</li><li><strong>6-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.yrZA4k2VAqEP8xx7], @UUID[Compendium.pf2e.spells-srd.Item.8Umt1AzYfFbC4fui]</li><li><strong>7-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.XZE4BawIlTf88Yl9], @UUID[Compendium.pf2e.spells-srd.Item.WG91Z5TiR6oO5FOw]</li><li><strong>8-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.Oj1PJBMQD9vuwCv7], @UUID[Compendium.pf2e.spells-srd.Item.y2cQYLr5mljDSu1G]</li><li><strong>9-й:</strong> @UUID[Compendium.pf2e.spells-srd.Item.kUSShxXzY1sPtJA0]</li></ul><p><strong>Заклинания школы:</strong></p><ul><li><strong>Начальное:</strong> @UUID[Compendium.pf2e.spells-srd.Item.lY9fOk1qBDDhBT8s]</li><li><strong>Продвинутое:</strong> @UUID[Compendium.pf2e.spells-srd.Item.4LSf04FFvDgMyDk6]</li></ul>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "otherTags": [
+     "wizard-arcane-school"
+    ],
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ]
+   },
+   "slug": "school-of-ars-grammatica",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.wObrT6PytPdS5aUi",
+   "createdTime": 1795514473635,
+   "modifiedTime": 1795514473643,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "School of Ars Grammatica",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Improved Familiar Attunement": {
+  "img": "systems/pf2e/icons/features/classes/improved-familiar-attunement.webp",
+  "name": "Улучшенная связь с фамильяром",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "classfeature",
+   "description": {
+    "value": "<p>Вы уже давно считаете, что по сравнению с безопасной общепринятой мистической связью волшебника и фамильяра, которую в настоящее время использует большинство волшебников, более тонкая настройка магии может улучшить эту связь. Вы заключили такой договор со своим фамильяром, получив от него больше преимуществ, чем большинство волшебников. Вы получаете способность волшебника @UUID[Compendium.pf2e.feats-srd.Item.bcxIg7wi8ZAhvhOD]{Фамильяр}. Ваш фамильяр получает дополнительную способность, а еще по 1 дополнительной способности при достижении вами 6-го, 12-го и 18-го уровней.</p><p>Ваша связь с фамильяром изменяет особенность класса @UUID[Compendium.pf2e.classfeatures.Item.au0lwQ1nAcNQwcGh] так, что вы храните магическую энергию в фамильяре, а не в предмете; а еще получаете свободное действие <em>\"Истощить фамильяра\"</em> вместо @UUID[Compendium.pf2e.actionspf2e.Item.v82XtjAVN4ffgVVR]{Истощить предмет силы}. <em>\"Истощить фамильяра\"</em> может быть использована точно так же, как и <em>\"Истощить предмет силы\"</em> и функционирует идентично, за исключением того, что вы берете энергию из фамильяра, а не предмета.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "key": "ActiveEffectLike",
+     "mode": "add",
+     "path": "system.attributes.familiarAbilities.value",
+     "value": "match(when(lte(@actor.level, 5), 1), when(btwn(@actor.level, 6, 11), 2), when(btwn(@actor.level, 12, 17), 3), when(gte(@actor.level, 18), 4))"
+    },
+    {
+     "key": "GrantItem",
+     "uuid": "Compendium.pf2e.feats-srd.Item.bcxIg7wi8ZAhvhOD",
+     "flag": "familiar"
+    },
+    {
+     "itemType": "action",
+     "key": "ItemAlteration",
+     "mode": "override",
+     "predicate": [
+      "item:slug:drain-bonded-item"
+     ],
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.FeatDescription.Frequency.OncePerDay",
+       "title": "PF2E.Frequency.Label"
+      },
+      {
+       "text": "PF2E.SpecificRule.Wizard.ImprovedFamiliarAttunement.Requirements",
+       "title": "PF2E.FeatDescription.Requirements.Label"
+      },
+      {
+       "divider": true,
+       "text": "PF2E.SpecificRule.Wizard.ImprovedFamiliarAttunement.Description"
+      }
+     ]
+    },
+    {
+     "itemType": "action",
+     "key": "ItemAlteration",
+     "mode": "override",
+     "predicate": [
+      "item:slug:drain-bonded-item"
+     ],
+     "property": "name",
+     "value": "PF2E.SpecificRule.Wizard.ImprovedFamiliarAttunement.Name"
+    }
+   ],
+   "traits": {
+    "otherTags": [
+     "wizard-arcane-thesis"
+    ],
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ]
+   },
+   "slug": "improved-familiar-attunement",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.classfeatures.Item.SNZ46g3u7U6x0XJj",
+   "createdTime": 1795514473636,
+   "modifiedTime": 1795514473644,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "folder": null,
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Improved Familiar Attunement",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Familiar": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Фамильяр",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p><strong>Волшебник:</strong> Вы заключаете договор с существом, которое служит вам и помогает вашему колдовству.</p><p><strong>Магус, Чародей:</strong> Животное служит вам и помогает вашему колдовству.</p><p><strong>Тауматург:</strong> Будь то следуя оккультным ритуалам, собирая воедино обрывки арканной теории или каким-то иным способом, вы вызвали существо, которое теперь служит вам постоянным компаньоном в изучении сверхъестественного.</p><hr><p>Вы получаете фамильяра (см. <a href=\"https://clck.ru/YZyt4\">Фамильяры</a>).</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "key": "GrantItem",
+     "uuid": "Compendium.pf2e.feats-srd.Item.6yPrvbSDaa8glLjn",
+     "flag": "pet"
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "magus",
+     "sorcerer",
+     "thaumaturge",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "familiar",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.bcxIg7wi8ZAhvhOD",
+   "createdTime": 1795514473638,
+   "modifiedTime": 1795514473644,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Familiar",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Pet": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Питомец",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "general",
+   "description": {
+    "value": "<p>У вас появился питомец — Крошечное животное выбранного вами типа, например кошка, птица или грызун. У него признак @Trait[Minion]{миньон}, то есть он получает 2 действия во время вашего хода, если вы используете действие @UUID[Compendium.pf2e.actionspf2e.Item.q9nbyIF0PEBqMtYe]{Команда животному}; это заменяет обычные эффекты \"Команды животному\", и вам не нужно совершать проверку Природы. Питомец не может совершать действия атаки кроме @UUID[Compendium.pf2e.actionspf2e.Item.SkZAQRkLLkmBQNB9] и @UUID[Compendium.pf2e.actionspf2e.Item.SjmKHgI7a5Z9JzBx].</p><p><strong>Уровень:</strong> Уровень вашего питомца равен вашему уровню.</p><p><strong>Модификаторы и КБ:</strong> Модификаторы спасбросков и КБ вашего питомца равны вашим до применения бонусов и штрафов обстоятельства и состояния. Он использует 3 + ваш уровень как модификатор для Восприятия, Акробатики и Скрытности, и только ваш уровень как модификатор для других проверок навыков. У питомца нет и не может быть собственных модификаторов атрибутов, а также бонусов предмета.</p><p><strong>Очки здоровья:</strong> Ваш питомец имеет 5 ОЗ за уровень.</p><p><strong>Чувства:</strong> У вашего питомца сумеречное зрение и он может получить дополнительные чувства от способностей питомца.</p><p><strong>Скорость:</strong> Скорость вашего питомца — 25 футов. Вместо этого вы можете завести водного питомца, который дышит в воде, а не на воздухе, имеет признак @Trait[Aquatic]{водный}, наземная Скорость отсутствует, а Скорость плавания равна 25 футам.</p><p><strong>Способности питомцев:</strong> Когда вы получаете питомца, выберите две из следующих способностей. Если ваш питомец — животное, от природы обладающее одной из этих способностей (например у совы есть Скорость полёта), вы должны выбрать именно её. Ваш питомец не может быть животным, у которого от природы больше способностей, чем максимальное количество. В некоторых случаях Мастер может добавить к способностям питомца, которые вы можете выбрать, способности фамильяра.</p><ul><li><strong>Быстрый:</strong> Увеличивает одну из Скоростей вашего питомца с 25 до 40 футов.</li><li><strong>Земноводный:</strong> Он получает признак @Trait[Amphibious]{земноводное}, позволяющее ему дышать как на воздухе, так и в воде, и имеет как наземную Скорость, так и Скорость плавания, каждая из них равна его наибольшей из них.</li><li><strong>Крепкий:</strong> Максимальные ОЗ вашего питомца увеличиваются на 2 за уровень.</li><li><strong>Скалолаз:</strong> Получает Скорость карабканья 25 футов.</li><li><strong>Летун:</strong> Получает Скорость полёта 25 футов.</li><li><strong>Ловкость рук:</strong> Он может использовать вплоть до 2 своих конечностей, как если бы они были руками, чтобы использовать действия @Trait[Manipulate]{воздействия}.</li><li><strong>Ночное зрение:</strong> Он получает ночное зрение.</li><li><strong>Нюх:</strong> Ваш питомец может использовать нюх в качестве неточного чувства в радиусе 30 футов.</li><li><strong>Роющий:</strong> Он получает Скорость рытья 5 футов, позволяя ему копать ямы Крошечного размера.</li><li><strong>Эхолокация:</strong> Ваш питомец может использовать слух в качестве @UUID[Compendium.pf2e.journals.JournalEntry.S55aqwWIzpQRFhcq.JournalEntryPage.q2chuQ4Am5puc9Cc#tochnye-chuvstva]{Точного чувства} с дистанцией 20 футов.</li></ul><hr><p><strong>Особенность:</strong> Вы можете завести нового питомца, переобучив эту способность, освободив предыдущего питомца. Если впоследствии у вас появится фамильяр или другой компаньон, использующий способность <em>\"Питомец\"</em>, вы можете немедленно переобучить эту способность.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "key": "ActiveEffectLike",
+     "mode": "upgrade",
+     "path": "system.attributes.familiarAbilities.value",
+     "priority": 19,
+     "value": 2
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "general"
+    ],
+    "otherTags": []
+   },
+   "slug": "pet",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.6yPrvbSDaa8glLjn",
+   "createdTime": 1795514473640,
+   "modifiedTime": 1795514473644,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Pet",
+    "originalPayload": {},
+    "lang": "en"
+   },
+   "pf2e": {}
+  }
+ },
+ "Widen Spell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Расширенное заклинание",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы управляете энергией заклинания, заставляя его воздействовать на область шире обычного. Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]{Сотворение заклинания}, у которого есть область взрыва, конуса или линии, и оно не имеет продолжительности, то увеличьте область этого заклинания. Добавьте 5 футов к радиусу взрыва, обычно имеющего радиус хотя бы 10 футов (не изменяет взрыв с меньшим радиусом). Добавьте 5 футов к длине конуса или линии, обычно имеющих длину 15 футов или меньше, и добавьте 10 футов к длине бо́льшего конуса или линии.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 1
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "key": "RollOption",
+     "label": "PF2E.TraitSpellshape",
+     "mergeable": true,
+     "option": "spellshape",
+     "placement": "spellcasting",
+     "suboptions": [
+      {
+       "label": "{item|name}",
+       "value": "widen-spell"
+      }
+     ],
+     "toggleable": true
+    },
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "item:duration:0",
+      {
+       "or": [
+        {
+         "and": [
+          "item:area:type:burst",
+          {
+           "gte": [
+            "item:area:size",
+            10
+           ]
+          }
+         ]
+        },
+        {
+         "and": [
+          {
+           "or": [
+            "item:area:type:cone",
+            "item:area:type:line"
+           ]
+          },
+          {
+           "lte": [
+            "item:area:size",
+            15
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      "spellshape:widen-spell"
+     ],
+     "property": "area-size",
+     "value": 5
+    },
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "item:duration:0",
+      {
+       "or": [
+        "item:area:type:line",
+        "item:area:type:cone"
+       ]
+      },
+      {
+       "gt": [
+        "item:area:size",
+        15
+       ]
+      },
+      "spellshape:widen-spell"
+     ],
+     "priority": 119,
+     "property": "area-size",
+     "value": 10
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "druid",
+     "manipulate",
+     "oracle",
+     "sorcerer",
+     "spellshape",
+     "witch",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "widen-spell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.FoWO4RnHRwfEIC7Q",
+   "createdTime": 1795514543711,
+   "modifiedTime": 1795514543711,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Widen Spell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Call Wizardly Tools": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Призыв инструментов волшебника",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы мистически связаны со своими инструментами волшебника, поэтому всегда можете найти их, если потеряли. Вы телепортируете к себе предмет силы или книгу заклинаний. Он оказывается у вас в руке, если у вас есть свободная рука, или у ваших ног, если нет. Предмет должен находиться в радиусе 1 мили и иметь Массу 1 или меньше.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 4
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Арканная связь"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "concentrate",
+     "teleportation",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "call-wizardly-tools",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.9j90iE61ZToFR8cu",
+   "createdTime": 1795514552048,
+   "modifiedTime": 1795514643240,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Call Wizardly Tools",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Elemental Defense": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Стихийные защиты",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы настраиваетесь на силу стихий, получая всплеск защиты при обращении к ней. Если вашим следующим действием будет @UUID[Compendium.pf2e.actionspf2e.Item.aBQ8ajvEBByv45yz]{Сотворение заклинания}, обладающего хотя бы одним признаком стихии (@Trait[Water]{вода}, @Trait[Air]{воздух}, @Trait[Wood]{дерево}, @Trait[Earth]{земля}, @Trait[Metal]{металл} или @Trait[Fire]{огонь}), вы получаете сопротивление эффектам, имеющим признаки стихий вашего заклинания, равное удвоенному рангу заклинания. Это сопротивление длится до начала вашего следующего хода.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 2
+   },
+   "prerequisites": {
+    "value": []
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Impossible Magic",
+    "authors": ""
+   },
+   "rules": [],
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "spellshape",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "elemental-defense",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.JWsX6ro1OTGDz4p3",
+   "createdTime": 1795514639427,
+   "modifiedTime": 1795514644899,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Elemental Defense",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Undying Conviction": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Бессмертная уверенность",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Ваше присутствие оказывает укрепляющее воздействие на ваших @Trait[Minion]{миньонов}-нежить. Существа-@Trait[Undead]{нежить} под вашим контролем и в @Template[emanation|distance:30]{30-футовой эманации} от вас получают бонус состояния +2 к спасброскам против урона жизненности и к спасброскам Воли, чтобы сопротивляться эффектам, которые сделают их @UUID[Compendium.pf2e.conditionitems.Item.9qGBRpbX9NEwtAAr]{Под контролем}.</p><p>@UUID[Compendium.pf2e.feat-effects.Item.cGwFYusGTsJR3x3P]</p><p><strong>Особенность:</strong> Эта способность обладает признаком, соответствующим вашему магическому обучаю.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 4
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Жрец с наносящей раны божественной силой, оракул костей или волшебник-некромант"
+     },
+     {
+      "value": "Умение создавать или контролировать нежить"
+     }
+    ]
+   },
+   "publication": {
+    "license": "OGL",
+    "remaster": false,
+    "title": "Pathfinder Book of the Dead",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "effects": [
+      {
+       "affects": "allies",
+       "events": [
+        "enter"
+       ],
+       "includesSelf": false,
+       "predicate": [
+        "target:effect:under-control",
+        "target:mode:undead"
+       ],
+       "uuid": "Compendium.pf2e.feat-effects.Item.e6mv68aarIbQ3tXL"
+      }
+     ],
+     "key": "Aura",
+     "radius": 30,
+     "slug": "undying-conviction"
+    }
+   ],
+   "traits": {
+    "rarity": "uncommon",
+    "value": [
+     "aura",
+     "cleric",
+     "oracle",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "undying-conviction",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.xSYkYRKlSyLzPrH1",
+   "createdTime": 1795514657588,
+   "modifiedTime": 1795514657588,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Undying Conviction",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Advanced School Spell": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Продвинутое заклинание школы",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Вы получаете доступ к новому продвинутым учениям вашего арканного института, изучая новое мощное заклинание школы. Вы получаете продвинутое заклинание своей арканной школы.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 8
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Арканная школа"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "advanced-school-spell",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.5hUj7glY8YnO5sBI",
+   "createdTime": 1795514664629,
+   "modifiedTime": 1795514664629,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Advanced School Spell",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Bond Conservation": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Экономное истощение",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p><strong>Требования:</strong> Последнее использованное действие @UUID[Compendium.pf2e.actionspf2e.Item.v82XtjAVN4ffgVVR].</p><hr><p>Осторожно и эффективно управляя арканными энергиями, сохраненными в вашем предмете силы, по мере его истощения, вы можете сберечь достаточно силы, чтобы сотворить другое заклинание, которое чуть слабее.</p><p>Вы получаете дополнительное использование умения <em>\"Истощить предмет силы\"</em>. Вы можете использовать его на сотворение заклинания на 2 или более ранга ниже, чем предыдущее заклинание, и должны использовать его до конца своего следующего хода, иначе потеряете его.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 8
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Арканная связь"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [
+    {
+     "itemType": "spell",
+     "key": "ItemAlteration",
+     "mode": "add",
+     "predicate": [
+      "feature:arcane-bond",
+      "spellshape:bond-conservation"
+     ],
+     "property": "description",
+     "value": [
+      {
+       "text": "PF2E.SpecificRule.Spellshape.BondConservation"
+      }
+     ]
+    },
+    {
+     "key": "RollOption",
+     "label": "PF2E.TraitSpellshape",
+     "mergeable": true,
+     "option": "spellshape",
+     "placement": "spellcasting",
+     "suboptions": [
+      {
+       "label": "{item|name}",
+       "value": "bond-conservation"
+      }
+     ],
+     "toggleable": true
+    }
+   ],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "manipulate",
+     "spellshape",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "bond-conservation",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.vhHKUooXX3PYqGaU",
+   "createdTime": 1795514672765,
+   "modifiedTime": 1795514672766,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Bond Conservation",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Shared Focus": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Общая фокусировка",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Ваше магическое мастерство позволяет вам совершить метафорический трюк для воплощения Очка Фокусировки. Выберите согласного союзника в радиусе 30 футов, у которого тоже есть запас Очков Фокусировки. Цель получает 1 временное ОФ до начала вашего следующего хода, после чего исчезает, даже если не было использовано. Это временное ОФ считается отдельно от Очков Фокусировке в запасе цели, позволяя иметь его даже если у цели максимальное количество своих ОФ. Существо становится временно иммунным к <em>\"Общей фокусировке\"</em> до своих следующих ежедневных приготовлений.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 10
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Запас очков фокусировки"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Impossible Magic",
+    "authors": ""
+   },
+   "rules": [],
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "concentrate",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "shared-focus",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.fCHB8wNlr5q0THRG",
+   "createdTime": 1795514683910,
+   "modifiedTime": 1795514683910,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Shared Focus",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Necromancer's Visage": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Облик некроманта",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Некромантическая энергия демонстрирует вашу власть над нежитью, создавая образ, вызывающий у них страх и уважение. Существа-@Trait[Undead]{нежить} могут мгновенно почувствовать ваш <em>\"Облик некроманта\"</em> и склонны действовать соответственно. Если вы совершаете враждебное действие против существа-@Trait[Undead]{нежити}, оно становится навсегда иммунным к вашему <em>\"Облику некроманта\"</em>, и действие вашего <em>\"Облика некроманта\"</em> заканчивается. Вы можете потратить 10 минут, чтобы восстановить свой <em>\"Облик некроманта\"</em>, но любые существа, ставшие навсегда иммунными, остаются таковыми.</p><p>Каждый раз, когда вас атакует существо-нежить на 2 или более уровней ниже вас, оно должно совершить спасбросок @Check[will|against:spell]{Воли} против вашего КС заклинаний. Если на вас еще действует @UUID[Compendium.pf2e.spells-srd.Item.8xRzLhwGL7Dgy3EZ]{Убежище} или аналогичный эффект, то на атакующего подействует только 1 из них (вы выбираете, какой).</p><hr><p><strong>Критический успех:</strong> Существо навсегда иммунно к вашему <em>\"Облику некроманта\"</em>.</p><p><strong>Успех:</strong> Существо может совершить свою атаку и любые другие атаки по вам в этом ходу.</p><p><strong>Провал:</strong> Существо не может атаковать вас и впустую тратит свое действие. Оно не может пытаться наносить вам дальнейшие атаки в этом ходу.</p><p><strong>Критический провал:</strong> Существо впустую расходует это действие и не может атаковать вас пока действует ваш <em>\"Облик некроманта\"</em>.</p><p><strong>Особенность:</strong> Эта способность обладает признаком, соответствующим вашему магическому обучаю.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 12
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Жрец с наносящей раны божественной силой, оракул костей или волшебник-некромант"
+     },
+     {
+      "value": "Умение создавать или контролировать нежить"
+     }
+    ]
+   },
+   "publication": {
+    "license": "OGL",
+    "remaster": false,
+    "title": "Pathfinder Book of the Dead",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "uncommon",
+    "value": [
+     "cleric",
+     "oracle",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "necromancers-visage",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.PxBQ4JdaPS2KTAG7",
+   "createdTime": 1795514691030,
+   "modifiedTime": 1795514691030,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Necromancer's Visage",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Sepulchral Sublimation": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Замогильное очищение",
+  "system": {
+   "actionType": {
+    "value": "action"
+   },
+   "actions": {
+    "value": 1
+   },
+   "category": "class",
+   "description": {
+    "value": "<p><strong>Требования:</strong> У вас есть хотя бы 1 @Trait[Minion]{миньон}-@Trait[Undead]{нежить} которого вы постоянно контролируете</p><hr><p>Вы в мгновение ока перерабатываете энергию пустоты, протекающую через ваших миньонов. Мгновенно уничтожьте 1 @Trait[Minion]{миньона}-@Trait[Undead]{нежить} в радиусе 60 футов, который постоянно находится под вашим контролем. Если ваше следующее действие — сотворение заклинания <a href=\"https://clck.ru/jk85T\"><s>`некромантии`</s></a> из слота заклинания, то вы не тратите этот слот. Уровень этого заклинания должен быть хотя бы в 2 раза ниже уровня уничтоженного миньона, и заклинание не может иметь продолжительности.</p><p><strong>Особенность:</strong> Эта способность обладает признаком, соответствующим вашему магическому обучаю.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 14
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Жрец с наносящей раны божественной силой, оракул костей или волшебник-некромант"
+     },
+     {
+      "value": "Умение навсегда создавать или контролировать нежить"
+     }
+    ]
+   },
+   "publication": {
+    "license": "OGL",
+    "remaster": false,
+    "title": "Pathfinder Book of the Dead",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "uncommon",
+    "value": [
+     "cleric",
+     "concentrate",
+     "oracle",
+     "spellshape",
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "sepulchral-sublimation",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.wnrlBkwVr8BSVAZt",
+   "createdTime": 1795514702080,
+   "modifiedTime": 1795514702080,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Sepulchral Sublimation",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ },
+ "Superior Bond": {
+  "folder": null,
+  "img": "icons/sundries/books/book-red-exclamation.webp",
+  "name": "Превосходный предмет силы",
+  "system": {
+   "actionType": {
+    "value": "passive"
+   },
+   "actions": {
+    "value": null
+   },
+   "category": "class",
+   "description": {
+    "value": "<p>Когда вы истощаете предмет силы, то можете оставить внутри немного энергии, чтобы использовать её потом. Вы можете @UUID[Compendium.pf2e.actionspf2e.Item.v82XtjAVN4ffgVVR]{Истощить предмет силы} 1 дополнительный раз в день, но только чтобы сотворять заклинание на 2 или более ранга ниже, чем ваш максимальный ранг слота волшебника.</p>",
+    "gm": ""
+   },
+   "level": {
+    "value": 14
+   },
+   "prerequisites": {
+    "value": [
+     {
+      "value": "Арканная связь"
+     }
+    ]
+   },
+   "publication": {
+    "license": "ORC",
+    "remaster": true,
+    "title": "Pathfinder Player Core",
+    "authors": ""
+   },
+   "rules": [],
+   "traits": {
+    "rarity": "common",
+    "value": [
+     "wizard"
+    ],
+    "otherTags": []
+   },
+   "slug": "superior-bond",
+   "_migration": {
+    "version": 0.961,
+    "previous": null
+   },
+   "onlyLevel1": false,
+   "maxTakable": 1,
+   "subfeatures": {
+    "proficiencies": {},
+    "senses": {},
+    "suppressedFeatures": []
+   },
+   "location": null
+  },
+  "type": "feat",
+  "_stats": {
+   "coreVersion": "14.369",
+   "systemId": "pf2e",
+   "systemVersion": "8.7.1",
+   "compendiumSource": "Compendium.pf2e.feats-srd.Item.GsrwoQ7DIjERXuPf",
+   "createdTime": 1795514708550,
+   "modifiedTime": 1795514708551,
+   "lastModifiedBy": null,
+   "duplicateSource": null,
+   "exportSource": null
+  },
+  "effects": [],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {
+   "babele": {
+    "translated": true,
+    "hasTranslation": true,
+    "originalName": "Superior Bond",
+    "originalPayload": {},
+    "lang": "en"
+   }
+  }
+ }
+}

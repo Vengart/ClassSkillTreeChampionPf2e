@@ -86,6 +86,26 @@ function featsFit(featIds, level, chosen = state.chosen) {
 
 const chosenFeats = (chosen = state.chosen) => [...chosen].filter((id) => NODES.get(id).kind === 'feat');
 
+/**
+ * Раскладка взятых черт по ячейкам: каждая черта (от младшей к старшей) — в самую младшую
+ * свободную ячейку не ниже её уровня. Считается заново при каждом изменении, поэтому черты
+ * сами сдвигаются, освобождая место: ячейки 2, 4, 6 и черты 2, 2, 4 → 2:2, 4:2, 6:4.
+ * Возвращает [{ level, feat|null }] и черты, которым ячейки не хватило.
+ */
+function slotAssignment(level = state.level, chosen = state.chosen) {
+    const slots = slotLevels(level, chosen).map((l) => ({ level: l, feat: null }));
+    const feats = chosenFeats(chosen).map((id) => NODES.get(id))
+        .sort((a, b) => a.level - b.level || a.name.localeCompare(b.name, 'ru'));
+    const overflow = [];
+    let s = 0;
+    for (const f of feats) {
+        while (s < slots.length && slots[s].level < f.level) s++;
+        if (s < slots.length) slots[s++].feat = f;
+        else overflow.push(f);
+    }
+    return { slots, overflow };
+}
+
 /** Сколько вариантов группы можно взять (благословение поборника — 1, с чертой — 2). */
 function groupLimit(gid, chosen = state.chosen) {
     const g = CARD_GROUP.get(gid);
@@ -787,13 +807,23 @@ function renderPanel() {
     $('#root-total').textContent = total;
     nodeEls.get('root')?.querySelector('.root-points').classList.toggle('over', used > total);
 
-    const feats = DATA.nodes.filter((n) => n.kind === 'feat' && (state.chosen.has(n.id) || grantedBy(n)))
+    // ячейки черт по уровням: занятые — с чертой, свободные — пустые; черты, которые даёт
+    // другой выбор (ячейку не тратят), — отдельно сверху
+    const { slots, overflow } = slotAssignment();
+    const granted = DATA.nodes.filter((n) => n.kind === 'feat' && grantedBy(n))
         .sort((a, b) => a.level - b.level || a.name.localeCompare(b.name, 'ru'));
-    $('#feat-list').innerHTML = feats.map((f) =>
-        `<li><button class="feat-item" data-focus="${f.id}"><span class="lvl">${f.level}</span>${esc(f.name)}` +
-        `${grantedBy(f) ? ` <small class="muted">— даёт «${esc(grantedBy(f).name)}»</small>` : ''}</button></li>`).join('');
-    $('#feat-empty').hidden = feats.length > 0;
-    $('#feat-count').textContent = feats.length ? `(${feats.length})` : '';
+    const featRow = (f, lvl, note = '') =>
+        `<li><button class="feat-item" data-focus="${f.id}"><span class="lvl">${lvl}</span>${esc(f.name)}${note}</button></li>`;
+    $('#feat-list').innerHTML = [
+        ...granted.map((f) => featRow(f, f.level, ` <small class="muted">— даёт «${esc(grantedBy(f).name)}»</small>`)
+            .replace('class="lvl"', 'class="lvl lvl-free"')),
+        ...slots.map((sl) => (sl.feat
+            ? featRow(sl.feat, sl.level, sl.feat.level < sl.level ? ` <small class="muted">ур. ${sl.feat.level}</small>` : '')
+            : `<li class="slot-empty"><span class="lvl">${sl.level}</span>Свободная ячейка</li>`)),
+        ...overflow.map((f) => featRow(f, f.level, ' <small class="over">— нет ячейки</small>')),
+    ].join('');
+    $('#feat-empty').hidden = slots.length + granted.length + overflow.length > 0;
+    $('#feat-count').textContent = slots.length ? `(${used} / ${total})` : '';
 }
 
 // ---------- подсказка и подробности ----------
@@ -1181,9 +1211,162 @@ function resetBuild() {
 }
 // подтверждение больше не нужно: сброс можно отменить
 for (const b of document.querySelectorAll('[data-reset]')) b.addEventListener('click', resetBuild);
+// ---------- экспорт: персонаж для Foundry VTT (у классов с данными Foundry) или ссылка на сборку ----------
+
+/** Данные экспорта (data/<класс>/build/foundry.js) грузятся только по нажатию «Экспорт». */
+function loadFoundry() {
+    if (window.CLASS_FOUNDRY) return Promise.resolve(window.CLASS_FOUNDRY);
+    return new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = `data/${CLASS_ID}/build/${META.foundry}`;
+        s.onload = () => resolve(window.CLASS_FOUNDRY);
+        s.onerror = () => reject(new Error('нет данных Foundry'));
+        document.body.appendChild(s);
+    });
+}
+const ID_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+const newId = () => [...crypto.getRandomValues(new Uint8Array(16))].map((x) => ID_CHARS[x % 62]).join('');
+const camelSlug = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''));
+
+/**
+ * Персонаж Foundry (pf2e) по сборке: шаблон (класс, особенности класса до текущего уровня,
+ * действия, запись заклинаний — всё как в выгруженном персонаже) + выбор школы и диссертации
+ * + классовые черты по ячейкам (location «class-N»). Связи выдачи (GrantItem) — как их ставит
+ * сама система: у выдающего flags.pf2e.itemGrants, у выданного flags.pf2e.grantedBy.
+ */
+function buildFoundryActor(F) {
+    const actor = structuredClone(F.template);
+    const level = state.level;
+    const missing = [];
+    const cls = actor.items.find((it) => it.type === 'class');
+    // особенности класса выше уровня не кладём — Foundry добавит их сам при повышении уровня
+    const drop = new Set(actor.items.filter((it) => it.type === 'feat' && it.system.location === cls._id
+        && (it.system.level?.value || 0) > level).map((it) => it._id));
+    for (let grew = true; grew;) {
+        grew = false;
+        for (const it of actor.items) {
+            const g = it.flags?.pf2e?.grantedBy?.id;
+            if (g && drop.has(g) && !drop.has(it._id)) { drop.add(it._id); grew = true; }
+        }
+    }
+    actor.items = actor.items.filter((it) => !drop.has(it._id));
+    // новые id (как у созданного заново персонажа) и ссылки на них
+    const ids = new Map(actor.items.map((it) => [it._id, newId()]));
+    for (const it of actor.items) {
+        it._id = ids.get(it._id);
+        if (ids.has(it.system.location)) it.system.location = ids.get(it.system.location);
+        const pf = it.flags?.pf2e;
+        if (pf?.grantedBy) pf.grantedBy.id = ids.get(pf.grantedBy.id) || pf.grantedBy.id;
+        if (pf?.itemGrants) {
+            for (const [k, v] of Object.entries(pf.itemGrants)) {
+                if (ids.has(v.id)) v.id = ids.get(v.id);
+                else delete pf.itemGrants[k];
+            }
+        }
+    }
+    const items = actor.items;
+
+    // fresh — флаг выдачи по выбранному предмету (в правиле шаблона остаётся флаг прошлого выбора)
+    const link = (parent, child, rule, fresh = false) => {
+        const own = camelSlug(child.system.slug || child.flags?.babele?.originalName || child.name);
+        const flag = (!fresh && rule?.flag) || own;
+        if (rule) rule.flag = flag;
+        parent.flags = parent.flags || {};
+        parent.flags.pf2e = parent.flags.pf2e || {};
+        (parent.flags.pf2e.itemGrants = parent.flags.pf2e.itemGrants || {})[flag] = { id: child._id, onDelete: 'detach' };
+        child.flags = child.flags || {};
+        child.flags.pf2e = { ...(child.flags.pf2e || {}), grantedBy: { id: parent._id, onDelete: 'cascade' } };
+        child.system.location = null;
+    };
+    /** Добавить предмет из библиотеки и то, что он выдаёт напрямую (GrantItem с готовой ссылкой). */
+    const add = (uuid, { location = null, taken = null } = {}) => {
+        const src = F.items[uuid];
+        if (!src) { missing.push(uuid); return null; }
+        const it = structuredClone(src);
+        it._id = newId();
+        it.sort = 0;
+        it.system.location = location;
+        if (taken && it.system.level) it.system.level.taken = taken;
+        items.push(it);
+        for (const r of it.system.rules || []) {
+            if (r.key !== 'GrantItem' || !F.items[r.uuid]) continue;
+            const child = add(r.uuid);
+            if (child) link(it, child, r);
+        }
+        return it;
+    };
+    /** Выбор (ChoiceSet) у предмета parent с флагом flag и выдача выбранного (GrantItem по этому выбору). */
+    const choose = (parent, flag, uuid) => {
+        if (!parent || !uuid) return null;
+        const rules = parent.system.rules || [];
+        const cs = rules.find((r) => r.key === 'ChoiceSet' && r.flag === flag);
+        const gr = rules.find((r) => r.key === 'GrantItem' && String(r.uuid).includes(`rulesSelections.${flag}`));
+        if (cs) cs.selection = uuid;
+        const child = add(uuid);
+        if (child) link(parent, child, gr, true);
+        return child;
+    };
+    const bySlug = (slug) => items.find((it) => it.system?.slug === slug);
+    const chosenIn = (gid) => [...state.chosen].find((id) => NODES.get(id).group === gid);
+
+    const school = choose(bySlug('arcane-school'), 'arcaneSchool', F.nodes[chosenIn('group-school')]);
+    choose(bySlug('arcane-thesis'), 'arcaneThesis', F.nodes[chosenIn('group-thesis')]);
+    for (const id of ['group-school', 'group-thesis']) {
+        const c = chosenIn(id);
+        if (c && !F.nodes[c]) missing.push(NODES.get(c).name);
+    }
+    // классовые черты по ячейкам; ячейка 1-го уровня — от школы единой магической теории (её выбор)
+    const { slots, overflow } = slotAssignment();
+    for (const sl of slots) {
+        if (!sl.feat) continue;
+        const uuid = F.nodes[sl.feat.id];
+        if (!uuid) { missing.push(sl.feat.name); continue; }
+        if (sl.level === 1 && school) choose(school, 'feat', uuid);
+        else add(uuid, { location: `class-${sl.level}`, taken: sl.level });
+    }
+    for (const f of overflow) if (F.nodes[f.id]) add(F.nodes[f.id]); else missing.push(f.name);
+
+    const name = `${cls.name} (${level} ур.)`;
+    actor.name = name;
+    if (actor.prototypeToken) actor.prototypeToken.name = name;
+    actor.system.details.level.value = level;
+    actor._stats = { ...(actor._stats || {}), exportSource: null };
+    return { actor, missing: missing.map((m) => (F.items[m] ? F.items[m].name : m)) };
+}
+
+function download(filename, text) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+}
+
+/** Ссылка на сборку. От location.href, а не origin: у страницы, открытой с диска (file://), origin — «null». */
+function buildUrl() {
+    const u = new URL(location.href);
+    u.search = `?class=${CLASS_ID}`;
+    u.hash = `b=${encodeURIComponent(encodeBuild())}`;
+    return u.href;
+}
 $('#btn-share').addEventListener('click', async () => {
-    const url = `${location.origin}${location.pathname}?class=${CLASS_ID}#b=${encodeURIComponent(encodeBuild())}`;
-    history.replaceState(null, '', url);
+    const url = buildUrl();
+    // адресная строка — по возможности (с диска браузер может запретить); экспорт от этого не зависит
+    try { history.replaceState(null, '', url); } catch { /* file:// */ }
+    if (META.foundry) {
+        try {
+            const { actor, missing } = buildFoundryActor(await loadFoundry());
+            download(`fvtt-Actor-${CLASS_ID}-level${state.level}.json`, JSON.stringify(actor, null, 2));
+            toast(missing.length
+                ? `Файл для Foundry сохранён, но без: ${missing.join(', ')} — их нет в Foundry`
+                : 'Файл для Foundry сохранён. В Foundry: ПКМ по персонажу → Import Data', missing.length > 0);
+        } catch (e) {
+            console.error(e);
+            toast('Не удалось собрать файл для Foundry', true);
+        }
+        return;
+    }
     try { await navigator.clipboard.writeText(url); toast('Ссылка на сборку скопирована'); } catch { toast('Ссылка в адресной строке'); }
 });
 $('#panel').addEventListener('click', (ev) => {

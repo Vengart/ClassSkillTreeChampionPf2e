@@ -85,6 +85,8 @@ async function checkClass(cls) {
         let data;
         try { data = JSON.parse(await fs.readFile(path.join(manualDir, f), 'utf8')); } catch (e) { err(where, `не JSON: ${e.message}`); continue; }
         manual[f.replace(/\.json$/, '')] = data;
+        // foundry-*.json — выгрузка из Foundry VTT (tools/import-foundry-actors.mjs), её формат задаёт система pf2e
+        if (!data.$schema && f.startsWith('foundry-')) continue;
         if (!data.$schema) { warn(where, 'нет поля $schema — схема не проверяется'); continue; }
         const schemaFile = path.resolve(manualDir, data.$schema);
         if (!(await exists(schemaFile))) { err(where, `нет схемы ${data.$schema}`); continue; }
@@ -125,6 +127,7 @@ async function checkClass(cls) {
     for (const b of rules.bonusSlots || []) idRef(`${R} bonusSlots`, b.id);
     for (const b of rules.blessings || []) idRef(`${R} blessings`, b.id);
     for (const k of ['schoolUnified', 'thesisFamiliar']) if (rules[k]) idRef(`${R} ${k}`, rules[k]);
+    for (const name of rules.excludeFeats || []) nameRef(`${R} excludeFeats`, name);
     for (const name of rules.outsideFeats || []) if (featNames.has(name)) warn(`${R} outsideFeats`, `«${name}» есть среди черт класса`);
     for (const re of rules.passivePrereq || []) { try { new RegExp(re, 'i'); } catch (e) { err(`${R} passivePrereq`, e.message); } }
 

@@ -62,7 +62,6 @@
     "Shared Focus": "theme-bond",
     "Bonded Focus": "theme-bond",
     "Superior Bond": "theme-bond",
-    "Irezoko Tattoo": "theme-bond",
     "Convincing Illusion": "theme-mind",
     "Spellbinding Speech": "theme-mind",
     "Helt's Spelldance": "theme-mind",
@@ -103,6 +102,12 @@
   "outsideFeats": [
     "Quick Recognition"
   ],
+  "excludeFeats": [
+    "Irezoko Tattoo"
+  ],
+  "foundryNames": {
+    "Counterspell": "Counterspell (Prepared)"
+  },
   "bonusSlots": [
     {
       "id": "school-unified-magical-theory",

@@ -96,7 +96,9 @@
     "schoolUnified": { "$ref": "#/definitions/nodeId", "description": "волшебник: школа единой теории (бонусная ячейка)" },
     "thesisFamiliar": { "$ref": "#/definitions/nodeId", "description": "волшебник: диссертация, дающая фамильяра" },
     "passivePrereq": { "type": "array", "items": { "type": "string" }, "description": "волшебник: регулярные выражения (без учёта регистра) для критериев, которые дерево не отслеживает" },
-    "outsideFeats": { "type": "array", "items": { "type": "string" }, "description": "волшебник: черты-критерии вне дерева" }
+    "outsideFeats": { "type": "array", "items": { "type": "string" }, "description": "волшебник: черты-критерии вне дерева" },
+    "foundryNames": { "type": "object", "additionalProperties": { "type": "string" }, "description": "волшебник: название черты в Foundry VTT, если отличается от AoN (для экспорта)" },
+    "excludeFeats": { "type": "array", "items": { "type": "string" }, "description": "волшебник: черты (английские названия), которые не входят в дерево" }
   },
   "definitions": {
     "nodeId": { "type": "string", "pattern": "^[a-z]+(-[a-z0-9]+)*$" }

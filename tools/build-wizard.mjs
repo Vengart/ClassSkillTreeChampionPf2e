@@ -16,6 +16,7 @@
 import { computeTreeLayout, GEOMETRY } from './tree-layout.mjs';
 import { readSource, readManual, writeBuild, isMain } from './class-build.mjs';
 import { wizardTranslations } from './build-wizard-i18n.mjs';
+import { writeWizardFoundry } from './build-wizard-foundry.mjs';
 
 // ---------- ручные данные (data/wizard/manual) ----------
 
@@ -44,6 +45,8 @@ const THEME_IMAGE = Object.fromEntries(THEMES.map((t) => [t.id, t.image]));
 const PASSIVE_PREREQ = rules.passivePrereq.map((re) => new RegExp(re, 'i'));
 /** Черты-критерии вне дерева (общие/навыковые) — без предупреждения. */
 const OUTSIDE_FEATS = new Set(rules.outsideFeats);
+/** Черты, которые в дерево не входят (например, уникальные для региона). */
+const EXCLUDE_FEATS = new Set(rules.excludeFeats || []);
 /** Ручные критерии по английскому названию черты ('@Имя' — id черты по названию). */
 const OVERRIDES = rules.overrides;
 
@@ -81,7 +84,7 @@ export function buildWizardGraph(raw) {
     for (const th of THEMES) add({ id: th.id, kind: 'hub', name: th.name, level: 0, image: th.image, html: th.html, requires: [] });
 
     // --- Черты ---
-    const feats = raw.feats.filter((f) => f.level <= MAX_LEVEL);
+    const feats = raw.feats.filter((f) => f.level <= MAX_LEVEL && !EXCLUDE_FEATS.has(f.nameEn));
     const featIds = new Set(feats.map((f) => f.id));
     const idByName = new Map(feats.map((f) => [f.nameEn, `feat-${f.id}`]));
     for (const f of feats) {
@@ -168,7 +171,10 @@ export function buildWizardGraph(raw) {
 /** Собрать волшебника: граф и тексты всех переводов → data/wizard/build/. */
 export async function writeWizard(raw, by) {
     const graph = buildWizardGraph(raw);
-    await writeBuild('wizard', graph, labels.langs, await wizardTranslations(graph, labels), by);
+    const texts = await wizardTranslations(graph, labels);
+    // экспорт в Foundry VTT: предметы системы pf2e с русскими текстами (build/foundry.js)
+    if (await writeWizardFoundry(graph, texts.doc, rules)) graph.meta.foundry = 'foundry.js';
+    await writeBuild('wizard', graph, labels.langs, texts, by);
 }
 
 // запуск как скрипта: пересобрать из data/wizard/source/aon.json
