@@ -3,3 +3,10 @@ node_modules/
 
 # скриншоты Foundry с переводом Дока и Юры — исходник для data/wizard-i18n (в репозиторий не кладём)
 images/foundryDocTranslation/
+
+# скриншоты Foundry с переводом Дока и Юры для поборника — исходник data/champion/manual/doc-yura.json
+images/foundryDocTranslationChamp/
+
+# рабочие выгрузки (отчёты по переводам, списки черт)
+checkin.txt
+feats-*.txt

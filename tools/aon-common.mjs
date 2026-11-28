@@ -1,0 +1,133 @@
+// ============================================================
+// Общее для загрузчиков Archives of Nethys (2e.aonprd.com): поиск в открытом индексе
+// https://elasticsearch.aonprd.com/aon (без ключей; сайт AoN сам строит страницы из него)
+// и перевод их разметки (markdown + свои теги) в HTML.
+// ============================================================
+
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { DATA_DIR, FORCE } from './pf2-common.mjs';
+
+export const ES = 'https://elasticsearch.aonprd.com/aon/_search';
+export const SITE = 'https://2e.aonprd.com';
+
+/** Поиск в индексе AoN с кешем в data/cache/<cacheName>. */
+export function makeSearch(cacheName) {
+    const CACHE = path.join(DATA_DIR, 'cache', cacheName);
+    return async function search(name, body) {
+    const file = path.join(CACHE, `${name}.json`);
+    if (!FORCE) {
+        try { return JSON.parse(await fs.readFile(file, 'utf8')); } catch { /* нет в кеше */ }
+    }
+    const res = await fetch(ES, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0 (feat-tree fetcher)' },
+        body: JSON.stringify(body),
+    });
+    if (!res.ok) throw new Error(`${res.status} ${ES} (${name})`);
+    const docs = (await res.json()).hits.hits.map((h) => h._source);
+    await fs.mkdir(CACHE, { recursive: true });
+    await fs.writeFile(file, JSON.stringify(docs, null, 1), 'utf8');
+    return docs;
+    };
+}
+
+// ---------- разметка AoN (markdown + свои теги) → HTML ----------
+
+export const ACTION_KEY = { 'Single Action': '1', 'Two Actions': '2', 'Three Actions': '3', 'Free Action': '4', Reaction: '5' };
+export const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+export function inline(s) {
+    return s
+        .replace(/<actions string="([^"]*)"\s*\/>/g, (_, a) => (ACTION_KEY[a] ? `<span class="action-icon">${ACTION_KEY[a]}</span>` : ''))
+        .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, u) => `<a href="${u.startsWith('/') ? SITE + u : u}">${t}</a>`)
+        .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>')
+        .replace(/(^|[\s(])\*([^*\s][^*]*?)\*(?=[\s.,;:)]|$)/g, '$1<i>$2</i>')
+        .replace(/(^|[\s(])_([^_\s][^_]*?)_(?=[\s.,;:)]|$)/g, '$1<i>$2</i>');
+}
+
+export function aonToHtml(md) {
+    if (!md) return '';
+    const text = md
+        .replace(/\r/g, '')
+        .replace(/<title[\s\S]*?<\/title>/g, '')
+        .replace(/<traits>[\s\S]*?<\/traits>/g, '')
+        .replace(/<\/?(column|row|aside|additional-info|document|summary|spoilers|center|nethys-search|filter-buttons)[^>]*>/g, '\n')
+        .replace(/<br\s*\/?>/g, '\n<br>\n');
+    const out = [];
+    for (const block of text.split(/\n\s*\n/)) {
+        const lines = block.split('\n').map((l) => l.trim()).filter((l) => l && l !== '<br>');
+        if (!lines.length) continue;
+        if (lines.length === 1 && /^-{3,}$/.test(lines[0])) { out.push('<hr>'); continue; }
+        if (lines.every((l) => /^[-*] /.test(l))) {
+            out.push(`<ul>${lines.map((l) => `<li>${inline(l.slice(2))}</li>`).join('')}</ul>`);
+            continue;
+        }
+        if (lines.every((l) => /^\|.*\|$/.test(l))) {
+            const rows = lines.filter((l) => !/^\|[\s:|-]+\|$/.test(l))
+                .map((l) => l.slice(1, -1).split('|').map((c) => inline(c.trim())));
+            out.push(`<table>${rows.map((r, i) => `<tr>${r.map((c) => (i ? `<td>${c}</td>` : `<th>${c}</th>`)).join('')}</tr>`).join('')}</table>`);
+            continue;
+        }
+        let i = 0;
+        const para = [];
+        for (; i < lines.length; i++) {
+            const h = lines[i].match(/^#{1,6}\s+(.*)$/);
+            if (h) { if (para.length) out.push(`<p>${inline(para.splice(0).join(' '))}</p>`); out.push(`<h4>${inline(h[1])}</h4>`); }
+            else if (/^-{3,}$/.test(lines[i])) { if (para.length) out.push(`<p>${inline(para.splice(0).join(' '))}</p>`); out.push('<hr>'); }
+            else if (/^[-*] /.test(lines[i])) { if (para.length) out.push(`<p>${inline(para.splice(0).join(' '))}</p>`); out.push(`<ul><li>${inline(lines[i].slice(2))}</li></ul>`); }
+            else para.push(lines[i]);
+        }
+        if (para.length) out.push(`<p>${inline(para.join(' '))}</p>`);
+    }
+    return out.join('').replace(/<\/ul><ul>/g, '');
+}
+
+/** Разбор записи: шапка (Source / Prerequisites / Requirements …) и тело после первой черты «---». */
+export function splitDoc(md) {
+    const m = (md || '').replace(/\r/g, '').match(/^([\s\S]*?)\n-{3,}\n([\s\S]*)$/);
+    const head = m ? m[1] : '';
+    const body = m ? m[2] : md || '';
+    const fields = {};
+    for (const f of head.matchAll(/\*\*([A-Z][A-Za-z ]+)\*\*\s*([\s\S]*?)(?=\n\s*\*\*[A-Z][A-Za-z ]+\*\*|<\/column>|$)/g)) {
+        fields[f[1].trim()] = f[2].replace(/<\/?column[^>]*>/g, '').trim();
+    }
+    return { fields, body };
+}
+
+export const idFromUrl = (u) => Number((u || '').match(/ID=(\d+)/)?.[1]);
+export const slugify = (s) => s.toLowerCase().replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+export const remasterOnly = (docs) => docs.filter((d) => !d.remaster_id?.length);
+/** Записи до Player Core без пары в Remaster помечаются legacy. */
+export const isLegacy = (d) => !d.legacy_id?.length && (d.release_date || '') < '2023-11-01';
+
+/**
+ * Черта из записи индекса AoN: шапка (критерии, требования, триггер…), дескрипторы, описание.
+ * remapId — старый id черты → id её версии Remaster (критерии иногда ссылаются на старую копию).
+ */
+export function featFromDoc(d, remapId = new Map()) {
+    const { fields, body } = splitDoc(d.markdown);
+    const prereqMd = fields.Prerequisites || '';
+    const prereqLinks = [...prereqMd.matchAll(/\[([^\]]+)\]\(\/Feats\.aspx\?ID=(\d+)\)/g)]
+        .map((m) => ({ type: 'feat', id: remapId.get(Number(m[2])) || Number(m[2]), name: m[1] }));
+    const extra = {};
+    for (const k of ['Requirements', 'Trigger', 'Frequency', 'Access', 'Cost']) if (fields[k]) extra[k] = inline(fields[k]);
+    const traits = [...(d.markdown || '').matchAll(/<trait label="([^"]+)"/g)].map((m) => ({ slug: slugify(m[1]), name: m[1] }));
+    return {
+        id: idFromUrl(d.url),
+        name: d.name,
+        nameEn: d.name,
+        url: SITE + d.url,
+        level: d.level,
+        actions: ACTION_KEY[d.actions] || (d.actions?.includes(' to ') ? d.actions : ''),
+        traits,
+        rarity: d.rarity || 'common',
+        legacy: isLegacy(d),
+        source: d.primary_source_raw || d.primary_source || '',
+        prerequisitesHtml: prereqMd ? inline(prereqMd) : '',
+        prerequisitesText: (d.prerequisite || '').trim(),
+        prereqLinks,
+        fields: extra,
+        html: aonToHtml(body),
+    };
+}

@@ -1587,5 +1587,709 @@
   ],
   "url": "https://pf2.ru/feats/shield%20paragon",
   "source": "Основная книга игрока 2"
+ },
+ "feat-3622": {
+  "name": "Agile Shield Grip",
+  "html": "<p>You change your grip on the shield, allowing you to combine rapid attacks with your shield boss or shield spikes and your main weapon's Strikes in a series of swift motions. You reduce your shield boss and shield spikes weapon damage die to 1d4. As long as the weapon damage die is 1d4, your shield boss and shield spike Strikes gain the <a href=\"https://2e.aonprd.com/Traits.aspx?ID=170\">agile</a> weapon trait. You can use Agile Shield Grip again to switch to a normal grip, returning the damage to the usual amount and removing the agile trait.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Requirements": "You are wielding a shield with a <a href=\"https://2e.aonprd.com/Weapons.aspx?ID=41\">shield boss</a> or <a href=\"https://2e.aonprd.com/Weapons.aspx?ID=42\">shield spikes</a> in one hand.",
+   "Access": "Knights of Lastwall have access to this feat."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "fighter",
+    "name": "Fighter"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3622",
+  "source": "Knights of Lastwall pg. 82",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1087": {
+  "name": "Everstand Stance",
+  "html": "<p>You brace your shield with both hands, enhancing its potential for both offense and defense. When in this stance, you wield the shield with both hands. When wielding a shield this way, increase the weapon damage die of the shield’s boss or spikes by one step, and increase the shield’s Hardness by 2 when using the <a href=\"https://2e.aonprd.com/Feats.aspx?ID=839\">Shield Block</a> reaction.</p><p><a href=\"https://2e.aonprd.com/Feats.aspx?ID=1088\">Everstand Strike</a></p><p><b>Source</b> <a href=\"https://2e.aonprd.com/Sources.aspx?ID=12\">Character Guide</a> pg. 90</p><p>The following class feats are available to Knights of Lastwall. Those with the champion trait are champion class feats. Those with both the champion and fighter traits are both champion class feats and fighter class feats; when you take one of these feats, it loses the trait that doesn’t apply to your class.</p><p><b>Related Feats</b>: <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1088\">Everstand Strike</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1091\">Impassable Wall Stance</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1089\">Light of Revelation</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1090\">Sun Blade</a></p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Requirements": "You are wielding a shield.",
+   "Access": "A character who is a member of the Knights of Lastwall has access to this option."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "fighter",
+    "name": "Fighter"
+   },
+   {
+    "slug": "stance",
+    "name": "Stance"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1087",
+  "source": "Character Guide pg. 90",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-3624": {
+  "name": "Reliable Squire",
+  "html": "<p>You know the path to victory isn't traveled alone, and you lend aid to your companions whenever you can. You gain a +2 circumstance bonus to checks to <a href=\"https://2e.aonprd.com/Actions.aspx?ID=75\">Aid</a>. If you roll a critical failure on a check to Aid, you get a failure instead.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Access": "Knights of Lastwall have access to this feat."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "bard",
+    "name": "Bard"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3624",
+  "source": "Knights of Lastwall pg. 82",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-3623": {
+  "name": "Devoted Guardian",
+  "html": "<p>You adopt a wide stance, ready to defend both yourself and your chosen ward. Select one adjacent creature. As long as your shield is raised and the creature remains adjacent to you, the creature gains a +1 circumstance bonus to their AC, or a +2 circumstance bonus if the shield you raised was a <a href=\"https://2e.aonprd.com/Shields.aspx?ID=4\">tower shield</a>.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Requirements": "Your last action was to <a href=\"https://2e.aonprd.com/Actions.aspx?ID=98\">Raise a Shield</a>.",
+   "Access": "Knights of Lastwall have access to this feat."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "fighter",
+    "name": "Fighter"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3623",
+  "source": "Knights of Lastwall pg. 82",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-3625": {
+  "name": "Resilient Mind",
+  "html": "<p>You're firm in your convictions and have girded your mind against outside influence. You gain a +1 circumstance bonus to saves against <a href=\"https://2e.aonprd.com/Traits.aspx?ID=106\">mental</a> effects. This bonus increases to +2 against mental effects originating from <a href=\"https://2e.aonprd.com/Traits.aspx?ID=160\">undead</a>.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Access": "Knights of Lastwall have access to this feat."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "cleric",
+    "name": "Cleric"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3625",
+  "source": "Knights of Lastwall pg. 82",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-3629": {
+  "name": "Inspiring Resilience",
+  "html": "<p>You show defiance in times of hardship and inspire your companions to persevere. Allies within 30 feet of you gain a +1 circumstance bonus to their Will save against the triggering effect, or a +2 circumstance bonus if the effect originated from an <a href=\"https://2e.aonprd.com/Traits.aspx?ID=160\">undead</a>.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Trigger": "You and at least one other creature become the target of a spell or effect with the <a href=\"https://2e.aonprd.com/Traits.aspx?ID=60\">emotion</a>, <a href=\"https://2e.aonprd.com/Traits.aspx?ID=68\">fear</a>, or <a href=\"https://2e.aonprd.com/Traits.aspx?ID=106\">mental</a> trait that allows a saving throw, and you haven't rolled the save yet.",
+   "Access": "Knights of Lastwall have access to this feat."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "bard",
+    "name": "Bard"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "emotion",
+    "name": "Emotion"
+   },
+   {
+    "slug": "mental",
+    "name": "Mental"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3629",
+  "source": "Knights of Lastwall pg. 83",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-3630": {
+  "name": "Knock Sense",
+  "html": "<p>You attack carefully to knock some sense into a creature whose actions aren't their own. Make a Strike against a <a href=\"https://2e.aonprd.com/Conditions.aspx?ID=5\">confused</a> ally. The Strike is <a href=\"https://2e.aonprd.com/Traits.aspx?ID=188\">nonlethal</a> and doesn't take a –2 penalty for using a weapon without the nonlethal trait; if you hit and deal damage, your ally automatically succeeds at the flat check to remove the confused condition when taking damage.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Access": "Knights of Lastwall have access to this feat."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "fighter",
+    "name": "Fighter"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3630",
+  "source": "Knights of Lastwall pg. 83",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-8478": {
+  "name": "Sacral Lord",
+  "html": "<p>By right of ritual or sheer stubbornness, you have claimed rulership of the land. Claim a defined territory, such as a small section of forest or river, or a district of a larger city. Within its borders, you can cast <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1485\">_detect magic_</a>, <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1549\">_guidance_</a>, and <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1673\">_sigil_</a> as innate divine cantrips, and you gain a +1 circumstance bonus to <a href=\"https://2e.aonprd.com/Actions.aspx?ID=2392\">Make an Impression</a> on creatures that have the <a href=\"https://2e.aonprd.com/Traits.aspx?ID=551\">celestial</a>, <a href=\"https://2e.aonprd.com/Traits.aspx?ID=600\">fiend</a>, <a href=\"https://2e.aonprd.com/Traits.aspx?ID=599\">fey</a>, <a href=\"https://2e.aonprd.com/Traits.aspx?ID=655\">monitor</a>, or <a href=\"https://2e.aonprd.com/Traits.aspx?ID=737\">spirit</a> traits.</p><p><b>Special</b> You and your land are linked. Changes to one mirror themselves on the other—if you're depressed, gray rain and clammy mist might set in. These effects have no immediate mechanical impact, but they might give clues about problems afflicting the land.</p><p><a href=\"https://2e.aonprd.com/Feats.aspx?ID=8479\">Sacral Monarch</a></p>",
+  "prereqText": "Trained in Occultism or Trained in Religion",
+  "prereqHtml": "Trained in <a href=\"https://2e.aonprd.com/Skills.aspx?ID=44\">Occultism</a> or Trained in <a href=\"https://2e.aonprd.com/Skills.aspx?ID=46\">Religion</a>",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "rare",
+    "name": "Rare"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "oracle",
+    "name": "Oracle"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=8478",
+  "source": "Dark Archive (Remastered) pg. 177",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1089": {
+  "name": "Light of Revelation",
+  "html": "<p>You’ve learned to call upon light to reveal what is hidden. You gain the <a href=\"https://2e.aonprd.com/Spells.aspx?ID=557\">_light of revelation_</a> devotion spell. Increase the number of Focus Points in your focus pool by 1.</p><p><b>Source</b> <a href=\"https://2e.aonprd.com/Sources.aspx?ID=12\">Character Guide</a> pg. 90</p><p>The following class feats are available to Knights of Lastwall. Those with the champion trait are champion class feats. Those with both the champion and fighter traits are both champion class feats and fighter class feats; when you take one of these feats, it loses the trait that doesn’t apply to your class.</p><p><b>Related Feats</b>: <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1087\">Everstand Stance</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1088\">Everstand Strike</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1091\">Impassable Wall Stance</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1090\">Sun Blade</a></p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Access": "A character who is a member of the Knights of Lastwall has access to this option."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1089",
+  "source": "Character Guide pg. 90",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1090": {
+  "name": "Sun Blade",
+  "html": "<p>You can unleash burning sunlight from your sword or spear. You gain the <a href=\"https://2e.aonprd.com/Spells.aspx?ID=558\">_sun blade_</a> devotion spell. Increase the number of Focus Points in your focus pool by 1.</p><p><b>Source</b> <a href=\"https://2e.aonprd.com/Sources.aspx?ID=12\">Character Guide</a> pg. 90</p><p>The following class feats are available to Knights of Lastwall. Those with the champion trait are champion class feats. Those with both the champion and fighter traits are both champion class feats and fighter class feats; when you take one of these feats, it loses the trait that doesn’t apply to your class.</p><p><b>Related Feats</b>: <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1087\">Everstand Stance</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1088\">Everstand Strike</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1091\">Impassable Wall Stance</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1089\">Light of Revelation</a></p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Access": "A character who is a member of the Knights of Lastwall has access to this option."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1090",
+  "source": "Character Guide pg. 90",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1671": {
+  "name": "Accelerating Touch",
+  "html": "<p>Your healing energies are infused with bounding energy. A creature that recovers Hit Points from your <a href=\"https://2e.aonprd.com/Spells.aspx?ID=395\">_lay on hands_</a> gains a +10-foot status bonus to its Speed until the end of its next turn.</p>",
+  "prereqText": "devotion spell (_lay on hands_)",
+  "prereqHtml": "devotion spell (<a href=\"https://2e.aonprd.com/Spells.aspx?ID=395\">_lay on hands_</a>)",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1671",
+  "source": "Advanced Player's Guide pg. 119",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1088": {
+  "name": "Everstand Strike",
+  "html": "<p>Your follow-up blow leaves you an opening to set your shield. Make a Strike with the wielded shield. If the Strike hits and deals damage, you also <a href=\"https://2e.aonprd.com/Actions.aspx?ID=98\">Raise your Shield</a>.</p><p><b>Source</b> <a href=\"https://2e.aonprd.com/Sources.aspx?ID=12\">Character Guide</a> pg. 90</p><p>The following class feats are available to Knights of Lastwall. Those with the champion trait are champion class feats. Those with both the champion and fighter traits are both champion class feats and fighter class feats; when you take one of these feats, it loses the trait that doesn’t apply to your class.</p><p><b>Related Feats</b>: <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1087\">Everstand Stance</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1091\">Impassable Wall Stance</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1089\">Light of Revelation</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1090\">Sun Blade</a></p>",
+  "prereqText": "Everstand Stance",
+  "prereqHtml": "<a href=\"https://2e.aonprd.com/Feats.aspx?ID=1087\">Everstand Stance</a>",
+  "fields": {
+   "Requirements": "You are wielding a shield in two hands.",
+   "Access": "A character who is a member of the Knights of Lastwall has access to this option."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "fighter",
+    "name": "Fighter"
+   },
+   {
+    "slug": "press",
+    "name": "Press"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1088",
+  "source": "Character Guide pg. 90",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-9512": {
+  "name": "Chiardmar Steed",
+  "html": "<p>Your steed is one of the free-spirited wild horses of the Atteran Hills. Your horse animal companion gains a +5 foot status bonus to its Speed and ignores the first 10 feet of <a href=\"https://2e.aonprd.com/Rules.aspx?ID=2366\">difficult terrain</a> it moves through each turn.</p><p><b>Special</b> Your horse animal companion can’t gain the benefits of a different breed, such as Nidarrmar Steed.</p>",
+  "prereqText": "horse animal companion",
+  "prereqHtml": "horse animal companion",
+  "fields": {
+   "Access": "You’re from Nidal."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "commander",
+    "name": "Commander"
+   },
+   {
+    "slug": "druid",
+    "name": "Druid"
+   },
+   {
+    "slug": "ranger",
+    "name": "Ranger"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9512",
+  "source": "Cheliax, Infernal Inheritance pg. 153",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-9513": {
+  "name": "Nidarrmar Steed",
+  "html": "<p>Your steed was bred from the steadfast stock of the Atteran Ranches. Your horse animal companion reduces any penalties to its Speed by 10 feet, and if it would gain the <a href=\"https://2e.aonprd.com/Conditions.aspx?ID=74\">fleeing</a> or <a href=\"https://2e.aonprd.com/Conditions.aspx?ID=64\">controlled</a> conditions, you can choose to have it instead become <a href=\"https://2e.aonprd.com/Conditions.aspx?ID=92\">slowed</a> 1 for the same duration.</p><p><b>Special</b> Your horse animal companion can’t gain the benefits of a different breed, such as Chiardmar Steed.</p>",
+  "prereqText": "horse animal companion",
+  "prereqHtml": "horse animal companion",
+  "fields": {
+   "Access": "You’re from Nidal."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "commander",
+    "name": "Commander"
+   },
+   {
+    "slug": "druid",
+    "name": "Druid"
+   },
+   {
+    "slug": "ranger",
+    "name": "Ranger"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=9513",
+  "source": "Cheliax, Infernal Inheritance pg. 153",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-3634": {
+  "name": "Shield Wall",
+  "html": "<p>You use your shield in tandem with an ally's, forming a barricade. Both you and the triggering creature have <a href=\"https://2e.aonprd.com/Rules.aspx?ID=459\">standard cover</a> as long as you remain adjacent to each other and you both have your shields raised; when this is no longer the case, the effect ends. You and your ally can't use this cover to <a href=\"https://2e.aonprd.com/Actions.aspx?ID=62\">Hide</a>, as it's obvious you're standing there holding your shields, but you and your ally can use it to <a href=\"https://2e.aonprd.com/Actions.aspx?ID=90\">Take Cover</a>. Normally, if you and your ally don't move, Shield Wall lasts until the beginning of your next turn, when your shield is no longer raised.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Trigger": "Your shield is raised and an adjacent ally <a href=\"https://2e.aonprd.com/Actions.aspx?ID=98\">Raises a Shield</a>.",
+   "Access": "Knights of Lastwall have access to this feat."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "fighter",
+    "name": "Fighter"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3634",
+  "source": "Knights of Lastwall pg. 84",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1678": {
+  "name": "Sacrifice Armor",
+  "html": "<p>With divine awareness, you twist your body to lessen the impact of an attack. Reduce the damage you take by an amount equal to twice your armor's level. Your armor becomes broken, reducing its Hit Points to its Broken Threshold. If your armor was already damaged, it is destroyed instead.</p><p><a href=\"https://2e.aonprd.com/Feats.aspx?ID=1688\">Greater Interpose</a></p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Trigger": "You are hit by a Strike that deals physical damage."
+  },
+  "traits": [
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1678",
+  "source": "Advanced Player's Guide pg. 120",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1091": {
+  "name": "Impassable Wall Stance",
+  "html": "<p>You refuse to let foes past your guard. As long as you are in this stance, when you critically hit with an Attack of Opportunity triggered by a move action, you disrupt that move action.</p><p><b>Source</b> <a href=\"https://2e.aonprd.com/Sources.aspx?ID=12\">Character Guide</a> pg. 90</p><p>The following class feats are available to Knights of Lastwall. Those with the champion trait are champion class feats. Those with both the champion and fighter traits are both champion class feats and fighter class feats; when you take one of these feats, it loses the trait that doesn’t apply to your class.</p><p><b>Related Feats</b>: <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1087\">Everstand Stance</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1088\">Everstand Strike</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1089\">Light of Revelation</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1090\">Sun Blade</a></p>",
+  "prereqText": "Attack of Opportunity",
+  "prereqHtml": "<a href=\"https://2e.aonprd.com/Feats.aspx?ID=145\">Attack of Opportunity</a>",
+  "fields": {
+   "Access": "A character who is a member of the Knights of Lastwall has access to this option."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "fighter",
+    "name": "Fighter"
+   },
+   {
+    "slug": "stance",
+    "name": "Stance"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1091",
+  "source": "Character Guide pg. 90",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1682": {
+  "name": "Resilient Touch",
+  "html": "<p>Your healing energies create an aura of protection that defends your allies against more than just blades and arrows. An ally that recovers Hit Points from your <a href=\"https://2e.aonprd.com/Spells.aspx?ID=395\">_lay on hands_</a> gains a +1 status bonus to their saving throws until the end of their next turn.</p>",
+  "prereqText": "devotion spell (_lay on hands_)",
+  "prereqHtml": "devotion spell (<a href=\"https://2e.aonprd.com/Spells.aspx?ID=395\">_lay on hands_</a>)",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1682",
+  "source": "Advanced Player's Guide pg. 120",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-3639": {
+  "name": "Holy Light",
+  "html": "<p>You raise your arms to the sky and pray fervently, surrounding yourself in a beacon of holy light. The beacon sheds bright light in a 30-foot-radius, 100-foot-high cylinder centered on you until the beginning of your next turn. Evil creatures in the area must succeed at a Will save equal to your class DC or spell DC (whichever is higher) or become <a href=\"https://2e.aonprd.com/Conditions.aspx?ID=7\">dazzled</a> for 1 round.</p>",
+  "prereqText": "you follow a good-aligned deity",
+  "prereqHtml": "you follow a good-aligned deity",
+  "fields": {
+   "Access": "Knights of Lastwall have access to this feat."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "cleric",
+    "name": "Cleric"
+   },
+   {
+    "slug": "concentrate",
+    "name": "Concentrate"
+   },
+   {
+    "slug": "divine",
+    "name": "Divine"
+   },
+   {
+    "slug": "evocation",
+    "name": "Evocation"
+   },
+   {
+    "slug": "light",
+    "name": "Light"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3639",
+  "source": "Knights of Lastwall pg. 85",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-248": {
+  "name": "Liberating Stride",
+  "html": "<p>Instead of you taking a Step at the end of your Liberating Step, the triggering ally can Stride up to half their Speed. Even if you have exalt, only the triggering ally gains this benefit.</p>",
+  "prereqText": "liberator cause",
+  "prereqHtml": "<a href=\"https://2e.aonprd.com/Causes.aspx?ID=3\">liberator cause</a>",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=248",
+  "source": "Core Rulebook pg. 114",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-3641": {
+  "name": "Necromantic Deflection",
+  "html": "<p>You imbue your shield with life-giving energy to deflect harmful necromantic magic. When you have your shield raised, you gain the shield's circumstance bonus to your AC and saving throws against <a href=\"https://2e.aonprd.com/Traits.aspx?ID=117\">necromancy</a> spells. If you have the <a href=\"https://2e.aonprd.com/Actions.aspx?ID=1140\">Shield Block</a> reaction, damage you take as a result of a necromancy spell can trigger that reaction, even if it isn't physical damage.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Access": "Knights of Lastwall have access to this feat."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "druid",
+    "name": "Druid"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3641",
+  "source": "Knights of Lastwall pg. 85",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-247": {
+  "name": "Lasting Doubt",
+  "html": "<p>When you cast doubt upon your foes, the effect lasts longer than usual. After being enfeebled 2 by your Glimpse of Redemption, the foe is enfeebled 1 for 1 minute. If you have Weight of Guilt, after being stupefied 2 by your Glimpse of Redemption, the foe is stupefied 1 for 1 minute or until the flat check from stupefied causes it to lose a spell, whichever comes first.</p>",
+  "prereqText": "redeemer cause",
+  "prereqHtml": "<a href=\"https://2e.aonprd.com/Causes.aspx?ID=2\">redeemer cause</a>",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=247",
+  "source": "Core Rulebook pg. 114",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1683": {
+  "name": "Amplifying Touch",
+  "html": "<p>Your healing energies empower attacks. An ally that recovers Hit Points from your <a href=\"https://2e.aonprd.com/Spells.aspx?ID=395\">_lay on hands_</a> gains a +1 status bonus to their attack rolls and deals 1 additional spirit damage on all their Strikes until the end of their next turn. In addition, all their Strikes are holy until the end of their next turn.</p>",
+  "prereqText": "devotion spell (_lay on hands_)",
+  "prereqHtml": "devotion spell (<a href=\"https://2e.aonprd.com/Spells.aspx?ID=395\">_lay on hands_</a>)",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1683",
+  "source": "Advanced Player's Guide pg. 120",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-3640": {
+  "name": "Miraculous Intervention",
+  "html": "<p>Through divine intervention or whispered prayers, you foil an enemy's response. If the triggering creature's level is equal to or lower than yours, you disrupt the triggering reaction. If the triggering creature's level is higher than yours, you must make an attack roll or spell attack roll against its AC (your choice). On a success, you disrupt the reaction.</p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Trigger": "An adjacent <a href=\"https://2e.aonprd.com/Traits.aspx?ID=70\">fiend</a> or <a href=\"https://2e.aonprd.com/Traits.aspx?ID=160\">undead</a> begins to use a reaction.",
+   "Access": "Knights of Lastwall have access to this feat."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "cleric",
+    "name": "Cleric"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=3640",
+  "source": "Knights of Lastwall pg. 85",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1688": {
+  "name": "Greater Interpose",
+  "html": "<p>Your divine grace empowers you to avoid hits when you otherwise could not. You can use <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1678\">Sacrifice Armor</a> to reduce any type of damage from an attack or effect requiring a Reflex save. When you use Sacrifice Armor against a critical hit or a critical failure on a Reflex save that would otherwise cause you to take double damage, you take the normal amount of damage instead.</p>",
+  "prereqText": "Sacrifice Armor",
+  "prereqHtml": "<a href=\"https://2e.aonprd.com/Feats.aspx?ID=1678\">Sacrifice Armor</a>",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1688",
+  "source": "Advanced Player's Guide pg. 121",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-8479": {
+  "name": "Sacral Monarch",
+  "html": "<p>You have come into your full powers and are truly a monarch of your realm, by your own definition at least. While in your territory, you can cast <a href=\"https://2e.aonprd.com/Spells.aspx?ID=1448\">_banishment_</a> and <a href=\"https://2e.aonprd.com/Spells.aspx?ID=930\">_inevitable disaster_</a> as innate divine spells, each once per day.</p>",
+  "prereqText": "Sacral Lord; Master in Occultism or Master in Religion",
+  "prereqHtml": "<a href=\"https://2e.aonprd.com/Feats.aspx?ID=8478\">Sacral Lord</a>; Master in <a href=\"https://2e.aonprd.com/Skills.aspx?ID=44\">Occultism</a> or Master in <a href=\"https://2e.aonprd.com/Skills.aspx?ID=46\">Religion</a>",
+  "fields": {},
+  "traits": [
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "oracle",
+    "name": "Oracle"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=8479",
+  "source": "Dark Archive (Remastered) pg. 177",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-2747": {
+  "name": "Everdistant Defense",
+  "html": "<p>The spatial barrier of Syndara's Island has taught you that distance can foil enemies better than any armor. You warp space, causing each square within your aura that the attack or creature would move through to count as triple the distance. If this reaction is used on a ranged attack, the attack takes range increment penalties based on the adjusted range and fails if this would cause it to exceed its maximum range.</p><p><b>Source</b> <a href=\"https://2e.aonprd.com/Sources.aspx?ID=87\">Pathfinder #168: King of the Mountain</a> pg. 75</p><p>Player characters can select one of the following new class feats for their 20th-level class feat upon entering the <i>Glass Lighthouse</i> or by meditating on the cushion in area H4.</p><p><b>Related Feats</b>: <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2744\">All the Time in the World</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2745\">Dance of Intercession</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2746\">Demon's Hair</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2748\">Extradimensional Stash</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2749\">Head of the Night Parade</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2750\">Heart of the Kaiju</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2751\">Plum Deluge</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2752\">Ruby Resurrection</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2753\">Scapegoat Parallel Self</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2754\">Sever Space</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2755\">Time Dilation Cascade</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2756\">Vitality-Manipulating Stance</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2757\">Vivacious Afterimage</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2758\">Whirlwind Toss</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=2759\">Worldsphere Gravity</a></p>",
+  "prereqText": "",
+  "prereqHtml": "",
+  "fields": {
+   "Requirements": "You have at least one <a href=\"https://2e.aonprd.com/Traits.aspx?ID=206\">aura</a> from a champion feat or feature.",
+   "Trigger": "A creature within your aura is targeted by a ranged attack or a creature moves through your aura."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "abjuration",
+    "name": "Abjuration"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   },
+   {
+    "slug": "divine",
+    "name": "Divine"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=2747",
+  "source": "Pathfinder #168: King of the Mountain pg. 75",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
+ },
+ "feat-1242": {
+  "name": "Banishing Blow",
+  "html": "<p>The erratic teleportation magic you experienced in the Kortos Mounts has taught you a few tricks. You attempt an <a href=\"https://2e.aonprd.com/Skills.aspx?ID=3\">Athletics</a> check to <a href=\"https://2e.aonprd.com/Actions.aspx?ID=38\">Shove</a> the fiend that triggered your champion's reaction; on a success, the target can't teleport or summon creatures for 1 minute. On a critical success, the target is also <a href=\"https://2e.aonprd.com/Conditions.aspx?ID=36\">stunned 1</a> and can't teleport or summon creatures for 1 hour, and if you are on your home plane and the target is a fiend of level 18 or lower from another plane, it is also banished to its home plane. Your multiple attack penalty doesn't apply to this attack.</p><p><b>Source</b> <a href=\"https://2e.aonprd.com/Sources.aspx?ID=36\">Pathfinder #156: The Apocalypse Prophet</a> pg. 72</p><p>Characters who have reached 20th level can choose from the following feats, representing the pinnacle of mortal power influenced by their triumphs.</p><p><b>Related Feats</b>: <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1240\">Annihilating Swing</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1241\">Astonishing Explosion</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1243\">Denier of Destruction</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1244\">Endurance of the Rooted Tree</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1245\">Mimic Protections</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1246\">Reclaim Spell</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1247\">Reflecting Riposte</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1248\">Ringmaster's Introduction</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1249\">Steal Essence</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1250\">Tenacious Blood Magic</a>, <a href=\"https://2e.aonprd.com/Feats.aspx?ID=1251\">Verdant Presence</a></p>",
+  "prereqText": "Fiendsbane Oath",
+  "prereqHtml": "<a href=\"https://2e.aonprd.com/Feats.aspx?ID=220\">Fiendsbane Oath</a>",
+  "fields": {
+   "Trigger": "You use your champion's reaction, triggered by a <a href=\"https://2e.aonprd.com/Traits.aspx?ID=70\">fiend</a> within your reach."
+  },
+  "traits": [
+   {
+    "slug": "uncommon",
+    "name": "Uncommon"
+   },
+   {
+    "slug": "champion",
+    "name": "Champion"
+   }
+  ],
+  "url": "https://2e.aonprd.com/Feats.aspx?ID=1242",
+  "source": "Pathfinder #156: The Apocalypse Prophet pg. 72",
+  "note": "На pf2.ru этой черты нет — показан оригинал Archives of Nethys."
  }
 };

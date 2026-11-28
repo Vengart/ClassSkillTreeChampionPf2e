@@ -98,6 +98,7 @@
     "passivePrereq": { "type": "array", "items": { "type": "string" }, "description": "волшебник: регулярные выражения (без учёта регистра) для критериев, которые дерево не отслеживает" },
     "outsideFeats": { "type": "array", "items": { "type": "string" }, "description": "волшебник: черты-критерии вне дерева" },
     "foundryNames": { "type": "object", "additionalProperties": { "type": "string" }, "description": "волшебник: название черты в Foundry VTT, если отличается от AoN (для экспорта)" },
+    "extraFeats": { "type": "array", "items": { "type": "string" }, "description": "поборник: черты с AoN (английские названия), которых нет на pf2.ru, но они есть в другом переводе — добавляются в дерево" },
     "excludeFeats": { "type": "array", "items": { "type": "string" }, "description": "волшебник: черты (английские названия), которые не входят в дерево" }
   },
   "definitions": {

@@ -385,7 +385,7 @@ function takeButton(n) {
 function cardHtml(n, full) {
     const traits = [
         RARITY_LABEL[n.rarity] && `<span class="trait trait-${n.rarity}">${RARITY_LABEL[n.rarity]}</span>`,
-        ...(n.traits || []).map((t) => `<span class="trait">${esc(t.name)}</span>`),
+        ...(n.traits || []).filter((t) => !(t.slug in RARITY_LABEL)).map((t) => `<span class="trait">${esc(t.name)}</span>`),
     ].filter(Boolean).join('');
 
     const prereq = n.prereqHtml ? sanitize(n.prereqHtml) : esc(n.prereqText || '');
@@ -1354,20 +1354,20 @@ $('#btn-share').addEventListener('click', async () => {
     const url = buildUrl();
     // адресная строка — по возможности (с диска браузер может запретить); экспорт от этого не зависит
     try { history.replaceState(null, '', url); } catch { /* file:// */ }
-    if (META.foundry) {
-        try {
-            const { actor, missing } = buildFoundryActor(await loadFoundry());
-            download(`fvtt-Actor-${CLASS_ID}-level${state.level}.json`, JSON.stringify(actor, null, 2));
-            toast(missing.length
-                ? `Файл для Foundry сохранён, но без: ${missing.join(', ')} — их нет в Foundry`
-                : 'Файл для Foundry сохранён. В Foundry: ПКМ по персонажу → Import Data', missing.length > 0);
-        } catch (e) {
-            console.error(e);
-            toast('Не удалось собрать файл для Foundry', true);
-        }
+    if (!META.foundry) {
+        toast(`Экспорт в Foundry для класса «${META.className}» пока не готов — данных Foundry ещё нет`, true);
         return;
     }
-    try { await navigator.clipboard.writeText(url); toast('Ссылка на сборку скопирована'); } catch { toast('Ссылка в адресной строке'); }
+    try {
+        const { actor, missing } = buildFoundryActor(await loadFoundry());
+        download(`fvtt-Actor-${CLASS_ID}-level${state.level}.json`, JSON.stringify(actor, null, 2));
+        toast(missing.length
+            ? `Файл для Foundry сохранён, но без: ${missing.join(', ')} — их нет в Foundry`
+            : 'Файл для Foundry сохранён. В Foundry: ПКМ по персонажу → Import Data', missing.length > 0);
+    } catch (e) {
+        console.error(e);
+        toast('Не удалось собрать файл для Foundry', true);
+    }
 });
 $('#panel').addEventListener('click', (ev) => {
     const b = ev.target.closest('[data-focus]');
@@ -1410,16 +1410,26 @@ if ('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe($('
 
 // ---------- класс: заголовки, вкладки, фильтры ----------
 
-/** Кнопки перевода в шапке (только у классов с несколькими переводами). */
+/** Порядок локализаций в переключателе: оригинал, официальный перевод, фанатский. */
+const LANG_ORDER = ['aon', 'pf2ru', 'doc'];
+/** Локализации, текстов которых для класса пока нет (meta.pendingLangs): кнопка есть, нажатие — сообщение. */
+const PENDING_LANGS = (META.pendingLangs || []).filter((p) => !LANGS.some((l) => l.id === p.id));
+/** Кнопки перевода в шапке — у всех классов одинаковые. */
 function buildLangSwitch() {
     const box = $('#lang-switch');
-    if (LANGS.length < 2) return;
+    const all = [...LANGS, ...PENDING_LANGS.map((p) => ({ ...p, pending: true }))]
+        .sort((a, b) => LANG_ORDER.indexOf(a.id) - LANG_ORDER.indexOf(b.id));
+    if (all.length < 2) return;
     box.hidden = false;
-    box.innerHTML = '<span class="lang-label">Перевод:</span>' + LANGS.map((l) =>
-        `<button type="button" class="lang-btn" role="radio" data-lang="${esc(l.id)}" title="${esc(l.title)}">${esc(l.label)}</button>`).join('');
+    box.innerHTML = '<span class="lang-label">Перевод:</span>' + all.map((l) =>
+        `<button type="button" class="lang-btn${l.pending ? ' pending' : ''}" role="radio" data-lang="${esc(l.id)}"` +
+        ` title="${esc(l.title)}${l.pending ? ' — пока нет' : ''}">${esc(l.label)}</button>`).join('');
     box.addEventListener('click', (ev) => {
         const b = ev.target.closest('[data-lang]');
-        if (b && b.dataset.lang !== lang) setLang(b.dataset.lang);
+        if (!b) return;
+        const p = PENDING_LANGS.find((x) => x.id === b.dataset.lang);
+        if (p) { toast(`Локализация «${p.title}» для класса «${META.className}» пока не добавлена`, true); return; }
+        if (b.dataset.lang !== lang) setLang(b.dataset.lang);
     });
     markLang();
 }
@@ -1481,9 +1491,6 @@ function setTermLabels() {
     $('#class-name').textContent = root.name || META.className;
     document.title = `${$('#class-name').textContent} — дерево ${T.feats === 'черты' ? 'черт' : 'способностей'}`;
     $('#class-note').textContent = src && src.id !== DEFAULT_LANG ? `Тексты: ${src.label}` : (META.note || '');
-    $('#data-source').innerHTML = `Данные: <a href="${esc(META.source)}" target="_blank" rel="noopener noreferrer">${esc(SOURCE_NAME)}</a>` +
-        (src && src.id !== DEFAULT_LANG ? `, тексты: ${esc(src.source)}` : '') +
-        `, обновлено ${new Date(META.fetchedAt).toLocaleDateString('ru-RU')}. Обновить: <code>${esc(META.updateCmd || 'node tools/fetch-pf2.mjs')}</code>`;
 }
 
 function setupClass() {

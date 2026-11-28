@@ -115,8 +115,89 @@
     },
     "Divine Wall": {
       "requires": []
+    },
+    "Accelerating Touch": {
+      "requires": [
+        [
+          "spell-2047"
+        ]
+      ]
+    },
+    "Resilient Touch": {
+      "requires": [
+        [
+          "spell-2047"
+        ]
+      ]
+    },
+    "Amplifying Touch": {
+      "requires": [
+        [
+          "spell-2047"
+        ]
+      ]
+    },
+    "Liberating Stride": {
+      "requires": [
+        [
+          "cause-12"
+        ]
+      ]
+    },
+    "Lasting Doubt": {
+      "requires": [
+        [
+          "cause-14"
+        ]
+      ]
+    },
+    "Holy Light": {
+      "requires": [
+        [
+          "sanct-holy"
+        ]
+      ]
+    },
+    "Chiardmar Steed": {
+      "requires": []
+    },
+    "Nidarrmar Steed": {
+      "requires": []
+    },
+    "Sacral Lord": {
+      "requires": []
     }
   },
+  "extraFeats": [
+    "Agile Shield Grip",
+    "Everstand Stance",
+    "Reliable Squire",
+    "Devoted Guardian",
+    "Resilient Mind",
+    "Inspiring Resilience",
+    "Knock Sense",
+    "Sacral Lord",
+    "Light of Revelation",
+    "Sun Blade",
+    "Accelerating Touch",
+    "Everstand Strike",
+    "Chiardmar Steed",
+    "Nidarrmar Steed",
+    "Shield Wall",
+    "Sacrifice Armor",
+    "Impassable Wall Stance",
+    "Resilient Touch",
+    "Holy Light",
+    "Liberating Stride",
+    "Necromantic Deflection",
+    "Lasting Doubt",
+    "Amplifying Touch",
+    "Miraculous Intervention",
+    "Greater Interpose",
+    "Sacral Monarch",
+    "Everdistant Defense",
+    "Banishing Blow"
+  ],
   "themes": [
     "theme-cause",
     "theme-devotion",
@@ -157,7 +238,25 @@
     "Smite": "theme-combat",
     "Divine Reflexes": "theme-combat",
     "Exalted Greatness": "theme-combat",
-    "Champion's Sacrifice": "theme-combat"
+    "Champion's Sacrifice": "theme-combat",
+    "Agile Shield Grip": "theme-shield",
+    "Everstand Stance": "theme-shield",
+    "Devoted Guardian": "theme-shield",
+    "Shield Wall": "theme-shield",
+    "Necromantic Deflection": "theme-shield",
+    "Reliable Squire": "theme-combat",
+    "Knock Sense": "theme-combat",
+    "Sacrifice Armor": "theme-combat",
+    "Resilient Mind": "theme-faith",
+    "Inspiring Resilience": "theme-faith",
+    "Holy Light": "theme-faith",
+    "Miraculous Intervention": "theme-faith",
+    "Sacral Lord": "theme-faith",
+    "Light of Revelation": "theme-devotion",
+    "Sun Blade": "theme-devotion",
+    "Chiardmar Steed": "theme-steed",
+    "Nidarrmar Steed": "theme-steed",
+    "Everdistant Defense": "theme-aura"
   },
   "cardGroups": [
     {

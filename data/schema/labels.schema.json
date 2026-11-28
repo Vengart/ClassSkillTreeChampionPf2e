@@ -34,6 +34,20 @@
         }
       }
     },
+    "pendingLangs": {
+      "type": "array",
+      "description": "локализации, текстов которых пока нет: кнопка в переключателе есть, по нажатию — сообщение",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "title"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+$" },
+          "label": { "type": "string" },
+          "title": { "type": "string" }
+        }
+      }
+    },
     "texts": {
       "type": "object",
       "description": "тексты по переводу и id узла",

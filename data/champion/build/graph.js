@@ -51,6 +51,8 @@ window.CLASS_DATA = {
    "card"
   ],
   "updateCmd": "node tools/fetch-pf2.mjs",
+  "note": "Русский · pf2.ru",
+  "pendingLangs": [],
   "geometry": {
    "SIZE": {
     "root": 120,
@@ -101,10 +103,10 @@ window.CLASS_DATA = {
    "crossings": 0
   },
   "bounds": {
-   "minX": -2510,
-   "maxX": 2510,
-   "minY": -1690,
-   "maxY": 1580
+   "minX": -3160,
+   "maxX": 3160,
+   "minY": -1820,
+   "maxY": 1840
   },
   "grid": {
    "halves": [
@@ -112,48 +114,52 @@ window.CLASS_DATA = {
      "v": -1,
      "after": -44,
      "start": -365,
-     "minX": -2200,
-     "maxX": 2200,
+     "minX": -2900,
+     "maxX": 2900,
      "rows": [
       {
        "level": 1,
        "y": -430
       },
       {
-       "level": 4,
+       "level": 2,
        "y": -560
       },
       {
-       "level": 6,
+       "level": 4,
        "y": -690
       },
       {
-       "level": 8,
+       "level": 6,
        "y": -820
       },
       {
-       "level": 10,
+       "level": 8,
        "y": -950
       },
       {
-       "level": 12,
+       "level": 10,
        "y": -1080
       },
       {
-       "level": 14,
+       "level": 12,
        "y": -1210
       },
       {
-       "level": 16,
+       "level": 14,
        "y": -1340
       },
       {
-       "level": 18,
+       "level": 16,
        "y": -1470
       },
       {
-       "level": 20,
+       "level": 18,
        "y": -1600
+      },
+      {
+       "level": 20,
+       "y": -1730
       }
      ]
     },
@@ -161,8 +167,8 @@ window.CLASS_DATA = {
      "v": 1,
      "after": 86,
      "start": 365,
-     "minX": -2490,
-     "maxX": 2490,
+     "minX": -3140,
+     "maxX": 3140,
      "rows": [
       {
        "level": 1,
@@ -193,12 +199,20 @@ window.CLASS_DATA = {
        "y": 1210
       },
       {
-       "level": 16,
+       "level": 14,
        "y": 1340
       },
       {
-       "level": 18,
+       "level": 16,
        "y": 1470
+      },
+      {
+       "level": 18,
+       "y": 1600
+      },
+      {
+       "level": 20,
+       "y": 1730
       }
      ]
     }
@@ -217,6 +231,32 @@ window.CLASS_DATA = {
      "Feat": "Черта",
      "Feats": "Черты",
      "prereq": "Требования"
+    }
+   },
+   {
+    "id": "aon",
+    "label": "оригинал",
+    "title": "Оригинал (Archives of Nethys)",
+    "source": "Archives of Nethys",
+    "terms": {
+     "feat": "черта",
+     "feats": "черты",
+     "Feat": "Черта",
+     "Feats": "Черты",
+     "prereq": "Требования"
+    }
+   },
+   {
+    "id": "doc",
+    "label": "pf2e.ru",
+    "title": "Фан. перевод Юры и Дока (pf2e.ru)",
+    "source": "перевод Дока и Юры (Foundry)",
+    "terms": {
+     "feat": "способность",
+     "feats": "способности",
+     "Feat": "Способность",
+     "Feats": "Способности",
+     "prereq": "Предварительные условия"
     }
    }
   ]
@@ -443,7 +483,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -1400,
+   "x": -2100,
    "y": -300,
    "captionSide": "right",
    "captionW": 120
@@ -454,7 +494,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -1890,
+   "x": -2340,
    "y": 300,
    "captionSide": "right",
    "captionW": 147
@@ -465,7 +505,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 1400,
+   "x": 2100,
    "y": -300,
    "captionSide": "right",
    "captionW": 170
@@ -476,7 +516,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -120,
+   "x": -620,
    "y": -300,
    "captionSide": "right",
    "captionW": 54
@@ -487,7 +527,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 960,
+   "x": 1260,
    "y": -300,
    "captionSide": "right",
    "captionW": 40
@@ -498,7 +538,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 1290,
+   "x": 1740,
    "y": 300,
    "captionSide": "right",
    "captionW": 80
@@ -509,7 +549,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -50,
+   "x": -100,
    "y": 300,
    "captionSide": "right",
    "captionW": 170
@@ -520,7 +560,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": -560,
+   "x": -1060,
    "y": -300,
    "captionSide": "right",
    "captionW": 120
@@ -531,7 +571,7 @@ window.CLASS_DATA = {
    "kind": "hub",
    "level": 0,
    "requires": [],
-   "x": 520,
+   "x": 420,
    "y": -300,
    "captionSide": "right",
    "captionW": 40
@@ -549,7 +589,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-steed",
    "theme": "theme-steed",
-   "x": 1390,
+   "x": 2040,
    "y": 430,
    "captionSide": "below",
    "captionW": 137
@@ -571,7 +611,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1500,
+   "x": -2200,
    "y": -430,
    "captionSide": "below",
    "captionW": 116
@@ -593,7 +633,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1300,
+   "x": -2000,
    "y": -430,
    "captionSide": "below",
    "captionW": 95
@@ -611,7 +651,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": -550,
+   "x": -1000,
    "y": 430,
    "captionSide": "below",
    "captionW": 147
@@ -633,7 +673,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1700,
+   "x": -2400,
    "y": -430,
    "captionSide": "below",
    "captionW": 150
@@ -655,7 +695,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1100,
+   "x": -1800,
    "y": -430,
    "captionSide": "below",
    "captionW": 147
@@ -673,7 +713,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-shield",
    "theme": "theme-shield",
-   "x": 1060,
+   "x": 1160,
    "y": -430,
    "captionSide": "below",
    "captionW": 150
@@ -695,7 +735,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1900,
+   "x": -2600,
    "y": -430,
    "captionSide": "below",
    "captionW": 150
@@ -713,7 +753,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": 850,
+   "x": 1200,
    "y": 430,
    "captionSide": "below",
    "captionW": 150
@@ -735,7 +775,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -900,
+   "x": -1600,
    "y": -430,
    "captionSide": "below",
    "captionW": 150
@@ -757,7 +797,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -2100,
+   "x": -2800,
    "y": -430,
    "captionSide": "below",
    "captionW": 150
@@ -775,7 +815,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": -150,
+   "x": -200,
    "y": 430,
    "captionSide": "below",
    "captionW": 150
@@ -793,7 +833,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": 50,
+   "x": 0,
    "y": 560,
    "captionSide": "below",
    "captionW": 150
@@ -811,7 +851,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": -150,
+   "x": -200,
    "y": 560,
    "captionSide": "below",
    "captionW": 150
@@ -829,7 +869,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": 450,
+   "x": -600,
    "y": 560,
    "captionSide": "below",
    "captionW": 150
@@ -847,7 +887,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": 250,
+   "x": 200,
    "y": 560,
    "captionSide": "below",
    "captionW": 150
@@ -865,7 +905,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-faith",
    "theme": "theme-faith",
-   "x": -350,
+   "x": 800,
    "y": 560,
    "captionSide": "below",
    "captionW": 137
@@ -887,8 +927,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -20,
-   "y": -560,
+   "x": -520,
+   "y": -690,
    "captionSide": "below",
    "captionW": 116
   },
@@ -909,8 +949,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -220,
-   "y": -560,
+   "x": -720,
+   "y": -690,
    "captionSide": "below",
    "captionW": 137
   },
@@ -931,7 +971,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-devotion",
    "theme": "theme-devotion",
-   "x": -1590,
+   "x": -2040,
    "y": 690,
    "captionSide": "below",
    "captionW": 126
@@ -953,7 +993,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-devotion",
    "theme": "theme-devotion",
-   "x": -2190,
+   "x": -2840,
    "y": 690,
    "captionSide": "below",
    "captionW": 137
@@ -975,7 +1015,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-devotion",
    "theme": "theme-devotion",
-   "x": -1190,
+   "x": -1640,
    "y": 690,
    "captionSide": "below",
    "captionW": 105
@@ -997,7 +1037,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1590,
+   "x": 2240,
    "y": 690,
    "captionSide": "below",
    "captionW": 150
@@ -1019,7 +1059,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1990,
+   "x": 2640,
    "y": 820,
    "captionSide": "below",
    "captionW": 150
@@ -1037,8 +1077,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-combat",
    "theme": "theme-combat",
-   "x": 620,
-   "y": -690,
+   "x": 120,
+   "y": -820,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1055,8 +1095,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -20,
-   "y": -690,
+   "x": -520,
+   "y": -820,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1073,8 +1113,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-combat",
    "theme": "theme-combat",
-   "x": 420,
-   "y": -690,
+   "x": 520,
+   "y": -820,
    "captionSide": "below",
    "captionW": 105
   },
@@ -1095,8 +1135,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1900,
-   "y": -690,
+   "x": 2600,
+   "y": -820,
    "captionSide": "below",
    "captionW": 95
   },
@@ -1113,8 +1153,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-shield",
    "theme": "theme-shield",
-   "x": 860,
-   "y": -820,
+   "x": 1160,
+   "y": -950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1135,8 +1175,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1300,
-   "y": -820,
+   "x": 2000,
+   "y": -950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1160,7 +1200,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1590,
+   "x": 2240,
    "y": 950,
    "captionSide": "below",
    "captionW": 150
@@ -1182,7 +1222,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5883",
    "theme": "theme-faith",
-   "x": -750,
+   "x": -1200,
    "y": 950,
    "captionSide": "below",
    "captionW": 150
@@ -1204,7 +1244,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5898",
    "theme": "theme-devotion",
-   "x": -1390,
+   "x": -1840,
    "y": 950,
    "captionSide": "below",
    "captionW": 150
@@ -1226,7 +1266,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5896",
    "theme": "theme-devotion",
-   "x": -2390,
+   "x": -3040,
    "y": 950,
    "captionSide": "below",
    "captionW": 150
@@ -1248,7 +1288,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5897",
    "theme": "theme-devotion",
-   "x": -990,
+   "x": -1440,
    "y": 950,
    "captionSide": "below",
    "captionW": 150
@@ -1266,8 +1306,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-sanct",
    "theme": "theme-sanct",
-   "x": -460,
-   "y": -820,
+   "x": -960,
+   "y": -950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1284,8 +1324,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-sanct",
    "theme": "theme-sanct",
-   "x": -660,
-   "y": -820,
+   "x": -1160,
+   "y": -950,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1306,7 +1346,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1790,
+   "x": 2440,
    "y": 950,
    "captionSide": "below",
    "captionW": 84
@@ -1328,7 +1368,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5900",
    "theme": "theme-steed",
-   "x": 2190,
+   "x": 2840,
    "y": 1080,
    "captionSide": "below",
    "captionW": 150
@@ -1350,8 +1390,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1500,
-   "y": -950,
+   "x": 2200,
+   "y": -1080,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1372,8 +1412,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1300,
-   "y": -950,
+   "x": 2000,
+   "y": -1080,
    "captionSide": "below",
    "captionW": 147
   },
@@ -1397,8 +1437,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4807",
    "theme": "theme-blessing",
-   "x": 2100,
-   "y": -950,
+   "x": 2800,
+   "y": -1080,
    "captionSide": "below",
    "captionW": 126
   },
@@ -1420,8 +1460,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -220,
-   "y": -1080,
+   "x": -720,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 95
   },
@@ -1445,8 +1485,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1100,
-   "y": -1080,
+   "x": -1600,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1467,7 +1507,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1590,
+   "x": 2240,
    "y": 1210,
    "captionSide": "below",
    "captionW": 147
@@ -1485,8 +1525,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-shield",
    "theme": "theme-shield",
-   "x": 1060,
-   "y": -1080,
+   "x": 1360,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1507,7 +1547,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5897",
    "theme": "theme-devotion",
-   "x": -990,
+   "x": -1440,
    "y": 1210,
    "captionSide": "below",
    "captionW": 150
@@ -1529,7 +1569,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5885",
    "theme": "theme-steed",
-   "x": 1790,
+   "x": 2440,
    "y": 1210,
    "captionSide": "below",
    "captionW": 150
@@ -1553,7 +1593,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-7518",
    "theme": "theme-faith",
-   "x": 650,
+   "x": -800,
    "y": 1210,
    "captionSide": "below",
    "captionW": 150
@@ -1573,8 +1613,8 @@ window.CLASS_DATA = {
    ],
    "parentId": "theme-combat",
    "theme": "theme-combat",
-   "x": 620,
-   "y": -1080,
+   "x": 320,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1595,7 +1635,7 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-devotion",
    "theme": "theme-devotion",
-   "x": -1990,
+   "x": -2440,
    "y": 1210,
    "captionSide": "below",
    "captionW": 150
@@ -1619,8 +1659,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1300,
-   "y": -1080,
+   "x": -2000,
+   "y": -1210,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1637,8 +1677,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -20,
-   "y": -1210,
+   "x": -520,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 105
   },
@@ -1659,8 +1699,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": -220,
-   "y": -1210,
+   "x": -720,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1677,8 +1717,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-aura",
    "theme": "theme-aura",
-   "x": 180,
-   "y": -1210,
+   "x": -320,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 147
   },
@@ -1695,8 +1735,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-combat",
    "theme": "theme-combat",
-   "x": 420,
-   "y": -1210,
+   "x": 520,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1713,8 +1753,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-combat",
    "theme": "theme-combat",
-   "x": 620,
-   "y": -1210,
+   "x": 320,
+   "y": -1340,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1735,8 +1775,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5914",
    "theme": "theme-cause",
-   "x": -900,
-   "y": -1340,
+   "x": -1400,
+   "y": -1470,
    "captionSide": "below",
    "captionW": 116
   },
@@ -1759,8 +1799,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1500,
-   "y": -1340,
+   "x": -2200,
+   "y": -1470,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1781,8 +1821,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5908",
    "theme": "theme-steed",
-   "x": 2390,
-   "y": 1340,
+   "x": 3040,
+   "y": 1470,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1803,8 +1843,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-4807",
    "theme": "theme-blessing",
-   "x": 2100,
-   "y": -1340,
+   "x": 2800,
+   "y": -1470,
    "captionSide": "below",
    "captionW": 147
   },
@@ -1825,8 +1865,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-devotion",
    "theme": "theme-devotion",
-   "x": -1790,
-   "y": 1470,
+   "x": -2440,
+   "y": 1600,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1847,8 +1887,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-cause",
    "theme": "theme-cause",
-   "x": -1300,
-   "y": -1470,
+   "x": -2000,
+   "y": -1600,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1869,8 +1909,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5897",
    "theme": "theme-devotion",
-   "x": -990,
-   "y": 1470,
+   "x": -1440,
+   "y": 1600,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1891,8 +1931,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "feat-5884",
    "theme": "theme-faith",
-   "x": 1050,
-   "y": 1470,
+   "x": 1400,
+   "y": 1600,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1909,8 +1949,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-sanct",
    "theme": "theme-sanct",
-   "x": -460,
-   "y": -1470,
+   "x": -960,
+   "y": -1600,
    "captionSide": "below",
    "captionW": 126
   },
@@ -1927,8 +1967,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-sanct",
    "theme": "theme-sanct",
-   "x": -660,
-   "y": -1470,
+   "x": -1160,
+   "y": -1600,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1945,8 +1985,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-sanct",
    "theme": "theme-sanct",
-   "x": -460,
-   "y": -1600,
+   "x": -960,
+   "y": -1730,
    "captionSide": "below",
    "captionW": 150
   },
@@ -1967,8 +2007,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1500,
-   "y": -1600,
+   "x": 2200,
+   "y": -1730,
    "captionSide": "below",
    "captionW": 137
   },
@@ -1989,8 +2029,8 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1300,
-   "y": -1600,
+   "x": 2000,
+   "y": -1730,
    "captionSide": "below",
    "captionW": 150
   },
@@ -2011,10 +2051,558 @@ window.CLASS_DATA = {
    "forbids": [],
    "parentId": "theme-blessing",
    "theme": "theme-blessing",
-   "x": 1700,
-   "y": -1600,
+   "x": 2400,
+   "y": -1730,
    "captionSide": "below",
    "captionW": 116
+  },
+  {
+   "image": "shieldfeatsprotection.webp",
+   "id": "feat-3622",
+   "kind": "feat",
+   "nameEn": "Agile Shield Grip",
+   "level": 1,
+   "actions": "1",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-shield",
+   "theme": "theme-shield",
+   "x": 1360,
+   "y": -430,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "shieldfeatsprotection.webp",
+   "id": "feat-1087",
+   "kind": "feat",
+   "nameEn": "Everstand Stance",
+   "level": 1,
+   "actions": "1",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-shield",
+   "theme": "theme-shield",
+   "x": 1560,
+   "y": -430,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "fight.webp",
+   "id": "feat-3624",
+   "kind": "feat",
+   "nameEn": "Reliable Squire",
+   "level": 2,
+   "actions": "",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-combat",
+   "theme": "theme-combat",
+   "x": 520,
+   "y": -560,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "shieldfeatsprotection.webp",
+   "id": "feat-3623",
+   "kind": "feat",
+   "nameEn": "Devoted Guardian",
+   "level": 2,
+   "actions": "1",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-shield",
+   "theme": "theme-shield",
+   "x": 1160,
+   "y": -560,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "prayer.webp",
+   "id": "feat-3625",
+   "kind": "feat",
+   "nameEn": "Resilient Mind",
+   "level": 2,
+   "actions": "",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": -400,
+   "y": 560,
+   "captionSide": "below",
+   "captionW": 147
+  },
+  {
+   "image": "prayer.webp",
+   "id": "feat-3629",
+   "kind": "feat",
+   "nameEn": "Inspiring Resilience",
+   "level": 4,
+   "actions": "5",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": 0,
+   "y": 690,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "fight.webp",
+   "id": "feat-3630",
+   "kind": "feat",
+   "nameEn": "Knock Sense",
+   "level": 4,
+   "actions": "1",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-combat",
+   "theme": "theme-combat",
+   "x": 320,
+   "y": -690,
+   "captionSide": "below",
+   "captionW": 116
+  },
+  {
+   "image": "prayer.webp",
+   "id": "feat-8478",
+   "kind": "feat",
+   "nameEn": "Sacral Lord",
+   "level": 4,
+   "actions": "",
+   "rarity": "rare",
+   "legacy": false,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": 400,
+   "y": 690,
+   "captionSide": "below",
+   "captionW": 116
+  },
+  {
+   "image": "SpellLayOfHands.webp",
+   "id": "feat-1089",
+   "kind": "feat",
+   "nameEn": "Light of Revelation",
+   "level": 4,
+   "actions": "",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-devotion",
+   "theme": "theme-devotion",
+   "x": -2240,
+   "y": 690,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "SpellLayOfHands.webp",
+   "id": "feat-1090",
+   "kind": "feat",
+   "nameEn": "Sun Blade",
+   "level": 4,
+   "actions": "",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-devotion",
+   "theme": "theme-devotion",
+   "x": -2640,
+   "y": 690,
+   "captionSide": "below",
+   "captionW": 95
+  },
+  {
+   "image": "SpellLayOfHands.webp",
+   "id": "feat-1671",
+   "kind": "feat",
+   "nameEn": "Accelerating Touch",
+   "level": 4,
+   "actions": "",
+   "rarity": "common",
+   "legacy": true,
+   "requires": [
+    [
+     "spell-2047"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "theme-devotion",
+   "theme": "theme-devotion",
+   "x": -2440,
+   "y": 690,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "shieldfeatsprotection.webp",
+   "id": "feat-1088",
+   "kind": "feat",
+   "nameEn": "Everstand Strike",
+   "level": 4,
+   "actions": "1",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [
+    [
+     "feat-1087"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "feat-1087",
+   "theme": "theme-shield",
+   "x": 1760,
+   "y": -690,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "Horse.webp",
+   "id": "feat-9512",
+   "kind": "feat",
+   "nameEn": "Chiardmar Steed",
+   "level": 6,
+   "actions": "",
+   "rarity": "uncommon",
+   "legacy": false,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-steed",
+   "theme": "theme-steed",
+   "x": 1640,
+   "y": 820,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "Horse.webp",
+   "id": "feat-9513",
+   "kind": "feat",
+   "nameEn": "Nidarrmar Steed",
+   "level": 6,
+   "actions": "",
+   "rarity": "uncommon",
+   "legacy": false,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-steed",
+   "theme": "theme-steed",
+   "x": 1840,
+   "y": 820,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "shieldfeatsprotection.webp",
+   "id": "feat-3634",
+   "kind": "feat",
+   "nameEn": "Shield Wall",
+   "level": 6,
+   "actions": "5",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-shield",
+   "theme": "theme-shield",
+   "x": 1360,
+   "y": -820,
+   "captionSide": "below",
+   "captionW": 116
+  },
+  {
+   "image": "fight.webp",
+   "id": "feat-1678",
+   "kind": "feat",
+   "nameEn": "Sacrifice Armor",
+   "level": 8,
+   "actions": "5",
+   "rarity": "common",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-combat",
+   "theme": "theme-combat",
+   "x": 720,
+   "y": -950,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "fight.webp",
+   "id": "feat-1091",
+   "kind": "feat",
+   "nameEn": "Impassable Wall Stance",
+   "level": 8,
+   "actions": "1",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [
+    [
+     "feat-5832"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "feat-5832",
+   "theme": "theme-combat",
+   "x": -80,
+   "y": -950,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "SpellLayOfHands.webp",
+   "id": "feat-1682",
+   "kind": "feat",
+   "nameEn": "Resilient Touch",
+   "level": 10,
+   "actions": "",
+   "rarity": "common",
+   "legacy": true,
+   "requires": [
+    [
+     "spell-2047"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "theme-devotion",
+   "theme": "theme-devotion",
+   "x": -2240,
+   "y": 1080,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "prayer.webp",
+   "id": "feat-3639",
+   "kind": "feat",
+   "nameEn": "Holy Light",
+   "level": 10,
+   "actions": "2",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [
+    [
+     "sanct-holy"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": -200,
+   "y": 1080,
+   "captionSide": "below",
+   "captionW": 105
+  },
+  {
+   "image": "brave.webp",
+   "id": "feat-248",
+   "kind": "feat",
+   "nameEn": "Liberating Stride",
+   "level": 12,
+   "actions": "",
+   "rarity": "common",
+   "legacy": true,
+   "requires": [
+    [
+     "cause-12"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -1800,
+   "y": -1210,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "shieldfeatsprotection.webp",
+   "id": "feat-3641",
+   "kind": "feat",
+   "nameEn": "Necromantic Deflection",
+   "level": 12,
+   "actions": "",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-shield",
+   "theme": "theme-shield",
+   "x": 1160,
+   "y": -1210,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "brave.webp",
+   "id": "feat-247",
+   "kind": "feat",
+   "nameEn": "Lasting Doubt",
+   "level": 12,
+   "actions": "",
+   "rarity": "common",
+   "legacy": true,
+   "requires": [
+    [
+     "cause-14"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "theme-cause",
+   "theme": "theme-cause",
+   "x": -2200,
+   "y": -1210,
+   "captionSide": "below",
+   "captionW": 137
+  },
+  {
+   "image": "SpellLayOfHands.webp",
+   "id": "feat-1683",
+   "kind": "feat",
+   "nameEn": "Amplifying Touch",
+   "level": 12,
+   "actions": "",
+   "rarity": "common",
+   "legacy": true,
+   "requires": [
+    [
+     "spell-2047"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "theme-devotion",
+   "theme": "theme-devotion",
+   "x": -2240,
+   "y": 1210,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "prayer.webp",
+   "id": "feat-3640",
+   "kind": "feat",
+   "nameEn": "Miraculous Intervention",
+   "level": 12,
+   "actions": "5",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-faith",
+   "theme": "theme-faith",
+   "x": 0,
+   "y": 1210,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "fight.webp",
+   "id": "feat-1688",
+   "kind": "feat",
+   "nameEn": "Greater Interpose",
+   "level": 14,
+   "actions": "",
+   "rarity": "common",
+   "legacy": true,
+   "requires": [
+    [
+     "feat-1678"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "feat-1678",
+   "theme": "theme-combat",
+   "x": 920,
+   "y": -1340,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "prayer.webp",
+   "id": "feat-8479",
+   "kind": "feat",
+   "nameEn": "Sacral Monarch",
+   "level": 14,
+   "actions": "",
+   "rarity": "common",
+   "legacy": false,
+   "requires": [
+    [
+     "feat-8478"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "feat-8478",
+   "theme": "theme-faith",
+   "x": 600,
+   "y": 1340,
+   "captionSide": "below",
+   "captionW": 147
+  },
+  {
+   "image": "300px-Hunger_of_Hadar.webp",
+   "id": "feat-2747",
+   "kind": "feat",
+   "nameEn": "Everdistant Defense",
+   "level": 20,
+   "actions": "5",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [],
+   "forbids": [],
+   "parentId": "theme-aura",
+   "theme": "theme-aura",
+   "x": -720,
+   "y": -1730,
+   "captionSide": "below",
+   "captionW": 150
+  },
+  {
+   "image": "prayer.webp",
+   "id": "feat-1242",
+   "kind": "feat",
+   "nameEn": "Banishing Blow",
+   "level": 20,
+   "actions": "4",
+   "rarity": "uncommon",
+   "legacy": true,
+   "requires": [
+    [
+     "feat-7519"
+    ]
+   ],
+   "forbids": [],
+   "parentId": "feat-7519",
+   "theme": "theme-faith",
+   "x": 1000,
+   "y": 1730,
+   "captionSide": "below",
+   "captionW": 147
   }
  ],
  "edges": [
@@ -2033,11 +2621,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     -1400,
+     -2100,
      -190
     ],
     [
-     -1400,
+     -2100,
      -300
     ]
    ]
@@ -2057,11 +2645,11 @@ window.CLASS_DATA = {
      190
     ],
     [
-     -1890,
+     -2340,
      190
     ],
     [
-     -1890,
+     -2340,
      300
     ]
    ]
@@ -2081,11 +2669,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     1400,
+     2100,
      -190
     ],
     [
-     1400,
+     2100,
      -300
     ]
    ]
@@ -2105,11 +2693,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     -120,
+     -620,
      -190
     ],
     [
-     -120,
+     -620,
      -300
     ]
    ]
@@ -2129,11 +2717,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     960,
+     1260,
      -190
     ],
     [
-     960,
+     1260,
      -300
     ]
    ]
@@ -2153,11 +2741,11 @@ window.CLASS_DATA = {
      190
     ],
     [
-     1290,
+     1740,
      190
     ],
     [
-     1290,
+     1740,
      300
     ]
    ]
@@ -2177,11 +2765,11 @@ window.CLASS_DATA = {
      190
     ],
     [
-     -50,
+     -100,
      190
     ],
     [
-     -50,
+     -100,
      300
     ]
    ]
@@ -2201,11 +2789,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     -560,
+     -1060,
      -190
     ],
     [
-     -560,
+     -1060,
      -300
     ]
    ]
@@ -2225,11 +2813,11 @@ window.CLASS_DATA = {
      -190
     ],
     [
-     520,
+     420,
      -190
     ],
     [
-     520,
+     420,
      -300
     ]
    ]
@@ -2241,15 +2829,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1290,
+     1740,
      300
     ],
     [
-     1290,
+     1740,
+     390
+    ],
+    [
+     1940,
+     390
+    ],
+    [
+     1940,
      430
     ],
     [
-     1390,
+     2040,
      430
     ]
    ]
@@ -2261,15 +2857,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
+     -2100,
      -430
     ],
     [
-     -1500,
+     -2200,
      -430
     ]
    ]
@@ -2281,15 +2877,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
+     -2100,
      -430
     ],
     [
-     -1300,
+     -2000,
      -430
     ]
    ]
@@ -2301,23 +2897,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
+     -100,
      300
     ],
     [
-     -50,
+     -100,
      390
     ],
     [
-     -450,
+     -900,
      390
     ],
     [
-     -450,
+     -900,
      430
     ],
     [
-     -550,
+     -1000,
      430
     ]
    ]
@@ -2329,23 +2925,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
+     -2100,
      -470
     ],
     [
-     -1600,
+     -2300,
      -470
     ],
     [
-     -1600,
+     -2300,
      -430
     ],
     [
-     -1700,
+     -2400,
      -430
     ]
    ]
@@ -2357,23 +2953,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
+     -2100,
      -470
     ],
     [
-     -1200,
+     -1900,
      -470
     ],
     [
-     -1200,
+     -1900,
      -430
     ],
     [
-     -1100,
+     -1800,
      -430
     ]
    ]
@@ -2385,15 +2981,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     960,
+     1260,
      -300
     ],
     [
-     960,
+     1260,
      -430
     ],
     [
-     1060,
+     1160,
      -430
     ]
    ]
@@ -2405,23 +3001,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
+     -2100,
      -470
     ],
     [
-     -1800,
+     -2500,
      -470
     ],
     [
-     -1800,
+     -2500,
      -430
     ],
     [
-     -1900,
+     -2600,
      -430
     ]
    ]
@@ -2433,23 +3029,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
+     -100,
      300
     ],
     [
-     -50,
+     -100,
      390
     ],
     [
-     750,
+     1100,
      390
     ],
     [
-     750,
+     1100,
      430
     ],
     [
-     850,
+     1200,
      430
     ]
    ]
@@ -2461,23 +3057,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
+     -2100,
      -470
     ],
     [
-     -1000,
+     -1700,
      -470
     ],
     [
-     -1000,
+     -1700,
      -430
     ],
     [
-     -900,
+     -1600,
      -430
     ]
    ]
@@ -2489,23 +3085,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
+     -2100,
      -470
     ],
     [
-     -2000,
+     -2700,
      -470
     ],
     [
-     -2000,
+     -2700,
      -430
     ],
     [
-     -2100,
+     -2800,
      -430
     ]
    ]
@@ -2517,15 +3113,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
+     -100,
      300
     ],
     [
-     -50,
+     -100,
      430
     ],
     [
-     -150,
+     -200,
      430
     ]
    ]
@@ -2537,15 +3133,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
+     -100,
      300
     ],
     [
-     -50,
+     -100,
      560
     ],
     [
-     50,
+     0,
      560
     ]
    ]
@@ -2557,15 +3153,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
+     -100,
      300
     ],
     [
-     -50,
+     -100,
      560
     ],
     [
-     -150,
+     -200,
      560
     ]
    ]
@@ -2577,23 +3173,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
+     -100,
      300
     ],
     [
-     -50,
+     -100,
      520
     ],
     [
-     350,
+     -500,
      520
     ],
     [
-     350,
+     -500,
      560
     ],
     [
-     450,
+     -600,
      560
     ]
    ]
@@ -2605,23 +3201,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
+     -100,
      300
     ],
     [
-     -50,
+     -100,
      520
     ],
     [
-     150,
+     100,
      520
     ],
     [
-     150,
+     100,
      560
     ],
     [
-     250,
+     200,
      560
     ]
    ]
@@ -2633,23 +3229,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -50,
+     -100,
      300
     ],
     [
-     -50,
+     -100,
      520
     ],
     [
-     -250,
+     700,
      520
     ],
     [
-     -250,
+     700,
      560
     ],
     [
-     -350,
+     800,
      560
     ]
    ]
@@ -2661,16 +3257,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
+     -620,
      -300
     ],
     [
-     -120,
-     -560
+     -620,
+     -690
     ],
     [
-     -20,
-     -560
+     -520,
+     -690
     ]
    ]
   },
@@ -2681,16 +3277,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
+     -620,
      -300
     ],
     [
-     -120,
-     -560
+     -620,
+     -690
     ],
     [
-     -220,
-     -560
+     -720,
+     -690
     ]
    ]
   },
@@ -2701,23 +3297,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1890,
+     -2340,
      300
     ],
     [
-     -1890,
+     -2340,
      650
     ],
     [
-     -1690,
+     -2140,
      650
     ],
     [
-     -1690,
+     -2140,
      690
     ],
     [
-     -1590,
+     -2040,
      690
     ]
    ]
@@ -2729,23 +3325,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1890,
+     -2340,
      300
     ],
     [
-     -1890,
+     -2340,
      650
     ],
     [
-     -2090,
+     -2740,
      650
     ],
     [
-     -2090,
+     -2740,
      690
     ],
     [
-     -2190,
+     -2840,
      690
     ]
    ]
@@ -2757,23 +3353,23 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1890,
+     -2340,
      300
     ],
     [
-     -1890,
+     -2340,
      520
     ],
     [
-     -1290,
+     -1740,
      520
     ],
     [
-     -1290,
+     -1740,
      690
     ],
     [
-     -1190,
+     -1640,
      690
     ]
    ]
@@ -2785,19 +3381,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
+     2040,
      430
     ],
     [
-     1490,
+     2140,
      430
     ],
     [
-     1490,
+     2140,
      690
     ],
     [
-     1590,
+     2240,
      690
     ]
    ]
@@ -2809,27 +3405,27 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
+     2040,
      430
     ],
     [
-     1490,
+     2140,
      430
     ],
     [
-     1490,
+     2140,
      780
     ],
     [
-     1890,
+     2540,
      780
     ],
     [
-     1890,
+     2540,
      820
     ],
     [
-     1990,
+     2640,
      820
     ]
    ]
@@ -2841,16 +3437,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     520,
+     420,
      -300
     ],
     [
-     520,
-     -690
+     420,
+     -860
     ],
     [
-     620,
-     -690
+     220,
+     -860
+    ],
+    [
+     220,
+     -820
+    ],
+    [
+     120,
+     -820
     ]
    ]
   },
@@ -2861,16 +3465,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
+     -620,
      -300
     ],
     [
-     -120,
-     -690
+     -620,
+     -820
     ],
     [
-     -20,
-     -690
+     -520,
+     -820
     ]
    ]
   },
@@ -2881,16 +3485,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     520,
+     420,
      -300
     ],
     [
-     520,
-     -690
+     420,
+     -820
     ],
     [
-     420,
-     -690
+     520,
+     -820
     ]
    ]
   },
@@ -2901,24 +3505,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
+     2100,
      -300
     ],
     [
-     1400,
-     -730
+     2100,
+     -860
     ],
     [
-     1800,
-     -730
+     2500,
+     -860
     ],
     [
-     1800,
-     -690
+     2500,
+     -820
     ],
     [
-     1900,
-     -690
+     2600,
+     -820
     ]
    ]
   },
@@ -2929,16 +3533,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     960,
+     1260,
      -300
     ],
     [
-     960,
-     -820
+     1260,
+     -950
     ],
     [
-     860,
-     -820
+     1160,
+     -950
     ]
    ]
   },
@@ -2949,16 +3553,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
+     2100,
      -300
     ],
     [
-     1400,
-     -820
+     2100,
+     -950
     ],
     [
-     1300,
-     -820
+     2000,
+     -950
     ]
    ]
   },
@@ -2969,19 +3573,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
+     2040,
      430
     ],
     [
-     1490,
+     2140,
      430
     ],
     [
-     1490,
+     2140,
      950
     ],
     [
-     1590,
+     2240,
      950
     ]
    ]
@@ -2993,19 +3597,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -550,
+     -1000,
      430
     ],
     [
-     -650,
+     -1100,
      430
     ],
     [
-     -650,
+     -1100,
      950
     ],
     [
-     -750,
+     -1200,
      950
     ]
    ]
@@ -3017,19 +3621,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1590,
+     -2040,
      690
     ],
     [
-     -1490,
+     -1940,
      690
     ],
     [
-     -1490,
+     -1940,
      950
     ],
     [
-     -1390,
+     -1840,
      950
     ]
    ]
@@ -3041,19 +3645,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -2190,
+     -2840,
      690
     ],
     [
-     -2290,
+     -2940,
      690
     ],
     [
-     -2290,
+     -2940,
      950
     ],
     [
-     -2390,
+     -3040,
      950
     ]
    ]
@@ -3065,19 +3669,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1190,
+     -1640,
      690
     ],
     [
-     -1090,
+     -1540,
      690
     ],
     [
-     -1090,
+     -1540,
      950
     ],
     [
-     -990,
+     -1440,
      950
     ]
    ]
@@ -3089,16 +3693,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -560,
+     -1060,
      -300
     ],
     [
-     -560,
-     -820
+     -1060,
+     -950
     ],
     [
-     -460,
-     -820
+     -960,
+     -950
     ]
    ]
   },
@@ -3109,16 +3713,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -560,
+     -1060,
      -300
     ],
     [
-     -560,
-     -820
+     -1060,
+     -950
     ],
     [
-     -660,
-     -820
+     -1160,
+     -950
     ]
    ]
   },
@@ -3129,27 +3733,27 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
+     2040,
      430
     ],
     [
-     1490,
+     2140,
      430
     ],
     [
-     1490,
+     2140,
      910
     ],
     [
-     1690,
+     2340,
      910
     ],
     [
-     1690,
+     2340,
      950
     ],
     [
-     1790,
+     2440,
      950
     ]
    ]
@@ -3161,19 +3765,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1990,
+     2640,
      820
     ],
     [
-     2090,
+     2740,
      820
     ],
     [
-     2090,
+     2740,
      1080
     ],
     [
-     2190,
+     2840,
      1080
     ]
    ]
@@ -3185,16 +3789,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
+     2100,
      -300
     ],
     [
-     1400,
-     -950
+     2100,
+     -1080
     ],
     [
-     1500,
-     -950
+     2200,
+     -1080
     ]
    ]
   },
@@ -3205,16 +3809,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
+     2100,
      -300
     ],
     [
-     1400,
-     -950
+     2100,
+     -1080
     ],
     [
-     1300,
-     -950
+     2000,
+     -1080
     ]
    ]
   },
@@ -3225,20 +3829,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1900,
-     -690
+     2600,
+     -820
     ],
     [
-     2000,
-     -690
+     2700,
+     -820
     ],
     [
-     2000,
-     -950
+     2700,
+     -1080
     ],
     [
-     2100,
-     -950
+     2800,
+     -1080
     ]
    ]
   },
@@ -3249,16 +3853,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
+     -620,
      -300
     ],
     [
-     -120,
-     -1080
+     -620,
+     -1210
     ],
     [
-     -220,
-     -1080
+     -720,
+     -1210
     ]
    ]
   },
@@ -3269,24 +3873,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
-     -1120
+     -2100,
+     -1250
     ],
     [
-     -1200,
-     -1120
+     -1700,
+     -1250
     ],
     [
-     -1200,
-     -1080
+     -1700,
+     -1210
     ],
     [
-     -1100,
-     -1080
+     -1600,
+     -1210
     ]
    ]
   },
@@ -3297,19 +3901,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
+     2040,
      430
     ],
     [
-     1490,
+     2140,
      430
     ],
     [
-     1490,
+     2140,
      1210
     ],
     [
-     1590,
+     2240,
      1210
     ]
    ]
@@ -3321,16 +3925,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     960,
+     1260,
      -300
     ],
     [
-     960,
-     -1080
+     1260,
+     -1210
     ],
     [
-     1060,
-     -1080
+     1360,
+     -1210
     ]
    ]
   },
@@ -3341,19 +3945,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1190,
+     -1640,
      690
     ],
     [
-     -1090,
+     -1540,
      690
     ],
     [
-     -1090,
+     -1540,
      1210
     ],
     [
-     -990,
+     -1440,
      1210
     ]
    ]
@@ -3365,27 +3969,27 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1390,
+     2040,
      430
     ],
     [
-     1490,
+     2140,
      430
     ],
     [
-     1490,
+     2140,
      1170
     ],
     [
-     1690,
+     2340,
      1170
     ],
     [
-     1690,
+     2340,
      1210
     ],
     [
-     1790,
+     2440,
      1210
     ]
    ]
@@ -3397,19 +4001,19 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     450,
+     -600,
      560
     ],
     [
-     550,
+     -700,
      560
     ],
     [
-     550,
+     -700,
      1210
     ],
     [
-     650,
+     -800,
      1210
     ]
    ]
@@ -3421,16 +4025,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     520,
+     420,
      -300
     ],
     [
-     520,
-     -1080
+     420,
+     -1210
     ],
     [
-     620,
-     -1080
+     320,
+     -1210
     ]
    ]
   },
@@ -3441,15 +4045,15 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1890,
+     -2340,
      300
     ],
     [
-     -1890,
+     -2340,
      1210
     ],
     [
-     -1990,
+     -2440,
      1210
     ]
    ]
@@ -3461,16 +4065,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
-     -1080
+     -2100,
+     -1210
     ],
     [
-     -1300,
-     -1080
+     -2000,
+     -1210
     ]
    ]
   },
@@ -3481,16 +4085,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
+     -620,
      -300
     ],
     [
-     -120,
-     -1210
+     -620,
+     -1340
     ],
     [
-     -20,
-     -1210
+     -520,
+     -1340
     ]
    ]
   },
@@ -3501,16 +4105,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
+     -620,
      -300
     ],
     [
-     -120,
-     -1210
+     -620,
+     -1340
     ],
     [
-     -220,
-     -1210
+     -720,
+     -1340
     ]
    ]
   },
@@ -3521,24 +4125,24 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -120,
+     -620,
      -300
     ],
     [
-     -120,
-     -1250
+     -620,
+     -1380
     ],
     [
-     80,
-     -1250
+     -420,
+     -1380
     ],
     [
-     80,
-     -1210
+     -420,
+     -1340
     ],
     [
-     180,
-     -1210
+     -320,
+     -1340
     ]
    ]
   },
@@ -3549,16 +4153,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     520,
+     420,
      -300
     ],
     [
-     520,
-     -1210
+     420,
+     -1340
     ],
     [
-     420,
-     -1210
+     520,
+     -1340
     ]
    ]
   },
@@ -3569,16 +4173,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     520,
+     420,
      -300
     ],
     [
-     520,
-     -1210
+     420,
+     -1340
     ],
     [
-     620,
-     -1210
+     320,
+     -1340
     ]
    ]
   },
@@ -3589,20 +4193,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1100,
-     -1080
+     -1600,
+     -1210
     ],
     [
-     -1000,
-     -1080
+     -1500,
+     -1210
     ],
     [
-     -1000,
-     -1340
+     -1500,
+     -1470
     ],
     [
-     -900,
-     -1340
+     -1400,
+     -1470
     ]
    ]
   },
@@ -3613,16 +4217,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
-     -1340
+     -2100,
+     -1470
     ],
     [
-     -1500,
-     -1340
+     -2200,
+     -1470
     ]
    ]
   },
@@ -3633,20 +4237,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     2190,
+     2840,
      1080
     ],
     [
-     2290,
+     2940,
      1080
     ],
     [
-     2290,
-     1340
+     2940,
+     1470
     ],
     [
-     2390,
-     1340
+     3040,
+     1470
     ]
    ]
   },
@@ -3657,20 +4261,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1900,
-     -690
+     2600,
+     -820
     ],
     [
-     2000,
-     -690
+     2700,
+     -820
     ],
     [
-     2000,
-     -1340
+     2700,
+     -1470
     ],
     [
-     2100,
-     -1340
+     2800,
+     -1470
     ]
    ]
   },
@@ -3681,16 +4285,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1890,
+     -2340,
      300
     ],
     [
-     -1890,
-     1470
+     -2340,
+     1600
     ],
     [
-     -1790,
-     1470
+     -2440,
+     1600
     ]
    ]
   },
@@ -3701,16 +4305,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1400,
+     -2100,
      -300
     ],
     [
-     -1400,
-     -1470
+     -2100,
+     -1600
     ],
     [
-     -1300,
-     -1470
+     -2000,
+     -1600
     ]
    ]
   },
@@ -3721,20 +4325,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -1190,
+     -1640,
      690
     ],
     [
-     -1090,
+     -1540,
      690
     ],
     [
-     -1090,
-     1470
+     -1540,
+     1600
     ],
     [
-     -990,
-     1470
+     -1440,
+     1600
     ]
    ]
   },
@@ -3745,20 +4349,20 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     850,
+     1200,
      430
     ],
     [
-     950,
+     1300,
      430
     ],
     [
-     950,
-     1470
+     1300,
+     1600
     ],
     [
-     1050,
-     1470
+     1400,
+     1600
     ]
    ]
   },
@@ -3769,16 +4373,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -560,
+     -1060,
      -300
     ],
     [
-     -560,
-     -1470
+     -1060,
+     -1600
     ],
     [
-     -460,
-     -1470
+     -960,
+     -1600
     ]
    ]
   },
@@ -3789,16 +4393,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -560,
+     -1060,
      -300
     ],
     [
-     -560,
-     -1470
+     -1060,
+     -1600
     ],
     [
-     -660,
-     -1470
+     -1160,
+     -1600
     ]
    ]
   },
@@ -3809,16 +4413,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     -560,
+     -1060,
      -300
     ],
     [
-     -560,
-     -1600
+     -1060,
+     -1730
     ],
     [
-     -460,
-     -1600
+     -960,
+     -1730
     ]
    ]
   },
@@ -3829,16 +4433,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
+     2100,
      -300
     ],
     [
-     1400,
-     -1600
+     2100,
+     -1730
     ],
     [
-     1500,
-     -1600
+     2200,
+     -1730
     ]
    ]
   },
@@ -3849,16 +4453,16 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
+     2100,
      -300
     ],
     [
-     1400,
-     -1600
+     2100,
+     -1730
     ],
     [
-     1300,
-     -1600
+     2000,
+     -1730
     ]
    ]
   },
@@ -3869,24 +4473,652 @@ window.CLASS_DATA = {
    "primary": true,
    "points": [
     [
-     1400,
+     2100,
      -300
     ],
     [
-     1400,
-     -1640
+     2100,
+     -1770
     ],
     [
-     1600,
-     -1640
+     2300,
+     -1770
     ],
     [
-     1600,
-     -1600
+     2300,
+     -1730
     ],
     [
-     1700,
-     -1600
+     2400,
+     -1730
+    ]
+   ]
+  },
+  {
+   "from": "theme-shield",
+   "to": "feat-3622",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1260,
+     -300
+    ],
+    [
+     1260,
+     -430
+    ],
+    [
+     1360,
+     -430
+    ]
+   ]
+  },
+  {
+   "from": "theme-shield",
+   "to": "feat-1087",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1260,
+     -300
+    ],
+    [
+     1260,
+     -470
+    ],
+    [
+     1460,
+     -470
+    ],
+    [
+     1460,
+     -430
+    ],
+    [
+     1560,
+     -430
+    ]
+   ]
+  },
+  {
+   "from": "theme-combat",
+   "to": "feat-3624",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     420,
+     -300
+    ],
+    [
+     420,
+     -560
+    ],
+    [
+     520,
+     -560
+    ]
+   ]
+  },
+  {
+   "from": "theme-shield",
+   "to": "feat-3623",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1260,
+     -300
+    ],
+    [
+     1260,
+     -560
+    ],
+    [
+     1160,
+     -560
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-3625",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -100,
+     300
+    ],
+    [
+     -100,
+     520
+    ],
+    [
+     -300,
+     520
+    ],
+    [
+     -300,
+     560
+    ],
+    [
+     -400,
+     560
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-3629",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -100,
+     300
+    ],
+    [
+     -100,
+     690
+    ],
+    [
+     0,
+     690
+    ]
+   ]
+  },
+  {
+   "from": "theme-combat",
+   "to": "feat-3630",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     420,
+     -300
+    ],
+    [
+     420,
+     -690
+    ],
+    [
+     320,
+     -690
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-8478",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -100,
+     300
+    ],
+    [
+     -100,
+     650
+    ],
+    [
+     300,
+     650
+    ],
+    [
+     300,
+     690
+    ],
+    [
+     400,
+     690
+    ]
+   ]
+  },
+  {
+   "from": "theme-devotion",
+   "to": "feat-1089",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -2340,
+     300
+    ],
+    [
+     -2340,
+     690
+    ],
+    [
+     -2240,
+     690
+    ]
+   ]
+  },
+  {
+   "from": "theme-devotion",
+   "to": "feat-1090",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -2340,
+     300
+    ],
+    [
+     -2340,
+     650
+    ],
+    [
+     -2540,
+     650
+    ],
+    [
+     -2540,
+     690
+    ],
+    [
+     -2640,
+     690
+    ]
+   ]
+  },
+  {
+   "from": "theme-devotion",
+   "to": "feat-1671",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -2340,
+     300
+    ],
+    [
+     -2340,
+     690
+    ],
+    [
+     -2440,
+     690
+    ]
+   ]
+  },
+  {
+   "from": "feat-1087",
+   "to": "feat-1088",
+   "kind": "req",
+   "primary": true,
+   "points": [
+    [
+     1560,
+     -430
+    ],
+    [
+     1660,
+     -430
+    ],
+    [
+     1660,
+     -690
+    ],
+    [
+     1760,
+     -690
+    ]
+   ]
+  },
+  {
+   "from": "theme-steed",
+   "to": "feat-9512",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1740,
+     300
+    ],
+    [
+     1740,
+     820
+    ],
+    [
+     1640,
+     820
+    ]
+   ]
+  },
+  {
+   "from": "theme-steed",
+   "to": "feat-9513",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1740,
+     300
+    ],
+    [
+     1740,
+     820
+    ],
+    [
+     1840,
+     820
+    ]
+   ]
+  },
+  {
+   "from": "theme-shield",
+   "to": "feat-3634",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1260,
+     -300
+    ],
+    [
+     1260,
+     -820
+    ],
+    [
+     1360,
+     -820
+    ]
+   ]
+  },
+  {
+   "from": "theme-combat",
+   "to": "feat-1678",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     420,
+     -300
+    ],
+    [
+     420,
+     -990
+    ],
+    [
+     620,
+     -990
+    ],
+    [
+     620,
+     -950
+    ],
+    [
+     720,
+     -950
+    ]
+   ]
+  },
+  {
+   "from": "feat-5832",
+   "to": "feat-1091",
+   "kind": "req",
+   "primary": true,
+   "points": [
+    [
+     120,
+     -820
+    ],
+    [
+     20,
+     -820
+    ],
+    [
+     20,
+     -950
+    ],
+    [
+     -80,
+     -950
+    ]
+   ]
+  },
+  {
+   "from": "theme-devotion",
+   "to": "feat-1682",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -2340,
+     300
+    ],
+    [
+     -2340,
+     1080
+    ],
+    [
+     -2240,
+     1080
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-3639",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -100,
+     300
+    ],
+    [
+     -100,
+     1080
+    ],
+    [
+     -200,
+     1080
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-248",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -2100,
+     -300
+    ],
+    [
+     -2100,
+     -1250
+    ],
+    [
+     -1900,
+     -1250
+    ],
+    [
+     -1900,
+     -1210
+    ],
+    [
+     -1800,
+     -1210
+    ]
+   ]
+  },
+  {
+   "from": "theme-shield",
+   "to": "feat-3641",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     1260,
+     -300
+    ],
+    [
+     1260,
+     -1210
+    ],
+    [
+     1160,
+     -1210
+    ]
+   ]
+  },
+  {
+   "from": "theme-cause",
+   "to": "feat-247",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -2100,
+     -300
+    ],
+    [
+     -2100,
+     -1210
+    ],
+    [
+     -2200,
+     -1210
+    ]
+   ]
+  },
+  {
+   "from": "theme-devotion",
+   "to": "feat-1683",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -2340,
+     300
+    ],
+    [
+     -2340,
+     1210
+    ],
+    [
+     -2240,
+     1210
+    ]
+   ]
+  },
+  {
+   "from": "theme-faith",
+   "to": "feat-3640",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -100,
+     300
+    ],
+    [
+     -100,
+     1210
+    ],
+    [
+     0,
+     1210
+    ]
+   ]
+  },
+  {
+   "from": "feat-1678",
+   "to": "feat-1688",
+   "kind": "req",
+   "primary": true,
+   "points": [
+    [
+     720,
+     -950
+    ],
+    [
+     820,
+     -950
+    ],
+    [
+     820,
+     -1340
+    ],
+    [
+     920,
+     -1340
+    ]
+   ]
+  },
+  {
+   "from": "feat-8478",
+   "to": "feat-8479",
+   "kind": "req",
+   "primary": true,
+   "points": [
+    [
+     400,
+     690
+    ],
+    [
+     500,
+     690
+    ],
+    [
+     500,
+     1340
+    ],
+    [
+     600,
+     1340
+    ]
+   ]
+  },
+  {
+   "from": "theme-aura",
+   "to": "feat-2747",
+   "kind": "theme",
+   "primary": true,
+   "points": [
+    [
+     -620,
+     -300
+    ],
+    [
+     -620,
+     -1730
+    ],
+    [
+     -720,
+     -1730
+    ]
+   ]
+  },
+  {
+   "from": "feat-7519",
+   "to": "feat-1242",
+   "kind": "req",
+   "primary": true,
+   "points": [
+    [
+     800,
+     560
+    ],
+    [
+     900,
+     560
+    ],
+    [
+     900,
+     1730
+    ],
+    [
+     1000,
+     1730
     ]
    ]
   }

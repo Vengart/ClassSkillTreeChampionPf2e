@@ -65,6 +65,7 @@ node tools/build-wizard.mjs                               # → data/wizard/buil
 ```
 node tools/fetch-pf2.mjs          # поборник: скачать (с кешем в data/cache)
 node tools/fetch-pf2.mjs --force  # перекачать всё заново
+node tools/fetch-champion-aon.mjs # поборник с AoN (локализация «оригинал») → data/champion/source/aon.json и сборка
 node tools/build-graph.mjs        # пересобрать поборника без скачивания
 node tools/fetch-wizard-aon.mjs   # волшебник с AoN → data/wizard/source/aon.json и сборка
 node tools/fetch-wizard-pf2ru.mjs # перевод pf2.ru для волшебника → data/wizard/source/pf2ru.json

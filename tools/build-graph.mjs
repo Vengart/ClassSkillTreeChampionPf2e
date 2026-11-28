@@ -52,7 +52,25 @@ function themeOf(n) {
 
 // ---------- сборка ----------
 
-export function buildGraph(raw) {
+/**
+ * Черты, которых нет на pf2.ru, но они есть в другом переводе (rules.extraFeats): берутся с AoN
+ * (data/champion/source/aon.json) на английском и помечаются для pf2.ru пометкой labels.notes.noRu.
+ */
+function extraFeats(raw, aon) {
+    if (!aon || !(rules.extraFeats || []).length) return [];
+    const have = new Set(raw.feats.map((f) => f.nameEn));
+    const out = [];
+    for (const name of rules.extraFeats) {
+        if (have.has(name)) continue;
+        const f = aon.feats.find((x) => x.name === name);
+        if (!f) { console.warn(`  ! черты «${name}» нет на AoN`); continue; }
+        out.push({ ...f, note: labels.notes?.noRu, extra: true });
+    }
+    return out;
+}
+
+export function buildGraph(raw, aon = null) {
+    raw = { ...raw, feats: [...raw.feats, ...extraFeats(raw, aon)] };
     const nodes = [];
     const warnings = [];
     const add = (n) => { nodes.push({ image: IMAGES[n.id] || null, ...n }); return n; };
@@ -164,8 +182,9 @@ export function buildGraph(raw) {
             prereqText: f.prerequisitesText, prereqHtml: f.prerequisitesHtml,
             fields: f.fields, html: f.html, requires, forbids,
             image: FEAT_IMAGES[f.nameEn] || null,
+            ...(f.extra ? { note: f.note } : {}),
         });
-        if (!FEAT_IMAGES[f.nameEn]) warnings.push(`${f.name}: нет картинки`);
+        if (!FEAT_IMAGES[f.nameEn] && !f.extra) warnings.push(`${f.name}: нет картинки`);
     }
 
     // --- Связи ---
@@ -195,6 +214,7 @@ export function buildGraph(raw) {
         while (byId.get(cur.parentId)?.kind === 'feat') cur = byId.get(cur.parentId);
         n.theme = cur.parentId;
     }
+    for (const n of feats) if (!n.image) n.image = IMAGES[n.theme] || null;
     for (const th of THEMES) pushEdge('root', th.id, 'struct');
     for (const n of feats) {
         if (byId.get(n.parentId)?.kind === 'hub') pushEdge(n.parentId, n.id, 'theme');
@@ -221,6 +241,8 @@ export function buildGraph(raw) {
             filters: rules.filters,
             legend: rules.legend,
             updateCmd: 'node tools/fetch-pf2.mjs',
+            note: 'Русский · pf2.ru',
+            pendingLangs: labels.pendingLangs || [],
             geometry: GEOMETRY, layout: layout.stats, bounds: layout.bounds, grid: layout.grid,
         },
         nodes,
@@ -229,8 +251,102 @@ export function buildGraph(raw) {
     };
 }
 
-/** Записать собранного поборника: data/champion/build/graph.js и тексты. */
-export const writeChampion = (raw, by) => writeBuild('champion', buildGraph(raw), labels.langs, {}, by);
+/**
+ * Тексты локализации «оригинал» (Archives of Nethys, data/champion/source/aon.json) к узлам графа pf2.ru:
+ * черты и призвания — по id, заклинания — по id, освящение и благословения — по варианту.
+ * Каждое текстовое поле задаётся явно (null — убрать), чтобы русский текст pf2.ru не просачивался.
+ * Чего на AoN нет, остаётся текстом pf2.ru — сборка об этом предупреждает.
+ */
+function aonTexts(graph, aon) {
+    const LA = labels.texts.aon || {};
+    const empty = { name: null, short: null, html: null, prereqText: null, prereqHtml: null, fields: null, traits: null, url: null, source: null, hint: null, note: null };
+    const out = {};
+    const missing = [];
+    const feats = new Map(aon.feats.map((f) => [f.id, f]));
+    const causes = new Map(aon.causes.map((c) => [c.id, c]));
+    const spells = new Map(aon.spells.map((x) => [x.id, x]));
+    const SANCT = { 'sanct-holy': 'Holy', 'sanct-unholy': 'Unholy' };
+    const BLESS = { 'blessing-armament': 'Blessed Armament', 'blessing-shield': 'Blessed Shield', 'blessing-swiftness': 'Blessed Swiftness' };
+    const GROUP_HTML = { 'group-sanct': 'sanctification', 'group-cause': 'cause', 'group-devotion': 'devotion', 'group-blessing': 'blessing' };
+    for (const n of graph.nodes) {
+        let t = null;
+        const num = Number(n.id.split('-').pop());
+        if (n.kind === 'root') t = { ...LA.root, url: aon.source };
+        else if (n.kind === 'group') t = { ...LA[n.id], html: aon.features[GROUP_HTML[n.id]] };
+        else if (n.kind === 'hub') t = LA[n.id];
+        else if (SANCT[n.id]) t = { name: SANCT[n.id], html: aon.features.sanctOptions[SANCT[n.id]] };
+        else if (BLESS[n.id]) t = { name: BLESS[n.id], html: aon.features.blessingOptions[BLESS[n.id]] };
+        else if (n.id.startsWith('cause-') && causes.has(num)) {
+            const c = causes.get(num);
+            t = { name: c.name, html: c.html, url: c.url,
+                prereqText: n.sanct === 'holy' ? 'holy sanctification' : n.sanct === 'unholy' ? 'unholy sanctification' : null };
+        } else if (n.id.startsWith('spell-') && spells.has(num)) {
+            const x = spells.get(num);
+            t = { name: x.name, html: x.html, url: x.url, traits: x.traits, fields: x.fields, source: x.source };
+        } else if (n.kind === 'feat' && feats.has(num)) {
+            const f = feats.get(num);
+            t = { name: f.name, html: f.html, url: f.url, source: f.source, traits: f.traits, fields: f.fields,
+                prereqText: f.prerequisitesText, prereqHtml: f.prerequisitesHtml };
+        }
+        if (!t || !t.name) { missing.push(n.id); continue; }
+        out[n.id] = { ...empty, ...t };
+    }
+    console.log(`  оригинал (AoN): текстов ${Object.keys(out).length}${missing.length ? `; нет на AoN — остаются pf2.ru: ${missing.join(', ')}` : ''}`);
+    return out;
+}
+
+/** Записать собранного поборника: data/champion/build/graph.js и тексты (pf2.ru и, если скачан, оригинал AoN). */
+export async function writeChampion(raw, by) {
+    let aon = null;
+    try { aon = await readSource('champion', 'aon'); } catch { console.log('  нет data/champion/source/aon.json — оригинал не собирается (node tools/fetch-champion-aon.mjs)'); }
+    const graph = buildGraph(raw, aon);
+    const langs = aon ? labels.langs : labels.langs.filter((l) => !['aon', 'doc'].includes(l.id));
+    const extra = {};
+    if (aon) {
+        extra.aon = aonTexts(graph, aon);
+        extra.doc = await docTexts(graph, extra.aon);
+    }
+    await writeBuild('champion', graph, langs, extra, by);
+}
+
+/**
+ * Тексты перевода Дока и Юры (data/champion/manual/doc-yura.json, по английскому названию черты).
+ * Чего в переводе нет, показывается оригиналом AoN с пометкой — сами не переводим и из pf2.ru не берём.
+ * Названия корня, групп и тем — наши подписи интерфейса (как у pf2.ru), описания групп и вариантов — AoN.
+ */
+async function docTexts(graph, aonText) {
+    const doc = await readManual('champion', 'doc-yura');
+    const N = labels.notes || {};
+    const LD = labels.texts.doc || {};
+    const out = {};
+    let own = 0, en = 0;
+    for (const n of graph.nodes) {
+        const a = aonText[n.id];
+        const d = n.kind === 'feat' ? doc.feats[n.nameEn] : null;
+        if (d) {
+            out[n.id] = { ...a, name: d.name, html: d.html, prereqText: d.prereq ?? null, prereqHtml: null,
+                fields: d.fields || null, note: null, ...(d.partial ? { note: N.partial } : {}) };
+            own++;
+        } else if (LD[n.id]) {
+            // подписи и тексты из перевода (labels.texts.doc): у побуждений — краткая строка перевода,
+            // ниже полный текст оригинала; у заклинаний — только название
+            const t = LD[n.id];
+            const html = t.html ?? (t.short ? `<p>${t.short}</p><hr>${a?.html || ''}` : a?.html);
+            out[n.id] = { ...a, name: t.name, html, hint: t.hint ?? null, note: t.note ?? null, short: null };
+            if (n.id.startsWith('cause-')) {
+                out[n.id].prereqText = n.sanct === 'holy' ? 'освящение «святое»' : n.sanct === 'unholy' ? 'освящение «нечестивое»' : null;
+            }
+        } else if (n.kind === 'root' || n.kind === 'hub' || n.kind === 'group') {
+            out[n.id] = { ...a, name: L[n.id]?.name ?? a?.name, hint: L[n.id]?.hint ?? null,
+                note: n.kind === 'hub' ? null : N.ownEn };
+        } else {
+            out[n.id] = { ...a, note: n.kind === 'feat' ? N.noDoc : N.ownEn };
+            if (n.kind === 'feat') en++;
+        }
+    }
+    console.log(`  pf2e.ru (Док и Юра): черт своих ${own}, оригиналом AoN ${en}`);
+    return out;
+}
 
 // запуск как скрипта: пересобрать из data/champion/source/pf2ru.json
 if (isMain(import.meta.url)) await writeChampion(await readSource('champion', 'pf2ru'), 'tools/build-graph.mjs');
