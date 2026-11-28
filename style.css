@@ -274,7 +274,7 @@ code { font-size: 0.92em; color: var(--text-dim); }
     top: 0;
     transform: translateY(-50%);
     padding-right: 8px;
-    font-size: calc(13px * var(--cap-s-feat, 1));
+    font-size: calc(13px * var(--cap-s-world, 1));
     color: var(--c-accent);
     white-space: nowrap;
 }
@@ -348,12 +348,27 @@ code { font-size: 0.92em; color: var(--text-dim); }
     padding: 0;
     border: var(--node-ring-w) solid var(--ring);
     border-radius: var(--r-round);
-    transform: translate(-50%, -50%);
+    /* semantic zoom: узел контр-масштабируется вокруг центра (--node-s считает app.js) */
+    transform: translate(-50%, -50%) scale(var(--node-s, 1));
     background: var(--c-surface);
     cursor: pointer;
     transition: border-color 0.2s, background-color 0.2s, opacity 0.2s;
 }
 .node:focus-visible { outline: 2px solid var(--c-text); outline-offset: 4px; }
+/* невидимая зона нажатия: не меньше SEMANTIC.HIT_MIN px на экране (--hit-pad считает app.js) */
+.node .hit { position: absolute; inset: calc(var(--hit-pad, 0) * -1px - var(--node-ring-w)); border-radius: var(--r-round); }
+
+/* semantic zoom: мелкие узлы — без замка, статус только обводкой */
+#viewport.no-lock .lock-badge { display: none !important; }
+/* мелкий масштаб: у черт нет мелких бейджей (иконка остаётся, статус — обводкой и заливкой) */
+#viewport.lod-dots .node.kind-feat .lvl-badge,
+#viewport.lod-dots .node.kind-feat .badge,
+#viewport.lod-dots .node.kind-feat .req-badge { visibility: hidden; }
+/* ниже SEMANTIC.ART_MIN_K черты — точки цвета статуса, без иконок */
+#viewport.lod-noart .node.kind-feat .art { visibility: hidden; }
+#viewport.lod-noart .node.kind-feat { background: var(--c-surface); box-shadow: none; }
+#viewport.lod-noart .node.kind-feat.avail { background: var(--c-accent-bg); }
+#viewport.lod-noart .node.kind-feat.on { background: var(--c-accent); }
 
 .node .art {
     --art-tone: brightness(1);

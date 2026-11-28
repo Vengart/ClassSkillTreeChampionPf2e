@@ -491,9 +491,9 @@ function buildScene() {
     for (const e of ordered) {
         const a = NODES.get(e.from), b = NODES.get(e.to);
         const pts = (e.points || [[a.x, a.y], [b.x, b.y]]).map((p) => [...p]);
-        pts[0] = trim(pts[0], pts[1], sizeOf(a) / 2 + 2);
+        pts[0] = trim(pts[0], pts[1], 0);
         const n = pts.length;
-        pts[n - 1] = trim(pts[n - 1], pts[n - 2], sizeOf(b) / 2 + 2);
+        pts[n - 1] = trim(pts[n - 1], pts[n - 2], 0);
         const d = pts.map((p) => p.join(',')).join(' ');
         const cls = `edge edge-${e.kind} ${e.primary ? 'primary' : 'secondary'}`;
         const gs = ['edge-base', 'edge-glow', 'edge-core'].map((part, i) => {
@@ -520,6 +520,10 @@ function buildScene() {
         if (n.image) art.style.backgroundImage = `url("images/${n.image}")`;
         else art.textContent = n.name.slice(0, 1);
         el.appendChild(art);
+        const hitArea = document.createElement('span');
+        hitArea.className = 'hit';
+        hitArea.setAttribute('aria-hidden', 'true');
+        el.appendChild(hitArea);
         if (n.kind !== 'root') {
             // сторону подписи выбрала раскладка (tools/layout.mjs), чтобы её не задевали связи
             const c = GEO.CAPTION[n.kind] || GEO.CAPTION.feat;
@@ -889,11 +893,72 @@ function shake(n) {
 // ---------- камера: панорама и масштаб ----------
 
 const cam = { x: 0, y: 0, k: 0.5 };
-const MIN_K = 0.07, MAX_K = 2;
+const MAX_K = 2;
+
+// ---------- semantic zoom: пороги и коэффициенты (подстраивать здесь) ----------
+// Позиции узлов масштабируются вместе с деревом, а сами узлы и подписи — нет: их экранный размер
+// считается по формуле clamp(min, base · zoom^power, max), а узел контр-масштабируется вокруг центра.
+// При отдалении узлы растут (относительно дерева), пока между соседями остаётся GAP_MIN px — это порог
+// FREEZE_K. Дальше размер узла в координатах дерева застывает: холст отдаляется до MIN_K, и узлы
+// уменьшаются вместе с ним, так что всё дерево помещается на экран.
+const SEMANTIC = {
+    NODE: { base: 36, min: 28, max: 48, power: 0.3 },     // экранный диаметр черты, px
+    CAPTION: { base: 13, min: 11, max: 15, power: 0.3 },  // экранный кегль подписи черты, px (у тем и корня — пропорционально)
+    HIT_MIN: 32,          // зона нажатия узла не меньше, px на экране
+    LOCK_MIN: 32,         // узел мельче — значка замка нет, статус только обводкой
+    LOD_FULL: 0.8,        // zoom выше — все подписи
+    LOD_PARTIAL: 0.5,     // zoom от LOD_PARTIAL до LOD_FULL — подписи взятых и доступных, у закрытых по наведению;
+                          // ниже — подписи только у заголовков веток
+    ART_MIN_K: 0,         // ниже этого zoom черты без иконок — точки цвета статуса (0 — иконки видны всегда)
+    GAP_MIN: 8,           // зазор между соседними узлами на пороге FREEZE_K, px на экране
+    MIN_K: 0.05,          // предельное отдаление холста
+};
+const clampPow = (c, k) => Math.min(c.max, Math.max(c.min, c.base * Math.pow(k, c.power)));
+/** Экранный диаметр черты по формуле (без порога). */
+const nodeFormula = (k) => clampPow(SEMANTIC.NODE, k);
+let FREEZE_K = 0;   // порог, ниже которого узел застывает в координатах дерева (computeFreezeK)
+/** Экранный диаметр черты при масштабе k: по формуле до порога, ниже — уменьшается вместе с холстом. */
+const nodeScreen = (k) => (k >= FREEZE_K ? nodeFormula(k) : nodeFormula(FREEZE_K) * k / FREEZE_K);
+/**
+ * Порог FREEZE_K — наименьший масштаб, при котором между соседними узлами (по формуле размера)
+ * ещё остаётся GAP_MIN px на экране. Ищется делением пополам.
+ */
+function computeFreezeK() {
+    const pts = DATA.nodes.filter((n) => n.x !== undefined && !isCard(n) && n.kind !== 'root');
+    const rel = (n) => (NODE_SIZE[n.kind] || NODE_SIZE.feat) / NODE_SIZE.feat;
+    const pairs = [];
+    for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+            const d = Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y);
+            if (d < 600) pairs.push([d, (rel(pts[i]) + rel(pts[j])) / 2]);
+        }
+    }
+    const fits = (k) => pairs.every(([d, r]) => nodeFormula(k) * r + SEMANTIC.GAP_MIN <= d * k);
+    let lo = SEMANTIC.MIN_K, hi = MAX_K;
+    if (fits(lo)) return lo;
+    for (let it = 0; it < 40; it++) { const mid = (lo + hi) / 2; if (fits(mid)) hi = mid; else lo = mid; }
+    return hi;
+}
+const MIN_K = SEMANTIC.MIN_K;
+
+/** Масштаб узла (контр-масштаб), зона нажатия, уровень детализации — от зума. */
+function applySemantic(k) {
+    const size = nodeScreen(k);
+    const s = size / (NODE_SIZE.feat * k);                  // узел в координатах дерева → нужный экранный размер
+    viewport.style.setProperty('--node-s', s);
+    // зона нажатия расширяется только до порога: ниже узлы мельчают вместе с холстом и не должны залезать друг на друга
+    viewport.style.setProperty('--hit-pad', k >= FREEZE_K ? Math.max(0, (SEMANTIC.HIT_MIN - size) / 2) / (s * k) : 0);
+    viewport.classList.toggle('no-lock', size < SEMANTIC.LOCK_MIN);
+    viewport.classList.toggle('lod-partial', k <= SEMANTIC.LOD_FULL && k >= SEMANTIC.LOD_PARTIAL);
+    viewport.classList.toggle('lod-dots', k < SEMANTIC.LOD_PARTIAL);
+    viewport.classList.toggle('lod-noart', k < SEMANTIC.ART_MIN_K);
+    return s;
+}
 
 function applyCam() {
     world.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.k})`;
     viewport.style.setProperty('--k', cam.k);
+    applySemantic(cam.k);
     if (cam.k !== labels.k) scheduleLabels();
 }
 
@@ -962,9 +1027,9 @@ function measureLabels() {
     labels.k = null;
     scheduleLabels();
 }
-/** Прямоугольник подписи в координатах дерева при увеличении s. */
-function captionRect(b, s) {
-    const { n, side, size } = b, w = b.w * s, h = b.h * s, r = size / 2 + CAP_GAP, d = size * 0.3536 + 4;
+/** Прямоугольник подписи в координатах дерева: s — масштаб подписи, ns — контр-масштаб узла. */
+function captionRect(b, s, ns = 1) {
+    const { n, side } = b, size = b.size * ns, w = b.w * s * ns, h = b.h * s * ns, r = size / 2 + CAP_GAP * ns, d = size * 0.3536 + 4 * ns;
     let x, y;
     switch (side) {
         case 'above': x = n.x - w / 2; y = n.y - r - h; break;
@@ -982,36 +1047,42 @@ function updateLabels() {
     if (!labels.boxes) return;
     const k = cam.k;
     labels.k = k;
-    const capFs = { feat: LABEL.fs, option: LABEL.fs, hub: LABEL.fsHub };
-    const capScale = (kind, min) => Math.max(1, min / ((capFs[kind] || LABEL.fs) * k));
-    const scale = { feat: capScale('feat', LABEL.min), hub: capScale('hub', LABEL.minHub), option: capScale('option', LABEL.min),
-        root: Math.max(1, LABEL.min / (LABEL.rootPointsFs * k)) };   // по меньшей строке — счётчику
+    // подпись внутри узла и масштабируется вместе с ним (ns): её коэффициент — до нужного экранного кегля
+    const ns = applySemantic(k);
+    const capPx = clampPow(SEMANTIC.CAPTION, k);                       // кегль подписи черты на экране
+    const capScale = (fs) => (capPx * fs / LABEL.fs) / (fs * ns * k);  // темы и корень — пропорционально своему кеглю
+    const scale = { feat: capScale(LABEL.fs), option: capScale(LABEL.fs), hub: capScale(LABEL.fsHub), root: capScale(LABEL.fs) };
     viewport.style.setProperty('--cap-s-feat', scale.feat);
     viewport.style.setProperty('--cap-s-hub', scale.hub);
     viewport.style.setProperty('--cap-s-option', scale.option);
     viewport.style.setProperty('--cap-s-root', scale.root);
+    viewport.style.setProperty('--cap-s-world', capPx / (LABEL.fs * k));   // подписи вне узлов (линия уровня)
+    // бейджи — часть узла и масштабируются вместе с ним
+    viewport.style.setProperty('--badge-s', 1);
+    viewport.classList.remove('badges-off');
 
-    // бейдж уровня: не мельче --badge-min; прячется, когда перерастает половину узла
-    const badgeS = Math.max(1, LABEL.badgeMin / (LABEL.badgeFs * k));
-    viewport.style.setProperty('--badge-s', badgeS);
-    viewport.classList.toggle('badges-off', BADGE_H * badgeS > NODE_SIZE.feat * 0.5);
-
-    // жадная расстановка подписей по приоритету, без наложений
-    const pad = 4 / k;   // зазор между подписями — 4px на экране
+    // уровень детализации: какие подписи вообще показываются
     const heading = (b) => b.n.kind === 'hub' || b.n.kind === 'root';
-    const rank = (b) => (heading(b) ? 0 : b.el.classList.contains('on') ? 1 : b.el.classList.contains('avail') ? 2 : 3);
+    const status = (b) => (b.el.classList.contains('on') ? 'on' : b.el.classList.contains('avail') ? 'avail' : 'locked');
+    const lodShows = (b) => heading(b) || k > SEMANTIC.LOD_FULL || (k >= SEMANTIC.LOD_PARTIAL && status(b) !== 'locked');
+
+    // жадная расстановка подписей по приоритету, без наложений:
+    // заголовки веток (не скрываются никогда) → взятые → доступные → закрытые
+    const pad = 4 / k;   // зазор между подписями — 4px на экране
+    const rank = (b) => (heading(b) ? 0 : { on: 1, avail: 2, locked: 3 }[status(b)]);
     const order = labels.boxes.filter((b) => !b.el.classList.contains('filtered'))
         .sort((a, b) => rank(a) - rank(b) || (a.n.level || 0) - (b.n.level || 0));
-    const nodeRects = order.map((b) => ({ id: b.n.id, x1: b.n.x - b.size / 2, y1: b.n.y - b.size / 2, x2: b.n.x + b.size / 2, y2: b.n.y + b.size / 2 }));
+    const nodeRects = order.map((b) => {
+        const h = (b.size * ns) / 2;
+        return { id: b.n.id, x1: b.n.x - h, y1: b.n.y - h, x2: b.n.x + h, y2: b.n.y + h };
+    });
     const hit = (a, b) => a.x1 < b.x2 + pad && b.x1 < a.x2 + pad && a.y1 < b.y2 + pad && b.y1 < a.y2 + pad;
     const placed = [];
     for (const b of order) {
         const s = scale[b.n.kind] || scale.option;
-        const r = captionRect(b, s);
-        // заголовки веток уступают только друг другу (узлы им не помеха); остальные подписи — всем
-        const ok = heading(b)
-            ? !placed.some((p) => hit(r, p))
-            : !placed.some((p) => hit(r, p)) && !nodeRects.some((nr) => nr.id !== b.n.id && hit(r, nr));
+        const r = captionRect(b, s, ns);
+        const ok = heading(b) || (lodShows(b)
+            && !placed.some((p) => hit(r, p)) && !nodeRects.some((nr) => nr.id !== b.n.id && hit(r, nr)));
         b.cap.classList.toggle('cap-off', !ok);
         if (ok) placed.push(r);
     }
@@ -1528,6 +1599,7 @@ if (isNarrow()) setPanelCollapsed(true);
 setupClass();
 buildScene();
 buildLevelLines();
+FREEZE_K = computeFreezeK();
 measureLabels();
 toneBrightIcons();
 document.fonts?.ready.then(measureLabels);   // ширина подписей меняется, когда догружается шрифт
